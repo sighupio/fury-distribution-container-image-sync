@@ -1,0 +1,28 @@
+images:
+  - name: Calico Kube Controllers [Fury Networking Module]
+    source: docker.io/calico/kube-controllers:v3.17.1
+    destination: reg.sighup.io/sighupio/fury/calico/kube-controllers:v3.17.1
+
+  - name: Calico CNI [Fury Networking Module]
+    source: docker.io/calico/cni:v3.17.1
+    destination: reg.sighup.io/sighupio/fury/calico/cni:v3.17.1
+
+  - name: Calico pod2daemon-flexvol [Fury Networking Module]
+    source: docker.io/calico/pod2daemon-flexvol:v3.17.1
+    destination: reg.sighup.io/sighupio/fury/calico/pod2daemon-flexvol:v3.17.1
+
+  - name: Calico Node [Fury Networking Module]
+    source: docker.io/calico/node:v3.17.1
+    destination: reg.sighup.io/sighupio/fury/calico/node:v3.17.1
+
+  - name: Calico Tests [Fury Networking Module]
+    source: docker.io/curlimages/curl:latest
+    destination: reg.sighup.io/sighupio/fury/curlimages/curl:latest
+
+  - name: Calico Tests [Fury Networking Module]
+    source: gcr.io/google_containers/echoserver:1.0
+    destination: reg.sighup.io/sighupio/fury/google_containers/echoserver:1.0
+
+  - name: IP Masq [Fury Networking Module]
+    source: gcr.io/google-containers/ip-masq-agent-amd64:v2.5.0
+    destination: reg.sighup.io/sighupio/fury/google-containers/ip-masq-agent-amd64:v2.5.0
