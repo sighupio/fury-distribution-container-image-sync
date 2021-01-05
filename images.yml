@@ -76,7 +76,27 @@ images:
     source: quay.io/thanos/thanos:v0.12.2
     destination: reg.sighup.io/sighupio/fury/thanos:v0.12.2
 
+  - name: Gatekeeper [Fury Monitoring OPA]
+    source: docker.io/openpolicyagent/gatekeeper:v3.2.2
+    destination: reg.sighup.io/sighupio/fury/openpolicyagent/gatekeeper:v3.2.2
+
+  - name: Gatekeeper [Fury Monitoring OPA]
+    source: quay.io/sighup/gatekeeper-policy-manager:v0.4.1
+    destination: reg.sighup.io/sighupio/fury/gatekeeper-policy-manager:v0.4.1
+
 
   - name: Alpine 3
     source: docker.io/library/alpine:3
     destination: reg.sighup.io/sighupio/fury/alpine:3
+
+  - name: nginx Latest
+    source: docker.io/library/nginx:latest
+    destination: reg.sighup.io/sighupio/fury/nginx:latest
+
+  - name: Redis 5.0.8
+    source: docker.io/library/redis:5.0.8
+    destination: reg.sighup.io/sighupio/fury/redis:5.0.8
+
+  - name: nginx 1.17.9
+    source: docker.io/library/nginx:1.17.9
+    destination: reg.sighup.io/sighupio/fury/nginx:1.17.9
