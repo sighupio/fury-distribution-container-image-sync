@@ -26,3 +26,57 @@ images:
   - name: IP Masq [Fury Networking Module]
     source: gcr.io/google-containers/ip-masq-agent-amd64:v2.5.0
     destination: reg.sighup.io/sighupio/fury/google-containers/ip-masq-agent-amd64:v2.5.0
+
+
+  - name: Alert Manager [Fury Monitoring Module]
+    source: quay.io/prometheus/alertmanager:v0.21.0
+    destination: reg.sighup.io/sighupio/fury/prometheus/alertmanager:v0.21.0
+
+  - name: Goldpinger [Fury Monitoring Module]
+    source: docker.io/bloomberg/goldpinger:v3.0.0
+    destination: reg.sighup.io/sighupio/fury/bloomberg/goldpinger:v3.0.0
+
+  - name: Grafana SideCar [Fury Monitoring Module]
+    source: docker.io/kiwigrid/k8s-sidecar:1.3.0
+    destination: reg.sighup.io/sighupio/fury/kiwigrid/k8s-sidecar:1.3.0
+
+  - name: Grafana [Fury Monitoring Module]
+    source: docker.io/grafana/grafana:7.3.6
+    destination: reg.sighup.io/sighupio/fury/grafana:7.3.6
+
+  - name: Kubernetes RBAC Proxy [Fury Monitoring Module]
+    source: quay.io/coreos/kube-rbac-proxy:v0.5.0
+    destination: reg.sighup.io/sighupio/fury/coreos/kube-rbac-proxy:v0.5.0
+
+  - name: kube-state-metrics [Fury Monitoring Module]
+    source: quay.io/coreos/kube-state-metrics:v1.9.7
+    destination: reg.sighup.io/sighupio/fury/coreos/kube-state-metrics:v1.9.7
+
+  - name: Metrics Server [Fury Monitoring Module]
+    source: k8s.gcr.io/metrics-server/metrics-server:v0.4.1
+    destination: reg.sighup.io/sighupio/fury/metrics-server:v0.4.1
+
+  - name: node-exporter [Fury Monitoring Module]
+    source: quay.io/prometheus/node-exporter:v1.0.1
+    destination: reg.sighup.io/sighupio/fury/prometheus/node-exporter:v1.0.1
+
+  - name: Prometheus [Fury Monitoring Module]
+    source: quay.io/prometheus/prometheus:v2.22.2
+    destination: reg.sighup.io/sighupio/fury/prometheus:v2.22.2
+
+  - name: prometheus-operator [Fury Monitoring Module]
+    source: quay.io/prometheus-operator/prometheus-operator:v0.44.1
+    destination: reg.sighup.io/sighupio/fury/prometheus-operator:v0.44.1
+
+  - name: openldap [Fury Monitoring Module]
+    source: docker.io/osixia/openldap:1.3.0
+    destination: reg.sighup.io/sighupio/fury/osixia/openldap:1.3.0
+
+  - name: thanos [Fury Monitoring Module]
+    source: quay.io/thanos/thanos:v0.12.2
+    destination: reg.sighup.io/sighupio/fury/thanos:v0.12.2
+
+
+  - name: Alpine 3
+    source: docker.io/library/alpine:3
+    destination: reg.sighup.io/sighupio/fury/alpine:3
