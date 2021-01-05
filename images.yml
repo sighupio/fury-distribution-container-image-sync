@@ -85,6 +85,39 @@ images:
     destination: reg.sighup.io/sighupio/fury/gatekeeper-policy-manager:v0.4.1
 
 
+  - name: Velero [Fury Kubernetes DR]
+    source: docker.io/velero/velero:v1.5.2
+    destination: reg.sighup.io/sighupio/fury/velero/velero:v1.5.2
+
+  - name: Velero AWS Plugin [Fury Kubernetes DR]
+    source: docker.io/velero/velero-plugin-for-aws:v1.1.0
+    destination: reg.sighup.io/sighupio/fury/velero/velero-plugin-for-aws:v1.1.0
+
+  - name: Velero Azure Plugin [Fury Kubernetes DR]
+    source: docker.io/velero/velero-plugin-for-microsoft-azure:v1.1.0
+    destination: reg.sighup.io/sighupio/fury/velero/velero-plugin-for-microsoft-azure:v1.1.0
+
+  - name: Velero GCP Plugin [Fury Kubernetes DR]
+    source: docker.io/velero/velero-plugin-for-gcp:v1.1.0
+    destination: reg.sighup.io/sighupio/fury/velero/velero-plugin-for-gcp:v1.1.0
+
+  - name: k8s-wait-for [Fury Kubernetes DR]
+    source: docker.io/groundnuty/k8s-wait-for:v1.2
+    destination: reg.sighup.io/sighupio/fury/groundnuty/k8s-wait-for:v1.2
+
+  - name: Minio [Fury Kubernetes DR]
+    source: docker.io/minio/minio:RELEASE.2020-09-17T04-49-20Z
+    destination: reg.sighup.io/sighupio/fury/minio:RELEASE.2020-09-17T04-49-20Z
+
+  - name: Minio MC [Fury Kubernetes DR]
+    source: docker.io/minio/mc:RELEASE.2020-09-03T00-08-28Z
+    destination: reg.sighup.io/sighupio/fury/minio/mc:RELEASE.2020-09-03T00-08-28Z
+
+  - name: Minio MC (Latest) [Fury Kubernetes DR]
+    source: docker.io/minio/mc:latest
+    destination: reg.sighup.io/sighupio/fury/minio/mc:latest
+
+
   - name: Alpine 3
     source: docker.io/library/alpine:3
     destination: reg.sighup.io/sighupio/fury/alpine:3
