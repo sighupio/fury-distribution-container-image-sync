@@ -152,6 +152,31 @@ images:
     destination: reg.sighup.io/sighupio/fury/kibana:7.10.1
 
 
+  - name: CA Injector - Cert Manager [Fury Kubernetes Ingress]
+    source: quay.io/jetstack/cert-manager-cainjector:v1.1.0
+    destination: reg.sighup.io/sighupio/fury/jetstack/cert-manager-cainjector:v1.1.0
+
+  - name: Controller - Cert Manager [Fury Kubernetes Ingress]
+    source: quay.io/jetstack/cert-manager-controller:v1.1.0
+    destination: reg.sighup.io/sighupio/fury/jetstack/cert-manager-controller:v1.1.0
+
+  - name: Webhook - Cert Manager [Fury Kubernetes Ingress]
+    source: quay.io/jetstack/cert-manager-webhook:v1.1.0
+    destination: reg.sighup.io/sighupio/fury/jetstack/cert-manager-webhook:v1.1.0
+
+  - name: Forecastle [Fury Kubernetes Ingress]
+    source: docker.io/stakater/forecastle:v1.0.61
+    destination: reg.sighup.io/sighupio/fury/stakater/forecastle:v1.0.61
+
+  - name: nginx ingress controller [Fury Kubernetes Ingress]
+    source: k8s.gcr.io/ingress-nginx/controller:v0.43.0
+    destination: reg.sighup.io/sighupio/fury/ingress-nginx/controller:v0.43.0
+
+  - name: nginx ldap auth [Fury Kubernetes Ingress]
+    source: docker.io/tpimenta/nginx-ldap-auth:v1.0.6
+    destination: reg.sighup.io/sighupio/fury/tpimenta/nginx-ldap-auth:v1.0.6
+
+
   - name: Alpine 3
     source: docker.io/library/alpine:3
     destination: reg.sighup.io/sighupio/fury/alpine:3
@@ -167,3 +192,11 @@ images:
   - name: nginx 1.17.9
     source: docker.io/library/nginx:1.17.9
     destination: reg.sighup.io/sighupio/fury/nginx:1.17.9
+
+  - name: httpbin
+    source: docker.io/kennethreitz/httpbin:latest
+    destination: reg.sighup.io/sighupio/fury/kennethreitz/httpbin:latest
+
+  - name: Docker Registry
+    source: docker.io/library/registry:2.7.1
+    destination: reg.sighup.io/sighupio/fury/registry:2.7.1
