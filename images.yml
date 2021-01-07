@@ -76,11 +76,12 @@ images:
     source: quay.io/thanos/thanos:v0.12.2
     destination: reg.sighup.io/sighupio/fury/thanos:v0.12.2
 
-  - name: Gatekeeper [Fury Monitoring OPA]
+
+  - name: Gatekeeper [Fury OPA Module]
     source: docker.io/openpolicyagent/gatekeeper:v3.2.2
     destination: reg.sighup.io/sighupio/fury/openpolicyagent/gatekeeper:v3.2.2
 
-  - name: Gatekeeper [Fury Monitoring OPA]
+  - name: Gatekeeper [Fury OPA Module]
     source: quay.io/sighup/gatekeeper-policy-manager:v0.4.1
     destination: reg.sighup.io/sighupio/fury/gatekeeper-policy-manager:v0.4.1
 
@@ -116,6 +117,39 @@ images:
   - name: Minio MC (Latest) [Fury Kubernetes DR]
     source: docker.io/minio/mc:latest
     destination: reg.sighup.io/sighupio/fury/minio/mc:latest
+
+
+  - name: Cerebro [Fury Kubernetes Logging]
+    source: docker.io/lmenezes/cerebro:0.9.3
+    destination: reg.sighup.io/sighupio/fury/lmenezes/cerebro:0.9.3
+
+  - name: Curator [Fury Kubernetes Logging]
+    source: quay.io/sighup/curator:5.8.3_3.8-alpine_3.13
+    destination: reg.sighup.io/sighupio/fury/curator:5.8.3_3.8-alpine_3.13
+
+  - name: Alpine 3.12 [Fury Kubernetes Logging]
+    source: docker.io/library/alpine:3.12
+    destination: reg.sighup.io/sighupio/fury/alpine:3.12
+
+  - name: ElasticSearch Exporter [Fury Kubernetes Logging]
+    source: docker.io/justwatch/elasticsearch_exporter:1.1.0
+    destination: reg.sighup.io/sighupio/fury/justwatch/elasticsearch_exporter:1.1.0
+
+  - name: ElasticSearch [Fury Kubernetes Logging]
+    source: docker.elastic.co/elasticsearch/elasticsearch:7.10.1
+    destination: reg.sighup.io/sighupio/fury/elasticsearch:7.10.1
+
+  - name: Fluent-Bit [Fury Kubernetes Logging]
+    source: docker.io/fluent/fluent-bit:1.6.9
+    destination: reg.sighup.io/sighupio/fury/fluent/fluent-bit:1.6.9
+
+  - name: Fluentd [Fury Kubernetes Logging]
+    source: quay.io/sighup/fluentd-elasticsearch:v1.11.5-debian-1.0
+    destination: reg.sighup.io/sighupio/fury/fluentd-elasticsearch:v1.11.5-debian-1.0
+
+  - name: Kibana [Fury Kubernetes Logging]
+    source: docker.elastic.co/kibana/kibana:7.10.1
+    destination: reg.sighup.io/sighupio/fury/kibana:7.10.1
 
 
   - name: Alpine 3
