@@ -16,7 +16,8 @@ The configuration file: `images.yml` has to have a root attribute: `images`. Its
 ```yaml
   - name: # Simple description of the image
     source: # Source image. Where to pull the image
-    destination: # Destination image. Where to push the image
+    destination: 
+      - # Destination images. Where to push the image
 ```
 
 Example `images.yml`:
@@ -25,7 +26,8 @@ Example `images.yml`:
 images:
   - name: Alpine 3
     source: docker.io/library/alpine:3
-    destination: reg.sighup.io/sighupio/fury/alpine:3
+    destination: 
+      - reg.sighup.io/sighupio/fury/alpine:3
 ```
 
 ## Execution
