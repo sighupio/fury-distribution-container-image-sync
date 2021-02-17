@@ -330,6 +330,55 @@ images:
       - registry.sighup.io/fury/goharbor/harbor-registryctl:v2.1.3
 
 
+  - name: Istio Citadel [Fury Kubernetes Service Mesh]
+    source: docker.io/istio/citadel:1.4.2
+    destination:
+      - reg.sighup.io/sighupio/fury/istio/citadel:1.4.2
+      - registry.sighup.io/fury/istio/citadel:1.4.2
+
+  - name: Istio provy [Fury Kubernetes Service Mesh]
+    source: docker.io/istio/proxyv2:1.4.2
+    destination:
+      - reg.sighup.io/sighupio/fury/istio/proxyv2:1.4.2
+      - registry.sighup.io/fury/istio/proxyv2:1.4.2
+
+  - name: Istio kubectl [Fury Kubernetes Service Mesh]
+    source: docker.io/istio/kubectl:1.4.2
+    destination:
+      - reg.sighup.io/sighupio/fury/istio/kubectl:1.4.2
+      - registry.sighup.io/fury/istio/kubectl:1.4.2
+
+  - name: Istio jaeger [Fury Kubernetes Service Mesh]
+    source: docker.io/jaegertracing/all-in-one:1.14
+    destination:
+      - reg.sighup.io/sighupio/fury/jaegertracing/all-in-one:1.14
+      - registry.sighup.io/fury/jaegertracing/all-in-one:1.14
+
+  - name: Istio Kiali [Fury Kubernetes Service Mesh]
+    source: quay.io/kiali/kiali:v1.9
+    destination:
+      - reg.sighup.io/sighupio/fury/kiali/kiali:v1.9
+      - registry.sighup.io/fury/kiali/kiali:v1.9
+
+  - name: Istio Mixer [Fury Kubernetes Service Mesh]
+    source: docker.io/istio/mixer:1.4.2
+    destination:
+      - reg.sighup.io/sighupio/fury/istio/mixer:1.4.2
+      - registry.sighup.io/fury/istio/mixer:1.4.2
+
+  - name: Istio Pilot [Fury Kubernetes Service Mesh]
+    source: docker.io/istio/pilot:1.4.2
+    destination:
+      - reg.sighup.io/sighupio/fury/istio/pilot:1.4.2
+      - registry.sighup.io/fury/istio/pilot:1.4.2
+
+  - name: Istio Sidecar [Fury Kubernetes Service Mesh]
+    source: docker.io/istio/sidecar_injector:1.4.2
+    destination:
+      - reg.sighup.io/sighupio/fury/istio/sidecar_injector:1.4.2
+      - registry.sighup.io/fury/istio/sidecar_injector:1.4.2
+
+
   - name: Alpine 3
     source: docker.io/library/alpine:3
     destination:
@@ -359,6 +408,48 @@ images:
     destination:
       - reg.sighup.io/sighupio/fury/kennethreitz/httpbin:latest
       - registry.sighup.io/fury/kennethreitz/httpbin:latest
+
+  - name: curl-ssl
+    source: docker.io/governmentpaas/curl-ssl:latest
+    destination:
+      - reg.sighup.io/sighupio/fury/governmentpaas/curl-ssl:latest
+      - registry.sighup.io/fury/governmentpaas/curl-ssl:latest
+
+  - name: "[istio] - [examples] bookinfo-details-v1"
+    source: docker.io/istio/examples-bookinfo-details-v1:1.15.0
+    destination:
+      - reg.sighup.io/sighupio/fury/istio/examples-bookinfo-details-v1:1.15.0
+      - registry.sighup.io/fury/istio/examples-bookinfo-details-v1:1.15.0
+
+  - name: "[istio] - [examples] bookinfo-ratings-v1"
+    source: docker.io/istio/examples-bookinfo-ratings-v1:1.15.0
+    destination:
+      - reg.sighup.io/sighupio/fury/istio/examples-bookinfo-ratings-v1:1.15.0
+      - registry.sighup.io/fury/istio/examples-bookinfo-ratings-v1:1.15.0
+
+  - name: "[istio] - [examples] bookinfo-reviews-v1"
+    source: docker.io/istio/examples-bookinfo-reviews-v1:1.15.0
+    destination:
+      - reg.sighup.io/sighupio/fury/istio/examples-bookinfo-reviews-v1:1.15.0
+      - registry.sighup.io/fury/istio/examples-bookinfo-reviews-v1:1.15.0
+
+  - name: "[istio] - [examples] bookinfo-reviews-v2"
+    source: docker.io/istio/examples-bookinfo-reviews-v2:1.15.0
+    destination:
+      - reg.sighup.io/sighupio/fury/istio/examples-bookinfo-reviews-v2:1.15.0
+      - registry.sighup.io/fury/istio/examples-bookinfo-reviews-v2:1.15.0
+
+  - name: "[istio] - [examples] bookinfo-reviews-v3"
+    source: docker.io/istio/examples-bookinfo-reviews-v3:1.15.0
+    destination:
+      - reg.sighup.io/sighupio/fury/istio/examples-bookinfo-reviews-v3:1.15.0
+      - registry.sighup.io/fury/istio/examples-bookinfo-reviews-v3:1.15.0
+
+  - name: "[istio] - [examples] bookinfo-productpage-v1"
+    source: docker.io/istio/examples-bookinfo-productpage-v1:1.15.0
+    destination:
+      - reg.sighup.io/sighupio/fury/istio/examples-bookinfo-productpage-v1:1.15.0
+      - registry.sighup.io/fury/istio/examples-bookinfo-productpage-v1:1.15.0
 
   - name: Docker Registry
     source: docker.io/library/registry:2.7.1
