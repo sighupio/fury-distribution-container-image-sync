@@ -359,7 +359,9 @@ images:
     destination:
       - reg.sighup.io/sighupio/fury/kiali/kiali:v1.9
       - registry.sighup.io/fury/kiali/kiali:v1.9
-
+      - reg.sighup.io/sighupio/fury/kiali/kiali:1.9
+      - registry.sighup.io/fury/kiali/kiali:1.9
+      
   - name: Istio Mixer [Fury Kubernetes Service Mesh]
     source: docker.io/istio/mixer:1.4.2
     destination:
