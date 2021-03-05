@@ -1,460 +1,608 @@
 images:
   - name: Calico Kube Controllers [Fury Networking Module]
-    source: docker.io/calico/kube-controllers:v3.17.1
+    source: docker.io/calico/kube-controllers
+    tag:
+      - v3.17.1
     destination:
-      - reg.sighup.io/sighupio/fury/calico/kube-controllers:v3.17.1
-      - registry.sighup.io/fury/calico/kube-controllers:v3.17.1
+      - reg.sighup.io/sighupio/fury/calico/kube-controllers
+      - registry.sighup.io/fury/calico/kube-controllers
 
   - name: Calico CNI [Fury Networking Module]
-    source: docker.io/calico/cni:v3.17.1
+    source: docker.io/calico/cni
+    tag:
+      - v3.17.1
     destination:
-      - reg.sighup.io/sighupio/fury/calico/cni:v3.17.1
-      - registry.sighup.io/fury/calico/cni:v3.17.1
+      - reg.sighup.io/sighupio/fury/calico/cni
+      - registry.sighup.io/fury/calico/cni
 
   - name: Calico pod2daemon-flexvol [Fury Networking Module]
-    source: docker.io/calico/pod2daemon-flexvol:v3.17.1
+    source: docker.io/calico/pod2daemon-flexvol
+    tag:
+      - v3.17.1
     destination:
-      - reg.sighup.io/sighupio/fury/calico/pod2daemon-flexvol:v3.17.1
-      - registry.sighup.io/fury/calico/pod2daemon-flexvol:v3.17.1
+      - reg.sighup.io/sighupio/fury/calico/pod2daemon-flexvol
+      - registry.sighup.io/fury/calico/pod2daemon-flexvol
 
   - name: Calico Node [Fury Networking Module]
-    source: docker.io/calico/node:v3.17.1
+    source: docker.io/calico/node
+    tag:
+      - v3.17.1
     destination:
-      - reg.sighup.io/sighupio/fury/calico/node:v3.17.1
-      - registry.sighup.io/fury/calico/node:v3.17.1
+      - reg.sighup.io/sighupio/fury/calico/node
+      - registry.sighup.io/fury/calico/node
 
   - name: Calico Tests [Fury Networking Module]
-    source: docker.io/curlimages/curl:latest
+    source: docker.io/curlimages/curl
+    tag:
+      - latest
     destination:
-      - reg.sighup.io/sighupio/fury/curlimages/curl:latest
-      - registry.sighup.io/fury/curlimages/curl:latest
+      - reg.sighup.io/sighupio/fury/curlimages/curl
+      - registry.sighup.io/fury/curlimages/curl
 
   - name: Calico Tests [Fury Networking Module]
-    source: gcr.io/google_containers/echoserver:1.0
+    source: gcr.io/google_containers/echoserver
+    tag:
+      - 1.0
     destination:
-      - reg.sighup.io/sighupio/fury/google_containers/echoserver:1.0
-      - registry.sighup.io/fury/google_containers/echoserver:1.0
+      - reg.sighup.io/sighupio/fury/google_containers/echoserver
+      - registry.sighup.io/fury/google_containers/echoserver
 
   - name: IP Masq [Fury Networking Module]
-    source: gcr.io/google-containers/ip-masq-agent-amd64:v2.5.0
+    source: gcr.io/google-containers/ip-masq-agent-amd64
+    tag:
+      - v2.5.0
     destination:
-      - reg.sighup.io/sighupio/fury/google-containers/ip-masq-agent-amd64:v2.5.0
-      - registry.sighup.io/fury/google-containers/ip-masq-agent-amd64:v2.5.0
+      - reg.sighup.io/sighupio/fury/google-containers/ip-masq-agent-amd64
+      - registry.sighup.io/fury/google-containers/ip-masq-agent-amd64
 
 
   - name: Alert Manager [Fury Monitoring Module]
-    source: quay.io/prometheus/alertmanager:v0.21.0
+    source: quay.io/prometheus/alertmanager
+    tag:
+      - v0.21.0
     destination:
-      - reg.sighup.io/sighupio/fury/prometheus/alertmanager:v0.21.0
-      - registry.sighup.io/fury/prometheus/alertmanager:v0.21.0
+      - reg.sighup.io/sighupio/fury/prometheus/alertmanager
+      - registry.sighup.io/fury/prometheus/alertmanager
 
   - name: Goldpinger [Fury Monitoring Module]
-    source: docker.io/bloomberg/goldpinger:v3.0.0
+    source: docker.io/bloomberg/goldpinger
+    tag:
+      - v3.0.0
     destination:
-      - reg.sighup.io/sighupio/fury/bloomberg/goldpinger:v3.0.0
-      - registry.sighup.io/fury/bloomberg/goldpinger:v3.0.0
+      - reg.sighup.io/sighupio/fury/bloomberg/goldpinger
+      - registry.sighup.io/fury/bloomberg/goldpinger
 
   - name: Grafana SideCar [Fury Monitoring Module]
-    source: docker.io/kiwigrid/k8s-sidecar:1.3.0
+    source: docker.io/kiwigrid/k8s-sidecar
+    tag:
+      - 1.3.0
     destination:
-      - reg.sighup.io/sighupio/fury/kiwigrid/k8s-sidecar:1.3.0
-      - registry.sighup.io/fury/kiwigrid/k8s-sidecar:1.3.0
+      - reg.sighup.io/sighupio/fury/kiwigrid/k8s-sidecar
+      - registry.sighup.io/fury/kiwigrid/k8s-sidecar
 
   - name: Grafana [Fury Monitoring Module]
-    source: docker.io/grafana/grafana:7.3.6
+    source: docker.io/grafana/grafana
+    tag:
+      - 7.3.6
     destination:
-      - reg.sighup.io/sighupio/fury/grafana:7.3.6
-      - registry.sighup.io/fury/grafana:7.3.6
+      - reg.sighup.io/sighupio/fury/grafana
+      - registry.sighup.io/fury/grafana
 
   - name: Kubernetes RBAC Proxy [Fury Monitoring Module]
-    source: quay.io/coreos/kube-rbac-proxy:v0.5.0
+    source: quay.io/coreos/kube-rbac-proxy
+    tag:
+      - v0.5.0
     destination:
-      - reg.sighup.io/sighupio/fury/coreos/kube-rbac-proxy:v0.5.0
-      - registry.sighup.io/fury/coreos/kube-rbac-proxy:v0.5.0
+      - reg.sighup.io/sighupio/fury/coreos/kube-rbac-proxy
+      - registry.sighup.io/fury/coreos/kube-rbac-proxy
 
   - name: kube-state-metrics [Fury Monitoring Module]
-    source: quay.io/coreos/kube-state-metrics:v1.9.7
+    source: quay.io/coreos/kube-state-metrics
+    tag:
+      - v1.9.7
     destination:
-      - reg.sighup.io/sighupio/fury/coreos/kube-state-metrics:v1.9.7
-      - registry.sighup.io/fury/coreos/kube-state-metrics:v1.9.7
+      - reg.sighup.io/sighupio/fury/coreos/kube-state-metrics
+      - registry.sighup.io/fury/coreos/kube-state-metrics
 
   - name: Metrics Server [Fury Monitoring Module]
-    source: k8s.gcr.io/metrics-server/metrics-server:v0.4.1
+    source: k8s.gcr.io/metrics-server/metrics-server
+    tag:
+      - v0.4.1
     destination:
-      - reg.sighup.io/sighupio/fury/metrics-server:v0.4.1
-      - registry.sighup.io/fury/metrics-server:v0.4.1
+      - reg.sighup.io/sighupio/fury/metrics-server
+      - registry.sighup.io/fury/metrics-server
 
   - name: node-exporter [Fury Monitoring Module]
-    source: quay.io/prometheus/node-exporter:v1.0.1
+    source: quay.io/prometheus/node-exporter
+    tag:
+      - v1.0.1
     destination:
-      - reg.sighup.io/sighupio/fury/prometheus/node-exporter:v1.0.1
-      - registry.sighup.io/fury/prometheus/node-exporter:v1.0.1
+      - reg.sighup.io/sighupio/fury/prometheus/node-exporter
+      - registry.sighup.io/fury/prometheus/node-exporter
 
   - name: Prometheus [Fury Monitoring Module]
-    source: quay.io/prometheus/prometheus:v2.22.2
+    source: quay.io/prometheus/prometheus
+    tag:
+      - v2.22.2
     destination:
-      - reg.sighup.io/sighupio/fury/prometheus:v2.22.2
-      - registry.sighup.io/fury/prometheus:v2.22.2
+      - reg.sighup.io/sighupio/fury/prometheus
+      - registry.sighup.io/fury/prometheus
 
   - name: prometheus-operator [Fury Monitoring Module]
-    source: quay.io/prometheus-operator/prometheus-operator:v0.44.1
+    source: quay.io/prometheus-operator/prometheus-operator
+    tag:
+      - v0.44.1
     destination:
-      - reg.sighup.io/sighupio/fury/prometheus-operator:v0.44.1
-      - registry.sighup.io/fury/prometheus-operator:v0.44.1
+      - reg.sighup.io/sighupio/fury/prometheus-operator
+      - registry.sighup.io/fury/prometheus-operator
 
   - name: prometheus-operator config reloader [Fury Monitoring Module]
-    source: quay.io/prometheus-operator/prometheus-config-reloader:v0.44.1
+    source: quay.io/prometheus-operator/prometheus-config-reloader
+    tag:
+      - v0.44.1
     destination:
-      - reg.sighup.io/sighupio/fury/prometheus-operator/prometheus-config-reloader:v0.44.1
-      - registry.sighup.io/fury/prometheus-operator/prometheus-config-reloader:v0.44.1
+      - reg.sighup.io/sighupio/fury/prometheus-operator/prometheus-config-reloader
+      - registry.sighup.io/fury/prometheus-operator/prometheus-config-reloader
 
   - name: openldap [Fury Monitoring Module]
-    source: docker.io/osixia/openldap:1.3.0
+    source: docker.io/osixia/openldap
+    tag:
+      - 1.3.0
     destination:
-      - reg.sighup.io/sighupio/fury/osixia/openldap:1.3.0
-      - registry.sighup.io/fury/osixia/openldap:1.3.0
+      - reg.sighup.io/sighupio/fury/osixia/openldap
+      - registry.sighup.io/fury/osixia/openldap
 
   - name: thanos [Fury Monitoring Module]
-    source: quay.io/thanos/thanos:v0.12.2
+    source: quay.io/thanos/thanos
+    tag:
+      - v0.12.2
     destination:
-      - reg.sighup.io/sighupio/fury/thanos:v0.12.2
-      - registry.sighup.io/fury/thanos:v0.12.2
+      - reg.sighup.io/sighupio/fury/thanos
+      - registry.sighup.io/fury/thanos
 
 
   - name: Gatekeeper [Fury OPA Module]
-    source: docker.io/openpolicyagent/gatekeeper:v3.2.2
+    source: docker.io/openpolicyagent/gatekeeper
+    tag:
+      - v3.2.2
     destination:
-      - reg.sighup.io/sighupio/fury/openpolicyagent/gatekeeper:v3.2.2
-      - registry.sighup.io/fury/openpolicyagent/gatekeeper:v3.2.2
+      - reg.sighup.io/sighupio/fury/openpolicyagent/gatekeeper
+      - registry.sighup.io/fury/openpolicyagent/gatekeeper
 
   - name: Gatekeeper [Fury OPA Module]
-    source: quay.io/sighup/gatekeeper-policy-manager:v0.4.1
+    source: quay.io/sighup/gatekeeper-policy-manager
+    tag:
+      - v0.4.1
     destination:
-      - reg.sighup.io/sighupio/fury/gatekeeper-policy-manager:v0.4.1
-      - registry.sighup.io/fury/gatekeeper-policy-manager:v0.4.1
+      - reg.sighup.io/sighupio/fury/gatekeeper-policy-manager
+      - registry.sighup.io/fury/gatekeeper-policy-manager
 
 
   - name: Velero [Fury Kubernetes DR]
-    source: docker.io/velero/velero:v1.5.2
+    source: docker.io/velero/velero
+    tag:
+      - v1.5.2
     destination:
-      - reg.sighup.io/sighupio/fury/velero/velero:v1.5.2
-      - registry.sighup.io/fury/velero/velero:v1.5.2
+      - reg.sighup.io/sighupio/fury/velero/velero
+      - registry.sighup.io/fury/velero/velero
 
   - name: Velero AWS Plugin [Fury Kubernetes DR]
-    source: docker.io/velero/velero-plugin-for-aws:v1.1.0
+    source: docker.io/velero/velero-plugin-for-aws
+    tag:
+      - v1.1.0
     destination:
-      - reg.sighup.io/sighupio/fury/velero/velero-plugin-for-aws:v1.1.0
-      - registry.sighup.io/fury/velero/velero-plugin-for-aws:v1.1.0
+      - reg.sighup.io/sighupio/fury/velero/velero-plugin-for-aws
+      - registry.sighup.io/fury/velero/velero-plugin-for-aws
 
   - name: Velero Azure Plugin [Fury Kubernetes DR]
-    source: docker.io/velero/velero-plugin-for-microsoft-azure:v1.1.0
+    source: docker.io/velero/velero-plugin-for-microsoft-azure
+    tag:
+      - v1.1.0
     destination:
-      - reg.sighup.io/sighupio/fury/velero/velero-plugin-for-microsoft-azure:v1.1.0
-      - registry.sighup.io/fury/velero/velero-plugin-for-microsoft-azure:v1.1.0
+      - reg.sighup.io/sighupio/fury/velero/velero-plugin-for-microsoft-azure
+      - registry.sighup.io/fury/velero/velero-plugin-for-microsoft-azure
 
   - name: Velero GCP Plugin [Fury Kubernetes DR]
-    source: docker.io/velero/velero-plugin-for-gcp:v1.1.0
+    source: docker.io/velero/velero-plugin-for-gcp
+    tag:
+      - v1.1.0
     destination:
-      - reg.sighup.io/sighupio/fury/velero/velero-plugin-for-gcp:v1.1.0
-      - registry.sighup.io/fury/velero/velero-plugin-for-gcp:v1.1.0
+      - reg.sighup.io/sighupio/fury/velero/velero-plugin-for-gcp
+      - registry.sighup.io/fury/velero/velero-plugin-for-gcp
 
   - name: k8s-wait-for [Fury Kubernetes DR]
-    source: docker.io/groundnuty/k8s-wait-for:v1.2
+    source: docker.io/groundnuty/k8s-wait-for
+    tag:
+      - v1.2
     destination:
-      - reg.sighup.io/sighupio/fury/groundnuty/k8s-wait-for:v1.2
-      - registry.sighup.io/fury/groundnuty/k8s-wait-for:v1.2
+      - reg.sighup.io/sighupio/fury/groundnuty/k8s-wait-for
+      - registry.sighup.io/fury/groundnuty/k8s-wait-for
 
   - name: Minio [Fury Kubernetes DR]
-    source: docker.io/minio/minio:RELEASE.2020-09-17T04-49-20Z
+    source: docker.io/minio/minio
+    tag:
+      - RELEASE.2020-09-17T04-49-20Z
     destination:
-      - reg.sighup.io/sighupio/fury/minio:RELEASE.2020-09-17T04-49-20Z
-      - registry.sighup.io/fury/minio:RELEASE.2020-09-17T04-49-20Z
+      - reg.sighup.io/sighupio/fury/minio
+      - registry.sighup.io/fury/minio
 
   - name: Minio MC [Fury Kubernetes DR]
-    source: docker.io/minio/mc:RELEASE.2020-09-03T00-08-28Z
+    source: docker.io/minio/mc
+    tag:
+      - RELEASE.2020-09-03T00-08-28Z
     destination:
-      - reg.sighup.io/sighupio/fury/minio/mc:RELEASE.2020-09-03T00-08-28Z
-      - registry.sighup.io/fury/minio/mc:RELEASE.2020-09-03T00-08-28Z
+      - reg.sighup.io/sighupio/fury/minio/mc
+      - registry.sighup.io/fury/minio/mc
 
   - name: Minio MC (Latest) [Fury Kubernetes DR]
-    source: docker.io/minio/mc:latest
+    source: docker.io/minio/mc
+    tag:
+      - latest
     destination:
-      - reg.sighup.io/sighupio/fury/minio/mc:latest
-      - registry.sighup.io/fury/minio/mc:latest
+      - reg.sighup.io/sighupio/fury/minio/mc
+      - registry.sighup.io/fury/minio/mc
 
 
   - name: Cerebro [Fury Kubernetes Logging]
-    source: docker.io/lmenezes/cerebro:0.9.3
+    source: docker.io/lmenezes/cerebro
+    tag:
+      - 0.9.3
     destination:
-      - reg.sighup.io/sighupio/fury/lmenezes/cerebro:0.9.3
-      - registry.sighup.io/fury/lmenezes/cerebro:0.9.3
+      - reg.sighup.io/sighupio/fury/lmenezes/cerebro
+      - registry.sighup.io/fury/lmenezes/cerebro
 
   - name: Curator [Fury Kubernetes Logging]
-    source: quay.io/sighup/curator:5.8.3_3.8-alpine_3.13
+    source: quay.io/sighup/curator
+    tag:
+      - 5.8.3_3.8-alpine_3.13
     destination:
-      - reg.sighup.io/sighupio/fury/curator:5.8.3_3.8-alpine_3.13
-      - registry.sighup.io/fury/curator:5.8.3_3.8-alpine_3.13
+      - reg.sighup.io/sighupio/fury/curator
+      - registry.sighup.io/fury/curator
 
   - name: Alpine 3.12 [Fury Kubernetes Logging]
-    source: docker.io/library/alpine:3.12
+    source: docker.io/library/alpine
+    tag:
+      - 3.12
     destination:
-      - reg.sighup.io/sighupio/fury/alpine:3.12
-      - registry.sighup.io/fury/alpine:3.12
+      - reg.sighup.io/sighupio/fury/alpine
+      - registry.sighup.io/fury/alpine
 
   - name: ElasticSearch Exporter [Fury Kubernetes Logging]
-    source: docker.io/justwatch/elasticsearch_exporter:1.1.0
+    source: docker.io/justwatch/elasticsearch_exporter
+    tag:
+      - 1.1.0
     destination:
-      - reg.sighup.io/sighupio/fury/justwatch/elasticsearch_exporter:1.1.0
-      - registry.sighup.io/fury/justwatch/elasticsearch_exporter:1.1.0
+      - reg.sighup.io/sighupio/fury/justwatch/elasticsearch_exporter
+      - registry.sighup.io/fury/justwatch/elasticsearch_exporter
 
   - name: ElasticSearch [Fury Kubernetes Logging]
-    source: docker.elastic.co/elasticsearch/elasticsearch:7.10.1
+    source: docker.elastic.co/elasticsearch/elasticsearch
+    tag:
+      - 7.10.1
     destination:
-      - reg.sighup.io/sighupio/fury/elasticsearch:7.10.1
-      - registry.sighup.io/fury/elasticsearch:7.10.1
+      - reg.sighup.io/sighupio/fury/elasticsearch
+      - registry.sighup.io/fury/elasticsearch
 
   - name: Fluent-Bit [Fury Kubernetes Logging]
-    source: docker.io/fluent/fluent-bit:1.6.9
+    source: docker.io/fluent/fluent-bit
+    tag:
+      - 1.6.9
     destination:
-      - reg.sighup.io/sighupio/fury/fluent/fluent-bit:1.6.9
-      - registry.sighup.io/fury/fluent/fluent-bit:1.6.9
+      - reg.sighup.io/sighupio/fury/fluent/fluent-bit
+      - registry.sighup.io/fury/fluent/fluent-bit
 
   - name: Fluentd [Fury Kubernetes Logging]
-    source: quay.io/sighup/fluentd-elasticsearch:v1.11.5-debian-1.0
+    source: quay.io/sighup/fluentd-elasticsearch
+    tag:
+      - v1.11.5-debian-1.0
     destination:
-      - reg.sighup.io/sighupio/fury/fluentd-elasticsearch:v1.11.5-debian-1.0
-      - registry.sighup.io/fury/fluentd-elasticsearch:v1.11.5-debian-1.0
+      - reg.sighup.io/sighupio/fury/fluentd-elasticsearch
+      - registry.sighup.io/fury/fluentd-elasticsearch
 
   - name: Kibana [Fury Kubernetes Logging]
-    source: docker.elastic.co/kibana/kibana:7.10.1
+    source: docker.elastic.co/kibana/kibana
+    tag:
+      - 7.10.1
     destination:
-      - reg.sighup.io/sighupio/fury/kibana:7.10.1
-      - registry.sighup.io/fury/kibana:7.10.1
+      - reg.sighup.io/sighupio/fury/kibana
+      - registry.sighup.io/fury/kibana
 
 
   - name: CA Injector - Cert Manager [Fury Kubernetes Ingress]
-    source: quay.io/jetstack/cert-manager-cainjector:v1.1.0
+    source: quay.io/jetstack/cert-manager-cainjector
+    tag:
+      - v1.1.0
     destination:
-      - reg.sighup.io/sighupio/fury/jetstack/cert-manager-cainjector:v1.1.0
-      - registry.sighup.io/fury/jetstack/cert-manager-cainjector:v1.1.0
+      - reg.sighup.io/sighupio/fury/jetstack/cert-manager-cainjector
+      - registry.sighup.io/fury/jetstack/cert-manager-cainjector
 
   - name: Controller - Cert Manager [Fury Kubernetes Ingress]
-    source: quay.io/jetstack/cert-manager-controller:v1.1.0
+    source: quay.io/jetstack/cert-manager-controller
+    tag:
+      - v1.1.0
     destination:
-      - reg.sighup.io/sighupio/fury/jetstack/cert-manager-controller:v1.1.0
-      - registry.sighup.io/fury/jetstack/cert-manager-controller:v1.1.0
+      - reg.sighup.io/sighupio/fury/jetstack/cert-manager-controller
+      - registry.sighup.io/fury/jetstack/cert-manager-controller
 
   - name: Webhook - Cert Manager [Fury Kubernetes Ingress]
-    source: quay.io/jetstack/cert-manager-webhook:v1.1.0
+    source: quay.io/jetstack/cert-manager-webhook
+    tag:
+      - v1.1.0
     destination:
-      - reg.sighup.io/sighupio/fury/jetstack/cert-manager-webhook:v1.1.0
-      - registry.sighup.io/fury/jetstack/cert-manager-webhook:v1.1.0
+      - reg.sighup.io/sighupio/fury/jetstack/cert-manager-webhook
+      - registry.sighup.io/fury/jetstack/cert-manager-webhook
 
   - name: Forecastle [Fury Kubernetes Ingress]
-    source: docker.io/stakater/forecastle:v1.0.61
+    source: docker.io/stakater/forecastle
+    tag:
+      - v1.0.61
     destination:
-      - reg.sighup.io/sighupio/fury/stakater/forecastle:v1.0.61
-      - registry.sighup.io/fury/stakater/forecastle:v1.0.61
+      - reg.sighup.io/sighupio/fury/stakater/forecastle
+      - registry.sighup.io/fury/stakater/forecastle
 
   - name: nginx ingress controller [Fury Kubernetes Ingress]
-    source: k8s.gcr.io/ingress-nginx/controller:v0.43.0
+    source: k8s.gcr.io/ingress-nginx/controller
+    tag:
+      - v0.43.0
     destination:
-      - reg.sighup.io/sighupio/fury/ingress-nginx/controller:v0.43.0
-      - registry.sighup.io/fury/ingress-nginx/controller:v0.43.0
+      - reg.sighup.io/sighupio/fury/ingress-nginx/controller
+      - registry.sighup.io/fury/ingress-nginx/controller
 
   - name: nginx ldap auth [Fury Kubernetes Ingress]
-    source: docker.io/tpimenta/nginx-ldap-auth:v1.0.6
+    source: docker.io/tpimenta/nginx-ldap-auth
+    tag:
+      - v1.0.6
     destination:
-      - reg.sighup.io/sighupio/fury/tpimenta/nginx-ldap-auth:v1.0.6
-      - registry.sighup.io/fury/tpimenta/nginx-ldap-auth:v1.0.6
+      - reg.sighup.io/sighupio/fury/tpimenta/nginx-ldap-auth
+      - registry.sighup.io/fury/tpimenta/nginx-ldap-auth
 
 
   - name: Harbor chartmuseum container image [Fury Kubernetes Registry]
-    source: docker.io/goharbor/chartmuseum-photon:v2.1.3
+    source: docker.io/goharbor/chartmuseum-photon
+    tag:
+      - v2.1.3
     destination:
-      - reg.sighup.io/sighupio/fury/goharbor/chartmuseum-photon:v2.1.3
-      - registry.sighup.io/fury/goharbor/chartmuseum-photon:v2.1.3
+      - reg.sighup.io/sighupio/fury/goharbor/chartmuseum-photon
+      - registry.sighup.io/fury/goharbor/chartmuseum-photon
 
   - name: Harbor clair container image [Fury Kubernetes Registry]
-    source: docker.io/goharbor/clair-photon:v2.1.3
+    source: docker.io/goharbor/clair-photon
+    tag:
+      - v2.1.3
     destination:
-      - reg.sighup.io/sighupio/fury/goharbor/clair-photon:v2.1.3
-      - registry.sighup.io/fury/goharbor/clair-photon:v2.1.3
+      - reg.sighup.io/sighupio/fury/goharbor/clair-photon
+      - registry.sighup.io/fury/goharbor/clair-photon
 
   - name: Harbor clair adapter container image [Fury Kubernetes Registry]
-    source: docker.io/goharbor/clair-adapter-photon:v2.1.3
+    source: docker.io/goharbor/clair-adapter-photon
+    tag:
+      - v2.1.3
     destination:
-      - reg.sighup.io/sighupio/fury/goharbor/clair-adapter-photon:v2.1.3
-      - registry.sighup.io/fury/goharbor/clair-adapter-photon:v2.1.3
+      - reg.sighup.io/sighupio/fury/goharbor/clair-adapter-photon
+      - registry.sighup.io/fury/goharbor/clair-adapter-photon
 
   - name: Harbor core container image  [Fury Kubernetes Registry]
-    source: docker.io/goharbor/harbor-core:v2.1.3
+    source: docker.io/goharbor/harbor-core
+    tag:
+      - v2.1.3
     destination:
-      - reg.sighup.io/sighupio/fury/goharbor/harbor-core:v2.1.3
-      - registry.sighup.io/fury/goharbor/harbor-core:v2.1.3
+      - reg.sighup.io/sighupio/fury/goharbor/harbor-core
+      - registry.sighup.io/fury/goharbor/harbor-core
 
   - name: Harbor job service container image  [Fury Kubernetes Registry]
-    source: docker.io/goharbor/harbor-jobservice:v2.1.3
+    source: docker.io/goharbor/harbor-jobservice
+    tag:
+      - v2.1.3
     destination:
-      - reg.sighup.io/sighupio/fury/goharbor/harbor-jobservice:v2.1.3
-      - registry.sighup.io/fury/goharbor/harbor-jobservice:v2.1.3
+      - reg.sighup.io/sighupio/fury/goharbor/harbor-jobservice
+      - registry.sighup.io/fury/goharbor/harbor-jobservice
 
   - name: Harbor notary server container image [Fury Kubernetes Registry]
-    source: docker.io/goharbor/notary-server-photon:v2.1.3
+    source: docker.io/goharbor/notary-server-photon
+    tag:
+      - v2.1.3
     destination:
-      - reg.sighup.io/sighupio/fury/goharbor/notary-server-photon:v2.1.3
-      - registry.sighup.io/fury/goharbor/notary-server-photon:v2.1.3
+      - reg.sighup.io/sighupio/fury/goharbor/notary-server-photon
+      - registry.sighup.io/fury/goharbor/notary-server-photon
 
   - name: Harbor notary signer container image [Fury Kubernetes Registry]
-    source: docker.io/goharbor/notary-signer-photon:v2.1.3
+    source: docker.io/goharbor/notary-signer-photon
+    tag:
+      - v2.1.3
     destination:
-      - reg.sighup.io/sighupio/fury/goharbor/notary-signer-photon:v2.1.3
-      - registry.sighup.io/fury/goharbor/notary-signer-photon:v2.1.3
+      - reg.sighup.io/sighupio/fury/goharbor/notary-signer-photon
+      - registry.sighup.io/fury/goharbor/notary-signer-photon
 
   - name: Harbor portal container image [Fury Kubernetes Registry]
-    source: docker.io/goharbor/harbor-portal:v2.1.3
+    source: docker.io/goharbor/harbor-portal
+    tag:
+      - v2.1.3
     destination:
-      - reg.sighup.io/sighupio/fury/goharbor/harbor-portal:v2.1.3
-      - registry.sighup.io/fury/goharbor/harbor-portal:v2.1.3
+      - reg.sighup.io/sighupio/fury/goharbor/harbor-portal
+      - registry.sighup.io/fury/goharbor/harbor-portal
 
   - name: Harbor registry container image [Fury Kubernetes Registry]
-    source: docker.io/goharbor/registry-photon:v2.1.3
+    source: docker.io/goharbor/registry-photon
+    tag:
+      - v2.1.3
     destination:
-      - reg.sighup.io/sighupio/fury/goharbor/registry-photon:v2.1.3
-      - registry.sighup.io/fury/goharbor/registry-photon:v2.1.3
+      - reg.sighup.io/sighupio/fury/goharbor/registry-photon
+      - registry.sighup.io/fury/goharbor/registry-photon
 
   - name: Harbor registry ctl container image [Fury Kubernetes Registry]
-    source: docker.io/goharbor/harbor-registryctl:v2.1.3
+    source: docker.io/goharbor/harbor-registryctl
+    tag:
+      - v2.1.3
     destination:
-      - reg.sighup.io/sighupio/fury/goharbor/harbor-registryctl:v2.1.3
-      - registry.sighup.io/fury/goharbor/harbor-registryctl:v2.1.3
+      - reg.sighup.io/sighupio/fury/goharbor/harbor-registryctl
+      - registry.sighup.io/fury/goharbor/harbor-registryctl
 
 
   - name: Istio Citadel [Fury Kubernetes Service Mesh]
-    source: docker.io/istio/citadel:1.4.2
+    source: docker.io/istio/citadel
+    tag:
+      - 1.4.2
     destination:
-      - reg.sighup.io/sighupio/fury/istio/citadel:1.4.2
-      - registry.sighup.io/fury/istio/citadel:1.4.2
+      - reg.sighup.io/sighupio/fury/istio/citadel
+      - registry.sighup.io/fury/istio/citadel
 
   - name: Istio provy [Fury Kubernetes Service Mesh]
-    source: docker.io/istio/proxyv2:1.4.2
+    source: docker.io/istio/proxyv2
+    tag:
+      - 1.4.2
     destination:
-      - reg.sighup.io/sighupio/fury/istio/proxyv2:1.4.2
-      - registry.sighup.io/fury/istio/proxyv2:1.4.2
+      - reg.sighup.io/sighupio/fury/istio/proxyv2
+      - registry.sighup.io/fury/istio/proxyv2
 
   - name: Istio kubectl [Fury Kubernetes Service Mesh]
-    source: docker.io/istio/kubectl:1.4.2
+    source: docker.io/istio/kubectl
+    tag:
+      - 1.4.2
     destination:
-      - reg.sighup.io/sighupio/fury/istio/kubectl:1.4.2
-      - registry.sighup.io/fury/istio/kubectl:1.4.2
+      - reg.sighup.io/sighupio/fury/istio/kubectl
+      - registry.sighup.io/fury/istio/kubectl
 
   - name: Istio jaeger [Fury Kubernetes Service Mesh]
-    source: docker.io/jaegertracing/all-in-one:1.14
+    source: docker.io/jaegertracing/all-in-one
+    tag:
+      - 1.14
     destination:
-      - reg.sighup.io/sighupio/fury/jaegertracing/all-in-one:1.14
-      - registry.sighup.io/fury/jaegertracing/all-in-one:1.14
+      - reg.sighup.io/sighupio/fury/jaegertracing/all-in-one
+      - registry.sighup.io/fury/jaegertracing/all-in-one
 
   - name: Istio Kiali [Fury Kubernetes Service Mesh]
-    source: quay.io/kiali/kiali:v1.9
+    source: quay.io/kiali/kiali
+    tag:
+      - 1.9
     destination:
-      - reg.sighup.io/sighupio/fury/kiali/kiali:v1.9
-      - registry.sighup.io/fury/kiali/kiali:v1.9
-      - reg.sighup.io/sighupio/fury/kiali/kiali:1.9
-      - registry.sighup.io/fury/kiali/kiali:1.9
+      - reg.sighup.io/sighupio/fury/kiali/kiali
+      - registry.sighup.io/fury/kiali/kiali
       
   - name: Istio Mixer [Fury Kubernetes Service Mesh]
-    source: docker.io/istio/mixer:1.4.2
+    source: docker.io/istio/mixer
+    tag:
+      - 1.4.2
     destination:
-      - reg.sighup.io/sighupio/fury/istio/mixer:1.4.2
-      - registry.sighup.io/fury/istio/mixer:1.4.2
+      - reg.sighup.io/sighupio/fury/istio/mixer
+      - registry.sighup.io/fury/istio/mixer
 
   - name: Istio Pilot [Fury Kubernetes Service Mesh]
-    source: docker.io/istio/pilot:1.4.2
+    source: docker.io/istio/pilot
+    tag:
+      - 1.4.2
     destination:
-      - reg.sighup.io/sighupio/fury/istio/pilot:1.4.2
-      - registry.sighup.io/fury/istio/pilot:1.4.2
+      - reg.sighup.io/sighupio/fury/istio/pilot
+      - registry.sighup.io/fury/istio/pilot
 
   - name: Istio Sidecar [Fury Kubernetes Service Mesh]
-    source: docker.io/istio/sidecar_injector:1.4.2
+    source: docker.io/istio/sidecar_injector
+    tag:
+      - 1.4.2
     destination:
-      - reg.sighup.io/sighupio/fury/istio/sidecar_injector:1.4.2
-      - registry.sighup.io/fury/istio/sidecar_injector:1.4.2
+      - reg.sighup.io/sighupio/fury/istio/sidecar_injector
+      - registry.sighup.io/fury/istio/sidecar_injector
 
 
   - name: Alpine 3
     source: docker.io/library/alpine:3
+    tag:
+      - 3
     destination:
-      - reg.sighup.io/sighupio/fury/alpine:3
-      - registry.sighup.io/fury/alpine:3
+      - reg.sighup.io/sighupio/fury/alpine
+      - registry.sighup.io/fury/alpine
 
   - name: nginx Latest
-    source: docker.io/library/nginx:latest
+    source: docker.io/library/nginx
+    tag:
+      - latest
     destination:
-      - reg.sighup.io/sighupio/fury/nginx:latest
-      - registry.sighup.io/fury/nginx:latest
+      - reg.sighup.io/sighupio/fury/nginx
+      - registry.sighup.io/fury/nginx
 
   - name: Redis 5.0.8
-    source: docker.io/library/redis:5.0.8
+    source: docker.io/library/redis
+    tag:
+      - 5.0.8
     destination:
-      - reg.sighup.io/sighupio/fury/redis:5.0.8
-      - registry.sighup.io/fury/redis:5.0.8
+      - reg.sighup.io/sighupio/fury/redis
+      - registry.sighup.io/fury/redis
 
   - name: nginx 1.17.9
-    source: docker.io/library/nginx:1.17.9
+    source: docker.io/library/nginx
+    tag:
+      - 1.17.9
     destination:
-      - reg.sighup.io/sighupio/fury/nginx:1.17.9
-      - registry.sighup.io/fury/nginx:1.17.9
+      - reg.sighup.io/sighupio/fury/nginx
+      - registry.sighup.io/fury/nginx
 
   - name: httpbin
-    source: docker.io/kennethreitz/httpbin:latest
+    source: docker.io/kennethreitz/httpbin
+    tag:
+      - latest
     destination:
-      - reg.sighup.io/sighupio/fury/kennethreitz/httpbin:latest
-      - registry.sighup.io/fury/kennethreitz/httpbin:latest
+      - reg.sighup.io/sighupio/fury/kennethreitz/httpbin
+      - registry.sighup.io/fury/kennethreitz/httpbin
 
   - name: curl-ssl
-    source: docker.io/governmentpaas/curl-ssl:latest
+    source: docker.io/governmentpaas/curl-ssl
+    tag:
+      - latest
     destination:
-      - reg.sighup.io/sighupio/fury/governmentpaas/curl-ssl:latest
-      - registry.sighup.io/fury/governmentpaas/curl-ssl:latest
+      - reg.sighup.io/sighupio/fury/governmentpaas/curl-ssl
+      - registry.sighup.io/fury/governmentpaas/curl-ssl
 
   - name: "[istio] - [examples] bookinfo-details-v1"
-    source: docker.io/istio/examples-bookinfo-details-v1:1.15.0
+    source: docker.io/istio/examples-bookinfo-details-v1
+    tag:
+      - 1.15.0
     destination:
-      - reg.sighup.io/sighupio/fury/istio/examples-bookinfo-details-v1:1.15.0
-      - registry.sighup.io/fury/istio/examples-bookinfo-details-v1:1.15.0
+      - reg.sighup.io/sighupio/fury/istio/examples-bookinfo-details-v1
+      - registry.sighup.io/fury/istio/examples-bookinfo-details-v1
 
   - name: "[istio] - [examples] bookinfo-ratings-v1"
-    source: docker.io/istio/examples-bookinfo-ratings-v1:1.15.0
+    source: docker.io/istio/examples-bookinfo-ratings-v1
+    tag:
+      - 1.15.0
     destination:
-      - reg.sighup.io/sighupio/fury/istio/examples-bookinfo-ratings-v1:1.15.0
-      - registry.sighup.io/fury/istio/examples-bookinfo-ratings-v1:1.15.0
+      - reg.sighup.io/sighupio/fury/istio/examples-bookinfo-ratings-v1
+      - registry.sighup.io/fury/istio/examples-bookinfo-ratings-v1
 
   - name: "[istio] - [examples] bookinfo-reviews-v1"
-    source: docker.io/istio/examples-bookinfo-reviews-v1:1.15.0
+    source: docker.io/istio/examples-bookinfo-reviews-v1
+    tag:
+      - 1.15.0
     destination:
-      - reg.sighup.io/sighupio/fury/istio/examples-bookinfo-reviews-v1:1.15.0
-      - registry.sighup.io/fury/istio/examples-bookinfo-reviews-v1:1.15.0
+      - reg.sighup.io/sighupio/fury/istio/examples-bookinfo-reviews-v1
+      - registry.sighup.io/fury/istio/examples-bookinfo-reviews-v1
 
   - name: "[istio] - [examples] bookinfo-reviews-v2"
-    source: docker.io/istio/examples-bookinfo-reviews-v2:1.15.0
+    source: docker.io/istio/examples-bookinfo-reviews-v2
+    tag:
+      - 1.15.0
     destination:
-      - reg.sighup.io/sighupio/fury/istio/examples-bookinfo-reviews-v2:1.15.0
-      - registry.sighup.io/fury/istio/examples-bookinfo-reviews-v2:1.15.0
+      - reg.sighup.io/sighupio/fury/istio/examples-bookinfo-reviews-v2
+      - registry.sighup.io/fury/istio/examples-bookinfo-reviews-v2
 
   - name: "[istio] - [examples] bookinfo-reviews-v3"
-    source: docker.io/istio/examples-bookinfo-reviews-v3:1.15.0
+    source: docker.io/istio/examples-bookinfo-reviews-v3
+    tag:
+      - 1.15.0
     destination:
-      - reg.sighup.io/sighupio/fury/istio/examples-bookinfo-reviews-v3:1.15.0
-      - registry.sighup.io/fury/istio/examples-bookinfo-reviews-v3:1.15.0
+      - reg.sighup.io/sighupio/fury/istio/examples-bookinfo-reviews-v3
+      - registry.sighup.io/fury/istio/examples-bookinfo-reviews-v3
 
   - name: "[istio] - [examples] bookinfo-productpage-v1"
-    source: docker.io/istio/examples-bookinfo-productpage-v1:1.15.0
+    source: docker.io/istio/examples-bookinfo-productpage-v1
+    tag:
+      - 1.15.0
     destination:
-      - reg.sighup.io/sighupio/fury/istio/examples-bookinfo-productpage-v1:1.15.0
-      - registry.sighup.io/fury/istio/examples-bookinfo-productpage-v1:1.15.0
+      - reg.sighup.io/sighupio/fury/istio/examples-bookinfo-productpage-v1
+      - registry.sighup.io/fury/istio/examples-bookinfo-productpage-v1
 
   - name: Docker Registry
-    source: docker.io/library/registry:2.7.1
+    source: docker.io/library/registry
+    tag:
+      - 2.7.1
     destination:
-      - reg.sighup.io/sighupio/fury/registry:2.7.1
-      - registry.sighup.io/fury/registry:2.7.1
+      - reg.sighup.io/sighupio/fury/registry
+      - registry.sighup.io/fury/registry
