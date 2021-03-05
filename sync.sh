@@ -8,15 +8,17 @@ do
     echo "  - Start ${NAME}"
     DST=$(yq e '.images['"${c}"'].destination | length' images.yml)
     TAG=$(yq e '.images['"${c}"'].tag | length' images.yml)
-    for (( d=0; d<${DST}; d++ ))
+    for (( t=0; t<${TAG}; t++ ))
     do
-        for (( t=0; t<${TAG}; t++ ))
+        LOCAL_TAG=$(yq e '.images['"${c}"'].tag['"${t}"']' images.yml)
+        docker pull ${SRC}:${LOCAL_TAG}
+        for (( d=0; d<${DST}; d++ ))
           do
-            LOCAL_TAG=$(yq e '.images['"${c}"'].tag['"${t}"']' images.yml)
-            docker pull ${SRC}:${LOCAL_TAG}
             TO=$(yq e '.images['"${c}"'].destination['"${d}"']' images.yml):${LOCAL_TAG}
             docker tag ${SRC}:${LOCAL_TAG} ${TO}
             docker push ${TO}
+            #echo tag ${SRC}:${LOCAL_TAG} to ${TO}
+            #echo push to ${TO}
           done
     done
     echo "  - Finish ${NAME}"
