@@ -8,11 +8,16 @@ do
     echo "  - Start ${NAME}"
     docker pull ${SRC}
     DST=$(yq e '.images['"${c}"'].destination | length' images.yml)
+    TAG=$(yq e '.images['"${c}"'].tag | length' images.yml)
     for (( d=0; d<${DST}; d++ ))
     do
-        TO=$(yq e '.images['"${c}"'].destination['"${d}"']' images.yml)
-        docker tag ${SRC} ${TO}
-        docker push ${TO}
+        for (( t=0; t<${TAG}; t++ ))
+          do
+            TO=$(yq e '.images['"${c}"'].destination['"${d}"']' images.yml)
+            docker pull ${SRC}:$(yq e '.images['"${c}"'].tag['"${t}"']' images.yml):$(yq e '.images['"${c}"'].tag['"${t}"']' images.yml)
+            docker tag ${SRC} ${TO}
+            docker push ${TO}
+          done
     done
     echo "  - Finish ${NAME}"
 done
