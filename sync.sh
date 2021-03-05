@@ -12,9 +12,10 @@ do
     do
         for (( t=0; t<${TAG}; t++ ))
           do
-            TO=$(yq e '.images['"${c}"'].destination['"${d}"']' images.yml)
-            docker pull ${SRC}:$(yq e '.images['"${c}"'].tag['"${t}"']' images.yml):$(yq e '.images['"${c}"'].tag['"${t}"']' images.yml)
-            docker tag ${SRC} ${TO}
+            LOCAL_TAG=$(yq e '.images['"${c}"'].tag['"${t}"']' images.yml)
+            docker pull ${SRC}:${LOCAL_TAG}
+            TO=$(yq e '.images['"${c}"'].destination['"${d}"']' images.yml):${LOCAL_TAG}
+            docker tag ${SRC}:${LOCAL_TAG} ${TO}
             docker push ${TO}
           done
     done
