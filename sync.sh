@@ -6,7 +6,6 @@ do
     NAME=$(yq e '.images['"${c}"'].name' images.yml)
     SRC=$(yq e '.images['"${c}"'].source' images.yml)
     echo "  - Start ${NAME}"
-    docker pull ${SRC}
     DST=$(yq e '.images['"${c}"'].destination | length' images.yml)
     TAG=$(yq e '.images['"${c}"'].tag | length' images.yml)
     for (( d=0; d<${DST}; d++ ))
