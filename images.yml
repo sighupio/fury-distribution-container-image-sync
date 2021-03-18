@@ -316,6 +316,7 @@ images:
     source: quay.io/jetstack/cert-manager-cainjector
     tag:
       - v1.1.0
+      - v0.14.1
     destination:
       - reg.sighup.io/sighupio/fury/jetstack/cert-manager-cainjector
       - registry.sighup.io/fury/jetstack/cert-manager-cainjector
@@ -324,6 +325,7 @@ images:
     source: quay.io/jetstack/cert-manager-controller
     tag:
       - v1.1.0
+      - v0.14.1
     destination:
       - reg.sighup.io/sighupio/fury/jetstack/cert-manager-controller
       - registry.sighup.io/fury/jetstack/cert-manager-controller
@@ -332,6 +334,7 @@ images:
     source: quay.io/jetstack/cert-manager-webhook
     tag:
       - v1.1.0
+      - v0.14.1
     destination:
       - reg.sighup.io/sighupio/fury/jetstack/cert-manager-webhook
       - registry.sighup.io/fury/jetstack/cert-manager-webhook
