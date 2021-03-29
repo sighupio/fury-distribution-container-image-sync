@@ -17,7 +17,9 @@ do
             TO=$(yq e '.images['"${c}"'].destination['"${d}"']' images.yml):${LOCAL_TAG}
             docker tag ${SRC}:${LOCAL_TAG} ${TO}
             docker push ${TO}
+            docker rmi ${TO}
           done
+        docker rmi ${SRC}:${LOCAL_TAG}
     done
     echo "  - Finish ${NAME}"
 done
