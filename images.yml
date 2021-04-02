@@ -699,3 +699,19 @@ images:
     destination:
       - reg.sighup.io/sighupio/fury/registry
       - registry.sighup.io/fury/registry
+
+  - name: Dexipd Dex
+    source: quay.io/dexidp/dex
+    tag:
+      - v2.20.0
+      - v2.13.0
+    destination:
+      - registry.sighup.io/dexidp/dex
+
+
+  - name: NFS clinet provisioner external storage
+    source: quay.io/external_storage/nfs-client-provisioner
+    tag:
+      - v3.1.0-k8s1.11
+    destination:
+      - registry.sighup.io/external_storage/nfs-client-provisioner
