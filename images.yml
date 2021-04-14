@@ -109,12 +109,13 @@ images:
       - 7.1.5
       - 7.3.6
     destination:
-      - reg.sighup.io/sighupio/fury/grafana
-      - registry.sighup.io/fury/grafana
+      - reg.sighup.io/sighupio/fury/grafana/grafana
+      - registry.sighup.io/fury/grafana/grafana
 
   - name: Kubernetes RBAC Proxy [Fury Monitoring Module]
     source: quay.io/coreos/kube-rbac-proxy
     tag:
+      - v0.4.1
       - v0.5.0
     destination:
       - reg.sighup.io/sighupio/fury/coreos/kube-rbac-proxy
@@ -125,6 +126,7 @@ images:
     tag:
       - v1.8.0
       - v1.9.4
+      - v1.9.5
       - v1.9.7
     destination:
       - reg.sighup.io/sighupio/fury/coreos/kube-state-metrics
@@ -162,15 +164,22 @@ images:
       - registry.sighup.io/fury/prometheus
 
   - name: prometheus-operator [Fury Monitoring Module]
-    source: quay.io/prometheus-operator/prometheus-operator
+    source: quay.io/coreos/prometheus-operator
     tag:
       - v0.30.0
       - v0.37.0
+    destination:
+      - reg.sighup.io/sighupio/fury/coreos/prometheus-operator
+      - registry.sighup.io/fury/coreos/prometheus-operator
+
+  - name: prometheus-operator [Fury Monitoring Module]
+    source: quay.io/prometheus-operator/prometheus-operator
+    tag:
       - v0.42.0
       - v0.44.1
     destination:
-      - reg.sighup.io/sighupio/fury/prometheus-operator
-      - registry.sighup.io/fury/prometheus-operator
+      - reg.sighup.io/sighupio/fury/prometheus-operator/prometheus-operator
+      - registry.sighup.io/fury/prometheus-operator/prometheus-operator
 
   - name: prometheus-operator configmap reloader [Fury Monitoring Module]
     source: docker.io/jimmidyson/configmap-reload
@@ -181,10 +190,17 @@ images:
       - registry.sighup.io/fury/jimmidyson/configmap-reload
 
   - name: prometheus-operator config reloader [Fury Monitoring Module]
-    source: quay.io/prometheus-operator/prometheus-config-reloader
+    source: quay.io/coreos/prometheus-config-reloader
     tag:
       - v0.30.0
       - v0.37.0
+    destination:
+      - reg.sighup.io/sighupio/fury/coreos/prometheus-config-reloader
+      - registry.sighup.io/fury/coreos/prometheus-config-reloader
+
+  - name: prometheus-operator config reloader [Fury Monitoring Module]
+    source: quay.io/prometheus-operator/prometheus-config-reloader
+    tag:
       - v0.42.0
       - v0.44.1
     destination:
@@ -380,6 +396,7 @@ images:
     tag:
       - 6.4.1
       - 6.8.6
+      - 6.8.8
       - 7.9.1
       - 7.10.1
     destination:
@@ -454,6 +471,7 @@ images:
   - name: Harbor chartmuseum container image [Fury Kubernetes Registry]
     source: docker.io/goharbor/chartmuseum-photon
     tag:
+      - v2.0.2
       - v2.1.3
     destination:
       - reg.sighup.io/sighupio/fury/goharbor/chartmuseum-photon
@@ -462,6 +480,7 @@ images:
   - name: Harbor clair container image [Fury Kubernetes Registry]
     source: docker.io/goharbor/clair-photon
     tag:
+      - v2.0.2
       - v2.1.3
     destination:
       - reg.sighup.io/sighupio/fury/goharbor/clair-photon
@@ -470,6 +489,7 @@ images:
   - name: Harbor clair adapter container image [Fury Kubernetes Registry]
     source: docker.io/goharbor/clair-adapter-photon
     tag:
+      - v2.0.2
       - v2.1.3
     destination:
       - reg.sighup.io/sighupio/fury/goharbor/clair-adapter-photon
@@ -478,6 +498,7 @@ images:
   - name: Harbor core container image  [Fury Kubernetes Registry]
     source: docker.io/goharbor/harbor-core
     tag:
+      - v2.0.2
       - v2.1.3
     destination:
       - reg.sighup.io/sighupio/fury/goharbor/harbor-core
@@ -486,6 +507,7 @@ images:
   - name: Harbor job service container image  [Fury Kubernetes Registry]
     source: docker.io/goharbor/harbor-jobservice
     tag:
+      - v2.0.2
       - v2.1.3
     destination:
       - reg.sighup.io/sighupio/fury/goharbor/harbor-jobservice
@@ -494,6 +516,7 @@ images:
   - name: Harbor notary server container image [Fury Kubernetes Registry]
     source: docker.io/goharbor/notary-server-photon
     tag:
+      - v2.0.2
       - v2.1.3
     destination:
       - reg.sighup.io/sighupio/fury/goharbor/notary-server-photon
@@ -502,6 +525,7 @@ images:
   - name: Harbor notary signer container image [Fury Kubernetes Registry]
     source: docker.io/goharbor/notary-signer-photon
     tag:
+      - v2.0.2
       - v2.1.3
     destination:
       - reg.sighup.io/sighupio/fury/goharbor/notary-signer-photon
@@ -510,6 +534,7 @@ images:
   - name: Harbor portal container image [Fury Kubernetes Registry]
     source: docker.io/goharbor/harbor-portal
     tag:
+      - v2.0.2
       - v2.1.3
     destination:
       - reg.sighup.io/sighupio/fury/goharbor/harbor-portal
@@ -518,6 +543,7 @@ images:
   - name: Harbor registry container image [Fury Kubernetes Registry]
     source: docker.io/goharbor/registry-photon
     tag:
+      - v2.0.2
       - v2.1.3
     destination:
       - reg.sighup.io/sighupio/fury/goharbor/registry-photon
@@ -526,6 +552,7 @@ images:
   - name: Harbor registry ctl container image [Fury Kubernetes Registry]
     source: docker.io/goharbor/harbor-registryctl
     tag:
+      - v2.0.2
       - v2.1.3
     destination:
       - reg.sighup.io/sighupio/fury/goharbor/harbor-registryctl
@@ -534,6 +561,7 @@ images:
   - name: Harbor redis container image [Fury Kubernetes Registry]
     source: docker.io/goharbor/redis-photon
     tag:
+      - v2.0.2
       - v2.1.3
     destination:
       - reg.sighup.io/sighupio/fury/goharbor/redis-photon
@@ -714,11 +742,11 @@ images:
       - v2.20.0
       - v2.13.0
     destination:
-      - registry.sighup.io/dexidp/dex
+      - registry.sighup.io/fury/dexidp/dex
 
   - name: NFS clinet provisioner external storage
     source: quay.io/external_storage/nfs-client-provisioner
     tag:
       - v3.1.0-k8s1.11
     destination:
-      - registry.sighup.io/external_storage/nfs-client-provisioner
+      - registry.sighup.io/fury/external_storage/nfs-client-provisioner
