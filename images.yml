@@ -172,6 +172,14 @@ images:
       - reg.sighup.io/sighupio/fury/prometheus-operator
       - registry.sighup.io/fury/prometheus-operator
 
+  - name: prometheus-operator configmap reloader [Fury Monitoring Module]
+    source: docker.io/jimmidyson/configmap-reload
+    tag:
+      - v0.3.0
+    destination:
+      - reg.sighup.io/sighupio/fury/jimmidyson/configmap-reload
+      - registry.sighup.io/fury/jimmidyson/configmap-reload
+
   - name: prometheus-operator config reloader [Fury Monitoring Module]
     source: quay.io/prometheus-operator/prometheus-config-reloader
     tag:
@@ -570,7 +578,7 @@ images:
     destination:
       - reg.sighup.io/sighupio/fury/kiali/kiali
       - registry.sighup.io/fury/kiali/kiali
-      
+
   - name: Istio Mixer [Fury Kubernetes Service Mesh]
     source: docker.io/istio/mixer
     tag:
@@ -700,14 +708,13 @@ images:
       - reg.sighup.io/sighupio/fury/registry
       - registry.sighup.io/fury/registry
 
-  - name: Dexipd Dex
+  - name: Dex Identity Provider
     source: quay.io/dexidp/dex
     tag:
       - v2.20.0
       - v2.13.0
     destination:
       - registry.sighup.io/dexidp/dex
-
 
   - name: NFS clinet provisioner external storage
     source: quay.io/external_storage/nfs-client-provisioner
