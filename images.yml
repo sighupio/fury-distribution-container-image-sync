@@ -85,7 +85,7 @@ images:
   - name: Goldpinger [Fury Monitoring Module]
     source: docker.io/bloomberg/goldpinger
     tag:
-      - v2.0.0
+      - 2.0.0
       - v3.0.0
     destination:
       - reg.sighup.io/sighupio/fury/bloomberg/goldpinger
