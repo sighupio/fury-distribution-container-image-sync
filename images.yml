@@ -243,7 +243,6 @@ images:
       - reg.sighup.io/sighupio/fury/gatekeeper-policy-manager
       - registry.sighup.io/fury/gatekeeper-policy-manager
 
-
   - name: Velero [Fury Kubernetes DR]
     source: docker.io/velero/velero
     tag:
@@ -337,6 +336,7 @@ images:
     tag:
       - 5.6.0_3.7-alpine_3.13
       - 5.8.1_3.7-alpine_3.13
+      - 5.8.1_3.7-alpine_5.3.1
       - 5.8.3_3.8-alpine_3.13
     destination:
       - reg.sighup.io/sighupio/fury/curator
