@@ -7,6 +7,8 @@ images:
       - v3.16.0
       - v3.16.1
       - v3.17.1
+      - v3.18.3
+      - v3.19.0
     destination:
       - reg.sighup.io/sighupio/fury/calico/kube-controllers
       - registry.sighup.io/fury/calico/kube-controllers
@@ -19,6 +21,8 @@ images:
       - v3.16.0
       - v3.16.1
       - v3.17.1
+      - v3.18.3
+      - v3.19.0
     destination:
       - reg.sighup.io/sighupio/fury/calico/cni
       - registry.sighup.io/fury/calico/cni
@@ -31,6 +35,8 @@ images:
       - v3.16.0
       - v3.16.1
       - v3.17.1
+      - v3.18.3
+      - v3.19.0
     destination:
       - reg.sighup.io/sighupio/fury/calico/pod2daemon-flexvol
       - registry.sighup.io/fury/calico/pod2daemon-flexvol
@@ -43,6 +49,8 @@ images:
       - v3.16.0
       - v3.16.1
       - v3.17.1
+      - v3.18.3
+      - v3.19.0
     destination:
       - reg.sighup.io/sighupio/fury/calico/node
       - registry.sighup.io/fury/calico/node
