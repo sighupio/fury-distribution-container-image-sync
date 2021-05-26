@@ -764,3 +764,10 @@ images:
       - v3.1.0-k8s1.11
     destination:
       - registry.sighup.io/fury/external_storage/nfs-client-provisioner
+
+  - name: x509 certificate exporter
+    source: docker.io/enix/x509-certificate-exporter
+    tag:
+      - 2.9.1
+    destination:
+      - registry.sighup.io/fury/enix/x509-certificate-exporter
