@@ -299,10 +299,19 @@ images:
       - reg.sighup.io/sighupio/fury/velero/velero-plugin-for-gcp
       - registry.sighup.io/fury/velero/velero-plugin-for-gcp
 
+  - name: Velero CSI Plugin [Fury Kubernetes DR]
+    source: docker.io/velero/velero-plugin-for-csi
+    tag:
+      - v0.1.2
+    destination:
+      - reg.sighup.io/sighupio/fury/velero/velero-plugin-for-csi
+      - registry.sighup.io/fury/velero/velero-plugin-for-csi
+
   - name: k8s-wait-for [Fury Kubernetes DR]
     source: docker.io/groundnuty/k8s-wait-for
     tag:
       - v1.2
+      - v1.4
     destination:
       - reg.sighup.io/sighupio/fury/groundnuty/k8s-wait-for
       - registry.sighup.io/fury/groundnuty/k8s-wait-for
@@ -312,6 +321,7 @@ images:
     tag:
       - RELEASE.2020-01-25T02-50-51Z
       - RELEASE.2020-09-17T04-49-20Z
+      - RELEASE.2021-05-26T00-22-46Z
     destination:
       - reg.sighup.io/sighupio/fury/minio
       - registry.sighup.io/fury/minio
@@ -321,6 +331,7 @@ images:
     tag:
       - RELEASE.2020-01-25T03-02-19Z
       - RELEASE.2020-09-03T00-08-28Z
+      - RELEASE.2021-05-18T03-39-44Z
     destination:
       - reg.sighup.io/sighupio/fury/minio/mc
       - registry.sighup.io/fury/minio/mc
