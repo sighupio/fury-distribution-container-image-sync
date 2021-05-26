@@ -796,3 +796,10 @@ images:
     destination:
       - registry.sighup.io/fury/enix/x509-certificate-exporter
 
+  - name: Busybox
+    source: docker.io/busybox
+    tag:
+      - latest
+    destination:
+      - reg.sighup.io/sighupio/fury/busybox
+      - registry.sighup.io/fury/busybox
