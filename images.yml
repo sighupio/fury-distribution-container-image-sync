@@ -376,6 +376,7 @@ images:
       - 0.8.5
       - 0.9.2
       - 0.9.3
+      - 0.9.4
     destination:
       - reg.sighup.io/sighupio/fury/lmenezes/cerebro
       - registry.sighup.io/fury/lmenezes/cerebro
@@ -387,6 +388,7 @@ images:
       - 5.8.1_3.7-alpine_3.13
       - 5.8.1_3.7-alpine_5.3.1
       - 5.8.3_3.8-alpine_3.13
+      - 5.8.4_3.8-alpine_3.13
     destination:
       - reg.sighup.io/sighupio/fury/curator
       - registry.sighup.io/fury/curator
