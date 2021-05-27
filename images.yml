@@ -460,6 +460,7 @@ images:
       - v0.14.1
       - v1.0.1
       - v1.1.0
+      - v1.3.1
     destination:
       - reg.sighup.io/sighupio/fury/jetstack/cert-manager-cainjector
       - registry.sighup.io/fury/jetstack/cert-manager-cainjector
@@ -471,6 +472,7 @@ images:
       - v0.14.1
       - v1.0.1
       - v1.1.0
+      - v1.3.1
     destination:
       - reg.sighup.io/sighupio/fury/jetstack/cert-manager-controller
       - registry.sighup.io/fury/jetstack/cert-manager-controller
@@ -482,6 +484,7 @@ images:
       - v0.14.1
       - v1.0.1
       - v1.1.0
+      - v1.3.1
     destination:
       - reg.sighup.io/sighupio/fury/jetstack/cert-manager-webhook
       - registry.sighup.io/fury/jetstack/cert-manager-webhook
@@ -493,6 +496,7 @@ images:
       - v1.0.42
       - v1.0.57
       - v1.0.61
+      - v1.0.64
     destination:
       - reg.sighup.io/sighupio/fury/stakater/forecastle
       - registry.sighup.io/fury/stakater/forecastle
@@ -504,6 +508,7 @@ images:
       - v0.30.0
       - v0.35.0
       - v0.43.0
+      - v0.46.0
     destination:
       - reg.sighup.io/sighupio/fury/ingress-nginx/controller
       - registry.sighup.io/fury/ingress-nginx/controller
@@ -516,6 +521,14 @@ images:
       - reg.sighup.io/sighupio/fury/tpimenta/nginx-ldap-auth
       - registry.sighup.io/fury/tpimenta/nginx-ldap-auth
 
+  - name: pomerium [Fury Kubernetes Ingress]
+    source: docker.io/pomerium/pomerium
+    tag:
+      - v0.13.2
+      - v0.14.4
+    destination:
+      - reg.sighup.io/sighupio/fury/pomerium/pomerium
+      - registry.sighup.io/fury/pomerium/pomerium
 
   - name: Harbor chartmuseum container image [Fury Kubernetes Registry]
     source: docker.io/goharbor/chartmuseum-photon
