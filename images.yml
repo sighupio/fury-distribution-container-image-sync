@@ -417,6 +417,7 @@ images:
       - 6.8.6
       - 7.9.1
       - 7.10.1
+      - 7.13.0
     destination:
       - reg.sighup.io/sighupio/fury/elasticsearch
       - registry.sighup.io/fury/elasticsearch
@@ -450,6 +451,7 @@ images:
       - 6.8.8
       - 7.9.1
       - 7.10.1
+      - 7.13.0
     destination:
       - reg.sighup.io/sighupio/fury/kibana
       - registry.sighup.io/fury/kibana
