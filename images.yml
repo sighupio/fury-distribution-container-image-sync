@@ -161,10 +161,17 @@ images:
       - v1.9.4
       - v1.9.5
       - v1.9.7
-      - v2.0.0
     destination:
       - reg.sighup.io/sighupio/fury/coreos/kube-state-metrics
       - registry.sighup.io/fury/coreos/kube-state-metrics
+
+  - name: kube-state-metrics [Fury Monitoring Module]
+    source: k8s.gcr.io/kube-state-metrics/kube-state-metrics
+    tag:
+      - v2.0.0
+    destination:
+      - reg.sighup.io/sighupio/fury/kube-state-metrics/kube-state-metrics
+      - registry.sighup.io/fury/kube-state-metrics/kube-state-metrics
 
   - name: Metrics Server [Fury Monitoring Module]
     source: k8s.gcr.io/metrics-server/metrics-server
