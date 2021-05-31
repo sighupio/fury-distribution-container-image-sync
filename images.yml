@@ -149,10 +149,17 @@ images:
     tag:
       - v0.4.1
       - v0.5.0
-      - v0.10.0
     destination:
       - reg.sighup.io/sighupio/fury/coreos/kube-rbac-proxy
       - registry.sighup.io/fury/coreos/kube-rbac-proxy
+
+  - name: Kubernetes RBAC Proxy [Fury Monitoring Module]
+    source: quay.io/brancz/kube-rbac-proxy
+    tag:
+      - v0.10.0
+    destination:
+      - reg.sighup.io/sighupio/fury/brancz/kube-rbac-proxy
+      - registry.sighup.io/fury/brancz/kube-rbac-proxy
 
   - name: kube-state-metrics [Fury Monitoring Module]
     source: quay.io/coreos/kube-state-metrics
