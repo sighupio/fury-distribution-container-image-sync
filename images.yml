@@ -869,6 +869,7 @@ images:
     source: docker.io/enix/x509-certificate-exporter
     tag:
       - 2.9.1
+      - 2.9.2
     destination:
       - registry.sighup.io/fury/enix/x509-certificate-exporter
 
