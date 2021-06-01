@@ -229,6 +229,7 @@ images:
       - v0.42.0
       - v0.44.1
       - v0.48.0
+      - v0.48.1
     destination:
       - reg.sighup.io/sighupio/fury/prometheus-operator/prometheus-operator
       - registry.sighup.io/fury/prometheus-operator/prometheus-operator
@@ -257,6 +258,7 @@ images:
       - v0.42.0
       - v0.44.1
       - v0.48.0
+      - v0.48.1
     destination:
       - reg.sighup.io/sighupio/fury/prometheus-operator/prometheus-config-reloader
       - registry.sighup.io/fury/prometheus-operator/prometheus-config-reloader
