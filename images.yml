@@ -233,6 +233,7 @@ images:
       - v0.48.1
     destination:
       - reg.sighup.io/sighupio/fury/prometheus-operator/prometheus-operator
+      - reg.sighup.io/sighupio/fury/prometheus-operator
       - registry.sighup.io/fury/prometheus-operator/prometheus-operator
 
   - name: prometheus-operator configmap reloader [Fury Monitoring Module]
