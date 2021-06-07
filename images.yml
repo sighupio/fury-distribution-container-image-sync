@@ -3,7 +3,7 @@ images:
     source: gcr.io/heptio-images/gangway
     tag:
       - v3.2.0
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/heptio-images/gangway
       - registry.sighup.io/fury/heptio-images/gangway
 
@@ -11,7 +11,7 @@ images:
     source: docker.io/directxman12/k8s-prometheus-adapter-amd64
     tag:
       - v0.8.2
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/directxman12/k8s-prometheus-adapter-amd64
       - registry.sighup.io/fury/directxman12/k8s-prometheus-adapter-amd64
 
@@ -26,7 +26,7 @@ images:
       - v3.18.3
       - v3.19.0
       - v3.19.1
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/calico/kube-controllers
       - registry.sighup.io/fury/calico/kube-controllers
 
@@ -41,7 +41,7 @@ images:
       - v3.18.3
       - v3.19.0
       - v3.19.1
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/calico/cni
       - registry.sighup.io/fury/calico/cni
 
@@ -56,7 +56,7 @@ images:
       - v3.18.3
       - v3.19.0
       - v3.19.1
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/calico/pod2daemon-flexvol
       - registry.sighup.io/fury/calico/pod2daemon-flexvol
 
@@ -71,7 +71,7 @@ images:
       - v3.18.3
       - v3.19.0
       - v3.19.1
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/calico/node
       - registry.sighup.io/fury/calico/node
 
@@ -79,7 +79,7 @@ images:
     source: docker.io/curlimages/curl
     tag:
       - latest
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/curlimages/curl
       - registry.sighup.io/fury/curlimages/curl
 
@@ -87,7 +87,7 @@ images:
     source: gcr.io/google_containers/echoserver
     tag:
       - 1.0
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/google_containers/echoserver
       - registry.sighup.io/fury/google_containers/echoserver
 
@@ -95,7 +95,7 @@ images:
     source: gcr.io/google-containers/ip-masq-agent-amd64
     tag:
       - v2.5.0
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/google-containers/ip-masq-agent-amd64
       - registry.sighup.io/fury/google-containers/ip-masq-agent-amd64
 
@@ -108,7 +108,7 @@ images:
       - v0.21.0
       - v0.22.1
       - v0.22.2
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/prometheus/alertmanager
       - registry.sighup.io/fury/prometheus/alertmanager
 
@@ -118,7 +118,7 @@ images:
       - 2.0.0
       - v3.0.0
       - v3.2.0
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/bloomberg/goldpinger
       - registry.sighup.io/fury/bloomberg/goldpinger
 
@@ -129,7 +129,7 @@ images:
       - 0.1.193
       - 1.3.0
       - 1.12.0
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/kiwigrid/k8s-sidecar
       - registry.sighup.io/fury/kiwigrid/k8s-sidecar
 
@@ -141,7 +141,7 @@ images:
       - 7.1.5
       - 7.3.6
       - 7.5.7
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/grafana/grafana
       - registry.sighup.io/fury/grafana/grafana
 
@@ -150,7 +150,7 @@ images:
     tag:
       - v0.4.1
       - v0.5.0
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/coreos/kube-rbac-proxy
       - registry.sighup.io/fury/coreos/kube-rbac-proxy
 
@@ -158,7 +158,7 @@ images:
     source: quay.io/brancz/kube-rbac-proxy
     tag:
       - v0.10.0
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/brancz/kube-rbac-proxy
       - registry.sighup.io/fury/brancz/kube-rbac-proxy
 
@@ -169,7 +169,7 @@ images:
       - v1.9.4
       - v1.9.5
       - v1.9.7
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/coreos/kube-state-metrics
       - registry.sighup.io/fury/coreos/kube-state-metrics
 
@@ -177,7 +177,7 @@ images:
     source: k8s.gcr.io/kube-state-metrics/kube-state-metrics
     tag:
       - v2.0.0
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/kube-state-metrics/kube-state-metrics
       - registry.sighup.io/fury/kube-state-metrics/kube-state-metrics
 
@@ -188,7 +188,7 @@ images:
       - v0.3.7
       - v0.4.1
       - v0.5.0
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/metrics-server
       - registry.sighup.io/fury/metrics-server
 
@@ -199,7 +199,7 @@ images:
       - v0.18.1
       - v1.0.1
       - v1.1.2
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/prometheus/node-exporter
       - registry.sighup.io/fury/prometheus/node-exporter
 
@@ -211,7 +211,7 @@ images:
       - v2.21.0
       - v2.22.2
       - v2.27.1
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/prometheus
       - registry.sighup.io/fury/prometheus
 
@@ -220,7 +220,7 @@ images:
     tag:
       - v0.30.0
       - v0.37.0
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/coreos/prometheus-operator
       - registry.sighup.io/fury/coreos/prometheus-operator
 
@@ -231,7 +231,7 @@ images:
       - v0.44.1
       - v0.48.0
       - v0.48.1
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/prometheus-operator/prometheus-operator
       - reg.sighup.io/sighupio/fury/prometheus-operator
       - registry.sighup.io/fury/prometheus-operator/prometheus-operator
@@ -241,7 +241,7 @@ images:
     tag:
       - v0.3.0
       - v0.5.0
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/jimmidyson/configmap-reload
       - registry.sighup.io/fury/jimmidyson/configmap-reload
 
@@ -250,7 +250,7 @@ images:
     tag:
       - v0.30.0
       - v0.37.0
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/coreos/prometheus-config-reloader
       - registry.sighup.io/fury/coreos/prometheus-config-reloader
 
@@ -261,7 +261,7 @@ images:
       - v0.44.1
       - v0.48.0
       - v0.48.1
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/prometheus-operator/prometheus-config-reloader
       - registry.sighup.io/fury/prometheus-operator/prometheus-config-reloader
 
@@ -270,7 +270,7 @@ images:
     tag:
       - 1.3.0
       - 1.5.0
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/osixia/openldap
       - registry.sighup.io/fury/osixia/openldap
 
@@ -279,7 +279,7 @@ images:
     tag:
       - v0.12.2
       - v0.20.2
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/thanos
       - registry.sighup.io/fury/thanos
 
@@ -292,7 +292,7 @@ images:
       - v3.1.1
       - v3.2.2
       - v3.4.0
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/openpolicyagent/gatekeeper
       - registry.sighup.io/fury/openpolicyagent/gatekeeper
 
@@ -301,7 +301,7 @@ images:
     tag:
       - v0.4.1
       - v0.4.2
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/gatekeeper-policy-manager
       - registry.sighup.io/fury/gatekeeper-policy-manager
 
@@ -314,7 +314,7 @@ images:
       - v1.5.1
       - v1.5.2
       - v1.6.0
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/velero/velero
       - registry.sighup.io/fury/velero/velero
 
@@ -325,7 +325,7 @@ images:
       - v1.0.1
       - v1.1.0
       - v1.2.0
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/velero/velero-plugin-for-aws
       - registry.sighup.io/fury/velero/velero-plugin-for-aws
 
@@ -336,7 +336,7 @@ images:
       - v1.0.1
       - v1.1.0
       - v1.2.0
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/velero/velero-plugin-for-microsoft-azure
       - registry.sighup.io/fury/velero/velero-plugin-for-microsoft-azure
 
@@ -347,7 +347,7 @@ images:
       - v1.0.1
       - v1.1.0
       - v1.2.0
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/velero/velero-plugin-for-gcp
       - registry.sighup.io/fury/velero/velero-plugin-for-gcp
 
@@ -355,7 +355,7 @@ images:
     source: docker.io/velero/velero-plugin-for-csi
     tag:
       - v0.1.2
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/velero/velero-plugin-for-csi
       - registry.sighup.io/fury/velero/velero-plugin-for-csi
 
@@ -364,7 +364,7 @@ images:
     tag:
       - v1.2
       - v1.4
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/groundnuty/k8s-wait-for
       - registry.sighup.io/fury/groundnuty/k8s-wait-for
 
@@ -374,7 +374,7 @@ images:
       - RELEASE.2020-01-25T02-50-51Z
       - RELEASE.2020-09-17T04-49-20Z
       - RELEASE.2021-05-26T00-22-46Z
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/minio
       - registry.sighup.io/fury/minio
 
@@ -384,7 +384,7 @@ images:
       - RELEASE.2020-01-25T03-02-19Z
       - RELEASE.2020-09-03T00-08-28Z
       - RELEASE.2021-05-18T03-39-44Z
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/minio/mc
       - registry.sighup.io/fury/minio/mc
 
@@ -392,7 +392,7 @@ images:
     source: docker.io/minio/mc
     tag:
       - latest
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/minio/mc
       - registry.sighup.io/fury/minio/mc
 
@@ -405,7 +405,7 @@ images:
       - 0.9.2
       - 0.9.3
       - 0.9.4
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/lmenezes/cerebro
       - registry.sighup.io/fury/lmenezes/cerebro
 
@@ -417,7 +417,7 @@ images:
       - 5.8.1_3.7-alpine_5.3.1
       - 5.8.3_3.8-alpine_3.13
       - 5.8.4_3.8-alpine
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/curator
       - registry.sighup.io/fury/curator
 
@@ -427,7 +427,7 @@ images:
       - 3
       - 3.12
       - 3.13
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/alpine
       - registry.sighup.io/fury/alpine
 
@@ -435,7 +435,7 @@ images:
     source: docker.io/justwatch/elasticsearch_exporter
     tag:
       - 1.1.0
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/justwatch/elasticsearch_exporter
       - registry.sighup.io/fury/justwatch/elasticsearch_exporter
 
@@ -447,7 +447,7 @@ images:
       - 7.9.1
       - 7.10.1
       - 7.13.0
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/elasticsearch
       - registry.sighup.io/fury/elasticsearch
 
@@ -458,7 +458,7 @@ images:
       - 1.5.6
       - 1.6.9
       - 1.7.7
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/fluent/fluent-bit
       - registry.sighup.io/fury/fluent/fluent-bit
 
@@ -470,7 +470,7 @@ images:
       - v1.11.2-debian-1.0
       - v1.11.5-debian-1.0
       - v1.12.3-debian-1.0
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/fluentd-elasticsearch
       - registry.sighup.io/fury/fluentd-elasticsearch
 
@@ -483,7 +483,7 @@ images:
       - 7.9.1
       - 7.10.1
       - 7.13.0
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/kibana
       - registry.sighup.io/fury/kibana
 
@@ -496,7 +496,7 @@ images:
       - v1.0.1
       - v1.1.0
       - v1.3.1
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/jetstack/cert-manager-cainjector
       - registry.sighup.io/fury/jetstack/cert-manager-cainjector
 
@@ -508,7 +508,7 @@ images:
       - v1.0.1
       - v1.1.0
       - v1.3.1
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/jetstack/cert-manager-controller
       - registry.sighup.io/fury/jetstack/cert-manager-controller
 
@@ -520,7 +520,7 @@ images:
       - v1.0.1
       - v1.1.0
       - v1.3.1
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/jetstack/cert-manager-webhook
       - registry.sighup.io/fury/jetstack/cert-manager-webhook
 
@@ -532,7 +532,7 @@ images:
       - v1.0.57
       - v1.0.61
       - v1.0.64
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/stakater/forecastle
       - registry.sighup.io/fury/stakater/forecastle
 
@@ -544,7 +544,7 @@ images:
       - v0.35.0
       - v0.43.0
       - v0.46.0
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/ingress-nginx/controller
       - registry.sighup.io/fury/ingress-nginx/controller
 
@@ -552,7 +552,7 @@ images:
     source: docker.io/tpimenta/nginx-ldap-auth
     tag:
       - v1.0.6
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/tpimenta/nginx-ldap-auth
       - registry.sighup.io/fury/tpimenta/nginx-ldap-auth
 
@@ -561,7 +561,7 @@ images:
     tag:
       - v0.13.2
       - v0.14.4
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/pomerium/pomerium
       - registry.sighup.io/fury/pomerium/pomerium
 
@@ -571,7 +571,7 @@ images:
       - v2.0.2
       - v2.1.3
       - v2.1.1
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/goharbor/chartmuseum-photon
       - registry.sighup.io/fury/goharbor/chartmuseum-photon
 
@@ -581,7 +581,7 @@ images:
       - v2.0.2
       - v2.1.3
       - v2.1.1
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/goharbor/clair-photon
       - registry.sighup.io/fury/goharbor/clair-photon
 
@@ -591,7 +591,7 @@ images:
       - v2.0.2
       - v2.1.1
       - v2.1.3
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/goharbor/clair-adapter-photon
       - registry.sighup.io/fury/goharbor/clair-adapter-photon
 
@@ -601,7 +601,7 @@ images:
       - v2.0.2
       - v2.1.1
       - v2.1.3
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/goharbor/harbor-core
       - registry.sighup.io/fury/goharbor/harbor-core
 
@@ -611,7 +611,7 @@ images:
       - v2.0.2
       - v2.1.1
       - v2.1.3
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/goharbor/harbor-jobservice
       - registry.sighup.io/fury/goharbor/harbor-jobservice
 
@@ -621,7 +621,7 @@ images:
       - v2.0.2
       - v2.1.1
       - v2.1.3
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/goharbor/notary-server-photon
       - registry.sighup.io/fury/goharbor/notary-server-photon
 
@@ -631,7 +631,7 @@ images:
       - v2.0.2
       - v2.1.1
       - v2.1.3
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/goharbor/notary-signer-photon
       - registry.sighup.io/fury/goharbor/notary-signer-photon
 
@@ -641,7 +641,7 @@ images:
       - v2.0.2
       - v2.1.3
       - v2.1.1
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/goharbor/harbor-portal
       - registry.sighup.io/fury/goharbor/harbor-portal
 
@@ -651,7 +651,7 @@ images:
       - v2.0.2
       - v2.1.1
       - v2.1.3
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/goharbor/registry-photon
       - registry.sighup.io/fury/goharbor/registry-photon
 
@@ -661,7 +661,7 @@ images:
       - v2.0.2
       - v2.1.1
       - v2.1.3
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/goharbor/harbor-registryctl
       - registry.sighup.io/fury/goharbor/harbor-registryctl
 
@@ -671,7 +671,7 @@ images:
       - v2.0.2
       - v2.1.1
       - v2.1.3
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/goharbor/redis-photon
       - registry.sighup.io/fury/goharbor/redis-photon
 
@@ -681,7 +681,7 @@ images:
       - v2.0.2
       - v2.1.1
       - v2.1.3
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/goharbor/harbor-db
       - registry.sighup.io/fury/goharbor/harbor-db
 
@@ -689,7 +689,7 @@ images:
     source: docker.io/istio/citadel
     tag:
       - 1.4.2
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/istio/citadel
       - registry.sighup.io/fury/istio/citadel
 
@@ -697,7 +697,7 @@ images:
     source: docker.io/istio/proxyv2
     tag:
       - 1.4.2
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/istio/proxyv2
       - registry.sighup.io/fury/istio/proxyv2
 
@@ -705,7 +705,7 @@ images:
     source: docker.io/istio/kubectl
     tag:
       - 1.4.2
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/istio/kubectl
       - registry.sighup.io/fury/istio/kubectl
 
@@ -713,7 +713,7 @@ images:
     source: docker.io/jaegertracing/all-in-one
     tag:
       - 1.14
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/jaegertracing/all-in-one
       - registry.sighup.io/fury/jaegertracing/all-in-one
 
@@ -721,7 +721,7 @@ images:
     source: quay.io/kiali/kiali
     tag:
       - 1.9
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/kiali/kiali
       - registry.sighup.io/fury/kiali/kiali
 
@@ -729,7 +729,7 @@ images:
     source: docker.io/istio/mixer
     tag:
       - 1.4.2
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/istio/mixer
       - registry.sighup.io/fury/istio/mixer
 
@@ -737,7 +737,7 @@ images:
     source: docker.io/istio/pilot
     tag:
       - 1.4.2
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/istio/pilot
       - registry.sighup.io/fury/istio/pilot
 
@@ -745,7 +745,7 @@ images:
     source: docker.io/istio/sidecar_injector
     tag:
       - 1.4.2
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/istio/sidecar_injector
       - registry.sighup.io/fury/istio/sidecar_injector
 
@@ -754,7 +754,7 @@ images:
     source: docker.io/library/alpine:3
     tag:
       - 3
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/alpine
       - registry.sighup.io/fury/alpine
 
@@ -762,7 +762,7 @@ images:
     source: docker.io/library/nginx
     tag:
       - latest
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/nginx
       - registry.sighup.io/fury/nginx
 
@@ -770,7 +770,7 @@ images:
     source: docker.io/library/redis
     tag:
       - 5.0.8
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/redis
       - registry.sighup.io/fury/redis
 
@@ -778,7 +778,7 @@ images:
     source: docker.io/library/nginx
     tag:
       - 1.17.9
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/nginx
       - registry.sighup.io/fury/nginx
 
@@ -786,7 +786,7 @@ images:
     source: docker.io/kennethreitz/httpbin
     tag:
       - latest
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/kennethreitz/httpbin
       - registry.sighup.io/fury/kennethreitz/httpbin
 
@@ -794,7 +794,7 @@ images:
     source: docker.io/governmentpaas/curl-ssl
     tag:
       - latest
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/governmentpaas/curl-ssl
       - registry.sighup.io/fury/governmentpaas/curl-ssl
 
@@ -802,7 +802,7 @@ images:
     source: docker.io/istio/examples-bookinfo-details-v1
     tag:
       - 1.15.0
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/istio/examples-bookinfo-details-v1
       - registry.sighup.io/fury/istio/examples-bookinfo-details-v1
 
@@ -810,7 +810,7 @@ images:
     source: docker.io/istio/examples-bookinfo-ratings-v1
     tag:
       - 1.15.0
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/istio/examples-bookinfo-ratings-v1
       - registry.sighup.io/fury/istio/examples-bookinfo-ratings-v1
 
@@ -818,7 +818,7 @@ images:
     source: docker.io/istio/examples-bookinfo-reviews-v1
     tag:
       - 1.15.0
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/istio/examples-bookinfo-reviews-v1
       - registry.sighup.io/fury/istio/examples-bookinfo-reviews-v1
 
@@ -826,7 +826,7 @@ images:
     source: docker.io/istio/examples-bookinfo-reviews-v2
     tag:
       - 1.15.0
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/istio/examples-bookinfo-reviews-v2
       - registry.sighup.io/fury/istio/examples-bookinfo-reviews-v2
 
@@ -834,7 +834,7 @@ images:
     source: docker.io/istio/examples-bookinfo-reviews-v3
     tag:
       - 1.15.0
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/istio/examples-bookinfo-reviews-v3
       - registry.sighup.io/fury/istio/examples-bookinfo-reviews-v3
 
@@ -842,7 +842,7 @@ images:
     source: docker.io/istio/examples-bookinfo-productpage-v1
     tag:
       - 1.15.0
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/istio/examples-bookinfo-productpage-v1
       - registry.sighup.io/fury/istio/examples-bookinfo-productpage-v1
 
@@ -850,7 +850,7 @@ images:
     source: docker.io/library/registry
     tag:
       - 2.7.1
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/registry
       - registry.sighup.io/fury/registry
 
@@ -859,14 +859,14 @@ images:
     tag:
       - v2.20.0
       - v2.13.0
-    destination:
+    destinations:
       - registry.sighup.io/fury/dexidp/dex
 
   - name: NFS clinet provisioner external storage
     source: quay.io/external_storage/nfs-client-provisioner
     tag:
       - v3.1.0-k8s1.11
-    destination:
+    destinations:
       - registry.sighup.io/fury/external_storage/nfs-client-provisioner
 
   - name: x509 certificate exporter
@@ -874,14 +874,14 @@ images:
     tag:
       - 2.9.1
       - 2.9.2
-    destination:
+    destinations:
       - registry.sighup.io/fury/enix/x509-certificate-exporter
 
   - name: Busybox
     source: docker.io/busybox
     tag:
       - latest
-    destination:
+    destinations:
       - reg.sighup.io/sighupio/fury/busybox
       - registry.sighup.io/fury/busybox
 
@@ -889,5 +889,5 @@ images:
     source: public.ecr.aws/aws-ec2/aws-node-termination-handler
     tag:
       - v1.13.0
-    destination:
+    destinations:
       - registry.sighup.io/fury/aws/aws-node-termination-handler
