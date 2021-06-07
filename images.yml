@@ -884,3 +884,10 @@ images:
     destination:
       - reg.sighup.io/sighupio/fury/busybox
       - registry.sighup.io/fury/busybox
+
+  - name: AWS node termination handler
+    source: public.ecr.aws/aws-ec2/aws-node-termination-handler
+    tag:
+      - v1.13.0
+    destination:
+      - registry.sighup.io/fury/aws/aws-node-termination-handler
