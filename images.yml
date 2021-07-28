@@ -427,6 +427,7 @@ images:
       - 3
       - 3.12
       - 3.13
+      - 3.14
     destinations:
       - reg.sighup.io/sighupio/fury/alpine
       - registry.sighup.io/fury/alpine
@@ -447,6 +448,7 @@ images:
       - 7.9.1
       - 7.10.1
       - 7.13.0
+      - 7.13.3
     destinations:
       - reg.sighup.io/sighupio/fury/elasticsearch
       - registry.sighup.io/fury/elasticsearch
@@ -485,6 +487,7 @@ images:
       - 7.9.1
       - 7.10.1
       - 7.13.0
+      - 7.13.3
     destinations:
       - reg.sighup.io/sighupio/fury/kibana
       - registry.sighup.io/fury/kibana
