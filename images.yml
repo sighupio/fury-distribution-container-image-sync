@@ -501,6 +501,7 @@ images:
       - v1.0.1
       - v1.1.0
       - v1.3.1
+      - v1.4.1
     destinations:
       - reg.sighup.io/sighupio/fury/jetstack/cert-manager-cainjector
       - registry.sighup.io/fury/jetstack/cert-manager-cainjector
@@ -513,6 +514,7 @@ images:
       - v1.0.1
       - v1.1.0
       - v1.3.1
+      - v1.4.1
     destinations:
       - reg.sighup.io/sighupio/fury/jetstack/cert-manager-controller
       - registry.sighup.io/fury/jetstack/cert-manager-controller
@@ -525,6 +527,7 @@ images:
       - v1.0.1
       - v1.1.0
       - v1.3.1
+      - v1.4.1
     destinations:
       - reg.sighup.io/sighupio/fury/jetstack/cert-manager-webhook
       - registry.sighup.io/fury/jetstack/cert-manager-webhook
@@ -537,6 +540,7 @@ images:
       - v1.0.57
       - v1.0.61
       - v1.0.64
+      - v1.0.65
     destinations:
       - reg.sighup.io/sighupio/fury/stakater/forecastle
       - registry.sighup.io/fury/stakater/forecastle
@@ -549,6 +553,7 @@ images:
       - v0.35.0
       - v0.43.0
       - v0.46.0
+      - v0.48.1
     destinations:
       - reg.sighup.io/sighupio/fury/ingress-nginx/controller
       - registry.sighup.io/fury/ingress-nginx/controller
@@ -566,6 +571,7 @@ images:
     tag:
       - v0.13.2
       - v0.14.4
+      - v0.14.7
     destinations:
       - reg.sighup.io/sighupio/fury/pomerium/pomerium
       - registry.sighup.io/fury/pomerium/pomerium
