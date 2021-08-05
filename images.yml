@@ -487,6 +487,7 @@ images:
       - v1.11.5-debian-1.0
       - v1.12.3-debian-1.0
       - v1.13.2-debian-1.0
+      - v1.13.3-debian-1.0
     destinations:
       - reg.sighup.io/sighupio/fury/fluentd-elasticsearch
       - registry.sighup.io/fury/fluentd-elasticsearch
