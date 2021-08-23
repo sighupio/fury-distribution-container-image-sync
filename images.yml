@@ -325,6 +325,7 @@ images:
       - v1.5.2
       - v1.6.0
       - v1.6.2
+      - v1.6.3
     destinations:
       - reg.sighup.io/sighupio/fury/velero/velero
       - registry.sighup.io/fury/velero/velero
@@ -517,6 +518,7 @@ images:
       - v1.1.0
       - v1.3.1
       - v1.4.1
+      - v1.5.2
     destinations:
       - reg.sighup.io/sighupio/fury/jetstack/cert-manager-cainjector
       - registry.sighup.io/fury/jetstack/cert-manager-cainjector
@@ -530,6 +532,7 @@ images:
       - v1.1.0
       - v1.3.1
       - v1.4.1
+      - v1.5.2
     destinations:
       - reg.sighup.io/sighupio/fury/jetstack/cert-manager-controller
       - registry.sighup.io/fury/jetstack/cert-manager-controller
@@ -543,6 +546,7 @@ images:
       - v1.1.0
       - v1.3.1
       - v1.4.1
+      - v1.5.2
     destinations:
       - reg.sighup.io/sighupio/fury/jetstack/cert-manager-webhook
       - registry.sighup.io/fury/jetstack/cert-manager-webhook
@@ -556,6 +560,7 @@ images:
       - v1.0.61
       - v1.0.64
       - v1.0.65
+      - v1.0.66
     destinations:
       - reg.sighup.io/sighupio/fury/stakater/forecastle
       - registry.sighup.io/fury/stakater/forecastle
@@ -569,6 +574,7 @@ images:
       - v0.43.0
       - v0.46.0
       - v0.48.1
+      - v0.40.0
     destinations:
       - reg.sighup.io/sighupio/fury/ingress-nginx/controller
       - registry.sighup.io/fury/ingress-nginx/controller
@@ -587,6 +593,8 @@ images:
       - v0.13.2
       - v0.14.4
       - v0.14.7
+      - v0.14.7
+      - v0.15.0
     destinations:
       - reg.sighup.io/sighupio/fury/pomerium/pomerium
       - registry.sighup.io/fury/pomerium/pomerium
