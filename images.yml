@@ -580,6 +580,7 @@ images:
       - v0.46.0
       - v0.48.1
       - v0.49.0
+      - v1.0.0
     destinations:
       - reg.sighup.io/sighupio/fury/ingress-nginx/controller
       - registry.sighup.io/fury/ingress-nginx/controller
