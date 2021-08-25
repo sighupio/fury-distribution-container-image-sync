@@ -134,6 +134,7 @@ images:
       - 1.3.0
       - 1.12.0
       - 1.12.2
+      - 1.12.3
     destinations:
       - reg.sighup.io/sighupio/fury/kiwigrid/k8s-sidecar
       - registry.sighup.io/fury/kiwigrid/k8s-sidecar
@@ -147,6 +148,7 @@ images:
       - 7.3.6
       - 7.5.7
       - 8.0.6
+      - 8.1.2
     destinations:
       - reg.sighup.io/sighupio/fury/grafana/grafana
       - registry.sighup.io/fury/grafana/grafana
@@ -185,6 +187,7 @@ images:
     source: k8s.gcr.io/kube-state-metrics/kube-state-metrics
     tag:
       - v2.0.0
+      - v2.2.0
     destinations:
       - reg.sighup.io/sighupio/fury/kube-state-metrics/kube-state-metrics
       - registry.sighup.io/fury/kube-state-metrics/kube-state-metrics
@@ -208,6 +211,7 @@ images:
       - v1.0.1
       - v1.1.2
       - v1.2.0
+      - v1.2.2
     destinations:
       - reg.sighup.io/sighupio/fury/prometheus/node-exporter
       - registry.sighup.io/fury/prometheus/node-exporter
@@ -221,6 +225,7 @@ images:
       - v2.22.2
       - v2.27.1
       - v2.28.1
+      - v2.29.1
     destinations:
       - reg.sighup.io/sighupio/fury/prometheus
       - registry.sighup.io/fury/prometheus
@@ -242,6 +247,7 @@ images:
       - v0.48.0
       - v0.48.1
       - v0.49.0
+      - v0.50.0
     destinations:
       - reg.sighup.io/sighupio/fury/prometheus-operator/prometheus-operator
       - reg.sighup.io/sighupio/fury/prometheus-operator
@@ -272,6 +278,7 @@ images:
       - v0.44.1
       - v0.48.0
       - v0.48.1
+      - v0.50.0
     destinations:
       - reg.sighup.io/sighupio/fury/prometheus-operator/prometheus-config-reloader
       - registry.sighup.io/fury/prometheus-operator/prometheus-config-reloader
@@ -952,6 +959,7 @@ images:
     tag:
       - 2.9.1
       - 2.9.2
+      - 2.11.0
     destinations:
       - registry.sighup.io/fury/enix/x509-certificate-exporter
 
