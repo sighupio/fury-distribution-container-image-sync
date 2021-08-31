@@ -1144,3 +1144,12 @@ images:
     destinations:
       - reg.sighup.io/sighupio/fury/kong/kuma-prometheus-sd
       - registry.sighup.io/fury/kong/kuma-prometheus-sd
+
+  - name: Kong Mesh Init
+    source: docker.io/kong/kuma-init
+    tag:
+      - 1.4.0
+      - 1.3.3
+    destinations:
+      - reg.sighup.io/sighupio/fury/kong/kuma-init
+      - registry.sighup.io/fury/kong/kuma-init
