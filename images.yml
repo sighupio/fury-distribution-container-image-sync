@@ -959,6 +959,13 @@ images:
     destinations:
       - registry.sighup.io/fury/dexidp/dex
 
+  - name: Gangway authenticator app
+    source: gcr.io/heptio-images/gangway
+    tag:
+      - v3.2.0
+    destination:
+      - registry.sighup.io/fury/heptio-images/gangway
+
   - name: NFS clinet provisioner external storage
     source: quay.io/external_storage/nfs-client-provisioner
     tag:
