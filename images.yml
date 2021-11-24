@@ -103,7 +103,6 @@ images:
       - reg.sighup.io/sighupio/fury/google-containers/ip-masq-agent-amd64
       - registry.sighup.io/fury/google-containers/ip-masq-agent-amd64
 
-
   - name: Alert Manager [Fury Monitoring Module]
     source: quay.io/prometheus/alertmanager
     tag:
@@ -302,7 +301,6 @@ images:
       - reg.sighup.io/sighupio/fury/thanos
       - registry.sighup.io/fury/thanos
 
-
   - name: Gatekeeper [Fury OPA Module]
     source: docker.io/openpolicyagent/gatekeeper
     tag:
@@ -424,7 +422,6 @@ images:
       - reg.sighup.io/sighupio/fury/minio/mc
       - registry.sighup.io/fury/minio/mc
 
-
   - name: Cerebro [Fury Kubernetes Logging]
     source: docker.io/lmenezes/cerebro
     tag:
@@ -521,7 +518,6 @@ images:
     destinations:
       - reg.sighup.io/sighupio/fury/kibana
       - registry.sighup.io/fury/kibana
-
 
   - name: CA Injector - Cert Manager [Fury Kubernetes Ingress]
     source: quay.io/jetstack/cert-manager-cainjector
@@ -625,6 +621,7 @@ images:
       - v2.1.3
       - v2.1.5
       - v2.2.2
+      - v2.3.2
     destinations:
       - reg.sighup.io/sighupio/fury/goharbor/chartmuseum-photon
       - registry.sighup.io/fury/goharbor/chartmuseum-photon
@@ -637,6 +634,7 @@ images:
       - v2.1.3
       - v2.1.5
       - v2.2.2
+      - v2.3.2
     destinations:
       - reg.sighup.io/sighupio/fury/goharbor/clair-photon
       - registry.sighup.io/fury/goharbor/clair-photon
@@ -649,6 +647,7 @@ images:
       - v2.1.3
       - v2.1.5
       - v2.2.2
+      - v2.3.2
     destinations:
       - reg.sighup.io/sighupio/fury/goharbor/clair-adapter-photon
       - registry.sighup.io/fury/goharbor/clair-adapter-photon
@@ -661,6 +660,7 @@ images:
       - v2.1.3
       - v2.1.5
       - v2.2.2
+      - v2.3.2
     destinations:
       - reg.sighup.io/sighupio/fury/goharbor/harbor-core
       - registry.sighup.io/fury/goharbor/harbor-core
@@ -673,6 +673,7 @@ images:
       - v2.1.3
       - v2.1.5
       - v2.2.2
+      - v2.3.2
     destinations:
       - reg.sighup.io/sighupio/fury/goharbor/harbor-jobservice
       - registry.sighup.io/fury/goharbor/harbor-jobservice
@@ -685,6 +686,7 @@ images:
       - v2.1.3
       - v2.1.5
       - v2.2.2
+      - v2.3.2
     destinations:
       - reg.sighup.io/sighupio/fury/goharbor/notary-server-photon
       - registry.sighup.io/fury/goharbor/notary-server-photon
@@ -697,6 +699,7 @@ images:
       - v2.1.3
       - v2.1.5
       - v2.2.2
+      - v2.3.2
     destinations:
       - reg.sighup.io/sighupio/fury/goharbor/notary-signer-photon
       - registry.sighup.io/fury/goharbor/notary-signer-photon
@@ -709,6 +712,7 @@ images:
       - v2.1.3
       - v2.1.5
       - v2.2.2
+      - v2.3.2
     destinations:
       - reg.sighup.io/sighupio/fury/goharbor/harbor-portal
       - registry.sighup.io/fury/goharbor/harbor-portal
@@ -721,6 +725,7 @@ images:
       - v2.1.3
       - v2.1.5
       - v2.2.2
+      - v2.3.2
     destinations:
       - reg.sighup.io/sighupio/fury/goharbor/registry-photon
       - registry.sighup.io/fury/goharbor/registry-photon
@@ -733,6 +738,7 @@ images:
       - v2.1.3
       - v2.1.5
       - v2.2.2
+      - v2.3.2
     destinations:
       - reg.sighup.io/sighupio/fury/goharbor/harbor-registryctl
       - registry.sighup.io/fury/goharbor/harbor-registryctl
@@ -745,6 +751,7 @@ images:
       - v2.1.3
       - v2.1.5
       - v2.2.2
+      - v2.3.2
     destinations:
       - reg.sighup.io/sighupio/fury/goharbor/redis-photon
       - registry.sighup.io/fury/goharbor/redis-photon
@@ -757,6 +764,7 @@ images:
       - v2.1.3
       - v2.1.5
       - v2.2.2
+      - v2.3.2
     destinations:
       - reg.sighup.io/sighupio/fury/goharbor/harbor-db
       - registry.sighup.io/fury/goharbor/harbor-db
@@ -768,6 +776,7 @@ images:
       - v2.1.3
       - v2.1.5
       - v2.2.2
+      - v2.3.2
     destinations:
       - reg.sighup.io/sighupio/fury/goharbor/trivy-adapter-photon
       - registry.sighup.io/fury/goharbor/trivy-adapter-photon
