@@ -474,6 +474,7 @@ images:
       - 7.10.1
       - 7.13.0
       - 7.13.3
+      - 7.15.2
     destinations:
       - reg.sighup.io/sighupio/fury/elasticsearch
       - registry.sighup.io/fury/elasticsearch
@@ -486,6 +487,7 @@ images:
       - 1.6.9
       - 1.7.7
       - 1.8.2
+      - 1.8.10
     destinations:
       - reg.sighup.io/sighupio/fury/fluent/fluent-bit
       - registry.sighup.io/fury/fluent/fluent-bit
@@ -493,7 +495,6 @@ images:
   - name: Fluentd [Fury Kubernetes Logging]
     source: quay.io/sighup/fluentd-elasticsearch
     tag:
-      - v1.7.2-debian-1.0
       - v1.10.2-debian-1.0
       - v1.11.2-debian-1.0
       - v1.11.5-debian-1.0
@@ -501,6 +502,7 @@ images:
       - v1.13.2-debian-1.0
       - v1.13.3-debian-1.0
       - v1.14.0-debian-1.0
+      - v1.14.2-debian-1.0
     destinations:
       - reg.sighup.io/sighupio/fury/fluentd-elasticsearch
       - registry.sighup.io/fury/fluentd-elasticsearch
@@ -515,6 +517,7 @@ images:
       - 7.10.1
       - 7.13.0
       - 7.13.3
+      - 7.15.2
     destinations:
       - reg.sighup.io/sighupio/fury/kibana
       - registry.sighup.io/fury/kibana
