@@ -1059,6 +1059,7 @@ images:
       - v1.21.1
       - v1.21.2
       - v1.22.0
+      - v1.23.0
     destinations:
       - reg.sighup.io/sighupio/fury/kindest/node
       - registry.sighup.io/fury/kindest/node
