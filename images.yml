@@ -476,6 +476,7 @@ images:
       - 7.13.0
       - 7.13.3
       - 7.15.2
+      - 7.16.1
     destinations:
       - reg.sighup.io/sighupio/fury/elasticsearch
       - registry.sighup.io/fury/elasticsearch
