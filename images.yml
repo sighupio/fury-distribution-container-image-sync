@@ -516,11 +516,13 @@ images:
       - 6.4.1
       - 6.8.6
       - 6.8.8
+      - 6.8.21
       - 7.9.1
       - 7.10.1
       - 7.13.0
       - 7.13.3
       - 7.15.2
+      - 7.16.1
     destinations:
       - reg.sighup.io/sighupio/fury/kibana
       - registry.sighup.io/fury/kibana
