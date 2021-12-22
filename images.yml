@@ -305,7 +305,6 @@ images:
   - name: Gatekeeper [Fury OPA Module]
     source: docker.io/openpolicyagent/gatekeeper
     tag:
-      - v3.1.0-beta.8
       - v3.1.0-beta.9
       - v3.1.1
       - v3.2.2
@@ -313,6 +312,7 @@ images:
       - v3.5.1
       - v3.5.2
       - v3.6.0
+      - v3.7.0
     destinations:
       - reg.sighup.io/sighupio/fury/openpolicyagent/gatekeeper
       - registry.sighup.io/fury/openpolicyagent/gatekeeper
@@ -330,7 +330,6 @@ images:
   - name: Velero [Fury Kubernetes DR]
     source: docker.io/velero/velero
     tag:
-      - v1.2.0
       - v1.3.1
       - v1.4.0
       - v1.5.1
@@ -338,6 +337,7 @@ images:
       - v1.6.0
       - v1.6.2
       - v1.6.3
+      - v1.7.1
     destinations:
       - reg.sighup.io/sighupio/fury/velero/velero
       - registry.sighup.io/fury/velero/velero
@@ -345,11 +345,11 @@ images:
   - name: Velero AWS Plugin [Fury Kubernetes DR]
     source: docker.io/velero/velero-plugin-for-aws
     tag:
-      - v1.0.0
       - v1.0.1
       - v1.1.0
       - v1.2.0
       - v1.2.1
+      - v1.3.0
     destinations:
       - reg.sighup.io/sighupio/fury/velero/velero-plugin-for-aws
       - registry.sighup.io/fury/velero/velero-plugin-for-aws
@@ -357,11 +357,11 @@ images:
   - name: Velero Azure Plugin [Fury Kubernetes DR]
     source: docker.io/velero/velero-plugin-for-microsoft-azure
     tag:
-      - v1.0.0
       - v1.0.1
       - v1.1.0
       - v1.2.0
       - v1.2.1
+      - v1.3.1
     destinations:
       - reg.sighup.io/sighupio/fury/velero/velero-plugin-for-microsoft-azure
       - registry.sighup.io/fury/velero/velero-plugin-for-microsoft-azure
@@ -369,11 +369,11 @@ images:
   - name: Velero GCP Plugin [Fury Kubernetes DR]
     source: docker.io/velero/velero-plugin-for-gcp
     tag:
-      - v1.0.0
       - v1.0.1
       - v1.1.0
       - v1.2.0
       - v1.2.1
+      - v1.3.0
     destinations:
       - reg.sighup.io/sighupio/fury/velero/velero-plugin-for-gcp
       - registry.sighup.io/fury/velero/velero-plugin-for-gcp
@@ -382,6 +382,7 @@ images:
     source: docker.io/velero/velero-plugin-for-csi
     tag:
       - v0.1.2
+      - v0.2.0
     destinations:
       - reg.sighup.io/sighupio/fury/velero/velero-plugin-for-csi
       - registry.sighup.io/fury/velero/velero-plugin-for-csi
