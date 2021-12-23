@@ -392,6 +392,7 @@ images:
     tag:
       - v1.2
       - v1.4
+      - v1.5.1
     destinations:
       - reg.sighup.io/sighupio/fury/groundnuty/k8s-wait-for
       - registry.sighup.io/fury/groundnuty/k8s-wait-for
