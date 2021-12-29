@@ -122,6 +122,7 @@ images:
       - 2.0.0
       - v3.0.0
       - v3.2.0
+      - v3.3.0
     destinations:
       - reg.sighup.io/sighupio/fury/bloomberg/goldpinger
       - registry.sighup.io/fury/bloomberg/goldpinger
