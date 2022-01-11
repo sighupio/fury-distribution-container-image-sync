@@ -326,6 +326,7 @@ images:
       - v0.4.1
       - v0.4.2
       - v0.5.0
+      - v0.5.1
     destinations:
       - reg.sighup.io/sighupio/fury/gatekeeper-policy-manager
       - registry.sighup.io/fury/gatekeeper-policy-manager
