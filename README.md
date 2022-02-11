@@ -9,9 +9,10 @@ and so on.
 
 Fury Distribution is the first SIGHUP product being benefit from this image sync automation.
 
-## Configuration file
+## Configuration files
 
-The configuration file: `images.yml` has to have a root attribute: `images`. Its value is an array of objects:
+Inside the folder `modules/` there are subfolders for each fury module with a file: `images.yml`. 
+Each `images.yml` file has to have a root attribute: `images` and its value is an array of objects:
 
 ```yaml
   - name: # Simple description of the image
