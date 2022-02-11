@@ -8,7 +8,6 @@ images:
       - 0.9.3
       - 0.9.4
     destinations:
-      - reg.sighup.io/sighupio/fury/lmenezes/cerebro
       - registry.sighup.io/fury/lmenezes/cerebro
 
   - name: Curator [Fury Kubernetes Logging]
@@ -20,7 +19,6 @@ images:
       - 5.8.3_3.8-alpine_3.13
       - 5.8.4_3.8-alpine
     destinations:
-      - reg.sighup.io/sighupio/fury/curator
       - registry.sighup.io/fury/curator
 
   - name: Alpine 3.12 [Fury Kubernetes Logging]
@@ -31,7 +29,6 @@ images:
       - 3.13
       - 3.14
     destinations:
-      - reg.sighup.io/sighupio/fury/alpine
       - registry.sighup.io/fury/alpine
 
   - name: ElasticSearch Exporter [Fury Kubernetes Logging]
@@ -39,7 +36,6 @@ images:
     tag:
       - 1.1.0
     destinations:
-      - reg.sighup.io/sighupio/fury/justwatch/elasticsearch_exporter
       - registry.sighup.io/fury/justwatch/elasticsearch_exporter
 
   - name: ElasticSearch [Fury Kubernetes Logging]
@@ -54,7 +50,6 @@ images:
       - 7.13.3
       - 7.16.2
     destinations:
-      - reg.sighup.io/sighupio/fury/elasticsearch
       - registry.sighup.io/fury/elasticsearch
 
   - name: Fluent-Bit [Fury Kubernetes Logging]
@@ -67,7 +62,6 @@ images:
       - 1.8.2
       - 1.8.10
     destinations:
-      - reg.sighup.io/sighupio/fury/fluent/fluent-bit
       - registry.sighup.io/fury/fluent/fluent-bit
 
   - name: Fluentd [Fury Kubernetes Logging]
@@ -82,7 +76,6 @@ images:
       - v1.14.0-debian-1.0
       - v1.14.2-debian-1.0
     destinations:
-      - reg.sighup.io/sighupio/fury/fluentd-elasticsearch
       - registry.sighup.io/fury/fluentd-elasticsearch
 
   - name: Kibana [Fury Kubernetes Logging]
@@ -98,5 +91,4 @@ images:
       - 7.13.3
       - 7.16.2
     destinations:
-      - reg.sighup.io/sighupio/fury/kibana
       - registry.sighup.io/fury/kibana

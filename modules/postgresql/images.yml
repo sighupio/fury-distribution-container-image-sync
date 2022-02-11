@@ -6,7 +6,6 @@ images:
       - v1.6.0
       - v1.6.3
     destinations:
-      - reg.sighup.io/sighupio/fury/acid/postgres-operator
       - registry.sighup.io/fury/acid/postgres-operator
 
   - name: Postgres Operator (Spilo) [Fury Kubernetes Postgresql]
@@ -15,7 +14,6 @@ images:
       - 2.0-p2
       - 2.0-p7
     destinations:
-      - reg.sighup.io/sighupio/fury/acid/spilo-13
       - registry.sighup.io/fury/acid/spilo-13
 
   - name: Postgres Operator (PGBouncer) [Fury Kubernetes Postgresql]
@@ -24,7 +22,6 @@ images:
       - master-12
       - master-16
     destinations:
-      - reg.sighup.io/sighupio/fury/acid/pgbouncer
       - registry.sighup.io/fury/acid/pgbouncer
 
   - name: Postgres Operator (Logical Backup) [Fury Kubernetes Postgresql]
@@ -33,7 +30,6 @@ images:
       - v1.6.0
       - v1.6.3
     destinations:
-      - reg.sighup.io/sighupio/fury/acid/logical-backup
       - registry.sighup.io/fury/acid/logical-backup
 
   - name: Postgres Operator (Exporter) [Fury Kubernetes Postgresql]
@@ -41,5 +37,4 @@ images:
     tag:
       - v0.8.0
     destinations:
-      - reg.sighup.io/sighupio/fury/wrouesnel/postgres_exporter
       - registry.sighup.io/fury/wrouesnel/postgres_exporter

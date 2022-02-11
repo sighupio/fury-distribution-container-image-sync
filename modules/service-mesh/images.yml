@@ -44,7 +44,6 @@ images:
     tag:
       - 1.4.2
     destinations:
-      - reg.sighup.io/sighupio/fury/istio/mixer
       - registry.sighup.io/fury/istio/mixer
 
   - name: Istio Pilot [Fury Kubernetes Service Mesh]
@@ -52,7 +51,6 @@ images:
     tag:
       - 1.4.2
     destinations:
-      - reg.sighup.io/sighupio/fury/istio/pilot
       - registry.sighup.io/fury/istio/pilot
 
   - name: Istio Sidecar [Fury Kubernetes Service Mesh]
@@ -60,7 +58,6 @@ images:
     tag:
       - 1.4.2
     destinations:
-      - reg.sighup.io/sighupio/fury/istio/sidecar_injector
       - registry.sighup.io/fury/istio/sidecar_injector
 
   - name: "[istio] - [examples] bookinfo-details-v1"
@@ -68,7 +65,6 @@ images:
     tag:
       - 1.15.0
     destinations:
-      - reg.sighup.io/sighupio/fury/istio/examples-bookinfo-details-v1
       - registry.sighup.io/fury/istio/examples-bookinfo-details-v1
 
   - name: "[istio] - [examples] bookinfo-ratings-v1"
@@ -76,7 +72,6 @@ images:
     tag:
       - 1.15.0
     destinations:
-      - reg.sighup.io/sighupio/fury/istio/examples-bookinfo-ratings-v1
       - registry.sighup.io/fury/istio/examples-bookinfo-ratings-v1
 
   - name: "[istio] - [examples] bookinfo-reviews-v1"
@@ -84,7 +79,6 @@ images:
     tag:
       - 1.15.0
     destinations:
-      - reg.sighup.io/sighupio/fury/istio/examples-bookinfo-reviews-v1
       - registry.sighup.io/fury/istio/examples-bookinfo-reviews-v1
 
   - name: "[istio] - [examples] bookinfo-reviews-v2"
@@ -92,7 +86,6 @@ images:
     tag:
       - 1.15.0
     destinations:
-      - reg.sighup.io/sighupio/fury/istio/examples-bookinfo-reviews-v2
       - registry.sighup.io/fury/istio/examples-bookinfo-reviews-v2
 
   - name: "[istio] - [examples] bookinfo-reviews-v3"
@@ -100,7 +93,6 @@ images:
     tag:
       - 1.15.0
     destinations:
-      - reg.sighup.io/sighupio/fury/istio/examples-bookinfo-reviews-v3
       - registry.sighup.io/fury/istio/examples-bookinfo-reviews-v3
 
   - name: "[istio] - [examples] bookinfo-productpage-v1"
@@ -108,7 +100,6 @@ images:
     tag:
       - 1.15.0
     destinations:
-      - reg.sighup.io/sighupio/fury/istio/examples-bookinfo-productpage-v1
       - registry.sighup.io/fury/istio/examples-bookinfo-productpage-v1
 
 
@@ -121,7 +112,6 @@ images:
       - 1.4.0
       - 1.3.3
     destinations:
-      - reg.sighup.io/sighupio/fury/kong/kuma-cp
       - registry.sighup.io/fury/kong/kuma-cp
 
   - name: Kong Mesh Data Plane
@@ -133,7 +123,6 @@ images:
       - 1.4.0
       - 1.3.3
     destinations:
-      - reg.sighup.io/sighupio/fury/kong/kuma-dp
       - registry.sighup.io/fury/kong/kuma-dp
 
   - name: Kong Mesh Prometheus Service Discovery
@@ -145,7 +134,6 @@ images:
       - 1.4.0
       - 1.3.3
     destinations:
-      - reg.sighup.io/sighupio/fury/kong/kuma-prometheus-sd
       - registry.sighup.io/fury/kong/kuma-prometheus-sd
 
   - name: Kong Mesh Init
@@ -157,5 +145,4 @@ images:
       - 1.4.0
       - 1.3.3
     destinations:
-      - reg.sighup.io/sighupio/fury/kong/kuma-init
       - registry.sighup.io/fury/kong/kuma-init

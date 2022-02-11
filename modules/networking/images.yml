@@ -13,7 +13,6 @@ images:
       - v3.21.2
       - v3.21.3
     destinations:
-      - reg.sighup.io/sighupio/fury/calico/kube-controllers
       - registry.sighup.io/fury/calico/kube-controllers
 
   - name: Calico CNI [Fury Networking Module]
@@ -29,7 +28,6 @@ images:
       - v3.21.2
       - v3.21.3
     destinations:
-      - reg.sighup.io/sighupio/fury/calico/cni
       - registry.sighup.io/fury/calico/cni
 
   - name: Calico pod2daemon-flexvol [Fury Networking Module]
@@ -45,7 +43,6 @@ images:
       - v3.21.2
       - v3.21.3
     destinations:
-      - reg.sighup.io/sighupio/fury/calico/pod2daemon-flexvol
       - registry.sighup.io/fury/calico/pod2daemon-flexvol
 
   - name: Calico Node [Fury Networking Module]
@@ -61,7 +58,6 @@ images:
       - v3.21.2
       - v3.21.3
     destinations:
-      - reg.sighup.io/sighupio/fury/calico/node
       - registry.sighup.io/fury/calico/node
 
   - name: Calico Tests [Fury Networking Module]
@@ -69,7 +65,6 @@ images:
     tag:
       - latest
     destinations:
-      - reg.sighup.io/sighupio/fury/curlimages/curl
       - registry.sighup.io/fury/curlimages/curl
 
   - name: Calico Tests [Fury Networking Module]
@@ -77,7 +72,6 @@ images:
     tag:
       - 1.0
     destinations:
-      - reg.sighup.io/sighupio/fury/google_containers/echoserver
       - registry.sighup.io/fury/google_containers/echoserver
 
   - name: IP Masq [Fury Networking Module]
@@ -85,5 +79,4 @@ images:
     tag:
       - v2.5.0
     destinations:
-      - reg.sighup.io/sighupio/fury/google-containers/ip-masq-agent-amd64
       - registry.sighup.io/fury/google-containers/ip-masq-agent-amd64
