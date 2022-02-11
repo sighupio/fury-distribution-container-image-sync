@@ -1,0 +1,161 @@
+images:
+  - name: Istio Citadel [Fury Kubernetes Service Mesh]
+    source: docker.io/istio/citadel
+    tag:
+      - 1.4.2
+    destinations:
+      - reg.sighup.io/sighupio/fury/istio/citadel
+      - registry.sighup.io/fury/istio/citadel
+
+  - name: Istio provy [Fury Kubernetes Service Mesh]
+    source: docker.io/istio/proxyv2
+    tag:
+      - 1.4.2
+    destinations:
+      - reg.sighup.io/sighupio/fury/istio/proxyv2
+      - registry.sighup.io/fury/istio/proxyv2
+
+  - name: Istio kubectl [Fury Kubernetes Service Mesh]
+    source: docker.io/istio/kubectl
+    tag:
+      - 1.4.2
+    destinations:
+      - reg.sighup.io/sighupio/fury/istio/kubectl
+      - registry.sighup.io/fury/istio/kubectl
+
+  - name: Istio jaeger [Fury Kubernetes Service Mesh]
+    source: docker.io/jaegertracing/all-in-one
+    tag:
+      - 1.14
+    destinations:
+      - reg.sighup.io/sighupio/fury/jaegertracing/all-in-one
+      - registry.sighup.io/fury/jaegertracing/all-in-one
+
+  - name: Istio Kiali [Fury Kubernetes Service Mesh]
+    source: quay.io/kiali/kiali
+    tag:
+      - 1.9
+    destinations:
+      - reg.sighup.io/sighupio/fury/kiali/kiali
+      - registry.sighup.io/fury/kiali/kiali
+
+  - name: Istio Mixer [Fury Kubernetes Service Mesh]
+    source: docker.io/istio/mixer
+    tag:
+      - 1.4.2
+    destinations:
+      - reg.sighup.io/sighupio/fury/istio/mixer
+      - registry.sighup.io/fury/istio/mixer
+
+  - name: Istio Pilot [Fury Kubernetes Service Mesh]
+    source: docker.io/istio/pilot
+    tag:
+      - 1.4.2
+    destinations:
+      - reg.sighup.io/sighupio/fury/istio/pilot
+      - registry.sighup.io/fury/istio/pilot
+
+  - name: Istio Sidecar [Fury Kubernetes Service Mesh]
+    source: docker.io/istio/sidecar_injector
+    tag:
+      - 1.4.2
+    destinations:
+      - reg.sighup.io/sighupio/fury/istio/sidecar_injector
+      - registry.sighup.io/fury/istio/sidecar_injector
+
+  - name: "[istio] - [examples] bookinfo-details-v1"
+    source: docker.io/istio/examples-bookinfo-details-v1
+    tag:
+      - 1.15.0
+    destinations:
+      - reg.sighup.io/sighupio/fury/istio/examples-bookinfo-details-v1
+      - registry.sighup.io/fury/istio/examples-bookinfo-details-v1
+
+  - name: "[istio] - [examples] bookinfo-ratings-v1"
+    source: docker.io/istio/examples-bookinfo-ratings-v1
+    tag:
+      - 1.15.0
+    destinations:
+      - reg.sighup.io/sighupio/fury/istio/examples-bookinfo-ratings-v1
+      - registry.sighup.io/fury/istio/examples-bookinfo-ratings-v1
+
+  - name: "[istio] - [examples] bookinfo-reviews-v1"
+    source: docker.io/istio/examples-bookinfo-reviews-v1
+    tag:
+      - 1.15.0
+    destinations:
+      - reg.sighup.io/sighupio/fury/istio/examples-bookinfo-reviews-v1
+      - registry.sighup.io/fury/istio/examples-bookinfo-reviews-v1
+
+  - name: "[istio] - [examples] bookinfo-reviews-v2"
+    source: docker.io/istio/examples-bookinfo-reviews-v2
+    tag:
+      - 1.15.0
+    destinations:
+      - reg.sighup.io/sighupio/fury/istio/examples-bookinfo-reviews-v2
+      - registry.sighup.io/fury/istio/examples-bookinfo-reviews-v2
+
+  - name: "[istio] - [examples] bookinfo-reviews-v3"
+    source: docker.io/istio/examples-bookinfo-reviews-v3
+    tag:
+      - 1.15.0
+    destinations:
+      - reg.sighup.io/sighupio/fury/istio/examples-bookinfo-reviews-v3
+      - registry.sighup.io/fury/istio/examples-bookinfo-reviews-v3
+
+  - name: "[istio] - [examples] bookinfo-productpage-v1"
+    source: docker.io/istio/examples-bookinfo-productpage-v1
+    tag:
+      - 1.15.0
+    destinations:
+      - reg.sighup.io/sighupio/fury/istio/examples-bookinfo-productpage-v1
+      - registry.sighup.io/fury/istio/examples-bookinfo-productpage-v1
+
+
+  - name: Kong Mesh Control Plane
+    source: docker.io/kong/kuma-cp
+    tag:
+      - 1.5.1
+      - 1.5.0
+      - 1.4.1
+      - 1.4.0
+      - 1.3.3
+    destinations:
+      - reg.sighup.io/sighupio/fury/kong/kuma-cp
+      - registry.sighup.io/fury/kong/kuma-cp
+
+  - name: Kong Mesh Data Plane
+    source: docker.io/kong/kuma-dp
+    tag:
+      - 1.5.1
+      - 1.5.0
+      - 1.4.1
+      - 1.4.0
+      - 1.3.3
+    destinations:
+      - reg.sighup.io/sighupio/fury/kong/kuma-dp
+      - registry.sighup.io/fury/kong/kuma-dp
+
+  - name: Kong Mesh Prometheus Service Discovery
+    source: docker.io/kong/kuma-prometheus-sd
+    tag:
+      - 1.5.1
+      - 1.5.0
+      - 1.4.1
+      - 1.4.0
+      - 1.3.3
+    destinations:
+      - reg.sighup.io/sighupio/fury/kong/kuma-prometheus-sd
+      - registry.sighup.io/fury/kong/kuma-prometheus-sd
+
+  - name: Kong Mesh Init
+    source: docker.io/kong/kuma-init
+    tag:
+      - 1.5.1
+      - 1.5.0
+      - 1.4.1
+      - 1.4.0
+      - 1.3.3
+    destinations:
+      - reg.sighup.io/sighupio/fury/kong/kuma-init
+      - registry.sighup.io/fury/kong/kuma-init

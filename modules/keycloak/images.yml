@@ -1,0 +1,19 @@
+images:
+  - name: KeyCloak [Fury KeyCloak Module]
+    source: docker.io/jboss/keycloak
+    tag:
+      - 4.8.2.Final
+      - 7.0.1
+      - 13.0.1
+    destinations:
+      - reg.sighup.io/sighupio/fury/jboss/keycloak
+      - registry.sighup.io/fury/jboss/keycloak
+
+  - name: Infinispan [Fury KeyCloak Module]
+    source: docker.io/jboss/infinispan-server
+    tag:
+      - 9.3.1.Final
+      - 9.4.11.Final
+    destinations:
+      - reg.sighup.io/sighupio/fury/jboss/infinispan-server
+      - registry.sighup.io/fury/jboss/infinispan-server
