@@ -11,15 +11,15 @@ do
     for (( t=0; t<${TAG}; t++ ))
     do
         LOCAL_TAG=$(yq e '.images['"${c}"'].tag['"${t}"']' $1)
-        #docker pull ${SRC}:${LOCAL_TAG}
+        docker pull ${SRC}:${LOCAL_TAG}
         for (( d=0; d<${DST}; d++ ))
           do
             TO=$(yq e '.images['"${c}"'].destinations['"${d}"']' $1):${LOCAL_TAG}
-            #docker tag ${SRC}:${LOCAL_TAG} ${TO}
-            #docker push ${TO}
-            #docker rmi ${TO}
+            docker tag ${SRC}:${LOCAL_TAG} ${TO}
+            docker push ${TO}
+            docker rmi ${TO}
           done
-        #docker rmi ${SRC}:${LOCAL_TAG}
+        docker rmi ${SRC}:${LOCAL_TAG}
     done
     echo "  - Finish ${NAME}"
 done
