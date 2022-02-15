@@ -1,6 +1,9 @@
 ---
 name: "Dry run"
 
+on:
+  push:
+
 jobs:
   sync:
     runs-on: ubuntu-latest
