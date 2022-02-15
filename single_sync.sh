@@ -33,6 +33,3 @@ do
     done
     echo "  - Finish ${NAME}"
 done
-
-# check if two string are equals
-# if [ "$1" == "$2" ]; then
