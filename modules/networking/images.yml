@@ -60,7 +60,7 @@ images:
     destinations:
       - registry.sighup.io/fury/calico/node
 
-  - name: Calico Tests [Fury Networking Module]
+  - name: Curl image used for Calico tests [Fury Networking Module]
     source: docker.io/curlimages/curl
     tag:
       - latest
