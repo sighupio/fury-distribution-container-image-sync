@@ -3,60 +3,60 @@ images:
   - name: Calico Kube Controllers [Fury Networking Module]
     source: docker.io/calico/kube-controllers
     tag:
-      - v3.16.0
-      - v3.16.1
-      - v3.17.1
-      - v3.18.3
-      - v3.19.0
-      - v3.19.1
-      - v3.19.2
-      - v3.21.2
-      - v3.21.3
+      - "v3.16.0"
+      - "v3.16.1"
+      - "v3.17.1"
+      - "v3.18.3"
+      - "v3.19.0"
+      - "v3.19.1"
+      - "v3.19.2"
+      - "v3.21.2"
+      - "v3.21.3"
     destinations:
       - registry.sighup.io/fury/calico/kube-controllers
 
   - name: Calico CNI [Fury Networking Module]
     source: docker.io/calico/cni
     tag:
-      - v3.16.0
-      - v3.16.1
-      - v3.17.1
-      - v3.18.3
-      - v3.19.0
-      - v3.19.1
-      - v3.19.2
-      - v3.21.2
-      - v3.21.3
+      - "v3.16.0"
+      - "v3.16.1"
+      - "v3.17.1"
+      - "v3.18.3"
+      - "v3.19.0"
+      - "v3.19.1"
+      - "v3.19.2"
+      - "v3.21.2"
+      - "v3.21.3"
     destinations:
       - registry.sighup.io/fury/calico/cni
 
   - name: Calico pod2daemon-flexvol [Fury Networking Module]
     source: docker.io/calico/pod2daemon-flexvol
     tag:
-      - v3.16.0
-      - v3.16.1
-      - v3.17.1
-      - v3.18.3
-      - v3.19.0
-      - v3.19.1
-      - v3.19.2
-      - v3.21.2
-      - v3.21.3
+      - "v3.16.0"
+      - "v3.16.1"
+      - "v3.17.1"
+      - "v3.18.3"
+      - "v3.19.0"
+      - "v3.19.1"
+      - "v3.19.2"
+      - "v3.21.2"
+      - "v3.21.3"
     destinations:
       - registry.sighup.io/fury/calico/pod2daemon-flexvol
 
   - name: Calico Node [Fury Networking Module]
     source: docker.io/calico/node
     tag:
-      - v3.16.0
-      - v3.16.1
-      - v3.17.1
-      - v3.18.3
-      - v3.19.0
-      - v3.19.1
-      - v3.19.2
-      - v3.21.2
-      - v3.21.3
+      - "v3.16.0"
+      - "v3.16.1"
+      - "v3.17.1"
+      - "v3.18.3"
+      - "v3.19.0"
+      - "v3.19.1"
+      - "v3.19.2"
+      - "v3.21.2"
+      - "v3.21.3"
     destinations:
       - registry.sighup.io/fury/calico/node
 
@@ -70,13 +70,13 @@ images:
   - name: Echoserver image used for Calico tests [Fury Networking Module]
     source: gcr.io/google_containers/echoserver
     tag:
-      - 1.0
+      - "1.0"
     destinations:
       - registry.sighup.io/fury/google_containers/echoserver
 
   - name: IP Masq [Fury Networking Module]
     source: gcr.io/google-containers/ip-masq-agent-amd64
     tag:
-      - v2.5.0
+      - "v2.5.0"
     destinations:
       - registry.sighup.io/fury/google-containers/ip-masq-agent-amd64
