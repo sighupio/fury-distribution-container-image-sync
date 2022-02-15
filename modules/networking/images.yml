@@ -67,7 +67,7 @@ images:
     destinations:
       - registry.sighup.io/fury/curlimages/curl
 
-  - name: Calico Tests [Fury Networking Module]
+  - name: Echoserver image used for Calico tests [Fury Networking Module]
     source: gcr.io/google_containers/echoserver
     tag:
       - 1.0
