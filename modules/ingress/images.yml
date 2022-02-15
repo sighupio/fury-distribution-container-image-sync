@@ -10,7 +10,6 @@ images:
       - v1.0.0
       - v1.1.0
     destinations:
-      - reg.sighup.io/sighupio/fury/ingress-nginx/controller
       - registry.sighup.io/fury/ingress-nginx/controller
 
   - name: nginx ldap auth [Fury Kubernetes Ingress]
@@ -18,7 +17,6 @@ images:
     tag:
       - v1.0.6
     destinations:
-      - reg.sighup.io/sighupio/fury/tpimenta/nginx-ldap-auth
       - registry.sighup.io/fury/tpimenta/nginx-ldap-auth
 
   - name: pomerium [Fury Kubernetes Ingress]
@@ -30,7 +28,6 @@ images:
       - v0.15.0
       - v0.15.8
     destinations:
-      - reg.sighup.io/sighupio/fury/pomerium/pomerium
       - registry.sighup.io/fury/pomerium/pomerium
 
   - name: Forecastle [Fury Kubernetes Ingress]
@@ -45,7 +42,6 @@ images:
       - v1.0.66
       - v1.0.75
     destinations:
-      - reg.sighup.io/sighupio/fury/stakater/forecastle
       - registry.sighup.io/fury/stakater/forecastle
 
 
@@ -61,7 +57,6 @@ images:
       - v1.5.3
       - v1.6.1
     destinations:
-      - reg.sighup.io/sighupio/fury/jetstack/cert-manager-cainjector
       - registry.sighup.io/fury/jetstack/cert-manager-cainjector
 
   - name: Controller - Cert Manager [Fury Kubernetes Ingress]
@@ -76,7 +71,6 @@ images:
       - v1.5.3
       - v1.6.1
     destinations:
-      - reg.sighup.io/sighupio/fury/jetstack/cert-manager-controller
       - registry.sighup.io/fury/jetstack/cert-manager-controller
 
   - name: Webhook - Cert Manager [Fury Kubernetes Ingress]
@@ -91,6 +85,5 @@ images:
       - v1.5.3
       - v1.6.1
     destinations:
-      - reg.sighup.io/sighupio/fury/jetstack/cert-manager-webhook
       - registry.sighup.io/fury/jetstack/cert-manager-webhook
 

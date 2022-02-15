@@ -12,7 +12,6 @@ images:
       - v3.6.0
       - v3.7.0
     destinations:
-      - reg.sighup.io/sighupio/fury/openpolicyagent/gatekeeper
       - registry.sighup.io/fury/openpolicyagent/gatekeeper
 
   - name: Gatekeeper [Fury OPA Module]
@@ -23,5 +22,4 @@ images:
       - v0.5.0
       - v0.5.1
     destinations:
-      - reg.sighup.io/sighupio/fury/gatekeeper-policy-manager
       - registry.sighup.io/fury/gatekeeper-policy-manager

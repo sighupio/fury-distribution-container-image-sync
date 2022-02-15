@@ -101,7 +101,6 @@ images:
     tag:
       - latest
     destinations:
-      - reg.sighup.io/sighupio/fury/nginx
       - registry.sighup.io/fury/nginx
 
   - name: Redis 5.0.8
@@ -109,7 +108,6 @@ images:
     tag:
       - 5.0.8
     destinations:
-      - reg.sighup.io/sighupio/fury/redis
       - registry.sighup.io/fury/redis
 
   - name: nginx 1.17.9
@@ -117,7 +115,6 @@ images:
     tag:
       - 1.17.9
     destinations:
-      - reg.sighup.io/sighupio/fury/nginx
       - registry.sighup.io/fury/nginx
 
   - name: httpbin
@@ -125,7 +122,6 @@ images:
     tag:
       - latest
     destinations:
-      - reg.sighup.io/sighupio/fury/kennethreitz/httpbin
       - registry.sighup.io/fury/kennethreitz/httpbin
 
   - name: curl-ssl
@@ -133,7 +129,6 @@ images:
     tag:
       - latest
     destinations:
-      - reg.sighup.io/sighupio/fury/governmentpaas/curl-ssl
       - registry.sighup.io/fury/governmentpaas/curl-ssl
 
   - name: Docker Registry
@@ -141,7 +136,6 @@ images:
     tag:
       - 2.7.1
     destinations:
-      - reg.sighup.io/sighupio/fury/registry
       - registry.sighup.io/fury/registry
 
   - name: NFS clinet provisioner external storage
@@ -156,7 +150,6 @@ images:
     tag:
       - latest
     destinations:
-      - reg.sighup.io/sighupio/fury/busybox
       - registry.sighup.io/fury/busybox
 
   - name: AWS node termination handler
@@ -181,5 +174,4 @@ images:
       - v1.22.0
       - v1.23.0
     destinations:
-      - reg.sighup.io/sighupio/fury/kindest/node
       - registry.sighup.io/fury/kindest/node
