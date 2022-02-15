@@ -2,14 +2,14 @@ images:
   - name: Heptio gangway [Fury Monitoring Module ]
     source: gcr.io/heptio-images/gangway
     tag:
-      - v3.2.0
+      - "v3.2.0"
     destinations:
       - registry.sighup.io/fury/heptio-images/gangway
 
   - name: Prometheus adapter direcxman [Fury Monitoring Module]
     source: docker.io/directxman12/k8s-prometheus-adapter-amd64
     tag:
-      - v0.8.2
+      - "v0.8.2"
     destinations:
       - registry.sighup.io/fury/directxman12/k8s-prometheus-adapter-amd64
 
@@ -17,184 +17,184 @@ images:
   - name: Alert Manager [Fury Monitoring Module]
     source: quay.io/prometheus/alertmanager
     tag:
-      - v0.16.0
-      - v0.20.0
-      - v0.21.0
-      - v0.22.1
-      - v0.22.2
-      - v0.23.0
+      - "v0.16.0"
+      - "v0.20.0"
+      - "v0.21.0"
+      - "v0.22.1"
+      - "v0.22.2"
+      - "v0.23.0"
     destinations:
       - registry.sighup.io/fury/prometheus/alertmanager
 
   - name: Goldpinger [Fury Monitoring Module]
     source: docker.io/bloomberg/goldpinger
     tag:
-      - 2.0.0
-      - v3.0.0
-      - v3.2.0
-      - v3.3.0
+      - "2.0.0"
+      - "v3.0.0"
+      - "v3.2.0"
+      - "v3.3.0"
     destinations:
       - registry.sighup.io/fury/bloomberg/goldpinger
 
   - name: Grafana SideCar [Fury Monitoring Module]
     source: docker.io/kiwigrid/k8s-sidecar
     tag:
-      - 0.1.193
-      - 1.3.0
-      - 1.12.0
-      - 1.12.2
-      - 1.12.3
-      - 1.15.0
+      - "0.1.193"
+      - "1.3.0"
+      - "1.12.0"
+      - "1.12.2"
+      - "1.12.3"
+      - "1.15.0"
     destinations:
       - registry.sighup.io/fury/kiwigrid/k8s-sidecar
 
   - name: Grafana [Fury Monitoring Module]
     source: docker.io/grafana/grafana
     tag:
-      - 6.6.2
-      - 7.1.5
-      - 7.3.6
-      - 7.5.7
-      - 8.0.6
-      - 8.1.2
-      - 8.3.3
+      - "6.6.2"
+      - "7.1.5"
+      - "7.3.6"
+      - "7.5.7"
+      - "8.0.6"
+      - "8.1.2"
+      - "8.3.3"
     destinations:
       - registry.sighup.io/fury/grafana/grafana
 
   - name: Kubernetes RBAC Proxy [Fury Monitoring Module]
     source: quay.io/brancz/kube-rbac-proxy
     tag:
-      - v0.10.0
-      - v0.11.0
+      - "v0.10.0"
+      - "v0.11.0"
     destinations:
       - registry.sighup.io/fury/brancz/kube-rbac-proxy
 
   - name: kube-state-metrics [Fury Monitoring Module]
     source: quay.io/coreos/kube-state-metrics
     tag:
-      - v1.8.0
-      - v1.9.4
-      - v1.9.5
-      - v1.9.7
-      - v2.1.1
+      - "v1.8.0"
+      - "v1.9.4"
+      - "v1.9.5"
+      - "v1.9.7"
+      - "v2.1.1"
     destinations:
       - registry.sighup.io/fury/coreos/kube-state-metrics
 
   - name: kube-state-metrics [Fury Monitoring Module]
     source: k8s.gcr.io/kube-state-metrics/kube-state-metrics
     tag:
-      - v2.0.0
-      - v2.2.0
-      - v2.3.0
+      - "v2.0.0"
+      - "v2.2.0"
+      - "v2.3.0"
     destinations:
       - registry.sighup.io/fury/kube-state-metrics/kube-state-metrics
 
   - name: Metrics Server [Fury Monitoring Module]
     source: k8s.gcr.io/metrics-server/metrics-server
     tag:
-      - v0.3.7
-      - v0.4.1
-      - v0.5.0
-      - v0.5.2
+      - "v0.3.7"
+      - "v0.4.1"
+      - "v0.5.0"
+      - "v0.5.2"
     destinations:
       - registry.sighup.io/fury/metrics-server
 
   - name: node-exporter [Fury Monitoring Module]
     source: quay.io/prometheus/node-exporter
     tag:
-      - v0.18.1
-      - v1.0.1
-      - v1.1.2
-      - v1.2.0
-      - v1.2.2
-      - v1.3.1
+      - "v0.18.1"
+      - "v1.0.1"
+      - "v1.1.2"
+      - "v1.2.0"
+      - "v1.2.2"
+      - "v1.3.1"
     destinations:
       - registry.sighup.io/fury/prometheus/node-exporter
 
   - name: Prometheus [Fury Monitoring Module]
     source: quay.io/prometheus/prometheus
     tag:
-      - v2.16.0
-      - v2.21.0
-      - v2.22.2
-      - v2.27.1
-      - v2.28.1
-      - v2.29.1
-      - v2.32.1
+      - "v2.16.0"
+      - "v2.21.0"
+      - "v2.22.2"
+      - "v2.27.1"
+      - "v2.28.1"
+      - "v2.29.1"
+      - "v2.32.1"
     destinations:
       - registry.sighup.io/fury/prometheus
 
   - name: prometheus-operator [Fury Monitoring Module]
     source: quay.io/coreos/prometheus-operator
     tag:
-      - v0.30.0
-      - v0.37.0
+      - "v0.30.0"
+      - "v0.37.0"
     destinations:
       - registry.sighup.io/fury/coreos/prometheus-operator
 
   - name: prometheus-operator [Fury Monitoring Module]
     source: quay.io/prometheus-operator/prometheus-operator
     tag:
-      - v0.44.1
-      - v0.48.0
-      - v0.48.1
-      - v0.49.0
-      - v0.50.0
-      - v0.53.1
+      - "v0.44.1"
+      - "v0.48.0"
+      - "v0.48.1"
+      - "v0.49.0"
+      - "v0.50.0"
+      - "v0.53.1"
     destinations:
       - registry.sighup.io/fury/prometheus-operator/prometheus-operator
 
   - name: prometheus-operator configmap reloader [Fury Monitoring Module]
     source: docker.io/jimmidyson/configmap-reload
     tag:
-      - v0.3.0
-      - v0.5.0
+      - "v0.3.0"
+      - "v0.5.0"
     destinations:
       - registry.sighup.io/fury/jimmidyson/configmap-reload
 
   - name: prometheus-operator config reloader [Fury Monitoring Module]
     source: quay.io/coreos/prometheus-config-reloader
     tag:
-      - v0.30.0
-      - v0.37.0
+      - "v0.30.0"
+      - "v0.37.0"
     destinations:
       - registry.sighup.io/fury/coreos/prometheus-config-reloader
 
   - name: prometheus-operator config reloader [Fury Monitoring Module]
     source: quay.io/prometheus-operator/prometheus-config-reloader
     tag:
-      - v0.42.0
-      - v0.44.1
-      - v0.48.0
-      - v0.48.1
-      - v0.50.0
-      - v0.53.1
+      - "v0.42.0"
+      - "v0.44.1"
+      - "v0.48.0"
+      - "v0.48.1"
+      - "v0.50.0"
+      - "v0.53.1"
     destinations:
       - registry.sighup.io/fury/prometheus-operator/prometheus-config-reloader
 
   - name: openldap [Fury Monitoring Module]
     source: docker.io/osixia/openldap
     tag:
-      - 1.3.0
-      - 1.5.0
+      - "1.3.0"
+      - "1.5.0"
     destinations:
       - registry.sighup.io/fury/osixia/openldap
 
   - name: thanos [Fury Monitoring Module]
     source: quay.io/thanos/thanos
     tag:
-      - v0.20.2
-      - v0.22.0
-      - v0.24.0
+      - "v0.20.2"
+      - "v0.22.0"
+      - "v0.24.0"
     destinations:
       - registry.sighup.io/fury/thanos
 
   - name: x509 certificate exporter
     source: docker.io/enix/x509-certificate-exporter
     tag:
-      - 2.9.1
-      - 2.9.2
-      - 2.11.0
-      - 2.12.1
+      - "2.9.1"
+      - "2.9.2"
+      - "2.11.0"
+      - "2.12.1"
     destinations:
       - registry.sighup.io/fury/enix/x509-certificate-exporter
