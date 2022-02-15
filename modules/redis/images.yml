@@ -3,30 +3,30 @@ images:
   - name: Redis Operator [Fury Kubernetes Redis]
     source: quay.io/spotahome/redis-operator
     tag:
-      - v1.0.0
+      - "v1.0.0"
     destinations:
       - registry.sighup.io/fury/spotahome/redis-operator
 
   - name: Redis Sentinel Exporter [Fury Kubernetes Redis]
     source: docker.io/leominov/redis_sentinel_exporter
     tag:
-      - 1.3.0
-      - 1.7.1
+      - "1.3.0"
+      - "1.7.1"
     destinations:
       - registry.sighup.io/fury/leominov/redis_sentinel_exporter
 
   - name: Redis [Fury Kubernetes Redis]
     source: docker.io/library/redis
     tag:
-      - alpine3.12
-      - 6.2.5-alpine3.14
+      - "alpine3.12"
+      - "6.2.5-alpine3.14"
     destinations:
       - registry.sighup.io/fury/redis
 
   - name: Redis Exporter [Fury Kubernetes Redis]
     source: docker.io/oliver006/redis_exporter
     tag:
-      - v1.3.5-alpine
-      - v1.24.0-alpine
+      - "v1.3.5-alpine"
+      - "v1.24.0-alpine"
     destinations:
       - registry.sighup.io/fury/oliver006/redis_exporter
