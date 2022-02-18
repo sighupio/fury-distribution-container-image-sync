@@ -21,16 +21,6 @@ images:
     destinations:
       - registry.sighup.io/fury/curator
 
-  - name: Alpine 3.12 [Fury Kubernetes Logging]
-    source: docker.io/library/alpine
-    tag:
-      - "3"
-      - "3.12"
-      - "3.13"
-      - "3.14"
-    destinations:
-      - registry.sighup.io/fury/alpine
-
   - name: ElasticSearch Exporter [Fury Kubernetes Logging]
     source: docker.io/justwatch/elasticsearch_exporter
     tag:

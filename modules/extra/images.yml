@@ -175,3 +175,13 @@ images:
       - "v1.23.0"
     destinations:
       - registry.sighup.io/fury/kindest/node
+
+  - name: Alpine 3.12
+    source: docker.io/library/alpine
+    tag:
+      - "3"
+      - "3.12"
+      - "3.13"
+      - "3.14"
+    destinations:
+      - registry.sighup.io/fury/alpine
