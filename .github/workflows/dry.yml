@@ -28,7 +28,7 @@ jobs:
       - name: Install yq
         run: |
           sudo apt-get update && sudo apt-get install -yqq wget skopeo
-          sudo wget -q https://github.com/mikefarah/yq/releases/download/v4.2.1/yq_linux_amd64 -O /usr/bin/yq
+          sudo wget -q https://github.com/mikefarah/yq/releases/download/v4.19.1/yq_linux_amd64 -O /usr/bin/yq
           sudo chmod +x /usr/bin/yq
       - name: Iterate in DRY run mode
         run: |
