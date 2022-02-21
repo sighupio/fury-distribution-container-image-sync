@@ -1,6 +1,7 @@
-# Fury Distribution - Container Image Sync
-
-![Push and Pull](https://marli.us/wp-content/uploads/2020/08/Mental-models.png)
+<h1>
+    <img src="https://github.com/sighupio/fury-distribution/blob/master/docs/assets/fury-epta-white.png?raw=true" align="left" width="90" style="margin-right: 15px"/>
+    Kubernetes Fury Distribution - Container Image Sync
+</h1>
 
 This is a simple mechanism that pulls and pushes container images based on a configuration file (`yaml`).
 
