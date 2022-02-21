@@ -1,25 +1,19 @@
 #!/bin/bash
 
-IMAGES=$(yq e '.images | length' images.yml)
-for (( c=0; c<${IMAGES}; c++ ))
+# if parameter --dry-run set DRY to true
+if [ "$1" == "-d" ] || [ "$1" == "--dry-run" ]; then
+  DRY=true
+else
+  DRY=false
+fi
+
+# loop through all the images.yml files in the directory modules
+for f in modules/*/images.yml
 do
-    NAME=$(yq e '.images['"${c}"'].name' images.yml)
-    SRC=$(yq e '.images['"${c}"'].source' images.yml)
-    echo "  - Start ${NAME}"
-    DST=$(yq e '.images['"${c}"'].destinations | length' images.yml)
-    TAG=$(yq e '.images['"${c}"'].tag | length' images.yml)
-    for (( t=0; t<${TAG}; t++ ))
-    do
-        LOCAL_TAG=$(yq e '.images['"${c}"'].tag['"${t}"']' images.yml)
-        docker pull ${SRC}:${LOCAL_TAG}
-        for (( d=0; d<${DST}; d++ ))
-          do
-            TO=$(yq e '.images['"${c}"'].destinations['"${d}"']' images.yml):${LOCAL_TAG}
-            docker tag ${SRC}:${LOCAL_TAG} ${TO}
-            docker push ${TO}
-            docker rmi ${TO}
-          done
-        docker rmi ${SRC}:${LOCAL_TAG}
-    done
-    echo "  - Finish ${NAME}"
+  # if the file exists
+  if [ -f "$f" ]
+  then
+    # run the sync script
+    ./single_sync.sh $f $DRY
+  fi
 done

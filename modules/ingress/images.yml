@@ -1,0 +1,89 @@
+images:
+  - name: nginx ingress controller [Fury Kubernetes Ingress]
+    source: k8s.gcr.io/ingress-nginx/controller
+    tag:
+      - "v0.35.0"
+      - "v0.43.0"
+      - "v0.46.0"
+      - "v0.48.1"
+      - "v0.49.0"
+      - "v1.0.0"
+      - "v1.1.0"
+    destinations:
+      - registry.sighup.io/fury/ingress-nginx/controller
+
+  - name: nginx ldap auth [Fury Kubernetes Ingress]
+    source: docker.io/tpimenta/nginx-ldap-auth
+    tag:
+      - "v1.0.6"
+    destinations:
+      - registry.sighup.io/fury/tpimenta/nginx-ldap-auth
+
+  - name: pomerium [Fury Kubernetes Ingress]
+    source: docker.io/pomerium/pomerium
+    tag:
+      - "v0.14.4"
+      - "v0.14.7"
+      - "v0.14.7"
+      - "v0.15.0"
+      - "v0.15.8"
+    destinations:
+      - registry.sighup.io/fury/pomerium/pomerium
+
+  - name: Forecastle [Fury Kubernetes Ingress]
+    source: docker.io/stakater/forecastle
+    tag:
+      - "v1.0.34"
+      - "v1.0.42"
+      - "v1.0.57"
+      - "v1.0.61"
+      - "v1.0.64"
+      - "v1.0.65"
+      - "v1.0.66"
+      - "v1.0.75"
+    destinations:
+      - registry.sighup.io/fury/stakater/forecastle
+
+
+  - name: CA Injector - Cert Manager [Fury Kubernetes Ingress]
+    source: quay.io/jetstack/cert-manager-cainjector
+    tag:
+      - "v0.14.1"
+      - "v1.0.1"
+      - "v1.1.0"
+      - "v1.3.1"
+      - "v1.4.1"
+      - "v1.5.2"
+      - "v1.5.3"
+      - "v1.6.1"
+    destinations:
+      - registry.sighup.io/fury/jetstack/cert-manager-cainjector
+
+  - name: Controller - Cert Manager [Fury Kubernetes Ingress]
+    source: quay.io/jetstack/cert-manager-controller
+    tag:
+      - "v0.14.1"
+      - "v1.0.1"
+      - "v1.1.0"
+      - "v1.3.1"
+      - "v1.4.1"
+      - "v1.5.2"
+      - "v1.5.3"
+      - "v1.6.1"
+    destinations:
+      - registry.sighup.io/fury/jetstack/cert-manager-controller
+
+  - name: Webhook - Cert Manager [Fury Kubernetes Ingress]
+    source: quay.io/jetstack/cert-manager-webhook
+    tag:
+      - "v0.14.1"
+      - "v1.0.1"
+      - "v1.1.0"
+      - "v1.3.1"
+      - "v1.4.1"
+      - "v1.5.2"
+      - "v1.5.3"
+      - "v1.6.1"
+    destinations:
+      - registry.sighup.io/fury/jetstack/cert-manager-webhook
+
