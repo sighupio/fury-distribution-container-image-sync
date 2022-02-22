@@ -1,6 +1,6 @@
 images:
 
-  - name: Dex Identity Provider
+  - name: Dex Identity Providerr
     source: quay.io/dexidp/dex
     tag:
       - "v2.20.0"
