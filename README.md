@@ -1,4 +1,4 @@
-<h1 style="font-size: 28px">
+<h1 style="font-size: 25px">
     <img src="https://github.com/sighupio/fury-distribution/blob/master/docs/assets/fury-epta-white.png?raw=true" align="left" width="90" style="margin-right: 15px"/>
     Kubernetes Fury Distribution - Container Image Sync
 </h1>
