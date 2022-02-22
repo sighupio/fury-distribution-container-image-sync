@@ -15,7 +15,8 @@ Features:
 
 ## How it works
 
-Inside the folder `modules/` there is a subfolder for each KFD module with an `images.yml` file. 
+Inside the folder `modules/` there is a subfolder for each KFD module with an `images.yml` file.
+
 Each `images.yml` file has to have a root attribute: `images` and its value is an array of objects:
 
 ```yaml
