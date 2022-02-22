@@ -1,41 +1,47 @@
-# Fury Container Image Sync
-
-![Push and Pull](https://marli.us/wp-content/uploads/2020/08/Mental-models.png)
+<h1>
+    <img src="https://github.com/sighupio/fury-distribution/blob/master/docs/assets/fury-epta-white.png?raw=true" align="left" width="90" style="margin-right: 15px"/>
+    Kubernetes Fury Distribution - Container Image Sync
+</h1>
 
 This is a simple mechanism that pulls and pushes container images based on a configuration file (`yaml`).
 
-The main goal of this project is to be independent of third parties repositories like `dockerhub`, `quay`, `gcr.io`
-and so on.
+The main goal for this repository is to have a central location used to sync on our public SIGHUP registry all the 
+upstream images used by all the Fury modules.
 
-Fury Distribution is the first SIGHUP product being benefit from this image sync automation.
+Features:
+- Configurable via YAML files
+- Skips images if the layers between src and dest are the same using `skopeo`
+- Everything is executed with two bash scripts: `sync.sh` and `single_sync.sh`
 
-## Configuration files
+## How it works
 
-Inside the folder `modules/` there are subfolders for each fury module with a file: `images.yml`. 
+Inside the folder `modules/` there is a subfolder for each KFD module with an `images.yml` file.
+
 Each `images.yml` file has to have a root attribute: `images` and its value is an array of objects:
 
 ```yaml
   - name: # Simple description of the image
     source: # Source image. Where to pull the image
+    tag: # Tags to sync
+      - "xxx" 
     destination: 
-      - # Destination images. Where to push the image
+      - # Destination registry
 ```
 
 Example `images.yml`:
 
 ```yaml
-images:
-  - name: Alpine 3
-    source: docker.io/library/alpine:3
-    destination: 
-      - reg.sighup.io/sighupio/fury/alpine:3
+  - name: Alpine
+    source: docker.io/library/alpine
+    tag:
+      - "3"
+      - "3.12"
+      - "3.13"
+      - "3.14"
+    destinations:
+      - registry.sighup.io/fury/alpine
 ```
 
-## Execution
+## Automated execution
 
 This automation runs once a day: `"0 2 * * *"` and every time someone pushes to the `main` branch.
-
-## GitHub Action
-
-Why does it run on GitHub action? It is free and it uses a different IP address than the SIGHUP drone instance
-*(witch hits the dockerhub rate limit frequently)*
