@@ -47,9 +47,11 @@ images:
     tag:
       - "1.4.4"
       - "1.5.6"
+      - "1.6.1"
       - "1.6.9"
       - "1.7.7"
       - "1.8.2"
+      - "1.8.9"
       - "1.8.10"
     destinations:
       - registry.sighup.io/fury/fluent/fluent-bit
@@ -82,3 +84,17 @@ images:
       - "7.16.2"
     destinations:
       - registry.sighup.io/fury/kibana
+
+  - name: Logging Operator
+    source: ghcr.io/banzaicloud/logging-operator
+    tag:
+      - "3.17.0"
+    destinations:
+      - registry.sighup.io/fury/banzaicloud/logging-operator
+
+  - name: Banzai cloud Fluentd
+    source: ghcr.io/banzaicloud/fluentd
+    tag:
+      - "v1.14.4-alpine-1"
+    destinations:
+      - registry.sighup.io/fury/banzaicloud/fluentd
