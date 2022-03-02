@@ -144,14 +144,6 @@ images:
     destinations:
       - registry.sighup.io/fury/prometheus-operator/prometheus-operator
 
-  - name: prometheus-operator configmap reloader [Fury Monitoring Module]
-    source: docker.io/jimmidyson/configmap-reload
-    tag:
-      - "v0.3.0"
-      - "v0.5.0"
-    destinations:
-      - registry.sighup.io/fury/jimmidyson/configmap-reload
-
   - name: prometheus-operator config reloader [Fury Monitoring Module]
     source: quay.io/coreos/prometheus-config-reloader
     tag:
