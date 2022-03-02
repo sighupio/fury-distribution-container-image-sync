@@ -185,3 +185,12 @@ images:
       - "3.14"
     destinations:
       - registry.sighup.io/fury/alpine
+
+  - name: Configmap reloader
+    source: docker.io/jimmidyson/configmap-reload
+    tag:
+      - "v0.3.0"
+      - "v0.4.0"
+      - "v0.5.0"
+    destinations:
+      - registry.sighup.io/fury/jimmidyson/configmap-reload
