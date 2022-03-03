@@ -98,3 +98,10 @@ images:
       - "v1.14.4-alpine-1"
     destinations:
       - registry.sighup.io/fury/banzaicloud/fluentd
+
+  - name: Banzai cloud Event Router
+    source: banzaicloud/eventrouter
+    tag:
+      - "v0.1.0"
+    destinations:
+      - registry.sighup.io/fury/banzaicloud/eventrouter
