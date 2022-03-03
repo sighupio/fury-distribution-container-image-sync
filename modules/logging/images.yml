@@ -1,4 +1,18 @@
 images:
+  - name: Opensearch
+    source: opensearchproject/opensearch
+    tag:
+      - "1.2.4"
+    destinations:
+      - registry.sighup.io/fury/opensearchproject/opensearch
+
+  - name: Opensearch Dashboard
+    source: opensearchproject/opensearch-dashboards
+    tag:
+      - "1.2.0"
+    destinations:
+      - registry.sighup.io/fury/opensearchproject/opensearch-dashboards
+
   - name: Cerebro [Fury Kubernetes Logging]
     source: docker.io/lmenezes/cerebro
     tag:
@@ -105,3 +119,4 @@ images:
       - "v0.1.0"
     destinations:
       - registry.sighup.io/fury/banzaicloud/eventrouter
+
