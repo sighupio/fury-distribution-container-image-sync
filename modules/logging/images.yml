@@ -104,6 +104,7 @@ images:
     source: ghcr.io/banzaicloud/logging-operator
     tag:
       - "3.17.0"
+      - "3.17.2"
     destinations:
       - registry.sighup.io/fury/banzaicloud/logging-operator
 
