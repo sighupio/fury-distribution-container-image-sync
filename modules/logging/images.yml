@@ -67,6 +67,7 @@ images:
       - "1.8.2"
       - "1.8.9"
       - "1.8.10"
+      - "1.8.13"
     destinations:
       - registry.sighup.io/fury/fluent/fluent-bit
 
@@ -110,6 +111,7 @@ images:
     source: ghcr.io/banzaicloud/fluentd
     tag:
       - "v1.14.4-alpine-1"
+      - "v1.14.5-alpine-1"
     destinations:
       - registry.sighup.io/fury/banzaicloud/fluentd
 
