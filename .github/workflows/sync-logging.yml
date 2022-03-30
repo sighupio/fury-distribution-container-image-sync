@@ -1,4 +1,4 @@
-name: "Sync"
+name: "Sync LOGGING"
 
 on:
   push:
@@ -36,4 +36,4 @@ jobs:
         sudo chmod +x /usr/bin/yq
     - name: Iterate
       run: |
-        ./sync.sh
+        ./single_sync.sh modules/logging/images.yml
