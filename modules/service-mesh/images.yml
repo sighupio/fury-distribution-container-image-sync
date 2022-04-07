@@ -13,6 +13,13 @@ images:
     destinations:
       - registry.sighup.io/fury/istio/proxyv2
 
+  - name: Istio provy [Fury Kubernetes Service Mesh]
+    source: gcr.io/istio-release/proxyv2
+    tag:
+      - "1.9.5"
+    destinations:
+      - registry.sighup.io/fury/istio/proxyv2
+
   - name: Istio kubectl [Fury Kubernetes Service Mesh]
     source: docker.io/istio/kubectl
     tag:
@@ -47,6 +54,20 @@ images:
       - "1.4.2"
     destinations:
       - registry.sighup.io/fury/istio/pilot
+
+  - name: Istio Pilot [Fury Kubernetes Service Mesh]
+    source: gcr.io/istio-release/pilot
+    tag:
+      - "1.9.5"
+    destinations:
+      - registry.sighup.io/fury/istio/pilot
+
+  - name: Istio Operator [Fury Kubernetes Service Mesh]
+    source: gcr.io/istio-release/operator
+    tag:
+      - "1.9.5"
+    destinations:
+      - registry.sighup.io/fury/istio/operator
 
   - name: Istio Sidecar [Fury Kubernetes Service Mesh]
     source: docker.io/istio/sidecar_injector
