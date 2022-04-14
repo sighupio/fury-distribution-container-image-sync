@@ -8,6 +8,7 @@ images:
       - "v2.1.5"
       - "v2.2.2"
       - "v2.3.2"
+      - "v2.4.2"
     destinations:
       - registry.sighup.io/fury/goharbor/chartmuseum-photon
 
@@ -20,6 +21,7 @@ images:
       - "v2.1.5"
       - "v2.2.2"
       - "v2.3.2"
+      - "v2.4.2"
     destinations:
       - registry.sighup.io/fury/goharbor/clair-photon
 
@@ -32,6 +34,7 @@ images:
       - "v2.1.5"
       - "v2.2.2"
       - "v2.3.2"
+      - "v2.4.2"
     destinations:
       - registry.sighup.io/fury/goharbor/clair-adapter-photon
 
@@ -44,6 +47,7 @@ images:
       - "v2.1.5"
       - "v2.2.2"
       - "v2.3.2"
+      - "v2.4.2"
     destinations:
       - registry.sighup.io/fury/goharbor/harbor-core
 
@@ -56,6 +60,7 @@ images:
       - "v2.1.5"
       - "v2.2.2"
       - "v2.3.2"
+      - "v2.4.2"
     destinations:
       - registry.sighup.io/fury/goharbor/harbor-jobservice
 
@@ -68,6 +73,7 @@ images:
       - "v2.1.5"
       - "v2.2.2"
       - "v2.3.2"
+      - "v2.4.2"
     destinations:
       - registry.sighup.io/fury/goharbor/notary-server-photon
 
@@ -80,6 +86,7 @@ images:
       - "v2.1.5"
       - "v2.2.2"
       - "v2.3.2"
+      - "v2.4.2"
     destinations:
       - registry.sighup.io/fury/goharbor/notary-signer-photon
 
@@ -92,6 +99,7 @@ images:
       - "v2.1.5"
       - "v2.2.2"
       - "v2.3.2"
+      - "v2.4.2"
     destinations:
       - registry.sighup.io/fury/goharbor/harbor-portal
 
@@ -104,6 +112,7 @@ images:
       - "v2.1.5"
       - "v2.2.2"
       - "v2.3.2"
+      - "v2.4.2"
     destinations:
       - registry.sighup.io/fury/goharbor/registry-photon
 
@@ -116,6 +125,7 @@ images:
       - "v2.1.5"
       - "v2.2.2"
       - "v2.3.2"
+      - "v2.4.2"
     destinations:
       - registry.sighup.io/fury/goharbor/harbor-registryctl
 
@@ -128,6 +138,7 @@ images:
       - "v2.1.5"
       - "v2.2.2"
       - "v2.3.2"
+      - "v2.4.2"
     destinations:
       - registry.sighup.io/fury/goharbor/redis-photon
 
@@ -140,6 +151,7 @@ images:
       - "v2.1.5"
       - "v2.2.2"
       - "v2.3.2"
+      - "v2.4.2"
     destinations:
       - registry.sighup.io/fury/goharbor/harbor-db
 
@@ -151,5 +163,6 @@ images:
       - "v2.1.5"
       - "v2.2.2"
       - "v2.3.2"
+      - "v2.4.2"
     destinations:
       - registry.sighup.io/fury/goharbor/trivy-adapter-photon
