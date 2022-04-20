@@ -17,6 +17,7 @@ images:
     source: gcr.io/istio-release/proxyv2
     tag:
       - "1.9.5"
+      - "1.12.6"
     destinations:
       - registry.sighup.io/fury/istio/proxyv2
 
@@ -59,6 +60,7 @@ images:
     source: gcr.io/istio-release/pilot
     tag:
       - "1.9.5"
+      - "1.12.6"
     destinations:
       - registry.sighup.io/fury/istio/pilot
 
@@ -66,6 +68,7 @@ images:
     source: gcr.io/istio-release/operator
     tag:
       - "1.9.5"
+      - "1.12.6"
     destinations:
       - registry.sighup.io/fury/istio/operator
 
