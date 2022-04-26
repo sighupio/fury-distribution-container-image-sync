@@ -36,4 +36,4 @@ jobs:
         sudo chmod +x /usr/bin/yq
     - name: Iterate
       run: |
-        ./single_sync.sh modules/postgresql/images.yml
+        ./single_sync.sh modules/postgresql/images.yml false
