@@ -68,6 +68,7 @@ images:
       - "1.8.9"
       - "1.8.10"
       - "1.8.13"
+      - "1.8.15"
     destinations:
       - registry.sighup.io/fury/fluent/fluent-bit
 
