@@ -125,6 +125,7 @@ images:
   - name: Kong Mesh Control Plane
     source: docker.io/kong/kuma-cp
     tag:
+      - "1.7.0"
       - "1.5.1"
       - "1.5.0"
       - "1.4.1"
@@ -136,6 +137,7 @@ images:
   - name: Kong Mesh Data Plane
     source: docker.io/kong/kuma-dp
     tag:
+      - "1.7.0"
       - "1.5.1"
       - "1.5.0"
       - "1.4.1"
@@ -147,6 +149,7 @@ images:
   - name: Kong Mesh Prometheus Service Discovery
     source: docker.io/kong/kuma-prometheus-sd
     tag:
+      - "1.7.0"
       - "1.5.1"
       - "1.5.0"
       - "1.4.1"
@@ -158,6 +161,7 @@ images:
   - name: Kong Mesh Init
     source: docker.io/kong/kuma-init
     tag:
+      - "1.7.0"
       - "1.5.1"
       - "1.5.0"
       - "1.4.1"
