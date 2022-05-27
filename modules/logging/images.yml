@@ -71,6 +71,7 @@ images:
       - "1.8.10"
       - "1.8.13"
       - "1.8.15"
+      - "1.9.3"
     destinations:
       - registry.sighup.io/fury/fluent/fluent-bit
 
@@ -108,6 +109,7 @@ images:
     tag:
       - "3.17.0"
       - "3.17.2"
+      - "3.17.6"
     destinations:
       - registry.sighup.io/fury/banzaicloud/logging-operator
 
@@ -116,6 +118,7 @@ images:
     tag:
       - "v1.14.4-alpine-1"
       - "v1.14.5-alpine-1"
+      - "v1.14.6-alpine-5"
     destinations:
       - registry.sighup.io/fury/banzaicloud/fluentd
 
