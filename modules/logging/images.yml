@@ -3,6 +3,7 @@ images:
     source: opensearchproject/opensearch
     tag:
       - "1.2.4"
+      - "2.0.0"
     destinations:
       - registry.sighup.io/fury/opensearchproject/opensearch
 
@@ -10,6 +11,7 @@ images:
     source: opensearchproject/opensearch-dashboards
     tag:
       - "1.2.0"
+      - "2.0.0"
     destinations:
       - registry.sighup.io/fury/opensearchproject/opensearch-dashboards
 
