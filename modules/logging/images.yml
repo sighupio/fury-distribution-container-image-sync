@@ -1,4 +1,11 @@
 images:
+  - name: loki
+    source: grafana/loki
+    tag:
+      - "2.4.2"
+    destinations:
+      - registry.sighup.io/fury/grafana/loki
+
   - name: Opensearch
     source: opensearchproject/opensearch
     tag:
@@ -26,16 +33,16 @@ images:
     destinations:
       - registry.sighup.io/fury/lmenezes/cerebro
 
-  - name: Curator [Fury Kubernetes Logging]
-    source: quay.io/sighup/curator
-    tag:
-      - "5.6.0_3.7-alpine_3.13"
-      - "5.8.1_3.7-alpine_3.13"
-      - "5.8.1_3.7-alpine_5.3.1"
-      - "5.8.3_3.8-alpine_3.13"
-      - "5.8.4_3.8-alpine"
-    destinations:
-      - registry.sighup.io/fury/curator
+#  - name: Curator [Fury Kubernetes Logging]
+#    source: quay.io/sighup/curator
+#    tag:
+#      - "5.6.0_3.7-alpine_3.13"
+#      - "5.8.1_3.7-alpine_3.13"
+#      - "5.8.1_3.7-alpine_5.3.1"
+#      - "5.8.3_3.8-alpine_3.13"
+#      - "5.8.4_3.8-alpine"
+#    destinations:
+#      - registry.sighup.io/fury/curator
 
   - name: ElasticSearch Exporter [Fury Kubernetes Logging]
     source: docker.io/justwatch/elasticsearch_exporter
@@ -44,19 +51,19 @@ images:
     destinations:
       - registry.sighup.io/fury/justwatch/elasticsearch_exporter
 
-  - name: ElasticSearch [Fury Kubernetes Logging]
-    source: docker.elastic.co/elasticsearch/elasticsearch
-    tag:
-      - "6.4.1"
-      - "6.8.6"
-      - "6.8.21"
-      - "7.9.1"
-      - "7.10.1"
-      - "7.13.0"
-      - "7.13.3"
-      - "7.16.2"
-    destinations:
-      - registry.sighup.io/fury/elasticsearch
+#  - name: ElasticSearch [Fury Kubernetes Logging]
+#    source: docker.elastic.co/elasticsearch/elasticsearch
+#    tag:
+#      - "6.4.1"
+#      - "6.8.6"
+#      - "6.8.21"
+#      - "7.9.1"
+#      - "7.10.1"
+#      - "7.13.0"
+#      - "7.13.3"
+#      - "7.16.2"
+#    destinations:
+#      - registry.sighup.io/fury/elasticsearch
 
   - name: Fluent-Bit [Fury Kubernetes Logging]
     source: docker.io/fluent/fluent-bit
@@ -75,34 +82,34 @@ images:
     destinations:
       - registry.sighup.io/fury/fluent/fluent-bit
 
-  - name: Fluentd [Fury Kubernetes Logging]
-    source: quay.io/sighup/fluentd-elasticsearch
-    tag:
-      - "v1.10.2-debian-1.0"
-      - "v1.11.2-debian-1.0"
-      - "v1.11.5-debian-1.0"
-      - "v1.12.3-debian-1.0"
-      - "v1.13.2-debian-1.0"
-      - "v1.13.3-debian-1.0"
-      - "v1.14.0-debian-1.0"
-      - "v1.14.2-debian-1.0"
-    destinations:
-      - registry.sighup.io/fury/fluentd-elasticsearch
+#  - name: Fluentd [Fury Kubernetes Logging]
+#    source: quay.io/sighup/fluentd-elasticsearch
+#    tag:
+#      - "v1.10.2-debian-1.0"
+#      - "v1.11.2-debian-1.0"
+#      - "v1.11.5-debian-1.0"
+#      - "v1.12.3-debian-1.0"
+#      - "v1.13.2-debian-1.0"
+#      - "v1.13.3-debian-1.0"
+#      - "v1.14.0-debian-1.0"
+#      - "v1.14.2-debian-1.0"
+#    destinations:
+#      - registry.sighup.io/fury/fluentd-elasticsearch
 
-  - name: Kibana [Fury Kubernetes Logging]
-    source: docker.elastic.co/kibana/kibana
-    tag:
-      - "6.4.1"
-      - "6.8.6"
-      - "6.8.8"
-      - "6.8.21"
-      - "7.9.1"
-      - "7.10.1"
-      - "7.13.0"
-      - "7.13.3"
-      - "7.16.2"
-    destinations:
-      - registry.sighup.io/fury/kibana
+#  - name: Kibana [Fury Kubernetes Logging]
+#    source: docker.elastic.co/kibana/kibana
+#    tag:
+#      - "6.4.1"
+#      - "6.8.6"
+#      - "6.8.8"
+#      - "6.8.21"
+#      - "7.9.1"
+#      - "7.10.1"
+#      - "7.13.0"
+#      - "7.13.3"
+#      - "7.16.2"
+#    destinations:
+#      - registry.sighup.io/fury/kibana
 
   - name: Logging Operator
     source: ghcr.io/banzaicloud/logging-operator
