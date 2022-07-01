@@ -1,7 +1,9 @@
+<!-- markdownlint-disable MD033 -->
 <h1>
     <img src="https://github.com/sighupio/fury-distribution/blob/master/docs/assets/fury-epta-white.png?raw=true" align="left" width="90" style="margin-right: 15px"/>
     Kubernetes Fury Distribution - Container Image Sync
 </h1>
+<!-- markdownlint-enable MD033 -->
 
 This is a simple mechanism that pulls and pushes container images based on a configuration file (`yaml`).
 
@@ -9,6 +11,7 @@ The main goal for this repository is to have a central location used to sync on 
 upstream images used by all the Fury modules.
 
 Features:
+
 - Configurable via YAML files
 - Skips images if the layers between src and dest are the same using `skopeo`
 - Everything is executed with two bash scripts: `sync.sh` and `single_sync.sh`

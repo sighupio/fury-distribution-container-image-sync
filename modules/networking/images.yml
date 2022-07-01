@@ -1,5 +1,4 @@
 images:
-
   - name: Calico Kube Controllers [Fury Networking Module]
     source: docker.io/calico/kube-controllers
     tag:
@@ -12,6 +11,7 @@ images:
       - "v3.19.2"
       - "v3.21.2"
       - "v3.21.3"
+      - "v3.23.2"
     destinations:
       - registry.sighup.io/fury/calico/kube-controllers
 
@@ -27,6 +27,7 @@ images:
       - "v3.19.2"
       - "v3.21.2"
       - "v3.21.3"
+      - "v3.23.2"
     destinations:
       - registry.sighup.io/fury/calico/cni
 
@@ -57,6 +58,7 @@ images:
       - "v3.19.2"
       - "v3.21.2"
       - "v3.21.3"
+      - "v3.23.2"
     destinations:
       - registry.sighup.io/fury/calico/node
 
