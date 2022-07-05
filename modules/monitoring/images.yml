@@ -1,11 +1,4 @@
 images:
-  - name: Heptio gangway [Fury Monitoring Module ]
-    source: gcr.io/heptio-images/gangway
-    tag:
-      - "v3.2.0"
-    destinations:
-      - registry.sighup.io/fury/heptio-images/gangway
-
   - name: Prometheus adapter direcxman [Fury Monitoring Module]
     source: docker.io/directxman12/k8s-prometheus-adapter-amd64
     tag:
@@ -14,7 +7,7 @@ images:
       - registry.sighup.io/fury/directxman12/k8s-prometheus-adapter-amd64
 
 
-  - name: Alert Manager [Fury Monitoring Module]
+  - name: Alertmanager [Fury Monitoring Module]
     source: quay.io/prometheus/alertmanager
     tag:
       - "v0.16.0"
@@ -36,7 +29,7 @@ images:
     destinations:
       - registry.sighup.io/fury/bloomberg/goldpinger
 
-  - name: Grafana SideCar [Fury Monitoring Module]
+  - name: Grafana side-car [Fury Monitoring Module]
     source: docker.io/kiwigrid/k8s-sidecar
     tag:
       - "0.1.193"
@@ -66,6 +59,7 @@ images:
     tag:
       - "v0.10.0"
       - "v0.11.0"
+      - "v0.12.0"
     destinations:
       - registry.sighup.io/fury/brancz/kube-rbac-proxy
 
@@ -141,6 +135,7 @@ images:
       - "v0.49.0"
       - "v0.50.0"
       - "v0.53.1"
+      - "v0.57.0"
     destinations:
       - registry.sighup.io/fury/prometheus-operator/prometheus-operator
 
@@ -161,6 +156,7 @@ images:
       - "v0.48.1"
       - "v0.50.0"
       - "v0.53.1"
+      - "v0.57.0"
     destinations:
       - registry.sighup.io/fury/prometheus-operator/prometheus-config-reloader
 
