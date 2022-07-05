@@ -1,11 +1,4 @@
 images:
-  - name: Heptio gangway [Fury Monitoring Module ]
-    source: gcr.io/heptio-images/gangway
-    tag:
-      - "v3.2.0"
-    destinations:
-      - registry.sighup.io/fury/heptio-images/gangway
-
   - name: Prometheus adapter direcxman [Fury Monitoring Module]
     source: docker.io/directxman12/k8s-prometheus-adapter-amd64
     tag:
