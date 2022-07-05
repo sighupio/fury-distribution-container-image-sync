@@ -16,6 +16,7 @@ images:
       - "v0.22.1"
       - "v0.22.2"
       - "v0.23.0"
+      - "v0.24.0"
     destinations:
       - registry.sighup.io/fury/prometheus/alertmanager
 
