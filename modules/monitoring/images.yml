@@ -7,7 +7,7 @@ images:
       - registry.sighup.io/fury/directxman12/k8s-prometheus-adapter-amd64
 
 
-  - name: Alert Manager [Fury Monitoring Module]
+  - name: Alertmanager [Fury Monitoring Module]
     source: quay.io/prometheus/alertmanager
     tag:
       - "v0.16.0"
@@ -29,7 +29,7 @@ images:
     destinations:
       - registry.sighup.io/fury/bloomberg/goldpinger
 
-  - name: Grafana SideCar [Fury Monitoring Module]
+  - name: Grafana side-car [Fury Monitoring Module]
     source: docker.io/kiwigrid/k8s-sidecar
     tag:
       - "0.1.193"
