@@ -115,8 +115,10 @@ images:
       - "v2.28.1"
       - "v2.29.1"
       - "v2.32.1"
+      - "v2.36.1"
     destinations:
       - registry.sighup.io/fury/prometheus
+      - registry.sighup.io/fury/prometheus/prometheus
 
   - name: prometheus-operator [Fury Monitoring Module]
     source: quay.io/coreos/prometheus-operator
