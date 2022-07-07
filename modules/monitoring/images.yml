@@ -20,6 +20,13 @@ images:
     destinations:
       - registry.sighup.io/fury/prometheus/alertmanager
 
+  - name: blackbox-exporter [Fury Monitoring Module]
+    source: quay.io/prometheus/blackbox-exporter
+    tag:
+      - "v0.21.0"
+    destinations:
+      - registry.sighup.io/fury/prometheus/blackbox-exporter
+
   - name: Goldpinger [Fury Monitoring Module]
     source: docker.io/bloomberg/goldpinger
     tag:
