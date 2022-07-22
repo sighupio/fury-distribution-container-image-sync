@@ -12,10 +12,11 @@ images:
       - "v3.6.0"
       - "v3.7.0"
       - "v3.8.1"
+      - "v3.9.0"
     destinations:
       - registry.sighup.io/fury/openpolicyagent/gatekeeper
 
-  - name: Gatekeeper [Fury OPA Module]
+  - name: Gatekeeper Policy Manager [Fury OPA Module]
     source: quay.io/sighup/gatekeeper-policy-manager
     tag:
       - "v0.4.1"
