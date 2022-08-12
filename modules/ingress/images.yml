@@ -19,17 +19,6 @@ images:
     destinations:
       - registry.sighup.io/fury/tpimenta/nginx-ldap-auth
 
-  - name: pomerium [Fury Kubernetes Ingress]
-    source: docker.io/pomerium/pomerium
-    tag:
-      - "v0.14.4"
-      - "v0.14.7"
-      - "v0.14.7"
-      - "v0.15.0"
-      - "v0.15.8"
-    destinations:
-      - registry.sighup.io/fury/pomerium/pomerium
-
   - name: Forecastle [Fury Kubernetes Ingress]
     source: docker.io/stakater/forecastle
     tag:
@@ -43,7 +32,6 @@ images:
       - "v1.0.75"
     destinations:
       - registry.sighup.io/fury/stakater/forecastle
-
 
   - name: CA Injector - Cert Manager [Fury Kubernetes Ingress]
     source: quay.io/jetstack/cert-manager-cainjector

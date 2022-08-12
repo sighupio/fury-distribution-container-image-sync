@@ -1,9 +1,0 @@
-images:
-
-  - name: Dex Identity Provider
-    source: quay.io/dexidp/dex
-    tag:
-      - "v2.20.0"
-      - "v2.13.0"
-    destinations:
-      - registry.sighup.io/fury/dexidp/dex
