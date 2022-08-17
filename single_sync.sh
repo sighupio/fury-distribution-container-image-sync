@@ -51,7 +51,7 @@ do
               ARG_VALUE=$(yq e '.images['"${c}"'].build.args['"${a}"'].value' $1)
               BUILD_ARGS=$BUILD_ARGS" --build-arg "$ARG_NAME"="$ARG_VALUE
           done
-          docker build $BUILD_ARGS -t ${SRC}:${LOCAL_TAG} $(dirname $1)/${CONTEXT}
+          docker build $BUILD_ARGS --build-arg IMAGETAG=${LOCAL_TAG} -t ${SRC}:${LOCAL_TAG} $(dirname $1)/${CONTEXT}
         fi
 
         for (( d=0; d<${DST}; d++ ))

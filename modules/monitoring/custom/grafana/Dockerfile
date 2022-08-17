@@ -1,8 +1,8 @@
 # From: https://github.com/grafana/grafana/blob/81957732abf01c9df88307c5f41a12c9f117c0c2/packaging/docker/custom/Dockerfile
 
-ARG GRAFANA_VERSION="latest"
+ARG IMAGETAG="latest"
 
-FROM grafana/grafana:${GRAFANA_VERSION}
+FROM grafana/grafana:${IMAGETAG}
 
 USER root
 

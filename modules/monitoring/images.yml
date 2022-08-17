@@ -56,8 +56,6 @@ images:
     build:
       context: custom/grafana
       args:
-        - name: GRAFANA_VERSION
-          value: 8.5.5
         - name: GF_INSTALL_PLUGINS
           value: grafana-clock-panel,grafana-simple-json-datasource
     tag:
