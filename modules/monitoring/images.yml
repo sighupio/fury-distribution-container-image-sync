@@ -52,15 +52,15 @@ images:
       - registry.sighup.io/fury/kiwigrid/k8s-sidecar
 
   - name: Grafana [Fury Monitoring Module]
-    source: docker.io/grafana/grafana
+    source: grafana
+    build:
+      context: custom/grafana
+      args:
+        - name: GRAFANA_VERSION
+          value: 8.5.5
+        - name: GF_INSTALL_PLUGINS
+          value: grafana-clock-panel,grafana-simple-json-datasource
     tag:
-      - "6.6.2"
-      - "7.1.5"
-      - "7.3.6"
-      - "7.5.7"
-      - "8.0.6"
-      - "8.1.2"
-      - "8.3.3"
       - "8.5.5"
     destinations:
       - registry.sighup.io/fury/grafana/grafana
