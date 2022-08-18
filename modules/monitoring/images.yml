@@ -57,7 +57,7 @@ images:
       context: custom/grafana
       args:
         - name: GF_INSTALL_PLUGINS
-          value: grafana-clock-panel,grafana-simple-json-datasource
+          value: grafana-piechart-panel
     tag:
       - "8.5.5"
     destinations:
