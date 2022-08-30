@@ -31,9 +31,11 @@ jobs:
         password: ${{ secrets.SIGHUP_NEW_REGISTRY_PASSWORD }}
     - name: Install yq
       run: |
-        sudo apt-get update && sudo apt-get install -yqq wget skopeo
+        sudo apt-get update && sudo apt-get install -yqq wget
         sudo wget -q https://github.com/mikefarah/yq/releases/download/v4.19.1/yq_linux_amd64 -O /usr/bin/yq
         sudo chmod +x /usr/bin/yq
     - name: Iterate
       run: |
+        yq --version
+        docker run --rm quay.io/skopeo/stable:v1.9.2 --version
         ./single_sync.sh modules/kong/images.yml false
