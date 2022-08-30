@@ -7,7 +7,7 @@ on:
 
 jobs:
   sync:
-    runs-on: ubuntu-22.04
+    runs-on: macos-12
     steps:
     - uses: actions/checkout@master
     - name: Login to Docker Hub
@@ -29,9 +29,7 @@ jobs:
         password: ${{ secrets.SIGHUP_NEW_REGISTRY_PASSWORD }}
     - name: Install yq and skopeo
       run: |
-        sudo apt-get update && sudo apt-get install -yqq wget skopeo
-        sudo wget -q https://github.com/mikefarah/yq/releases/download/v4.19.1/yq_linux_amd64 -O /usr/bin/yq
-        sudo chmod +x /usr/bin/yq
+        sudo brew install yq skopeo
         yq --version
         skopeo --version
     - name: Iterate
