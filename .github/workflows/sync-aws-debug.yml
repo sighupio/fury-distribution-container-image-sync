@@ -7,7 +7,7 @@ on:
 
 jobs:
   sync:
-    runs-on: macos-12
+    runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@master
     - name: Login to Docker Hub
@@ -27,11 +27,13 @@ jobs:
         registry: registry.sighup.io
         username: ${{ secrets.SIGHUP_NEW_REGISTRY_USERNAME }}
         password: ${{ secrets.SIGHUP_NEW_REGISTRY_PASSWORD }}
-    - name: Install yq and skopeo
+    - name: Install yq
       run: |
-        sudo brew install yq skopeo
-        yq --version
-        skopeo --version
+        sudo apt-get update && sudo apt-get install -yqq wget
+        sudo wget -q https://github.com/mikefarah/yq/releases/download/v4.19.1/yq_linux_amd64 -O /usr/bin/yq
+        sudo chmod +x /usr/bin/yq
     - name: Iterate
       run: |
+        yq --version
+        docker run -it --rm quay.io/skopeo/stable:v1.9.2 --version
         ./single_sync.sh modules/aws/images.yml false
