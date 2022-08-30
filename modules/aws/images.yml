@@ -1,0 +1,7 @@
+images:
+  - name: aws-node-termination-handler [Fury Kubernetes AWS]
+    source: public.ecr.aws/aws-ec2/aws-node-termination-handler
+    tag:
+      - "v1.17.1"
+    destinations:
+      - registry.sighup.io/fury/aws-ec2/aws-node-termination-handler
