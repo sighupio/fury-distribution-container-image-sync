@@ -5,3 +5,10 @@ images:
       - "v1.17.1"
     destinations:
       - registry.sighup.io/fury/aws-ec2/aws-node-termination-handler
+
+  - name: cluster-autoscaler [Fury Kubernetes AWS]
+    source: k8s.gcr.io/autoscaling/cluster-autoscaler
+    tag:
+      - "v1.23.0"
+    destinations:
+      - registry.sighup.io/fury/autoscaling/cluster-autoscaler
