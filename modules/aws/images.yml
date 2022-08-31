@@ -12,3 +12,10 @@ images:
       - "v1.23.0"
     destinations:
       - registry.sighup.io/fury/autoscaling/cluster-autoscaler
+
+  - name: aws load balancer controller [Fury Kubernetes AWS]
+    source: amazon/aws-alb-ingress-controller
+    tag:
+      - "v2.4.3"
+    destinations:
+      - registry.sighup.io/fury/amazon/aws-alb-ingress-controller
