@@ -19,3 +19,53 @@ images:
       - "v2.4.3"
     destinations:
       - registry.sighup.io/fury/amazon/aws-alb-ingress-controller
+
+  - name: aws ebs csi driver [Fury Kubernetes AWS]
+    source: public.ecr.aws/ebs-csi-driver/aws-ebs-csi-driver
+    tag:
+      - "v1.11.2"
+    destinations:
+      - registry.sighup.io/fury/ebs-csi-driver/aws-ebs-csi-driver
+
+  - name: csi node driver registrar [Fury Kubernetes AWS]
+    source: k8s.gcr.io/sig-storage/csi-node-driver-registrar
+    tag:
+      - "v2.5.1"
+    destinations:
+      - registry.sighup.io/fury/sig-storage/csi-node-driver-registrar
+
+  - name: livenessprobe [Fury Kubernetes AWS]
+    source: k8s.gcr.io/sig-storage/livenessprobe
+    tag:
+      - "v2.6.0"
+    destinations:
+      - registry.sighup.io/fury/sig-storage/livenessprobe
+
+  - name: csi provisioner [Fury Kubernetes AWS]
+    source: k8s.gcr.io/sig-storage/csi-provisioner
+    tag:
+      - "v3.1.0"
+    destinations:
+      - registry.sighup.io/fury/sig-storage/csi-provisioner
+
+  - name: csi attacher [Fury Kubernetes AWS]
+    source: k8s.gcr.io/sig-storage/csi-attacher
+    tag:
+      - "v3.4.0"
+    destinations:
+      - registry.sighup.io/fury/sig-storage/csi-attacher
+
+  - name: csi resizer [Fury Kubernetes AWS]
+    source: k8s.gcr.io/sig-storage/csi-resizer
+    tag:
+      - "v1.4.0"
+    destinations:
+      - registry.sighup.io/fury/sig-storage/csi-resizer
+
+  - name: snapshot controller [Fury Kubernetes AWS]
+    source: gcr.io/k8s-staging-sig-storage/snapshot-controller
+    tag:
+      - "v5.0.1"
+    destinations:
+      - registry.sighup.io/fury/sig-storage/snapshot-controller
+
