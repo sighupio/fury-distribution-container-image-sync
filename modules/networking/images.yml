@@ -40,7 +40,7 @@ images:
     destinations:
       - registry.sighup.io/fury/calico/cni
 
-  # Flexvol is not in use anymore since Calico 3.23
+  # Flexvol is not in use anymore since Calico 3.23 for the manifests installation but the operator seems to still be using it
   - name: Calico pod2daemon-flexvol [Fury Networking Module]
     source: docker.io/calico/pod2daemon-flexvol
     tag:
@@ -53,6 +53,7 @@ images:
       - "v3.19.2"
       - "v3.21.2"
       - "v3.21.3"
+      - "v3.24.1"
     destinations:
       - registry.sighup.io/fury/calico/pod2daemon-flexvol
 
@@ -72,6 +73,34 @@ images:
       - "v3.24.1"
     destinations:
       - registry.sighup.io/fury/calico/node
+
+  - name: Calico API Server [Fury Networking Module]
+    source: docker.io/calico/apiserver
+    tag:
+      - "v3.24.1"
+    destinations:
+      - registry.sighup.io/fury/calico/apiserver
+
+  - name: Calico Typha [Fury Networking Module]
+    source: docker.io/calico/typha
+    tag:
+      - "v3.24.1"
+    destinations:
+      - registry.sighup.io/fury/calico/typha
+
+  - name: Calico CSI [Fury Networking Module]
+    source: docker.io/calico/csi
+    tag:
+      - "v3.24.1"
+    destinations:
+      - registry.sighup.io/fury/calico/csi
+
+  - name: Calico Node Registrar [Fury Networking Module]
+    source: docker.io/calico/node-driver-registrar
+    tag:
+      - "v3.24.1"
+    destinations:
+      - registry.sighup.io/fury/calico/node-driver-registrar
 
   - name: Curl image used for Calico tests [Fury Networking Module]
     source: docker.io/curlimages/curl
