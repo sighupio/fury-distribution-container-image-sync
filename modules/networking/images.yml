@@ -3,7 +3,7 @@ images:
     source: quay.io/tigera/operator
     tag:
       - "v1.28.1"
-    destination:
+    destinations:
       - registry.sighup.io/fury/tigera/operator
 
   - name: Calico Kube Controllers [Fury Networking Module]
