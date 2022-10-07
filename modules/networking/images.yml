@@ -2,7 +2,7 @@ images:
   - name: Tigera Operator [Fury Networking Module]
     source: quay.io/tigera/operator
     tag:
-      - "1.28.1"
+      - "v1.28.1"
     destination:
       - registry.sighup.io/fury/tigera/operator
 
