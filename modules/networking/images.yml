@@ -1,4 +1,11 @@
 images:
+  - name: Tigera Operator [Fury Networking Module]
+    source: quay.io/tigera/operator
+    tag:
+      - "1.28.1"
+    destination:
+      - registry.sighup.io/fury/tigera/operator
+
   - name: Calico Kube Controllers [Fury Networking Module]
     source: docker.io/calico/kube-controllers
     tag:
