@@ -128,4 +128,4 @@ images:
     tag:
       - "v2.8.0"
     destinations:
-      - registry.sighup.io/fury/networking/ip-masq-agent-amd64
+      - registry.sighup.io/fury/networking/ip-masq-agent
