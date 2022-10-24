@@ -1,4 +1,4 @@
-name: "Sync Auth"
+name: "Sync AUTH"
 
 on:
   push:
