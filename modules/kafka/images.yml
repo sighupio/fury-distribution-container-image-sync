@@ -1,0 +1,47 @@
+images:
+  - name: Strimzi operator image [Fury Kubernetes Kafka]
+    source: quay.io/strimzi/operator
+    tag:
+      - "0.31.1"
+    destinations:
+      - registry.sighup.io/fury/strimzi/operator
+
+  - name: Strimzi Kafka Image [Fury Kubernetes Kafka]
+    source: quay.io/strimzi/kafka
+    tag:
+      - "0.31.1-kafka-3.1.0"
+      - "0.31.1-kafka-3.1.1"
+      - "0.31.1-kafka-3.1.2"
+      - "0.31.1-kafka-3.2.0"
+      - "0.31.1-kafka-3.2.1"
+      - "0.31.1-kafka-3.2.3"
+    destinations:
+      - registry.sighup.io/fury/strimzi/kafka
+
+  - name: Strimzi Kafka Bridge [Fury Kubernetes Kafka]
+    source: quay.io/strimzi/kafka-bridge
+    tag:
+      - "0.22.1"
+    destinations:
+      - registry.sighup.io/fury/strimzi/kafka-bridge
+
+  - name: Strimzi JXMtrans [Fury Kubernetes Kafka]
+    source: quay.io/strimzi/jmxtrans
+    tag:
+      - "0.31.1"
+    destinations:
+      - registry.sighup.io/fury/strimzi/jmxtrans
+
+  - name: Strimzi Kaniko Executor [Fury Kubernetes Kafka]
+    source: quay.io/strimzi/kaniko-executor
+    tag:
+      - "0.31.1"
+    destinations:
+      - registry.sighup.io/fury/strimzi/kaniko-executor
+
+  - name: Strimzi Maven builder [Fury Kubernetes Kafka]
+    source: quay.io/strimzi/maven-builder
+    tag:
+      - "0.31.1"
+    destinations:
+      - registry.sighup.io/fury/strimzi/maven-builder
