@@ -15,6 +15,7 @@ images:
     tag:
       - "v2.20.0"
       - "v2.13.0"
+      - "v2.35.3"
     destinations:
       - registry.sighup.io/fury/dexidp/dex
 
