@@ -176,6 +176,7 @@ images:
       - "v1.22.9"
       - "v1.23.6"
       - "v1.24.0"
+      - "v1.24.7"
     destinations:
       - registry.sighup.io/fury/kindest/node
 
