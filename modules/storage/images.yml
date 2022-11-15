@@ -1,0 +1,112 @@
+images:
+  - name: Ceph [Fury Storage Module]
+    source: quay.io/ceph/ceph
+    tag:
+      - "v17.2.5"
+    destinations:
+      - registry.sighup.io/fury/ceph/ceph
+
+  - name: Ceph CSI [Fury Storage Module]
+    source: quay.io/cephcsi/cephcsi
+    tag:
+      - "v3.7.2"
+    destinations:
+      - registry.sighup.io/fury/cephcsi/cephcsi
+
+  - name: CSI Add-ons [Fury Storage Module]
+    source: quay.io/csiaddons/k8s-sidecar
+    tag:
+      - "v0.5.0"
+    destinations:
+      - registry.sighup.io/fury/csiaddons/csiaddons
+
+  - name: CSI Attacher [Fury Storage Module]
+    source: registry.k8s.io/sig-storage/csi-attacher
+    tag:
+      - "v4.0.0"
+    destinations:
+      - registry.sighup.io/fury/sig-storage/csi-attacher
+
+  - name: CSI Node Driver Registrar [Fury Storage Module]
+    source: registry.k8s.io/sig-storage/csi-node-driver-registrar
+    tag:
+      - "v2.5.1"
+    destinations:
+      - registry.sighup.io/fury/sig-storage/csi-node-driver-registrar
+
+  - name: CSI Provisioner[Fury Storage Module]
+    source: registry.k8s.io/sig-storage/csi-provisioner
+    tag:
+      - "v3.3.0"
+    destinations:
+      - registry.sighup.io/fury/sig-storage/csi-provisioner
+
+  - name: CSI Resizer [Fury Storage Module]
+    source: registry.k8s.io/sig-storage/csi-resizer
+    tag:
+      - "v1.6.0"
+    destinations:
+      - registry.sighup.io/fury/sig-storage/csi-resizer
+
+  - name: CSI Snapshotter [Fury Storage Module]
+    source: registry.k8s.io/sig-storage/csi-snapshotter
+    tag:
+      - "v6.1.0"
+    destinations:
+      - registry.sighup.io/fury/sig-storage/csi-snapshotterr
+
+  - name: Rook Ceph [Fury Storage Module]
+    source: rook/ceph
+    tag:
+      - "v1.10.5"
+    destinations:
+      - registry.sighup.io/fury/rook/ceph
+
+  - name: csi node driver registrar [Fury Kubernetes AWS]
+    source: k8s.gcr.io/sig-storage/csi-node-driver-registrar
+    tag:
+      - "v2.5.1"
+    destinations:
+      - registry.sighup.io/fury/sig-storage/csi-node-driver-registrar
+
+  - name: livenessprobe [Fury Kubernetes AWS]
+    source: k8s.gcr.io/sig-storage/livenessprobe
+    tag:
+      - "v2.6.0"
+    destinations:
+      - registry.sighup.io/fury/sig-storage/livenessprobe
+
+  - name: csi provisioner [Fury Kubernetes AWS]
+    source: k8s.gcr.io/sig-storage/csi-provisioner
+    tag:
+      - "v3.1.0"
+    destinations:
+      - registry.sighup.io/fury/sig-storage/csi-provisioner
+
+  - name: csi attacher [Fury Kubernetes AWS]
+    source: k8s.gcr.io/sig-storage/csi-attacher
+    tag:
+      - "v3.4.0"
+    destinations:
+      - registry.sighup.io/fury/sig-storage/csi-attacher
+
+  - name: csi resizer [Fury Kubernetes AWS]
+    source: k8s.gcr.io/sig-storage/csi-resizer
+    tag:
+      - "v1.4.0"
+    destinations:
+      - registry.sighup.io/fury/sig-storage/csi-resizer
+
+  - name: snapshot controller [Fury Kubernetes AWS]
+    source: gcr.io/k8s-staging-sig-storage/snapshot-controller
+    tag:
+      - "v5.0.1"
+    destinations:
+      - registry.sighup.io/fury/sig-storage/snapshot-controller
+
+  - name: csi snapshotter [Fury Kubernetes AWS]
+    source: k8s.gcr.io/sig-storage/csi-snapshotter
+    tag:
+      - "v6.0.1"
+    destinations:
+      - registry.sighup.io/fury/sig-storage/csi-snapshotter
