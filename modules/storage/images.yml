@@ -53,7 +53,7 @@ images:
     tag:
       - "v6.1.0"
     destinations:
-      - registry.sighup.io/fury/sig-storage/csi-snapshotterr
+      - registry.sighup.io/fury/sig-storage/csi-snapshotter
 
   - name: Rook Ceph [Fury Storage Module]
     source: rook/ceph
