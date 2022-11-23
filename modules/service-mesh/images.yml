@@ -39,8 +39,8 @@ images:
   - name: Istio Kiali [Fury Kubernetes Service Mesh]
     source: quay.io/kiali/kiali
     tag:
-      - "1.9"
-      - "1.44.0"
+      - "v1.9"
+      - "v1.44.0"
     destinations:
       - registry.sighup.io/fury/kiali/kiali
 
