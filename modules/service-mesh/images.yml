@@ -40,6 +40,7 @@ images:
     source: quay.io/kiali/kiali
     tag:
       - "1.9"
+      - "1.44.0"
     destinations:
       - registry.sighup.io/fury/kiali/kiali
 
