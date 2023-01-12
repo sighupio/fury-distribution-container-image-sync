@@ -19,6 +19,7 @@ images:
       - "1.9.5"
       - "1.12.6"
       - "1.13.9"
+      - "1.15.4"
     destinations:
       - registry.sighup.io/fury/istio/proxyv2
 
@@ -64,6 +65,7 @@ images:
       - "1.9.5"
       - "1.12.6"
       - "1.13.9"
+      - "1.15.4"
     destinations:
       - registry.sighup.io/fury/istio/pilot
 
@@ -73,6 +75,7 @@ images:
       - "1.9.5"
       - "1.12.6"
       - "1.13.9"
+      - "1.15.4"
     destinations:
       - registry.sighup.io/fury/istio/operator
 
