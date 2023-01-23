@@ -1,7 +1,7 @@
 <!-- markdownlint-disable MD033 -->
 <h1>
     <img src="https://github.com/sighupio/fury-distribution/blob/main/docs/assets/fury-epta-white.png?raw=true" align="left" width="90" style="margin-right: 15px"/>
-    Kubernetes Fury Distribution - Container Image Sync
+    Kubernetes Fury Distribution <br/> Container Image Sync
 </h1>
 <!-- markdownlint-enable MD033 -->
 
