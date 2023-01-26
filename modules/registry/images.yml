@@ -177,3 +177,10 @@ images:
       - "v2.7.0"
     destinations:
       - registry.sighup.io/fury/goharbor/trivy-adapter-photon
+
+  - name: Harbor Exporter [Fury Kubernetes Registry]
+    source: docker.io/goharbor/harbor-exporter
+    tag:
+      - "v2.7.0"
+    destinations:
+      - registry.sighup.io/fury/goharbor/harbor-exporter
