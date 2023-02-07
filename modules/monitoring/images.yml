@@ -54,6 +54,7 @@ images:
       - "1.12.3"
       - "1.15.0"
       - "1.19.2"
+      - "1.22.2"
     destinations:
       - registry.sighup.io/fury/kiwigrid/k8s-sidecar
 
@@ -66,6 +67,7 @@ images:
           value: grafana-piechart-panel
     tag:
       - "8.5.5"
+      - "9.3.6"
     destinations:
       - registry.sighup.io/fury/grafana/grafana
 
