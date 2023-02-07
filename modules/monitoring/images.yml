@@ -67,6 +67,7 @@ images:
           value: grafana-piechart-panel
     tag:
       - "8.5.5"
+      - "9.3.2"
       - "9.3.6"
     destinations:
       - registry.sighup.io/fury/grafana/grafana
