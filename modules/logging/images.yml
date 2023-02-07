@@ -139,3 +139,9 @@ images:
     destinations:
       - registry.sighup.io/fury/banzaicloud/eventrouter
 
+  - name: Banzai configmap reloader
+    source: ghcr.io/banzaicloud/config-reloader
+    tag:
+      - "0.0.1"
+    destinations:
+      - registry.sighup.io/fury/banzaicloud/config-reloader
