@@ -11,6 +11,7 @@ images:
     tag:
       - "1.2.4"
       - "2.0.0"
+      - "2.5.0"
     destinations:
       - registry.sighup.io/fury/opensearchproject/opensearch
 
@@ -19,6 +20,7 @@ images:
     tag:
       - "1.2.0"
       - "2.0.0"
+      - "2.5.0"
     destinations:
       - registry.sighup.io/fury/opensearchproject/opensearch-dashboards
 
