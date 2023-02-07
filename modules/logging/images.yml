@@ -119,6 +119,7 @@ images:
       - "3.17.2"
       - "3.17.6"
       - "3.17.7"
+      - "3.17.10"
     destinations:
       - registry.sighup.io/fury/banzaicloud/logging-operator
 
