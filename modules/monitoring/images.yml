@@ -137,6 +137,7 @@ images:
       - "v2.29.1"
       - "v2.32.1"
       - "v2.36.1"
+      - "v2.41.0"
     destinations:
       - registry.sighup.io/fury/prometheus
       - registry.sighup.io/fury/prometheus/prometheus
@@ -159,6 +160,7 @@ images:
       - "v0.50.0"
       - "v0.53.1"
       - "v0.57.0"
+      - "v0.62.0"
     destinations:
       - registry.sighup.io/fury/prometheus-operator/prometheus-operator
 
@@ -180,6 +182,7 @@ images:
       - "v0.50.0"
       - "v0.53.1"
       - "v0.57.0"
+      - "v0.62.0"
     destinations:
       - registry.sighup.io/fury/prometheus-operator/prometheus-config-reloader
 
