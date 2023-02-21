@@ -65,6 +65,7 @@ images:
       - "v1.2"
       - "v1.4"
       - "v1.5.1"
+      - "v1.6"
     destinations:
       - registry.sighup.io/fury/groundnuty/k8s-wait-for
 
@@ -75,6 +76,7 @@ images:
       - "RELEASE.2020-09-17T04-49-20Z"
       - "RELEASE.2021-05-26T00-22-46Z"
       - "RELEASE.2022-10-24T18-35-07Z"
+      - "RELEASE.2023-01-12T02-06-16Z"
       - "RELEASE.2023-01-31T02-24-19Z"
     destinations:
       - registry.sighup.io/fury/minio
