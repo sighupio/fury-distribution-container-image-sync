@@ -31,6 +31,7 @@ images:
     source: quay.io/prometheus/blackbox-exporter
     tag:
       - "v0.21.0"
+      - "v0.23.0"
     destinations:
       - registry.sighup.io/fury/prometheus/blackbox-exporter
 
