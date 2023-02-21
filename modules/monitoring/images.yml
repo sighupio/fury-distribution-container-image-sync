@@ -102,6 +102,7 @@ images:
       - "v2.2.0"
       - "v2.3.0"
       - "v2.5.0"
+      - "v2.8.0"
     destinations:
       - registry.sighup.io/fury/kube-state-metrics/kube-state-metrics
 
