@@ -3,6 +3,7 @@ images:
     source: grafana/loki
     tag:
       - "2.4.2"
+      - "2.7.3"
     destinations:
       - registry.sighup.io/fury/grafana/loki
 
@@ -147,3 +148,17 @@ images:
       - "0.0.1"
     destinations:
       - registry.sighup.io/fury/banzaicloud/config-reloader
+
+  - name: Minio operator [Fury Kubernetes Logging]
+    source: docker.io/minio/operator
+    tag:
+      - "v4.5.8"
+    destinations:
+      - registry.sighup.io/fury/minio/operator
+
+  - name: NGINX unprivileged
+    source: docker.io/nginxinc/nginx-unprivileged
+    tag:
+      - "1.20.2-alpine"
+    destinations:
+      - registry.sighup.io/fury/nginxinc/nginx-unprivileged
