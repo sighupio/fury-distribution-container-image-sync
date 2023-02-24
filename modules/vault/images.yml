@@ -1,0 +1,17 @@
+images:
+
+  - name: Vault Sidecar Injector
+    source: hashicorp/vault-k8s
+    tag:
+      - "1.2.0"
+    destinations:
+      - registry.sighup.io/fury/vault/vault-k8s
+
+
+  - name: Vault Server
+    source: hashicorp/vault
+    tag:
+      - "1.12.3"
+      - "1.7.2"
+    destinations:
+      - registry.sighup.io/fury/vault/vault
