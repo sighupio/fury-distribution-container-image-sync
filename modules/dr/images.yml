@@ -11,6 +11,7 @@ images:
       - "v1.6.3"
       - "v1.7.1"
       - "v1.9.2"
+      - "v1.10.1"
     destinations:
       - registry.sighup.io/fury/velero/velero
 
@@ -23,6 +24,7 @@ images:
       - "v1.2.1"
       - "v1.3.0"
       - "v1.5.1"
+      - "v1.6.1"
     destinations:
       - registry.sighup.io/fury/velero/velero-plugin-for-aws
 
@@ -35,6 +37,7 @@ images:
       - "v1.2.1"
       - "v1.3.1"
       - "v1.5.1"
+      - "v1.6.1"
     destinations:
       - registry.sighup.io/fury/velero/velero-plugin-for-microsoft-azure
 
@@ -47,6 +50,7 @@ images:
       - "v1.2.1"
       - "v1.3.0"
       - "v1.5.1"
+      - "v1.6.1"
     destinations:
       - registry.sighup.io/fury/velero/velero-plugin-for-gcp
 
@@ -56,6 +60,7 @@ images:
       - "v0.1.2"
       - "v0.2.0"
       - "v0.3.1"
+      - "v0.4.1"
     destinations:
       - registry.sighup.io/fury/velero/velero-plugin-for-csi
 
@@ -66,6 +71,7 @@ images:
       - "v1.4"
       - "v1.5.1"
       - "v1.6"
+      - "v1.7"
     destinations:
       - registry.sighup.io/fury/groundnuty/k8s-wait-for
 
