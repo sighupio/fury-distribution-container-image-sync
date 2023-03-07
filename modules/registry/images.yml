@@ -184,3 +184,10 @@ images:
       - "v2.7.0"
     destinations:
       - registry.sighup.io/fury/goharbor/harbor-exporter
+
+  - name: Harbor Trivy Adapter Photon Offline [Fury Kubernetes Registry]
+    source: https://quay.io/repository/sighup/trivy-adapter-photon-offline
+    tag:
+      - "v2.7.0"
+    destinations:
+      - registry.sighup.io/fury/goharbor/trivy-adapter-photon-offline
