@@ -29,5 +29,103 @@ images:
     source: public.ecr.aws/ebs-csi-driver/aws-ebs-csi-driver
     tag:
       - "v1.11.2"
+      - "v1.16.1"
     destinations:
       - registry.sighup.io/fury/ebs-csi-driver/aws-ebs-csi-driver
+
+  - name: csi node driver registrar [Fury Kubernetes AWS]
+    source: public.ecr.aws/eks-distro/kubernetes-csi/node-driver-registrar
+    tag:
+      - "v2.7.0-eks-1-25-latest"
+    destinations:
+      - registry.sighup.io/fury/eks-distro/kubernetes-csi/csi-node-driver-registrar
+
+  - name: livenessprobe [Fury Kubernetes AWS]
+    source: public.ecr.aws/eks-distro/kubernetes-csi/livenessprobe
+    tag:
+      - "v2.9.0-eks-1-25-latest"
+    destinations:
+      - registry.sighup.io/fury/eks-distro/kubernetes-csi/livenessprobe
+
+  - name: csi provisioner [Fury Kubernetes AWS]
+    source: public.ecr.aws/eks-distro/kubernetes-csi/external-provisioner
+    tag:
+      - "v3.4.0-eks-1-25-latest"
+    destinations:
+      - registry.sighup.io/fury/eks-distro/kubernetes-csi/external-provisioner
+
+  - name: csi attacher [Fury Kubernetes AWS]
+    source: public.ecr.aws/eks-distro/kubernetes-csi/external-attacher
+    tag:
+      - "v4.1.0-eks-1-25-latest"
+    destinations:
+      - registry.sighup.io/fury/eks-distro/kubernetes-csi/external-attacher
+
+  - name: csi resizer [Fury Kubernetes AWS]
+    source: public.ecr.aws/eks-distro/kubernetes-csi/external-resizer
+    tag:
+      - "v1.7.0-eks-1-25-latest"
+    destinations:
+      - registry.sighup.io/fury/eks-distro/kubernetes-csi/external-resizer
+
+  - name: csi snapshotter [Fury Kubernetes AWS]
+    source: public.ecr.aws/eks-distro/kubernetes-csi/external-snapshotter/csi-snapshotter
+    tag:
+      - "v6.0.1"
+      - "v6.2.1-eks-1-25-latest"
+    destinations:
+      - registry.sighup.io/fury/eks-distro/kubernetes-csi/external-snapshotter/csi-snapshotter
+
+  - name: snapshot controller [Fury Kubernetes AWS]
+    source: registry.k8s.io/sig-storage/snapshot-controller
+    tag:
+      - "v5.0.1"
+      - "v6.2.1"
+    destinations:
+      - registry.sighup.io/fury/sig-storage/snapshot-controller
+
+
+
+# Deprecated sync, AWS changed the source registry from k8s.gcr.io to public.ecr.aws, some tags are not present in the new registry.
+
+  - name: csi node driver registrar [Fury Kubernetes AWS] - deprecated
+    source: k8s.gcr.io/sig-storage/csi-node-driver-registrar
+    tag:
+      - "v2.5.1"
+    destinations:
+      - registry.sighup.io/fury/sig-storage/csi-node-driver-registrar
+
+  - name: livenessprobe [Fury Kubernetes AWS] - deprecated
+    source: k8s.gcr.io/sig-storage/livenessprobe
+    tag:
+      - "v2.6.0"
+    destinations:
+      - registry.sighup.io/fury/sig-storage/livenessprobe
+
+  - name: csi provisioner [Fury Kubernetes AWS] - deprecated
+    source: k8s.gcr.io/sig-storage/csi-provisioner
+    tag:
+      - "v3.1.0"
+    destinations:
+      - registry.sighup.io/fury/sig-storage/csi-provisioner
+
+  - name: csi attacher [Fury Kubernetes AWS] - deprecated
+    source: k8s.gcr.io/sig-storage/csi-attacher
+    tag:
+      - "v3.4.0"
+    destinations:
+      - registry.sighup.io/fury/sig-storage/csi-attacher
+
+  - name: csi resizer [Fury Kubernetes AWS] - deprecated
+    source: k8s.gcr.io/sig-storage/csi-resizer
+    tag:
+      - "v1.4.0"
+    destinations:
+      - registry.sighup.io/fury/sig-storage/csi-resizer
+
+  - name: csi snapshotter [Fury Kubernetes AWS] - deprecated
+    source: k8s.gcr.io/sig-storage/csi-snapshotter
+    tag:
+      - "v6.0.1"
+    destinations:
+      - registry.sighup.io/fury/sig-storage/csi-snapshotter
