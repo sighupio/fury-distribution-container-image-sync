@@ -18,9 +18,10 @@ images:
       - registry.sighup.io/fury/autoscaling/cluster-autoscaler
 
   - name: aws load balancer controller [Kubernetes Fury AWS]
-    source: amazon/aws-alb-ingress-controller
+    source: public.ecr.aws/eks/aws-load-balancer-controller
     tag:
       - "v2.4.3"
+      - "v2.4.7"
     destinations:
       - registry.sighup.io/fury/amazon/aws-alb-ingress-controller
 
