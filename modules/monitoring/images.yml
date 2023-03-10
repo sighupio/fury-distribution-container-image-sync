@@ -220,3 +220,10 @@ images:
       - "3.6.0"
     destinations:
       - registry.sighup.io/fury/enix/x509-certificate-exporter
+
+  - name: Karma [Fury Monitoring Module]
+    source: ghcr.io/prymitive/karma
+    tag:
+      - "v0.113"
+    destinations:
+      - registry.sighup.io/fury/karma/karma
