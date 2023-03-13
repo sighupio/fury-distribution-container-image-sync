@@ -226,4 +226,4 @@ images:
     tag:
       - "v0.113"
     destinations:
-      - registry.sighup.io/fury/karma/karma
+      - registry.sighup.io/fury/prymitive/karma/karma
