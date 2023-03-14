@@ -3,6 +3,7 @@ images:
     source: public.ecr.aws/aws-ec2/aws-node-termination-handler
     tag:
       - "v1.17.1"
+      - "v1.19.0"
     destinations:
       - registry.sighup.io/fury/aws-ec2/aws-node-termination-handler
 
