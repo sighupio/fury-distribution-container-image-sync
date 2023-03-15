@@ -138,3 +138,38 @@ images:
       - "v2.8.0"
     destinations:
       - registry.sighup.io/fury/networking/ip-masq-agent
+
+  - name: Cilium
+    source: quay.io/cilium/cilium
+    tag:
+      - "v1.13.0"
+    destinations:
+      - registry.sighup.io/fury/cilium/cilium
+
+  - name: Cilium operator generic
+    source: quay.io/cilium/operator-generic
+    tag:
+      - "v1.13.0"
+    destinations:
+      - registry.sighup.io/fury/cilium/operator-generic
+
+  - name: Cilium hubble relay
+    source: quay.io/cilium/hubble-relay
+    tag:
+      - "v1.13.0"
+    destinations:
+      - registry.sighup.io/fury/cilium/hubble-relay
+
+  - name: Cilium hubble ui
+    source: quay.io/cilium/hubble-ui
+    tag:
+      - "v0.10.0"
+    destinations:
+      - registry.sighup.io/fury/cilium/hubble-ui
+
+  - name: Cilium hubble ui backend
+    source: quay.io/cilium/hubble-ui-backend
+    tag:
+      - "v0.10.0"
+    destinations:
+      - registry.sighup.io/fury/cilium/hubble-ui-backend
