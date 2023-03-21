@@ -207,6 +207,12 @@ images:
       - "v0.30.2"
     destinations:
       - registry.sighup.io/fury/thanos
+
+  - name: thanos [Fury Monitoring Module]
+    source: quay.io/thanos/thanos
+    tag:
+      - "v0.30.2"
+    destinations:
       - registry.sighup.io/fury/thanos/thanos
 
   - name: x509 certificate exporter
