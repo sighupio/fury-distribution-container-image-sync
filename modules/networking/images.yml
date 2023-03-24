@@ -142,21 +142,21 @@ images:
   - name: Cilium
     source: quay.io/cilium/cilium
     tag:
-      - "v1.13.0"
+      - "v1.13.1"
     destinations:
       - registry.sighup.io/fury/cilium/cilium
 
   - name: Cilium operator generic
     source: quay.io/cilium/operator-generic
     tag:
-      - "v1.13.0"
+      - "v1.13.1"
     destinations:
       - registry.sighup.io/fury/cilium/operator-generic
 
   - name: Cilium hubble relay
     source: quay.io/cilium/hubble-relay
     tag:
-      - "v1.13.0"
+      - "v1.13.1"
     destinations:
       - registry.sighup.io/fury/cilium/hubble-relay
 
