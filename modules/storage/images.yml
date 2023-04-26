@@ -31,6 +31,7 @@ images:
     source: registry.k8s.io/sig-storage/csi-node-driver-registrar
     tag:
       - "v2.5.1"
+      - "v2.7.0"
     destinations:
       - registry.sighup.io/fury/sig-storage/csi-node-driver-registrar
 
