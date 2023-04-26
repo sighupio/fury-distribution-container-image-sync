@@ -55,6 +55,7 @@ images:
   - name: CSI Snapshotter [Fury Storage Module]
     source: registry.k8s.io/sig-storage/csi-snapshotter
     tag:
+      - "v3.0.3"
       - "v6.1.0"
       - "v6.2.1"
     destinations:
