@@ -7,7 +7,7 @@ ARG KEYCLOAK_METRICS_SPI=3.0.0
 ENV KC_HEALTH_ENABLED=true
 ENV KC_METRICS_ENABLED=true
 # Install custom providers
-RUN curl -sL https://github.com/aerogear/keycloak-metrics-spi/releases/download/${KEYCLOAK_METRICS_SPI}/keycloak-metrics-spi-${KEYCLOAK_METRICS_SPI}.jar -o /opt/keycloak/providers/keycloak-metrics-spi-${KEYCLOAK_METRICS_SPI}.jar
+ADD --chown=keycloak:keycloak https://github.com/aerogear/keycloak-metrics-spi/releases/download/${KEYCLOAK_METRICS_SPI}/keycloak-metrics-spi-${KEYCLOAK_METRICS_SPI}.jar /opt/keycloak/providers/keycloak-metrics-spi-${KEYCLOAK_METRICS_SPI}.jar
 RUN /opt/keycloak/bin/kc.sh build
 
 FROM quay.io/keycloak/keycloak:${KEYCLOAK}
