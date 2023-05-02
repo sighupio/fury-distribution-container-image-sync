@@ -8,6 +8,27 @@ images:
     destinations:
       - registry.sighup.io/fury/jboss/keycloak
 
+  - name: Keycloak - quay release [Fury Keycloak Module]
+    source: quay.io/keycloak/keycloak
+    tag: 
+      - "21.1.1"
+    destinations:
+      - registry.sighup.io/fury/keycloak/keycloak
+
+  - name: Keycloak - SPI metrics [Fury Keycloak Module]
+    source: keycloak
+    build:
+      context: custom/keycloak
+      args:
+        - name: KEYCLOAK
+          value: "21.1.1"
+        - name: KEYCLOAK_METRICS_SPI
+          value: "3.0.0"
+    tag:
+      - "21.1.1"
+    destinations:
+      - registry.sighup.io/fury/keycloak/keycloak-spi-metrics
+
   - name: Infinispan [Fury KeyCloak Module]
     source: docker.io/jboss/infinispan-server
     tag:
@@ -15,3 +36,11 @@ images:
       - "9.4.11.Final"
     destinations:
       - registry.sighup.io/fury/jboss/infinispan-server
+
+  - name: Keycloak Operator [Fury Keycloak Module]
+    source: quay.io/keycloak/keycloak-operator
+    tag:
+      - "21.1.1"
+    destinations:
+      - registry.sighup.io/fury/keycloak/keycloak-operator
+
