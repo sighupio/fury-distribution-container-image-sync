@@ -43,7 +43,7 @@ images:
     tag:
       - "v1.9"
       - "v1.44.0"
-      - "1.63.2"
+      - "v1.63.2"
     destinations:
       - registry.sighup.io/fury/kiali/kiali
 
