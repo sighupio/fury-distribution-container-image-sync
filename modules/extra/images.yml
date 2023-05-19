@@ -211,4 +211,4 @@ images:
     tag:
       - "v5"
     destinations:
-      - registry.sighup.io/fairwinds-ops/pluto
+      - registry.sighup.io/fury/fairwinds-ops/pluto
