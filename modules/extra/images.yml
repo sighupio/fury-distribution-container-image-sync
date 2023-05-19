@@ -205,3 +205,10 @@ images:
       - "v0.5.0"
     destinations:
       - registry.sighup.io/fury/jimmidyson/configmap-reload
+
+  - name: Pluto api deprecation
+    source: us-docker.pkg.dev/fairwinds-ops/oss/pluto
+    tag:
+      - "v5"
+    destinations:
+      - registry.sighup.io/fairwinds-ops/pluto
