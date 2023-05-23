@@ -117,14 +117,20 @@ images:
 #    destinations:
 #      - registry.sighup.io/fury/kibana
 
-  - name: Logging Operator
-    source: ghcr.io/kube-logging/logging-operator
+  - name: Logging Operator (pre kube-logging)
+    source: ghcr.io/banzaicloud/logging-operator
     tag:
       - "3.17.0"
       - "3.17.2"
       - "3.17.6"
       - "3.17.7"
       - "3.17.10"
+    destinations:
+      - registry.sighup.io/fury/banzaicloud/logging-operator
+
+  - name: Logging Operator
+    source: ghcr.io/kube-logging/logging-operator
+    tag:
       - "4.1.0"
     destinations:
       - registry.sighup.io/fury/banzaicloud/logging-operator
