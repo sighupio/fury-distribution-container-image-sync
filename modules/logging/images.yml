@@ -129,7 +129,7 @@ images:
       - registry.sighup.io/fury/banzaicloud/logging-operator
 
   - name: Logging Operator
-    source: ghcr.io/banzaicloud/logging-operator
+    source: ghcr.io/kube-logging/logging-operator
     tag:
       - "4.1.0"
     destinations:
