@@ -24,6 +24,7 @@ images:
     source: ghcr.io/dexidp/dex
     tag:
       - "v2.35.3"
+      - "v2.36.0"
     destinations:
       - registry.sighup.io/fury/dexidp/dex
 
