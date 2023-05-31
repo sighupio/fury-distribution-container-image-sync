@@ -169,7 +169,7 @@ images:
   - name: Banzai configmap reloader
     source: ghcr.io/kube-logging/config-reloader
     tag:
-      - "0.0.4"
+      - "v0.0.4"
     destinations:
       - registry.sighup.io/fury/banzaicloud/config-reloader
 
