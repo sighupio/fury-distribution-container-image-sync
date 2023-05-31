@@ -146,12 +146,30 @@ images:
     destinations:
       - registry.sighup.io/fury/banzaicloud/fluentd
 
+  - name: Banzai cloud Fluentd Drain Watch (pre kube-logging)
+    source: ghcr.io/banzaicloud/fluentd-drain-watch
+    tag:
+      - "v0.0.3"
+      - "v0.0.4"
+      - "v0.0.5"
+    destinations:
+      - registry.sighup.io/fury/banzaicloud/fluentd-drain-watch
+
   - name: Banzai cloud Fluentd
     source: ghcr.io/kube-logging/fluentd
     tag:
       - "v1.14.6"
     destinations:
       - registry.sighup.io/fury/banzaicloud/fluentd
+
+  - name: Banzai cloud Fluentd Drain Watch
+    source: ghcr.io/kube-logging/fluentd-drain-watch
+    tag:
+      - "v0.1.0"
+      - "v0.2.0"
+      - "v0.2.1"
+    destinations:
+      - registry.sighup.io/fury/banzaicloud/fluentd-drain-watch
 
   - name: Banzai cloud Event Router
     source: banzaicloud/eventrouter
