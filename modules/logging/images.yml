@@ -4,6 +4,7 @@ images:
     tag:
       - "2.4.2"
       - "2.7.3"
+      - "2.8.0"
     destinations:
       - registry.sighup.io/fury/grafana/loki
 
