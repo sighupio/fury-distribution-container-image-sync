@@ -38,6 +38,13 @@ images:
     destinations:
       - registry.sighup.io/fury/jaegertracing/all-in-one
 
+  - name: Istio jaeger Operator[Fury Kubernetes Service Mesh]
+    source: quay.io/jaegertracing/jaeger-operator
+    tag:
+      - "1.43.0"
+    destinations:
+      - registry.sighup.io/fury/jaegertracing/jaeger-operator
+
   - name: Istio Kiali [Fury Kubernetes Service Mesh]
     source: quay.io/kiali/kiali
     tag:
