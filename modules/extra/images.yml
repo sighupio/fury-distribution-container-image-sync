@@ -13,6 +13,7 @@ images:
     source: docker.io/rancher/local-path-provisioner
     tag:
       - "v0.0.20"
+      - "v0.0.24"
     destinations:
       - registry.sighup.io/workshop/rancher/local-path-provisioner
 
