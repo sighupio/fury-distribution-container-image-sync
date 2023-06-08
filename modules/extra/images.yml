@@ -213,3 +213,10 @@ images:
       - "v5"
     destinations:
       - registry.sighup.io/fury/fairwinds-ops/pluto
+
+  - name: NFS subdir external provisioner
+    source: registry.k8s.io/sig-storage/nfs-subdir-external-provisioner
+    tag:
+      - "v4.0.2"
+    destinations:
+      - registry.sighup.io/fury/sig-storage/nfs-subdir-external-provisioner
