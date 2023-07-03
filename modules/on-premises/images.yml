@@ -1,6 +1,6 @@
 images:
   - name: Coredns [Fury Kubernetes On-Premises]
-    source: k8s.gcr.io/coredns/coredns
+    source: registry.k8s.io/coredns/coredns
     tag:
       - "v1.6.7"
       - "v1.7.0"
@@ -8,7 +8,7 @@ images:
       - registry.sighup.io/fury/on-premises/coredns/coredns
 
   - name: Kube Apiserver [Fury Kubernetes On-Premises]
-    source: k8s.gcr.io/kube-apiserver
+    source: registry.k8s.io/kube-apiserver
     tag:
       - "v1.18.14"
       - "v1.20.15"
@@ -22,7 +22,7 @@ images:
       - registry.sighup.io/fury/on-premises/kube-apiserver
 
   - name: Kube Controller Manager [Fury Kubernetes On-Premises]
-    source: k8s.gcr.io/kube-controller-manager
+    source: registry.k8s.io/kube-controller-manager
     tag:
       - "v1.18.14"
       - "v1.20.15"
@@ -36,7 +36,7 @@ images:
       - registry.sighup.io/fury/on-premises/kube-controller-manager
 
   - name: Kube Proxy [Fury Kubernetes On-Premises]
-    source: k8s.gcr.io/kube-proxy
+    source: registry.k8s.io/kube-proxy
     tag:
       - "v1.18.14"
       - "v1.20.15"
@@ -50,7 +50,7 @@ images:
       - registry.sighup.io/fury/on-premises/kube-proxy
 
   - name: Kube Scheduler [Fury Kubernetes On-Premises]
-    source: k8s.gcr.io/kube-scheduler
+    source: registry.k8s.io/kube-scheduler
     tag:
       - "v1.18.14"
       - "v1.20.15"
