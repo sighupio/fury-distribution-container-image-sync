@@ -212,6 +212,7 @@ images:
     source: quay.io/thanos/thanos
     tag:
       - "v0.30.2"
+      - "v0.31.0"
     destinations:
       - registry.sighup.io/fury/thanos/thanos
 
