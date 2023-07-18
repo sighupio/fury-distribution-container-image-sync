@@ -5,6 +5,9 @@ images:
       - "v1.6.7"
       - "v1.7.0"
       - "v1.8.0"
+      - "v1.8.4"
+      - "v1.8.6"
+      - "v1.9.3"
     destinations:
       - registry.sighup.io/fury/on-premises/coredns/coredns
 
