@@ -195,6 +195,13 @@ images:
     destinations:
       - registry.sighup.io/fury/kindest/kindnetd
 
+  - name: E2E Kind Local Path Provisioner
+    source: kindest/local-path-provisioner
+    tag:
+      - "v0.0.23-kind.0"
+    destinations:
+      - registry.sighup.io/fury/kindest/local-path-provisioner
+
   - name: Alpine 3.12
     source: docker.io/library/alpine
     tag:
