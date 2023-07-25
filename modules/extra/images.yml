@@ -188,6 +188,13 @@ images:
     destinations:
       - registry.sighup.io/fury/kindest/node
 
+  - name: E2E KindNet CNI
+    source: docker.io/kindest/kindnetd
+    tag:
+      - "v20230330-48f316cd"
+    destinations:
+      - registry.sighup.io/fury/kindest/kindnetd
+
   - name: Alpine 3.12
     source: docker.io/library/alpine
     tag:
