@@ -31,5 +31,6 @@ images:
       - "v1.0.2"
       - "v1.0.3"
       - "v1.0.4"
+      - "v1.0.6"
     destinations:
       - registry.sighup.io/fury/gatekeeper-policy-manager
