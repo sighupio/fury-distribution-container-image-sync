@@ -16,6 +16,7 @@ images:
       - "v1.23.1"
       - "v1.24.0"
       - "v1.25.0"
+      - "v1.26.4"
     destinations:
       - registry.sighup.io/fury/autoscaling/cluster-autoscaler
 
@@ -24,6 +25,7 @@ images:
     tag:
       - "v2.4.3"
       - "v2.4.7"
+      - "v2.6.0"
     destinations:
       - registry.sighup.io/fury/amazon/aws-alb-ingress-controller
 
@@ -32,6 +34,7 @@ images:
     tag:
       - "v1.11.2"
       - "v1.16.1"
+      - "v1.22.0"
     destinations:
       - registry.sighup.io/fury/ebs-csi-driver/aws-ebs-csi-driver
 
@@ -39,6 +42,7 @@ images:
     source: public.ecr.aws/eks-distro/kubernetes-csi/node-driver-registrar
     tag:
       - "v2.7.0-eks-1-25-latest"
+      - "v2.8.0-eks-1-27-9"
     destinations:
       - registry.sighup.io/fury/eks-distro/kubernetes-csi/csi-node-driver-registrar
 
@@ -46,6 +50,7 @@ images:
     source: public.ecr.aws/eks-distro/kubernetes-csi/livenessprobe
     tag:
       - "v2.9.0-eks-1-25-latest"
+      - "v2.10.0-eks-1-27-9"
     destinations:
       - registry.sighup.io/fury/eks-distro/kubernetes-csi/livenessprobe
 
@@ -53,6 +58,7 @@ images:
     source: public.ecr.aws/eks-distro/kubernetes-csi/external-provisioner
     tag:
       - "v3.4.0-eks-1-25-latest"
+      - "v3.5.0-eks-1-27-9"
     destinations:
       - registry.sighup.io/fury/eks-distro/kubernetes-csi/external-provisioner
 
@@ -60,6 +66,7 @@ images:
     source: public.ecr.aws/eks-distro/kubernetes-csi/external-attacher
     tag:
       - "v4.1.0-eks-1-25-latest"
+      - "v4.3.0-eks-1-27-9"
     destinations:
       - registry.sighup.io/fury/eks-distro/kubernetes-csi/external-attacher
 
@@ -67,6 +74,7 @@ images:
     source: public.ecr.aws/eks-distro/kubernetes-csi/external-resizer
     tag:
       - "v1.7.0-eks-1-25-latest"
+      - "v1.8.0-eks-1-27-9"
     destinations:
       - registry.sighup.io/fury/eks-distro/kubernetes-csi/external-resizer
 
@@ -75,6 +83,7 @@ images:
     tag:
       - "v6.0.1"
       - "v6.2.1-eks-1-25-latest"
+      - "v6.2.2-eks-1-27-9"
     destinations:
       - registry.sighup.io/fury/eks-distro/kubernetes-csi/external-snapshotter/csi-snapshotter
 
