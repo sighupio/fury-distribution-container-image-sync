@@ -4,6 +4,7 @@ images:
     tag:
       - "v1.28.1"
       - "v1.29.0"
+      - "v1.30.4"
     destinations:
       - registry.sighup.io/fury/tigera/operator
 
@@ -22,6 +23,7 @@ images:
       - "v3.23.2"
       - "v3.24.1"
       - "v3.25.0"
+      - "v3.26.1"
     destinations:
       - registry.sighup.io/fury/calico/kube-controllers
 
@@ -40,6 +42,7 @@ images:
       - "v3.23.2"
       - "v3.24.1"
       - "v3.25.0"
+      - "v3.26.1"
     destinations:
       - registry.sighup.io/fury/calico/cni
 
@@ -58,6 +61,7 @@ images:
       - "v3.21.3"
       - "v3.24.1"
       - "v3.25.0"
+      - "v3.26.1"
     destinations:
       - registry.sighup.io/fury/calico/pod2daemon-flexvol
 
@@ -76,6 +80,7 @@ images:
       - "v3.23.2"
       - "v3.24.1"
       - "v3.25.0"
+      - "v3.26.1"
     destinations:
       - registry.sighup.io/fury/calico/node
 
@@ -84,6 +89,7 @@ images:
     tag:
       - "v3.24.1"
       - "v3.25.0"
+      - "v3.26.1"
     destinations:
       - registry.sighup.io/fury/calico/apiserver
 
@@ -92,6 +98,7 @@ images:
     tag:
       - "v3.24.1"
       - "v3.25.0"
+      - "v3.26.1"
     destinations:
       - registry.sighup.io/fury/calico/typha
 
@@ -100,6 +107,7 @@ images:
     tag:
       - "v3.24.1"
       - "v3.25.0"
+      - "v3.26.1"
     destinations:
       - registry.sighup.io/fury/calico/csi
 
@@ -108,6 +116,7 @@ images:
     tag:
       - "v3.24.1"
       - "v3.25.0"
+      - "v3.26.1"
     destinations:
       - registry.sighup.io/fury/calico/node-driver-registrar
 
