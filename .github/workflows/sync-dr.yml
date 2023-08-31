@@ -31,5 +31,5 @@ jobs:
     - name: Iterate
       run: |
         yq --version
-        docker run --rm quay.io/skopeo/stable:v1.9.2 --version
+        docker run --rm quay.io/skopeo/stable:v1.13 --version
         ./single_sync.sh modules/dr/images.yml false
