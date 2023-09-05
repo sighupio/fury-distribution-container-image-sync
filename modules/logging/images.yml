@@ -135,6 +135,7 @@ images:
     source: ghcr.io/kube-logging/logging-operator
     tag:
       - "4.1.0"
+      - "4.3.0"
     destinations:
       - registry.sighup.io/fury/banzaicloud/logging-operator
 
