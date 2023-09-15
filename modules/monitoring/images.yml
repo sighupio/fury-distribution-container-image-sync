@@ -1,9 +1,16 @@
 images:
-  - name: Prometheus adapter direcxman [Fury Monitoring Module]
+  - name: Prometheus adapter direcxman [Fury Monitoring Module] legacy
     source: k8s.gcr.io/prometheus-adapter/prometheus-adapter
     tag:
       - "v0.9.1"
       - "v0.10.0"
+    destinations:
+      - registry.sighup.io/fury/prometheus-adapter/prometheus-adapter
+
+  - name: Prometheus adapter direcxman [Fury Monitoring Module]
+    source: registry.k8s.io/prometheus-adapter/prometheus-adapter
+    tag:
+      - "v0.11.1"
     destinations:
       - registry.sighup.io/fury/prometheus-adapter/prometheus-adapter
 
@@ -25,6 +32,7 @@ images:
       - "v0.23.0"
       - "v0.24.0"
       - "v0.25.0"
+      - "v0.26.0"
     destinations:
       - registry.sighup.io/fury/prometheus/alertmanager
 
@@ -33,6 +41,7 @@ images:
     tag:
       - "v0.21.0"
       - "v0.23.0"
+      - "v0.24.0"
     destinations:
       - registry.sighup.io/fury/prometheus/blackbox-exporter
 
@@ -83,6 +92,7 @@ images:
       - "v0.11.0"
       - "v0.12.0"
       - "v0.14.0"
+      - "v0.14.2"
     destinations:
       - registry.sighup.io/fury/brancz/kube-rbac-proxy
 
@@ -97,7 +107,7 @@ images:
     destinations:
       - registry.sighup.io/fury/coreos/kube-state-metrics
 
-  - name: kube-state-metrics [Fury Monitoring Module]
+  - name: kube-state-metrics [Fury Monitoring Module] legacy
     source: k8s.gcr.io/kube-state-metrics/kube-state-metrics
     tag:
       - "v2.0.0"
@@ -105,6 +115,13 @@ images:
       - "v2.3.0"
       - "v2.5.0"
       - "v2.8.0"
+    destinations:
+      - registry.sighup.io/fury/kube-state-metrics/kube-state-metrics
+
+  - name: kube-state-metrics [Fury Monitoring Module]
+    source: registry.k8s.io/kube-state-metrics/kube-state-metrics
+    tag:
+      - "v2.9.2"
     destinations:
       - registry.sighup.io/fury/kube-state-metrics/kube-state-metrics
 
@@ -128,6 +145,7 @@ images:
       - "v1.2.2"
       - "v1.3.1"
       - "v1.5.0"
+      - "v1.6.1"
     destinations:
       - registry.sighup.io/fury/prometheus/node-exporter
 
@@ -143,6 +161,7 @@ images:
       - "v2.32.1"
       - "v2.36.1"
       - "v2.41.0"
+      - "v2.46.0"
     destinations:
       - registry.sighup.io/fury/prometheus
       - registry.sighup.io/fury/prometheus/prometheus
@@ -166,6 +185,7 @@ images:
       - "v0.53.1"
       - "v0.57.0"
       - "v0.62.0"
+      - "v0.67.1"
     destinations:
       - registry.sighup.io/fury/prometheus-operator/prometheus-operator
 
@@ -188,6 +208,7 @@ images:
       - "v0.53.1"
       - "v0.57.0"
       - "v0.62.0"
+      - "v0.67.1"
     destinations:
       - registry.sighup.io/fury/prometheus-operator/prometheus-config-reloader
 
