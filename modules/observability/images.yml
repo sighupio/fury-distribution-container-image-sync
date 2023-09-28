@@ -1,0 +1,15 @@
+images:
+  - name: Tempo [Fury Observability Module]
+    source: docker.io/grafana/tempo
+    tag:
+      - "2.2.2"
+    destinations:
+      - registry.sighup.io/fury/grafana/tempo
+
+  - name: Memcached [Fury Observability Module]
+    source: docker.io/memcached
+    tag:
+      - "1.5.17-alpine"
+    destinations:
+      - registry.sighup.io/fury/memcached
+
