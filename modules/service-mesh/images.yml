@@ -20,8 +20,11 @@ images:
       - "1.12.6"
       - "1.13.9"
       - "1.15.4"
-      - "1.17.2"
       - "1.16.7"
+      - "1.17.2"
+      - "1.17.8"
+      - "1.18.5"
+      - "1.19.3"
     destinations:
       - registry.sighup.io/fury/istio/proxyv2
 
@@ -76,8 +79,11 @@ images:
       - "1.12.6"
       - "1.13.9"
       - "1.15.4"
-      - "1.17.2"
       - "1.16.7"
+      - "1.17.2"
+      - "1.17.8"
+      - "1.18.5"
+      - "1.19.3"
     destinations:
       - registry.sighup.io/fury/istio/pilot
 
@@ -88,8 +94,11 @@ images:
       - "1.12.6"
       - "1.13.9"
       - "1.15.4"
-      - "1.17.2"
       - "1.16.7"
+      - "1.17.2"
+      - "1.17.8"
+      - "1.18.5"
+      - "1.19.3"
     destinations:
       - registry.sighup.io/fury/istio/operator
 
