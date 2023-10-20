@@ -87,6 +87,7 @@ images:
       - "1.9.3"
       - "1.9.5"
       - "1.9.10"
+      - "2.1.4"
     destinations:
       - registry.sighup.io/fury/fluent/fluent-bit
 
@@ -134,6 +135,7 @@ images:
     source: ghcr.io/kube-logging/logging-operator
     tag:
       - "4.1.0"
+      - "4.3.0"
     destinations:
       - registry.sighup.io/fury/banzaicloud/logging-operator
 
@@ -159,6 +161,7 @@ images:
     source: ghcr.io/kube-logging/fluentd
     tag:
       - "v1.14.6"
+      - "v1.15-ruby3"
     destinations:
       - registry.sighup.io/fury/banzaicloud/fluentd
 
@@ -189,6 +192,7 @@ images:
     source: ghcr.io/kube-logging/config-reloader
     tag:
       - "v0.0.4"
+      - "v0.0.5"
     destinations:
       - registry.sighup.io/fury/banzaicloud/config-reloader
 
@@ -203,5 +207,6 @@ images:
     source: docker.io/nginxinc/nginx-unprivileged
     tag:
       - "1.20.2-alpine"
+      - "1.25-alpine"
     destinations:
       - registry.sighup.io/fury/nginxinc/nginx-unprivileged

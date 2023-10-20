@@ -26,8 +26,8 @@ do
           if [ ${DRY} = true ]; then
               echo "    - DRY MODE is active, skipping layers check"
           else
-              LOCAL_LAYERS=$(docker run --rm quay.io/skopeo/stable:v1.9.2 inspect -n --override-os linux docker://${SRC}:${LOCAL_TAG} 2> /dev/null | yq .Layers)
-              TARGET_LAYERS=$(docker run --rm quay.io/skopeo/stable:v1.9.2 inspect -n --override-os linux docker://$(yq e '.images['"${c}"'].destinations[0]' $1):${LOCAL_TAG} 2> /dev/null | yq .Layers)
+              LOCAL_LAYERS=$(docker run --rm quay.io/skopeo/stable:v1.13 inspect -n --override-os linux docker://${SRC}:${LOCAL_TAG} 2> /dev/null | yq .Layers)
+              TARGET_LAYERS=$(docker run --rm quay.io/skopeo/stable:v1.13 inspect -n --override-os linux docker://$(yq e '.images['"${c}"'].destinations[0]' $1):${LOCAL_TAG} 2> /dev/null | yq .Layers)
 
               diff <(echo ${LOCAL_LAYERS}) <(echo ${TARGET_LAYERS}) > /dev/null
           fi
