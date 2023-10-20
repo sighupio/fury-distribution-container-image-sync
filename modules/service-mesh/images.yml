@@ -143,52 +143,56 @@ images:
   - name: Kong Mesh Control Plane
     source: docker.io/kong/kuma-cp
     tag:
-      - "1.7.0"
-      - "1.5.1"
-      - "1.5.0"
-      - "1.4.1"
-      - "1.4.0"
       - "1.3.3"
+      - "1.4.0"
+      - "1.4.1"
+      - "1.5.0"
+      - "1.5.1"
+      - "1.7.0"
       - "1.8.1"
+      - "2.4.3"
     destinations:
       - registry.sighup.io/fury/kong/kuma-cp
 
   - name: Kong Mesh Data Plane
     source: docker.io/kong/kuma-dp
     tag:
-      - "1.7.0"
-      - "1.5.1"
-      - "1.5.0"
-      - "1.4.1"
-      - "1.4.0"
       - "1.3.3"
+      - "1.4.0"
+      - "1.4.1"
+      - "1.5.0"
+      - "1.5.1"
+      - "1.7.0"
       - "1.8.1"
+      - "2.4.3"
     destinations:
       - registry.sighup.io/fury/kong/kuma-dp
 
   - name: Kong Mesh Prometheus Service Discovery
     source: docker.io/kong/kuma-prometheus-sd
     tag:
-      - "1.7.0"
-      - "1.5.1"
-      - "1.5.0"
-      - "1.4.1"
-      - "1.4.0"
       - "1.3.3"
+      - "1.4.0"
+      - "1.4.1"
+      - "1.5.0"
+      - "1.5.1"
+      - "1.7.0"
       - "1.8.1"
+      - "2.4.3"
     destinations:
       - registry.sighup.io/fury/kong/kuma-prometheus-sd
 
   - name: Kong Mesh Init
     source: docker.io/kong/kuma-init
     tag:
-      - "1.7.0"
-      - "1.5.1"
-      - "1.5.0"
-      - "1.4.1"
-      - "1.4.0"
       - "1.3.3"
+      - "1.4.0"
+      - "1.4.1"
+      - "1.5.0"
+      - "1.5.1"
+      - "1.7.0"
       - "1.8.1"
+      - "2.4.3"
     destinations:
       - registry.sighup.io/fury/kong/kuma-init
 
@@ -197,6 +201,7 @@ images:
     tag:
       - "1.4.1"
       - "1.8.1"
+      - "2.4.3"
     destinations:
       - registry.sighup.io/fury/kumahq/kuma-cp
 
@@ -205,6 +210,7 @@ images:
     tag:
       - "1.4.1"
       - "1.8.1"
+      - "2.4.3"
     destinations:
       - registry.sighup.io/fury/kumahq/kuma-dp
 
@@ -221,5 +227,6 @@ images:
     tag:
       - "1.4.1"
       - "1.8.1"
+      - "2.4.3"
     destinations:
       - registry.sighup.io/fury/kumahq/kuma-init
