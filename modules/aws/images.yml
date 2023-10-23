@@ -17,6 +17,7 @@ images:
       - "v1.24.0"
       - "v1.25.0"
       - "v1.26.4"
+      - "v1.27.2"
     destinations:
       - registry.sighup.io/fury/autoscaling/cluster-autoscaler
 
@@ -92,6 +93,7 @@ images:
     tag:
       - "v5.0.1"
       - "v6.2.1"
+      - "v6.3.0"
     destinations:
       - registry.sighup.io/fury/sig-storage/snapshot-controller
 
