@@ -257,3 +257,17 @@ images:
       - "v0.113"
     destinations:
       - registry.sighup.io/fury/prymitive/karma/karma
+
+  - name: Mimir [Fury Monitoring Module]
+    source: docker.io/grafana/mimir
+    tag:
+      - "2.10.3"
+    destinations:
+      - registry.sighup.io/fury/grafana/mimir
+
+  - name: Mimir Continuos Test [Fury Monitoring Module]
+    source: docker.io/grafana/mimir-continuous-test
+    tag:
+      - "2.10.3"
+    destinations:
+      - registry.sighup.io/fury/grafana/mimir-continuous-test
