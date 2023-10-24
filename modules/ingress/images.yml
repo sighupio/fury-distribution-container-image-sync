@@ -13,6 +13,7 @@ images:
       - "v1.3.1"
       - "v1.5.1"
       - "v1.7.1"
+      - "v1.9.3"
     destinations:
       - registry.sighup.io/fury/ingress-nginx/controller
 
@@ -54,6 +55,7 @@ images:
       - "v1.10.0"
       - "v1.11.0"
       - "v1.11.1"
+      - "v1.13.1"
     destinations:
       - registry.sighup.io/fury/jetstack/cert-manager-cainjector
 
@@ -71,6 +73,7 @@ images:
       - "v1.10.0"
       - "v1.11.0"
       - "v1.11.1"
+      - "v1.13.1"
     destinations:
       - registry.sighup.io/fury/jetstack/cert-manager-controller
 
@@ -88,6 +91,7 @@ images:
       - "v1.10.0"
       - "v1.11.0"
       - "v1.11.1"
+      - "v1.13.1"
     destinations:
       - registry.sighup.io/fury/jetstack/cert-manager-webhook
 
@@ -97,5 +101,6 @@ images:
       - "v0.10.2"
       - "v0.13.2"
       - "v0.13.4"
+      - "v0.13.6"
     destinations:
       - registry.sighup.io/fury/external-dns/external-dns
