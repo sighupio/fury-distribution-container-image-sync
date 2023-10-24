@@ -1,4 +1,4 @@
-name: "Sync OBSERVABILITY"
+name: "Sync TRACING"
 
 on:
   push:
@@ -32,4 +32,4 @@ jobs:
       run: |
         yq --version
         docker run --rm quay.io/skopeo/stable:v1.13 --version
-        ./single_sync.sh modules/observability/images.yml false
+        ./single_sync.sh modules/tracing/images.yml false
