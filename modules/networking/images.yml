@@ -153,6 +153,7 @@ images:
     tag:
       - "v1.13.1"
       - "v1.13.3"
+      - "v1.14.3"
     destinations:
       - registry.sighup.io/fury/cilium/cilium
 
@@ -161,6 +162,7 @@ images:
     tag:
       - "v1.13.1"
       - "v1.13.3"
+      - "v1.14.3"
     destinations:
       - registry.sighup.io/fury/cilium/operator-generic
 
@@ -169,6 +171,7 @@ images:
     tag:
       - "v1.13.1"
       - "v1.13.3"
+      - "v1.14.3"
     destinations:
       - registry.sighup.io/fury/cilium/hubble-relay
 
@@ -177,6 +180,7 @@ images:
     tag:
       - "v0.10.0"
       - "v0.11.0"
+      - "v0.12.1"
     destinations:
       - registry.sighup.io/fury/cilium/hubble-ui
 
@@ -185,5 +189,6 @@ images:
     tag:
       - "v0.10.0"
       - "v0.11.0"
+      - "v0.12.1"
     destinations:
       - registry.sighup.io/fury/cilium/hubble-ui-backend
