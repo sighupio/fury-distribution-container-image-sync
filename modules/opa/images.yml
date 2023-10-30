@@ -16,6 +16,7 @@ images:
       - "v3.9.2"
       - "v3.11.0"
       - "v3.12.0"
+      - "v3.13.3"
     destinations:
       - registry.sighup.io/fury/openpolicyagent/gatekeeper
 
