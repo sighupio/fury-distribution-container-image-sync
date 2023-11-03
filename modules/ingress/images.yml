@@ -103,6 +103,12 @@ images:
       - "v0.10.2"
       - "v0.13.2"
       - "v0.13.4"
+    destinations:
+      - registry.sighup.io/fury/external-dns/external-dns
+
+  - name: External DNS [Fury Kubernetes Ingress]
+    source: registry.k8s.io/external-dns/external-dns
+    tag:
       - "v0.13.6"
     destinations:
       - registry.sighup.io/fury/external-dns/external-dns
