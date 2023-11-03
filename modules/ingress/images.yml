@@ -39,6 +39,7 @@ images:
       - "v1.0.103"
       - "v1.0.119"
       - "v1.0.125"
+      - "v1.0.131"
     destinations:
       - registry.sighup.io/fury/stakater/forecastle
 
