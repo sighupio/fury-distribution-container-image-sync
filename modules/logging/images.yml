@@ -138,6 +138,7 @@ images:
     tag:
       - "4.1.0"
       - "4.3.0"
+      - "4.4.1"
     destinations:
       - registry.sighup.io/fury/banzaicloud/logging-operator
 
