@@ -90,6 +90,7 @@ images:
       - "1.9.5"
       - "1.9.10"
       - "2.1.4"
+      - "2.1.8"
     destinations:
       - registry.sighup.io/fury/fluent/fluent-bit
 
@@ -181,6 +182,7 @@ images:
     source: banzaicloud/eventrouter
     tag:
       - "v0.1.0"
+      - "v0.4.0"
     destinations:
       - registry.sighup.io/fury/banzaicloud/eventrouter
 
