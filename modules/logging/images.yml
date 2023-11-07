@@ -90,6 +90,7 @@ images:
       - "1.9.5"
       - "1.9.10"
       - "2.1.4"
+      - "2.1.8"
     destinations:
       - registry.sighup.io/fury/fluent/fluent-bit
 
