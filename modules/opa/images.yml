@@ -44,41 +44,41 @@ images:
   - name: Kyverno [Fury OPA Module]
     source: ghcr.io/kyverno/kyverno
     tag:
-      - "v1.10.4"
+      - "v1.11.0"
     destinations:
       - registry.sighup.io/fury/kyverno/kyverno
 
   - name: Kyverno Pre [Fury OPA Module]
     source: ghcr.io/kyverno/kyvernopre
     tag:
-      - "v1.10.4"
+      - "v1.11.0"
     destinations:
       - registry.sighup.io/fury/kyverno/kyvernopre
 
   - name: Kyverno Background Controller [Fury OPA Module]
     source: ghcr.io/kyverno/background-controller
     tag:
-      - "v1.10.4"
+      - "v1.11.0"
     destinations:
       - registry.sighup.io/fury/kyverno/background-controller
   
   - name: Kyverno Cleanup Controller [Fury OPA Module]
     source: ghcr.io/kyverno/cleanup-controller
     tag:
-      - "v1.10.4"
+      - "v1.11.0"
     destinations:
       - registry.sighup.io/fury/kyverno/cleanup-controller
 
   - name: Kyverno Reports Controller [Fury OPA Module]
     source: ghcr.io/kyverno/reports-controller
     tag:
-      - "v1.10.4"
+      - "v1.11.0"
     destinations:
       - registry.sighup.io/fury/kyverno/reports-controller
 
   - name: Kyverno Bitnami Kubectl [Fury OPA Module]
     source: docker.io/bitnami/kubectl
     tag:
-      - "1.26.4"
+      - "1.26.10"
     destinations:
       - registry.sighup.io/fury/bitnami/kubectl
