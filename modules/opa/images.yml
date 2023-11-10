@@ -73,6 +73,7 @@ images:
     source: ghcr.io/kyverno/reports-controller
     tag:
       - "v1.11.0"
+
     destinations:
       - registry.sighup.io/fury/kyverno/reports-controller
 
