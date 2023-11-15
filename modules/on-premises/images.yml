@@ -40,6 +40,7 @@ images:
       - "v1.25.12"
       - "v1.26.3"
       - "v1.26.7"
+      - "v1.27.6"
       - "v1.27.7"
     destinations:
       - registry.sighup.io/fury/on-premises/kube-apiserver
@@ -58,6 +59,7 @@ images:
       - "v1.25.12"
       - "v1.26.3"
       - "v1.26.7"
+      - "v1.27.6"
       - "v1.27.7"
     destinations:
       - registry.sighup.io/fury/on-premises/kube-controller-manager
@@ -76,6 +78,7 @@ images:
       - "v1.25.12"
       - "v1.26.3"
       - "v1.26.7"
+      - "v1.27.6"
       - "v1.27.7"
     destinations:
       - registry.sighup.io/fury/on-premises/kube-proxy
@@ -94,6 +97,7 @@ images:
       - "v1.25.12"
       - "v1.26.3"
       - "v1.26.7"
+      - "v1.27.6"
       - "v1.27.7"
     destinations:
       - registry.sighup.io/fury/on-premises/kube-scheduler
