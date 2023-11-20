@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -e
-
 # if $2 is not empty, set a variable DRY to true
 if [ $2 = true  ]; then
   DRY=true
