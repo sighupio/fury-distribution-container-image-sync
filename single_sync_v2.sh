@@ -36,8 +36,9 @@ do
               AMD64_DIFF=$?
 
               echo "    - AMD64 diff exit code is: $AMD64_DIFF"
-
-              $ARM64_DIFF="0"
+              
+              # if not multiarch, the value can be the same
+              ARM64_DIFF=$AMD64_DIFF
               if [ ${MULTI_ARCH} = true ]; then
                 LOCAL_LAYERS=$(docker run --rm quay.io/skopeo/stable:v1.13 inspect -n --override-os linux --override-arch arm64 docker://${SRC}:${LOCAL_TAG} 2> /dev/null | yq .Layers)
                 TARGET_LAYERS=$(docker run --rm quay.io/skopeo/stable:v1.13 inspect -n --override-os linux --override-arch arm64 docker://$(yq e '.images['"${c}"'].destinations[0]' $1):${LOCAL_TAG} 2> /dev/null | yq .Layers)
