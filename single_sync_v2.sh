@@ -29,14 +29,28 @@ do
           if [ ${DRY} = true ]; then
               echo "    - DRY MODE is active, skipping layers check"
           else
-              LOCAL_LAYERS=$(docker run --rm quay.io/skopeo/stable:v1.13 inspect -n --override-os linux docker://${SRC}:${LOCAL_TAG} 2> /dev/null | yq .Layers)
-              TARGET_LAYERS=$(docker run --rm quay.io/skopeo/stable:v1.13 inspect -n --override-os linux docker://$(yq e '.images['"${c}"'].destinations[0]' $1):${LOCAL_TAG} 2> /dev/null | yq .Layers)
+              LOCAL_LAYERS=$(docker run --rm quay.io/skopeo/stable:v1.13 inspect -n --override-os linux --override-arch amd64 docker://${SRC}:${LOCAL_TAG} 2> /dev/null | yq .Layers)
+              TARGET_LAYERS=$(docker run --rm quay.io/skopeo/stable:v1.13 inspect -n --override-os linux --override-arch amd64 docker://$(yq e '.images['"${c}"'].destinations[0]' $1):${LOCAL_TAG} 2> /dev/null | yq .Layers)
 
               diff <(echo ${LOCAL_LAYERS}) <(echo ${TARGET_LAYERS}) > /dev/null
+              AMD64_DIFF=$?
+
+              echo "    - AMD64 diff exit code is: $AMD64_DIFF"
+
+              $ARM64_DIFF=0
+              if [ ${MULTI_ARCH} = true ]; then
+                LOCAL_LAYERS=$(docker run --rm quay.io/skopeo/stable:v1.13 inspect -n --override-os linux --override-arch arm64 docker://${SRC}:${LOCAL_TAG} 2> /dev/null | yq .Layers)
+                TARGET_LAYERS=$(docker run --rm quay.io/skopeo/stable:v1.13 inspect -n --override-os linux --override-arch arm64 docker://$(yq e '.images['"${c}"'].destinations[0]' $1):${LOCAL_TAG} 2> /dev/null | yq .Layers)
+
+                diff <(echo ${LOCAL_LAYERS}) <(echo ${TARGET_LAYERS}) > /dev/null
+                ARM64_DIFF=$?
+
+                echo "    - ARM64 diff exit code is: $ARM64_DIFF"
+              fi
           fi
         fi
 
-        if [ $? -eq 0 ] && [ ${DRY} = false ] && [ ${CONTEXT} = "null" ]; then
+        if [ $AMD64_DIFF -eq 0 ] && [ $ARM64_DIFF -eq 0 ] && [ ${DRY} = false ] && [ ${CONTEXT} = "null" ]; then
           echo "    - Skipping ${SRC}:${LOCAL_TAG} as it is already synced"
         else
           if [ ${DRY} = true ] && [ ${CONTEXT} = "null" ]; then
