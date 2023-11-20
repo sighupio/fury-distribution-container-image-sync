@@ -93,11 +93,10 @@ do
             echo "    - DRY MODE is active, skipping image rmi for ${SRC}:${LOCAL_TAG}"
           else
             if [ ${MULTI_ARCH} = true ]; then
-
+              echo "not removing images while using skopeo"
             else
               docker rmi ${SRC}:${LOCAL_TAG}
             fi
-            #
           fi
         fi
     done
