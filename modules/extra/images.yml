@@ -207,6 +207,7 @@ images:
 
   - name: Alpine 3.12
     source: docker.io/library/alpine
+    multi-arch: true
     tag:
       - "3"
       - "3.12"

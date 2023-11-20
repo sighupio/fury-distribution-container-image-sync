@@ -31,6 +31,7 @@ images:
 
   - name: Calico CNI [Fury Networking Module]
     source: docker.io/calico/cni
+    multi-arch: true
     tag:
       - "v3.16.0"
       - "v3.16.1"
@@ -52,6 +53,7 @@ images:
   # Flexvol is not in use anymore since Calico 3.23 for the manifests installation but the operator seems to still be using it
   - name: Calico pod2daemon-flexvol [Fury Networking Module]
     source: docker.io/calico/pod2daemon-flexvol
+    multi-arch: true
     tag:
       - "v3.16.0"
       - "v3.16.1"
@@ -70,6 +72,7 @@ images:
 
   - name: Calico Node [Fury Networking Module]
     source: docker.io/calico/node
+    multi-arch: true
     tag:
       - "v3.16.0"
       - "v3.16.1"
@@ -110,6 +113,7 @@ images:
 
   - name: Calico CSI [Fury Networking Module]
     source: docker.io/calico/csi
+    multi-arch: true
     tag:
       - "v3.24.1"
       - "v3.25.0"
@@ -120,6 +124,7 @@ images:
 
   - name: Calico Node Registrar [Fury Networking Module]
     source: docker.io/calico/node-driver-registrar
+    multi-arch: true
     tag:
       - "v3.24.1"
       - "v3.25.0"
