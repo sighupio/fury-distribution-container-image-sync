@@ -85,17 +85,6 @@ images:
     destinations:
       - registry.sighup.io/fury/grafana/grafana
 
-  - name: Kubernetes RBAC Proxy [Fury Monitoring Module]
-    source: quay.io/brancz/kube-rbac-proxy
-    tag:
-      - "v0.10.0"
-      - "v0.11.0"
-      - "v0.12.0"
-      - "v0.14.0"
-      - "v0.14.2"
-    destinations:
-      - registry.sighup.io/fury/brancz/kube-rbac-proxy
-
   - name: kube-state-metrics [Fury Monitoring Module]
     source: quay.io/coreos/kube-state-metrics
     tag:
@@ -134,20 +123,6 @@ images:
       - "v0.5.2"
     destinations:
       - registry.sighup.io/fury/metrics-server
-
-  - name: node-exporter [Fury Monitoring Module]
-    source: quay.io/prometheus/node-exporter
-    tag:
-      - "v0.18.1"
-      - "v1.0.1"
-      - "v1.1.2"
-      - "v1.2.0"
-      - "v1.2.2"
-      - "v1.3.1"
-      - "v1.5.0"
-      - "v1.6.1"
-    destinations:
-      - registry.sighup.io/fury/prometheus/node-exporter
 
   - name: Prometheus [Fury Monitoring Module]
     source: quay.io/prometheus/prometheus
@@ -271,3 +246,30 @@ images:
       - "2.10.3"
     destinations:
       - registry.sighup.io/fury/grafana/mimir-continuous-test
+
+  - name: Kubernetes RBAC Proxy [Fury Monitoring Module]
+    source: quay.io/brancz/kube-rbac-proxy
+    multi-arch: true
+    tag:
+      - "v0.10.0"
+      - "v0.11.0"
+      - "v0.12.0"
+      - "v0.14.0"
+      - "v0.14.2"
+    destinations:
+      - registry.sighup.io/fury/brancz/kube-rbac-proxy
+
+  - name: node-exporter [Fury Monitoring Module]
+    source: quay.io/prometheus/node-exporter
+    multi-arch: true
+    tag:
+      - "v0.18.1"
+      - "v1.0.1"
+      - "v1.1.2"
+      - "v1.2.0"
+      - "v1.2.2"
+      - "v1.3.1"
+      - "v1.5.0"
+      - "v1.6.1"
+    destinations:
+      - registry.sighup.io/fury/prometheus/node-exporter
