@@ -180,11 +180,17 @@ images:
     destinations:
       - registry.sighup.io/fury/banzaicloud/fluentd-drain-watch
 
-  - name: Banzai cloud Event Router
+  - name: Banzai cloud Event Router (pre kube-logging)
     source: banzaicloud/eventrouter
     tag:
       - "v0.1.0"
-      - "v0.4.0"
+    destinations:
+      - registry.sighup.io/fury/banzaicloud/eventrouter
+
+  - name: Banzai cloud Event Router
+    source: ghcr.io/kube-logging/eventrouter
+    tag:
+      - "0.4.0"
     destinations:
       - registry.sighup.io/fury/banzaicloud/eventrouter
 
