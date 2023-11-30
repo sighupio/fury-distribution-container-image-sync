@@ -67,6 +67,7 @@ images:
       - "v3.24.1"
       - "v3.25.0"
       - "v3.26.1"
+      - "v3.26.3"
     destinations:
       - registry.sighup.io/fury/calico/pod2daemon-flexvol
 
