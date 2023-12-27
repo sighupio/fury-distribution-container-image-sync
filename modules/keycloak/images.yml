@@ -13,6 +13,7 @@ images:
     tag: 
       - "21.1.1"
       - "22.0.1"
+      - "22.0.5"
     destinations:
       - registry.sighup.io/fury/keycloak/keycloak
 
@@ -22,11 +23,11 @@ images:
       context: custom/keycloak
       args:
         - name: KEYCLOAK
-          value: "22.0.1"
+          value: "22.0.5"
         - name: KEYCLOAK_METRICS_SPI
           value: "4.0.0"
     tag:
-      - "22.0.1"
+      - "22.0.5"
     destinations:
       - registry.sighup.io/fury/keycloak/keycloak-spi-metrics
 
@@ -43,6 +44,7 @@ images:
     tag:
       - "21.1.1"
       - "22.0.1"
+      - "22.0.5"
     destinations:
       - registry.sighup.io/fury/keycloak/keycloak-operator
 
