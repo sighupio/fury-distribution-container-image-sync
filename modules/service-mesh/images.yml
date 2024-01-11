@@ -6,15 +6,16 @@ images:
     destinations:
       - registry.sighup.io/fury/istio/citadel
 
-  - name: Istio provy [Fury Kubernetes Service Mesh]
+  - name: Istio proxy [Fury Kubernetes Service Mesh]
     source: docker.io/istio/proxyv2
     tag:
       - "1.4.2"
     destinations:
       - registry.sighup.io/fury/istio/proxyv2
 
-  - name: Istio provy [Fury Kubernetes Service Mesh]
+  - name: Istio proxy [Fury Kubernetes Service Mesh]
     source: gcr.io/istio-release/proxyv2
+    multi-arch: true
     tag:
       - "1.9.5"
       - "1.12.6"
