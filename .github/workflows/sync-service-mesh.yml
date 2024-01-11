@@ -34,4 +34,4 @@ jobs:
         docker run --rm quay.io/skopeo/stable:v1.13 --version
         docker run -v ./login:/login --rm quay.io/skopeo/stable:v1.13 login --username ${{ secrets.DOCKERHUB_USERNAME }} --password ${{ secrets.DOCKERHUB_PASSWORD }} docker.io --authfile=/login/auth.json
         docker run -v ./login:/login --rm quay.io/skopeo/stable:v1.13 login --username ${{ secrets.SIGHUP_REGISTRY_USERNAME }} --password ${{ secrets.SIGHUP_REGISTRY_PASSWORD }} registry.sighup.io --authfile=/login/auth.json
-        ./single_sync_v2.sh modules/monitoring/images.yml false
+        ./single_sync_v2.sh modules/service-mesh/images.yml false
