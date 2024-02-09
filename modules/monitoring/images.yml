@@ -210,6 +210,7 @@ images:
       - "v0.30.2"
       - "v0.31.0"
       - "v0.32.2"
+      - "v0.34.0"
     destinations:
       - registry.sighup.io/fury/thanos/thanos
 
@@ -223,6 +224,7 @@ images:
       - "3.2.0"
       - "3.4.0"
       - "3.6.0"
+      - "3.12.0"
     destinations:
       - registry.sighup.io/fury/enix/x509-certificate-exporter
 
@@ -237,6 +239,7 @@ images:
     source: docker.io/grafana/mimir
     tag:
       - "2.10.3"
+      - "2.11.0"
     destinations:
       - registry.sighup.io/fury/grafana/mimir
 
@@ -244,6 +247,7 @@ images:
     source: docker.io/grafana/mimir-continuous-test
     tag:
       - "2.10.3"
+      - "2.11.0"
     destinations:
       - registry.sighup.io/fury/grafana/mimir-continuous-test
 
