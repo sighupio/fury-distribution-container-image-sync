@@ -58,6 +58,7 @@ images:
       - "v1.11.0"
       - "v1.11.1"
       - "v1.13.1"
+      - "v1.14.2"
     destinations:
       - registry.sighup.io/fury/jetstack/cert-manager-cainjector
 
@@ -76,6 +77,7 @@ images:
       - "v1.11.0"
       - "v1.11.1"
       - "v1.13.1"
+      - "v1.14.2"
     destinations:
       - registry.sighup.io/fury/jetstack/cert-manager-controller
 
@@ -94,8 +96,16 @@ images:
       - "v1.11.0"
       - "v1.11.1"
       - "v1.13.1"
+      - "v1.14.2"
     destinations:
       - registry.sighup.io/fury/jetstack/cert-manager-webhook
+
+  - name: ACME Solver - Cert Manager [Fury Kubernetes Ingress]
+    source: quay.io/jetstack/cert-manager-acmesolver
+    tag:
+      - "v1.14.2"
+    destinations:
+      - registry.sighup.io/fury/jetstack/cert-manager-acmesolver
 
   - name: External DNS [Fury Kubernetes Ingress]
     source: k8s.gcr.io/external-dns/external-dns
