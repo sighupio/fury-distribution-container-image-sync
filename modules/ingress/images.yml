@@ -15,6 +15,7 @@ images:
       - "v1.7.1"
       - "v1.9.3"
       - "v1.9.4"
+      - "v1.9.6"
     destinations:
       - registry.sighup.io/fury/ingress-nginx/controller
 
