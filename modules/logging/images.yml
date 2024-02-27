@@ -142,6 +142,7 @@ images:
       - "4.1.0"
       - "4.3.0"
       - "4.4.1"
+      - "4.5.6"
     destinations:
       - registry.sighup.io/fury/banzaicloud/logging-operator
 
