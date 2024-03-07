@@ -1,0 +1,132 @@
+name: Patch Images
+
+on:
+  schedule:
+    - cron: '0 2 */15 * *'  # Every 15 days at 2 a.m.
+#   push:
+#     branches:
+#       - main
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    outputs:
+        mymatrix: ${{ steps.dataStep.outputs.myoutput }}
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      # Retrieve image list via python (you can choose inf include the last 3 tags via the --include-last-3-tags arguments)
+      - name: Export Image List With Python
+        id: dataStep
+        run: |
+          cd utilities
+          TARGETS=$(python3 image_list_json.py)
+          echo $TARGETS
+          echo "myoutput=$(jq -cn --argjson environments "$TARGETS" '{target: $environments}')" >> $GITHUB_OUTPUT
+
+  patch:
+    needs: setup
+    runs-on: ubuntu-latest
+    strategy:
+        fail-fast: false
+        matrix: ${{fromJson(needs.setup.outputs.mymatrix)}}
+    steps:
+    - name: Print image name
+      run: echo ${{matrix.target}}
+
+    - name: Install Cosign
+      uses: sigstore/cosign-installer@v3.1.1
+      with:
+        cosign-release: 'v2.2.3'
+
+    - name: Generate Trivy Report
+      uses: aquasecurity/trivy-action@69cbbc0cbbf6a2b0bab8dcf0e9f2d7ead08e87e4
+      with:
+        scan-type: 'image'
+        format: 'json'
+        output: 'report.json'
+        ignore-unfixed: true
+        vuln-type: 'os'
+        severity: 'MEDIUM,HIGH,CRITICAL'
+        image-ref: ${{ matrix.target }}
+
+    - name: Check Vuln Count
+      id: vuln_count
+      run: |
+        report_file="report.json"
+        vuln_count=$(jq '.Results | length' "$report_file")
+        echo "vuln_count=$vuln_count" >> $GITHUB_OUTPUT
+        echo $vuln_count
+
+    - name: Set Image Tag
+      id: set_tag
+      run: |
+        TAG=$(echo "${{ matrix.target }}" | grep -oP '(?<=:).*' | grep -oP '^[^/]+')
+        IMMUNIZED_TAG="${TAG}"
+        PATCHED_TAG_SBOM=$(echo "${{matrix.target}}" | tr '/:' '-')
+        IMAGE_NAME=$(echo "${{ matrix.target }}" | sed -E 's|^.+/([^:/]+).*|\1|')
+        echo "PATCHED_TAG=${IMMUNIZED_TAG}" >> $GITHUB_ENV
+        echo "PATCHED_TAG_SBOM=${PATCHED_TAG_SBOM}" >> $GITHUB_ENV
+        echo "IMAGE_NAME=${IMAGE_NAME}" >> $GITHUB_ENV
+
+    - name: Copa Action
+      if: steps.vuln_count.outputs.vuln_count != '0'
+      id: copa
+      uses: project-copacetic/copa-action@v1.2.1
+      with:
+        image: ${{ matrix.target }}
+        image-report: 'report.json'
+        patched-tag: ${{ env.PATCHED_TAG }}
+
+    - name: Log into harbor
+      if: steps.copa.conclusion == 'success'
+      id: login
+      uses: docker/login-action@343f7c4344506bcbf9b4de18042ae17996df046d
+      with:
+        registry: registry.sighup.io
+        username: ${{ secrets.HARBOR_USER }}
+        password: ${{ secrets.HARBOR_PASSWORD }}
+
+    - name: Tag Image for Harbor
+      if: steps.login.conclusion == 'success'
+      run: |
+        docker tag ${{ steps.copa.outputs.patched-image }} registry.sighup.io/fury/secured/${{ env.IMAGE_NAME }}:${{ env.PATCHED_TAG }}
+
+
+    - name: Docker Push Patched Image
+      id: push
+      if: steps.login.conclusion == 'success'
+      run: |
+        docker push registry.sighup.io/fury/secured/${{ env.IMAGE_NAME }}:${{ env.PATCHED_TAG }}
+
+    - name: Produce Image SBOM
+      id: sbom
+      if: steps.login.conclusion == 'success'
+      uses: anchore/sbom-action@v0
+      with:
+        image: "registry.sighup.io/fury/secured/${{ env.IMAGE_NAME }}:${{ env.PATCHED_TAG }}"
+        artifact-name: ${{ env.PATCHED_TAG_SBOM }}.spdx.json
+
+    - name: Sign Image with Cosign
+      if: steps.login.conclusion == 'success'
+      run: |
+        cosign sign --yes --key env://COSIGN_PRIVATE_KEY "registry.sighup.io/fury/secured/${{ env.IMAGE_NAME }}:${{ env.PATCHED_TAG }}"
+      env:
+        COSIGN_PRIVATE_KEY: ${{ secrets.COSIGN_PRIVATE_KEY }}
+        COSIGN_PASSWORD: ${{ secrets.COSIGN_PASSWORD }}
+
+    - name: Attest the Image with SBOM
+      if: steps.sbom.conclusion == 'success'
+      run: |
+        echo "${{ env.PATCHED_TAG_SBOM }}"
+        SBOM_FILE=$(find /tmp/sbom-action-* -name "*${{ env.PATCHED_TAG_SBOM }}*.spdx.json" -type f)
+        echo "${SBOM_FILE}"
+        if [ -z "$SBOM_FILE" ]; then
+          echo "Error: .spdx file not found"
+          exit 1
+        fi
+        cosign attest --yes --key env://COSIGN_PRIVATE_KEY --type spdx --predicate "${SBOM_FILE}" "registry.sighup.io/fury/secured/${{ env.IMAGE_NAME }}:${{ env.PATCHED_TAG }}"
+      env:
+        COSIGN_PRIVATE_KEY: ${{ secrets.COSIGN_PRIVATE_KEY }}
+        COSIGN_PASSWORD: ${{ secrets.COSIGN_PASSWORD }}
