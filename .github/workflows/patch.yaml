@@ -16,7 +16,7 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v4
 
-      # Retrieve image list via python (you can choose inf include the last 3 tags via the --include-last-3-tags arguments)
+      # Retrieve image list via python (you can choose to include the last 3 tags by passing the '--include-last-3-tags' argument to the script)
       - name: Export Image List With Python
         id: dataStep
         run: |
