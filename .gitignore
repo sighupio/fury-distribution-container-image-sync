@@ -1,1 +1,7 @@
 login
+
+# macos
+.DS_Store
+
+# cosign
+cosign.key
