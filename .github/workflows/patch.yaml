@@ -85,8 +85,8 @@ jobs:
       uses: docker/login-action@343f7c4344506bcbf9b4de18042ae17996df046d
       with:
         registry: registry.sighup.io
-        username: ${{ secrets.HARBOR_USER }}
-        password: ${{ secrets.HARBOR_PASSWORD }}
+        username: ${{ secrets.SIGHUP_REGISTRY_USERNAME }}
+        password: ${{ secrets.SIGHUP_REGISTRY_PASSWORD }}
 
     - name: Tag Image for Harbor
       if: steps.login.conclusion == 'success'
