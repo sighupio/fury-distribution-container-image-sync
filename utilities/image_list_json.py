@@ -16,6 +16,7 @@ import os
 import yaml
 import json
 import argparse
+import sys
 
 def get_images_and_tags(directory, include_last_3_tags=False):
     image_list = []
