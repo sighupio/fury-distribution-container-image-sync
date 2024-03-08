@@ -48,15 +48,7 @@ def main():
 
     parent_folder = os.path.dirname(os.getcwd())
     image_list = get_images_and_tags(parent_folder, include_last_3_tags=args.retrieve_last_3_tags)
-    with open('image_list.json', 'w') as f:
-        json.dump(image_list, f, indent=2)
-
-    # Print the content of the JSON file
-    with open('image_list.json', 'r') as f:
-        print(f.read())
-
-    # Delete the JSON file
-    os.remove('image_list.json')
+    json.dump(image_list, sys.stdout, indent=2)
 
 if __name__ == "__main__":
     main()
