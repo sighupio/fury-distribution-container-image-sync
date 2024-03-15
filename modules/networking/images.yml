@@ -104,6 +104,7 @@ images:
       - "v3.25.0"
       - "v3.26.1"
       - "v3.26.3"
+      - "v3.27.0"
     destinations:
       - registry.sighup.io/fury/calico/apiserver
 
@@ -114,6 +115,7 @@ images:
       - "v3.25.0"
       - "v3.26.1"
       - "v3.26.3"
+      - "v3.27.0"
     destinations:
       - registry.sighup.io/fury/calico/typha
 
