@@ -184,6 +184,7 @@ images:
       - "v1.13.3"
       - "v1.14.3"
       - "v1.15.0"
+      - "v1.15.2"
     destinations:
       - registry.sighup.io/fury/cilium/operator-generic
 
