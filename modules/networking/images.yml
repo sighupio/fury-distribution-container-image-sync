@@ -173,6 +173,7 @@ images:
 
   - name: Cilium
     source: quay.io/cilium/cilium
+    multi-arch: true
     tag:
       - "v1.13.1"
       - "v1.13.3"
@@ -183,6 +184,7 @@ images:
       - registry.sighup.io/fury/cilium/cilium
 
   - name: Cilium operator generic
+    multi-arch: true
     source: quay.io/cilium/operator-generic
     tag:
       - "v1.13.1"
@@ -194,6 +196,7 @@ images:
       - registry.sighup.io/fury/cilium/operator-generic
 
   - name: Cilium hubble relay
+    multi-arch: true
     source: quay.io/cilium/hubble-relay
     tag:
       - "v1.13.1"
@@ -205,6 +208,7 @@ images:
       - registry.sighup.io/fury/cilium/hubble-relay
 
   - name: Cilium hubble ui
+    multi-arch: true
     source: quay.io/cilium/hubble-ui
     tag:
       - "v0.10.0"
@@ -216,6 +220,7 @@ images:
       - registry.sighup.io/fury/cilium/hubble-ui
 
   - name: Cilium hubble ui backend
+    multi-arch: true
     source: quay.io/cilium/hubble-ui-backend
     tag:
       - "v0.10.0"
