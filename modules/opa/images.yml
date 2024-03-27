@@ -18,6 +18,7 @@ images:
       - "v3.12.0"
       - "v3.13.3"
       - "v3.14.0"
+      - "v3.15.1"
     destinations:
       - registry.sighup.io/fury/openpolicyagent/gatekeeper
 
@@ -36,6 +37,7 @@ images:
       - "v1.0.6"
       - "v1.0.7"
       - "v1.0.9"
+      - "v1.0.10"
     destinations:
       - registry.sighup.io/fury/gatekeeper-policy-manager
 
@@ -45,6 +47,7 @@ images:
     source: ghcr.io/kyverno/kyverno
     tag:
       - "v1.11.0"
+      - "v1.11.4"
     destinations:
       - registry.sighup.io/fury/kyverno/kyverno
 
@@ -52,6 +55,7 @@ images:
     source: ghcr.io/kyverno/kyvernopre
     tag:
       - "v1.11.0"
+      - "v1.11.4"
     destinations:
       - registry.sighup.io/fury/kyverno/kyvernopre
 
@@ -59,6 +63,7 @@ images:
     source: ghcr.io/kyverno/background-controller
     tag:
       - "v1.11.0"
+      - "v1.11.4"
     destinations:
       - registry.sighup.io/fury/kyverno/background-controller
   
@@ -66,6 +71,7 @@ images:
     source: ghcr.io/kyverno/cleanup-controller
     tag:
       - "v1.11.0"
+      - "v1.11.4"
     destinations:
       - registry.sighup.io/fury/kyverno/cleanup-controller
 
@@ -73,7 +79,7 @@ images:
     source: ghcr.io/kyverno/reports-controller
     tag:
       - "v1.11.0"
-
+      - "v1.11.4"
     destinations:
       - registry.sighup.io/fury/kyverno/reports-controller
 
@@ -82,5 +88,6 @@ images:
     tag:
       - "1.26.10"
       - "1.27.10"
+      - "1.28.5"
     destinations:
       - registry.sighup.io/fury/bitnami/kubectl

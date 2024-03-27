@@ -1,6 +1,7 @@
 images:
   - name: Pause [Fury Kubernetes On-Premises]
     source: registry.k8s.io/pause
+    multi-arch: true
     tag:
       - "3.2"
       - "3.3"
@@ -15,6 +16,7 @@ images:
 
   - name: Coredns [Fury Kubernetes On-Premises]
     source: registry.k8s.io/coredns/coredns
+    multi-arch: true
     tag:
       - "v1.6.7"
       - "v1.7.0"
@@ -28,6 +30,7 @@ images:
 
   - name: Kube Apiserver [Fury Kubernetes On-Premises]
     source: registry.k8s.io/kube-apiserver
+    multi-arch: true
     tag:
       - "v1.18.14"
       - "v1.20.15"
@@ -48,6 +51,7 @@ images:
 
   - name: Kube Controller Manager [Fury Kubernetes On-Premises]
     source: registry.k8s.io/kube-controller-manager
+    multi-arch: true
     tag:
       - "v1.18.14"
       - "v1.20.15"
@@ -68,6 +72,7 @@ images:
 
   - name: Kube Proxy [Fury Kubernetes On-Premises]
     source: registry.k8s.io/kube-proxy
+    multi-arch: true
     tag:
       - "v1.18.14"
       - "v1.20.15"
@@ -88,6 +93,7 @@ images:
 
   - name: Kube Scheduler [Fury Kubernetes On-Premises]
     source: registry.k8s.io/kube-scheduler
+    multi-arch: true
     tag:
       - "v1.18.14"
       - "v1.20.15"

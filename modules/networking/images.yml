@@ -71,6 +71,7 @@ images:
       - "v3.25.0"
       - "v3.26.1"
       - "v3.26.3"
+      - "v3.27.0"
     destinations:
       - registry.sighup.io/fury/calico/pod2daemon-flexvol
 
@@ -103,6 +104,7 @@ images:
       - "v3.25.0"
       - "v3.26.1"
       - "v3.26.3"
+      - "v3.27.0"
     destinations:
       - registry.sighup.io/fury/calico/apiserver
 
@@ -113,6 +115,7 @@ images:
       - "v3.25.0"
       - "v3.26.1"
       - "v3.26.3"
+      - "v3.27.0"
     destinations:
       - registry.sighup.io/fury/calico/typha
 
@@ -124,6 +127,7 @@ images:
       - "v3.25.0"
       - "v3.26.1"
       - "v3.26.3"
+      - "v3.27.0"
     destinations:
       - registry.sighup.io/fury/calico/csi
 
@@ -135,6 +139,7 @@ images:
       - "v3.25.0"
       - "v3.26.1"
       - "v3.26.3"
+      - "v3.27.0"
     destinations:
       - registry.sighup.io/fury/calico/node-driver-registrar
 
@@ -168,50 +173,60 @@ images:
 
   - name: Cilium
     source: quay.io/cilium/cilium
+    multi-arch: true
     tag:
       - "v1.13.1"
       - "v1.13.3"
       - "v1.14.3"
       - "v1.15.0"
+      - "v1.15.2"
     destinations:
       - registry.sighup.io/fury/cilium/cilium
 
   - name: Cilium operator generic
+    multi-arch: true
     source: quay.io/cilium/operator-generic
     tag:
       - "v1.13.1"
       - "v1.13.3"
       - "v1.14.3"
       - "v1.15.0"
+      - "v1.15.2"
     destinations:
       - registry.sighup.io/fury/cilium/operator-generic
 
   - name: Cilium hubble relay
+    multi-arch: true
     source: quay.io/cilium/hubble-relay
     tag:
       - "v1.13.1"
       - "v1.13.3"
       - "v1.14.3"
       - "v1.15.0"
+      - "v1.15.2"
     destinations:
       - registry.sighup.io/fury/cilium/hubble-relay
 
   - name: Cilium hubble ui
+    multi-arch: true
     source: quay.io/cilium/hubble-ui
     tag:
       - "v0.10.0"
       - "v0.11.0"
       - "v0.12.1"
       - "v0.12.3"
+      - "v0.13.0"
     destinations:
       - registry.sighup.io/fury/cilium/hubble-ui
 
   - name: Cilium hubble ui backend
+    multi-arch: true
     source: quay.io/cilium/hubble-ui-backend
     tag:
       - "v0.10.0"
       - "v0.11.0"
       - "v0.12.1"
       - "v0.12.3"
+      - "v0.13.0"
     destinations:
       - registry.sighup.io/fury/cilium/hubble-ui-backend
