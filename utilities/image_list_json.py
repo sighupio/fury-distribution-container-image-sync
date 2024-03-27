@@ -31,6 +31,8 @@ def get_images_and_tags(directory, include_last_3_tags=False):
                         image_name = image_data.get('destinations', [''])[0]
                         if image_name:
                             tags = image_data.get('tag', [])
+                            # Filter out 'latest' tags as they are test images
+                            tags = [tag for tag in tags if tag != 'latest']
                             if include_last_3_tags and len(tags) >= 3:
                                 tags = tags[-3:]
                             elif len(tags) >= 1:
