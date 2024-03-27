@@ -37,8 +37,6 @@ def get_images_and_tags(directory, include_last_3_tags=False):
                                 tags = tags[-3:]
                             elif len(tags) >= 1:
                                 tags = tags[-1:]  # Only the last tag
-                            else:
-                                print(f"WARNING: the {image_name} does not have tags defined", file=sys.stderr)
                             image_list.extend([f"{image_name}:{tag}" for tag in tags])
 
     return image_list
