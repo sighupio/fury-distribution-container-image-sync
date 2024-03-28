@@ -1,3 +1,15 @@
+"""
+Usage: python3 generate_cves_report.py [--report-secured]
+
+Description:
+    This script performs vulnerability scanning of Fury modules Docker images using Trivy.
+    It launch the 'image_list_json.py script, retrieves the output from that (the list of Fury images) and scans them in parallel threads.
+    Optionally, if launched with the '--report-secured' argument, it scans the already hardened fury images:
+    registry.sighup.io/fury/secured/*
+
+"""
+
+
 import os
 import threading
 import subprocess

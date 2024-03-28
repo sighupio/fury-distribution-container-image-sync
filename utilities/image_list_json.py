@@ -1,16 +1,23 @@
-# USAGE python3 images_list_python.py --retrieve-last-3-tags (OPTIONAL)
+"""
+Usage: python3 images_list_python.py [--retrieve-last-3-tags]
 
-# OUTPUT SAMPLE:
-# [
-#   "registry.sighup.io/fury/acid/postgres-operator:v1.6.3",
-#   "registry.sighup.io/fury/acid/spilo-13:2.0-p7",
-#   "registry.sighup.io/fury/acid/pgbouncer:master-16",
-#   "registry.sighup.io/fury/acid/logical-backup:v1.6.3",
-#   "registry.sighup.io/fury/wrouesnel/postgres_exporter:v0.8.0",
-#   "registry.sighup.io/fury/grafana/tempo:2.3.1",
-#   "registry.sighup.io/fury/memcached:1.5.17-alpine",
-#   "registry.sighup.io/fury/velero/velero:v1.13.0"
-# ]
+Description:
+    This script retrieves the last positional image tag from Fury modules files (modules/*/images.yml)
+    Optionally, if launched with the '--retrieve-last-3-tags' argument, it retrieves the last 3 positional tags.
+
+OUTPUT SAMPLE:
+[
+   "registry.sighup.io/fury/acid/postgres-operator:v1.6.3",
+   "registry.sighup.io/fury/acid/spilo-13:2.0-p7",
+   "registry.sighup.io/fury/acid/pgbouncer:master-16",
+   "registry.sighup.io/fury/acid/logical-backup:v1.6.3",
+   "registry.sighup.io/fury/wrouesnel/postgres_exporter:v0.8.0",
+   "registry.sighup.io/fury/grafana/tempo:2.3.1",
+   "registry.sighup.io/fury/memcached:1.5.17-alpine",
+   "registry.sighup.io/fury/velero/velero:v1.13.0"
+]
+
+"""
 
 import os
 import yaml
