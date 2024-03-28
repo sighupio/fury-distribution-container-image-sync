@@ -4,6 +4,7 @@ import subprocess
 import json
 import csv
 from datetime import datetime
+import sys
 
 # Number of threads
 num_threads = 8
@@ -22,7 +23,7 @@ def trivy_scan(image):
         scan_results[image] = {"error": str(e)}
 
 def get_image_list():
-    script_path = os.path.join(os.path.dirname(__file__), 'utilities', 'image_list_json.py')
+    script_path = os.path.join(os.path.dirname(__file__), 'image_list_json.py')
     try:
         result = subprocess.run(['python3', script_path], capture_output=True, text=True, check=True, cwd=os.path.dirname(script_path))
         return json.loads(result.stdout)
@@ -32,7 +33,6 @@ def get_image_list():
 
 # Obtain list of images
 images = get_image_list()
-
 # For rapid, local test comment the previous line and uncomment the following piece of code:
 # images = [
 #     "registry.sighup.io/fury/acid/postgres-operator:v1.6.3",
@@ -40,6 +40,14 @@ images = get_image_list()
 #     "registry.sighup.io/fury/acid/pgbouncer:master-16",
 #     "registry.sighup.io/fury/acid/logical-backup:v1.6.3"
 # ]
+
+# print(f"Image list: {images}")
+
+# Check if '--report-secured' argument is provided
+if '--report-secured' in sys.argv:
+    # Modify image names to add 'secured' after 'fury'
+    print('Generating CVEs report for secured images...')
+    images = [image.replace('fury/', 'fury/secured/') for image in images]
 
 # Split images into chunks for parallel processing
 image_chunks = [images[i:i + num_threads] for i in range(0, len(images), num_threads)]
