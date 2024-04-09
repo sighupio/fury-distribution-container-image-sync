@@ -165,6 +165,7 @@ images:
       - "1.7.0"
       - "1.8.1"
       - "2.4.3"
+      - "2.6.4"
     destinations:
       - registry.sighup.io/fury/kong/kuma-cp
 
@@ -179,6 +180,7 @@ images:
       - "1.7.0"
       - "1.8.1"
       - "2.4.3"
+      - "2.6.4"
     destinations:
       - registry.sighup.io/fury/kong/kuma-dp
 
@@ -193,6 +195,7 @@ images:
       - "1.7.0"
       - "1.8.1"
       - "2.4.3"
+      - "2.6.4"
     destinations:
       - registry.sighup.io/fury/kong/kuma-prometheus-sd
 
@@ -207,6 +210,7 @@ images:
       - "1.7.0"
       - "1.8.1"
       - "2.4.3"
+      - "2.6.4"
     destinations:
       - registry.sighup.io/fury/kong/kuma-init
 
@@ -216,6 +220,7 @@ images:
       - "1.4.1"
       - "1.8.1"
       - "2.4.3"
+      - "2.6.4"
     destinations:
       - registry.sighup.io/fury/kumahq/kuma-cp
 
@@ -225,6 +230,7 @@ images:
       - "1.4.1"
       - "1.8.1"
       - "2.4.3"
+      - "2.6.4"
     destinations:
       - registry.sighup.io/fury/kumahq/kuma-dp
 
@@ -242,5 +248,6 @@ images:
       - "1.4.1"
       - "1.8.1"
       - "2.4.3"
+      - "2.6.4"
     destinations:
       - registry.sighup.io/fury/kumahq/kuma-init
