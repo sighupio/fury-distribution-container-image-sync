@@ -47,6 +47,7 @@ images:
     source: quay.io/jaegertracing/jaeger-operator
     tag:
       - "1.43.0"
+      - "1.56.0"
     destinations:
       - registry.sighup.io/fury/jaegertracing/jaeger-operator
 
