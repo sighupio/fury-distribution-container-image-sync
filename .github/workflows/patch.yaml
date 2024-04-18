@@ -41,6 +41,8 @@ jobs:
         cosign-release: 'v2.2.4'
 
     - name: Generate Trivy Report
+      id: trivy
+      continue-on-error: true
       uses: aquasecurity/trivy-action@69cbbc0cbbf6a2b0bab8dcf0e9f2d7ead08e87e4
       with:
         scan-type: 'image'
@@ -53,6 +55,7 @@ jobs:
 
     - name: Check Vuln Count
       id: vuln_count
+      continue-on-error: true
       run: |
         report_file="report.json"
         vuln_count=$(jq '.Results | length' "$report_file")
@@ -71,7 +74,8 @@ jobs:
         echo "IMAGE_NAME=${IMAGE_NAME}" >> $GITHUB_ENV
 
     - name: Copa Action
-      if: steps.vuln_count.outputs.vuln_count != '0'
+      continue-on-error: true
+      # if: steps.vuln_count.outputs.vuln_count != '0'
       id: copa
       uses: project-copacetic/copa-action@v1.2.1
       with:
@@ -80,7 +84,7 @@ jobs:
         patched-tag: ${{ env.PATCHED_TAG }}
 
     - name: Log into harbor
-      if: steps.copa.conclusion == 'success'
+      # if: steps.copa.conclusion == 'success'
       id: login
       uses: docker/login-action@343f7c4344506bcbf9b4de18042ae17996df046d
       with:
@@ -88,28 +92,35 @@ jobs:
         username: ${{ secrets.SIGHUP_REGISTRY_USERNAME }}
         password: ${{ secrets.SIGHUP_REGISTRY_PASSWORD }}
 
+    - name: Move image to new location if copa/trivy failed
+      if: steps.copa.conclusion != 'success' || steps.trivy.conclusion != 'success'
+      run: |
+        docker pull registry.sighup.io/fury/${{ env.IMAGE_NAME }}:${{ env.PATCHED_TAG }} &&
+        docker tag registry.sighup.io/fury/${{ env.IMAGE_NAME }}:${{ env.PATCHED_TAG }} registry.sighup.io/fury/secured/${{ env.IMAGE_NAME }}:${{ env.PATCHED_TAG }} &&
+        docker push registry.sighup.io/fury/secured/${{ env.IMAGE_NAME }}:${{ env.PATCHED_TAG }}
+
     - name: Tag Image for Harbor
-      if: steps.login.conclusion == 'success'
+      if: steps.copa.conclusion == 'success'
       run: |
         docker tag ${{ steps.copa.outputs.patched-image }} registry.sighup.io/fury/secured/${{ env.IMAGE_NAME }}:${{ env.PATCHED_TAG }}
 
 
     - name: Docker Push Patched Image
       id: push
-      if: steps.login.conclusion == 'success'
+      if: steps.copa.conclusion == 'success'
       run: |
         docker push registry.sighup.io/fury/secured/${{ env.IMAGE_NAME }}:${{ env.PATCHED_TAG }}
 
     - name: Produce Image SBOM
       id: sbom
-      if: steps.login.conclusion == 'success'
+      if: steps.push.conclusion == 'success'
       uses: anchore/sbom-action@v0
       with:
         image: "registry.sighup.io/fury/secured/${{ env.IMAGE_NAME }}:${{ env.PATCHED_TAG }}"
         artifact-name: ${{ env.PATCHED_TAG_SBOM }}.spdx.json
 
     - name: Sign Image with Cosign
-      if: steps.login.conclusion == 'success'
+      if: steps.push.conclusion == 'success'
       run: |
         cosign sign --yes --key env://COSIGN_PRIVATE_KEY "registry.sighup.io/fury/secured/${{ env.IMAGE_NAME }}:${{ env.PATCHED_TAG }}"
       env:
