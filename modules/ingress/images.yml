@@ -1,5 +1,6 @@
 images:
   - name: nginx ingress controller [Fury Kubernetes Ingress]
+    cve_patch_enabled: true
     source: k8s.gcr.io/ingress-nginx/controller
     tag:
       - "v0.35.0"

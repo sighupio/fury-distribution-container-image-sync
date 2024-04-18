@@ -21,7 +21,7 @@ jobs:
         id: dataStep
         run: |
           cd utilities
-          TARGETS=$(python3 image_list_json.py)
+          TARGETS=$(python3 image_list_json.py --retrieve-last-3-tags)
           echo $TARGETS
           echo "myoutput=$(jq -cn --argjson environments "$TARGETS" '{target: $environments}')" >> $GITHUB_OUTPUT
 

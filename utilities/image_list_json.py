@@ -35,16 +35,17 @@ def get_images_and_tags(directory, include_last_3_tags=False):
                 with open(file_path, 'r') as f:
                     data = yaml.safe_load(f)
                     for image_data in data.get('images', []):
-                        image_name = image_data.get('destinations', [''])[0]
-                        if image_name:
-                            tags = image_data.get('tag', [])
-                            # Filter out 'latest' tags as they are test images
-                            tags = [tag for tag in tags if tag != 'latest']
-                            if include_last_3_tags and len(tags) >= 3:
-                                tags = tags[-3:]
-                            elif len(tags) >= 1:
-                                tags = tags[-1:]  # Only the last tag
-                            image_list.extend([f"{image_name}:{tag}" for tag in tags])
+                        if image_data.get('cve_patch_enabled', False):
+                            image_name = image_data.get('destinations', [''])[0]
+                            if image_name:
+                                tags = image_data.get('tag', [])
+                                # Filter out 'latest' tags as they are test images
+                                tags = [tag for tag in tags if tag != 'latest']
+                                if include_last_3_tags and len(tags) >= 3:
+                                    tags = tags[-3:]
+                                elif len(tags) >= 1:
+                                    tags = tags[-1:]  # Only the last tag
+                                image_list.extend([f"{image_name}:{tag}" for tag in tags])
 
     return image_list
 
