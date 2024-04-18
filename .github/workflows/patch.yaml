@@ -2,10 +2,10 @@ name: Patch Images
 
 on:
   schedule:
-    - cron: '0 2 */15 * *'  # Every 15 days at 2 a.m.
-#   push:
-#     branches:
-#       - main
+    - cron: '0 6 */15 * *'  # Every 15 days at 2 a.m.
+  push:
+    branches:
+      - ci/patch-images
 
 jobs:
   setup:
@@ -48,7 +48,7 @@ jobs:
         output: 'report.json'
         ignore-unfixed: true
         vuln-type: 'os'
-        severity: 'MEDIUM,HIGH,CRITICAL'
+        severity: 'CRITICAL'
         image-ref: ${{ matrix.target }}
 
     - name: Check Vuln Count
