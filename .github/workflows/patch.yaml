@@ -94,8 +94,8 @@ jobs:
     - name: Move image to new location if copa/trivy failed
       if: failure() && steps.copa.conclusion == 'failure'
       run: |
-        docker pull registry.sighup.io/fury/${{ env.IMAGE_NAME }}:${{ env.PATCHED_TAG }} &&
-        docker tag registry.sighup.io/fury/${{ env.IMAGE_NAME }}:${{ env.PATCHED_TAG }} registry.sighup.io/fury/secured/${{ env.IMAGE_NAME }}:${{ env.PATCHED_TAG }} &&
+        docker pull registry.sighup.io/fury/${{ env.IMAGE_NAME }}:${{ env.PATCHED_TAG }} 
+        docker tag registry.sighup.io/fury/${{ env.IMAGE_NAME }}:${{ env.PATCHED_TAG }} registry.sighup.io/fury/secured/${{ env.IMAGE_NAME }}:${{ env.PATCHED_TAG }} 
         docker push registry.sighup.io/fury/secured/${{ env.IMAGE_NAME }}:${{ env.PATCHED_TAG }}
 
     - name: Tag Image for Harbor
