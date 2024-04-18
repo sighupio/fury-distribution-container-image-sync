@@ -113,14 +113,14 @@ jobs:
 
     - name: Produce Image SBOM
       id: sbom
-      if: steps.push.conclusion == 'success' || steps.push.move == 'success'
+      if: steps.push.conclusion == 'success' || steps.move.conclusion == 'success'
       uses: anchore/sbom-action@v0
       with:
         image: "registry.sighup.io/fury/secured/${{ env.IMAGE_NAME }}:${{ env.PATCHED_TAG }}"
         artifact-name: ${{ env.PATCHED_TAG_SBOM }}.spdx.json
 
     - name: Sign Image with Cosign
-      if: steps.push.conclusion == 'success' || steps.push.move == 'success'
+      if: steps.push.conclusion == 'success' || steps.move.conclusion == 'success'
       run: |
         cosign sign --yes --key env://COSIGN_PRIVATE_KEY "registry.sighup.io/fury/secured/${{ env.IMAGE_NAME }}:${{ env.PATCHED_TAG }}"
       env:
