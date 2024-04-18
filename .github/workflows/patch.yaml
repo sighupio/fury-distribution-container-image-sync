@@ -93,7 +93,7 @@ jobs:
         password: ${{ secrets.SIGHUP_REGISTRY_PASSWORD }}
 
     - name: Move image to new location if copa/trivy failed
-      if: steps.copa.conclusion != 'success'
+      if: failure() && steps.copa.conclusion == 'failure'
       run: |
         docker pull registry.sighup.io/fury/${{ env.IMAGE_NAME }}:${{ env.PATCHED_TAG }} &&
         docker tag registry.sighup.io/fury/${{ env.IMAGE_NAME }}:${{ env.PATCHED_TAG }} registry.sighup.io/fury/secured/${{ env.IMAGE_NAME }}:${{ env.PATCHED_TAG }} &&
