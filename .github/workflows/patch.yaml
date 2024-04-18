@@ -38,7 +38,7 @@ jobs:
     - name: Install Cosign
       uses: sigstore/cosign-installer@v3.1.1
       with:
-        cosign-release: 'v2.2.3'
+        cosign-release: 'v2.2.4'
 
     - name: Generate Trivy Report
       uses: aquasecurity/trivy-action@69cbbc0cbbf6a2b0bab8dcf0e9f2d7ead08e87e4
