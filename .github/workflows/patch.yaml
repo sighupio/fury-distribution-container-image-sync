@@ -74,7 +74,6 @@ jobs:
         echo "IMAGE_NAME=${IMAGE_NAME}" >> $GITHUB_ENV
 
     - name: Copa Action
-      continue-on-error: true
       # if: steps.vuln_count.outputs.vuln_count != '0'
       id: copa
       uses: project-copacetic/copa-action@v1.2.1
