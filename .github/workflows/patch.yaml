@@ -62,10 +62,10 @@ jobs:
     - name: Set Image Tag
       id: set_tag
       run: |
-        TAG=$(echo "${{ matrix.target }}" | grep -oP '(?<=:).*' | grep -oP '^[^/]+')
+        TAG=$(echo "${{ matrix.target }}" | grep -o '[^:]*$')
         IMMUNIZED_TAG="${TAG}"
         PATCHED_TAG_SBOM=$(echo "${{ matrix.target }}" | tr '/:' '-')
-        IMAGE_NAME=$(echo "${{ matrix.target }}" | sed -E 's|.*/([^:/]+).*|\1|')
+        IMAGE_NAME=$(echo "${{ matrix.target }}" | sed -E 's|.*/([^:/]+/[^:/]+).*|\1|')
         echo "PATCHED_TAG=${IMMUNIZED_TAG}" >> $GITHUB_ENV
         echo "PATCHED_TAG_SBOM=${PATCHED_TAG_SBOM}" >> $GITHUB_ENV
         echo "IMAGE_NAME=${IMAGE_NAME}" >> $GITHUB_ENV
