@@ -40,6 +40,14 @@ jobs:
       with:
         cosign-release: 'v2.2.4'
 
+    - name: Log into harbor
+      id: login
+      uses: docker/login-action@343f7c4344506bcbf9b4de18042ae17996df046d
+      with:
+        registry: registry.sighup.io
+        username: ${{ secrets.SIGHUP_REGISTRY_USERNAME }}
+        password: ${{ secrets.SIGHUP_REGISTRY_PASSWORD }}
+
     - name: Generate Trivy Report
       id: trivy
       continue-on-error: true
@@ -82,14 +90,6 @@ jobs:
         image-report: 'report.json'
         patched-tag: ${{ env.PATCHED_TAG }}
 
-    - name: Log into harbor
-      # if: steps.copa.conclusion == 'success'
-      id: login
-      uses: docker/login-action@343f7c4344506bcbf9b4de18042ae17996df046d
-      with:
-        registry: registry.sighup.io
-        username: ${{ secrets.SIGHUP_REGISTRY_USERNAME }}
-        password: ${{ secrets.SIGHUP_REGISTRY_PASSWORD }}
 
     - name: Move image to new location if copa/trivy failed
       if: failure() && steps.copa.conclusion == 'failure'
