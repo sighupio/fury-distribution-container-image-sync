@@ -91,7 +91,7 @@ jobs:
         patched-tag: ${{ env.PATCHED_TAG }}
 
 
-    - name: Move image to new location if copa/trivy failed
+    - name: Move image to secured if copa/trivy failed
       if: failure() && steps.copa.conclusion == 'failure'
       id: move
       run: |
