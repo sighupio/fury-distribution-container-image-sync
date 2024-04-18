@@ -48,7 +48,7 @@ jobs:
         output: 'report.json'
         ignore-unfixed: true
         vuln-type: 'os'
-        severity: 'CRITICAL'
+        severity: 'HIGH,CRITICAL'
         image-ref: ${{ matrix.target }}
 
     - name: Check Vuln Count
