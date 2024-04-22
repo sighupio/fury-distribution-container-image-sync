@@ -76,21 +76,6 @@ images:
       context: custom/grafana
       args:
         - name: GF_INSTALL_PLUGINS
-          value: grafana-piechart-panel
-    tag:
-      - "8.5.5"
-      - "9.3.2"
-      - "9.3.6"
-      - "9.5.5"
-    destinations:
-      - registry.sighup.io/fury/grafana/grafana
-
-  - name: Grafana + Kuma Plugin [Fury Monitoring Module]
-    source: grafana
-    build:
-      context: custom/grafana
-      args:
-        - name: GF_INSTALL_PLUGINS
           value: grafana-piechart-panel,https://github.com/kumahq/kuma-grafana-datasource/releases/download/v0.1.1/kumahq-kuma-datasource-0.1.1.zip;kumahq-kuma-datasource
         # The plugin is not signed: see https://github.com/kumahq/kuma-grafana-datasource
         - name: GF_PLUGINS_ALLOW_LOADING_UNSIGNED_PLUGINS
@@ -101,7 +86,7 @@ images:
       - "9.3.6"
       - "9.5.5"
     destinations:
-      - registry.sighup.io/fury/grafana/grafana-kuma
+      - registry.sighup.io/fury/grafana/grafana
 
   - name: kube-state-metrics [Fury Monitoring Module]
     source: quay.io/coreos/kube-state-metrics
