@@ -76,7 +76,10 @@ images:
       context: custom/grafana
       args:
         - name: GF_INSTALL_PLUGINS
-          value: grafana-piechart-panel
+          value: grafana-piechart-panel,https://github.com/kumahq/kuma-grafana-datasource/releases/download/v0.1.1/kumahq-kuma-datasource-0.1.1.zip;kumahq-kuma-datasource
+        # The plugin is not signed: see https://github.com/kumahq/kuma-grafana-datasource
+        - name: GF_PLUGINS_ALLOW_LOADING_UNSIGNED_PLUGINS
+          value: kumahq-kuma-datasource
     tag:
       - "8.5.5"
       - "9.3.2"
