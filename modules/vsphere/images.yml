@@ -62,3 +62,11 @@ images:
       - v3.0.1
     destinations:
       - registry.sighup.io/fury/vsphere/vsphere-csi-syncer
+
+  - name: vSphere Cloud Provider [Fury Kubernetes vSphere]
+    source: gcr.io/cloud-provider-vsphere/cpi/release/manager
+    multi-arch: false
+    tag:
+      - v1.26.1
+    destinations:
+      - registry.sighup.io/fury/vsphere/vsphere-cpi-manager
