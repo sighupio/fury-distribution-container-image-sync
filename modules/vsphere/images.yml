@@ -68,5 +68,6 @@ images:
     multi-arch: false
     tag:
       - v1.26.1
+      - v1.27.0
     destinations:
       - registry.sighup.io/fury/vsphere/vsphere-cpi-manager
