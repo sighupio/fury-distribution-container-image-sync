@@ -4,6 +4,7 @@ images:
     multi-arch: false
     tag:
       - v2.9.0
+      - v2.10.0
     destinations:
       - registry.sighup.io/fury/vsphere/livenessprobe
 
@@ -12,6 +13,7 @@ images:
     multi-arch: false
     tag:
       - v6.2.1
+      - v6.2.2
     destinations:
       - registry.sighup.io/fury/vsphere/csi-snapshotter
 
@@ -20,6 +22,7 @@ images:
     multi-arch: false
     tag:
       - v1.7.0
+      - v1.8.0
     destinations:
       - registry.sighup.io/fury/vsphere/csi-resizer
 
@@ -28,6 +31,7 @@ images:
     multi-arch: false
     tag:
       - v3.4.0
+      - v3.5.0
     destinations:
       - registry.sighup.io/fury/vsphere/csi-provisioner
 
@@ -36,6 +40,7 @@ images:
     multi-arch: false
     tag:
       - v2.7.0
+      - v2.8.0
     destinations:
       - registry.sighup.io/fury/vsphere/csi-node-driver-registrar
 
@@ -44,6 +49,7 @@ images:
     multi-arch: false
     tag:
       - v4.2.0
+      - v4.3.0
     destinations:
       - registry.sighup.io/fury/vsphere/csi-attacher
 
@@ -52,6 +58,7 @@ images:
     multi-arch: false
     tag:
       - v3.0.1
+      - v3.1.2
     destinations:
       - registry.sighup.io/fury/vsphere/vsphere-csi-driver
 
@@ -60,6 +67,7 @@ images:
     multi-arch: false
     tag:
       - v3.0.1
+      - v3.1.2
     destinations:
       - registry.sighup.io/fury/vsphere/vsphere-csi-syncer
 
