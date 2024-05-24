@@ -65,6 +65,7 @@ images:
     source: rook/ceph
     tag:
       - "v1.10.5"
+      - "v1.10.13"
     destinations:
       - registry.sighup.io/fury/rook/ceph
 
