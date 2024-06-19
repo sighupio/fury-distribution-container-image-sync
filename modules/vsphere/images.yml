@@ -1,0 +1,81 @@
+images:
+  - name: SIG Storage Liveness Probe [Fury Kubernetes vSphere]
+    source: k8s.gcr.io/sig-storage/livenessprobe
+    multi-arch: false
+    tag:
+      - v2.9.0
+      - v2.10.0
+    destinations:
+      - registry.sighup.io/fury/vsphere/livenessprobe
+
+  - name: CSI Snapshotter [Fury Kubernetes vSphere]
+    source: k8s.gcr.io/sig-storage/csi-snapshotter
+    multi-arch: false
+    tag:
+      - v6.2.1
+      - v6.2.2
+    destinations:
+      - registry.sighup.io/fury/vsphere/csi-snapshotter
+
+  - name: CSI Resizer [Fury Kubernetes vSphere]
+    source: k8s.gcr.io/sig-storage/csi-resizer
+    multi-arch: false
+    tag:
+      - v1.7.0
+      - v1.8.0
+    destinations:
+      - registry.sighup.io/fury/vsphere/csi-resizer
+
+  - name: CSI Provisioner [Fury Kubernetes vSphere]
+    source: k8s.gcr.io/sig-storage/csi-provisioner
+    multi-arch: false
+    tag:
+      - v3.4.0
+      - v3.5.0
+    destinations:
+      - registry.sighup.io/fury/vsphere/csi-provisioner
+
+  - name: CSI Node Driver Registrar [Fury Kubernetes vSphere]
+    source: k8s.gcr.io/sig-storage/csi-node-driver-registrar
+    multi-arch: false
+    tag:
+      - v2.7.0
+      - v2.8.0
+    destinations:
+      - registry.sighup.io/fury/vsphere/csi-node-driver-registrar
+
+  - name: CSI Attacher [Fury Kubernetes vSphere]
+    source: k8s.gcr.io/sig-storage/csi-attacher
+    multi-arch: false
+    tag:
+      - v4.2.0
+      - v4.3.0
+    destinations:
+      - registry.sighup.io/fury/vsphere/csi-attacher
+
+  - name: vSphere driver [Fury Kubernetes vSphere]
+    source: gcr.io/cloud-provider-vsphere/csi/release/driver
+    multi-arch: false
+    tag:
+      - v3.0.1
+      - v3.1.2
+    destinations:
+      - registry.sighup.io/fury/vsphere/vsphere-csi-driver
+
+  - name: vSphere syncer [Fury Kubernetes vSphere]
+    source: gcr.io/cloud-provider-vsphere/csi/release/syncer
+    multi-arch: false
+    tag:
+      - v3.0.1
+      - v3.1.2
+    destinations:
+      - registry.sighup.io/fury/vsphere/vsphere-csi-syncer
+
+  - name: vSphere Cloud Provider [Fury Kubernetes vSphere]
+    source: gcr.io/cloud-provider-vsphere/cpi/release/manager
+    multi-arch: false
+    tag:
+      - v1.26.1
+      - v1.27.0
+    destinations:
+      - registry.sighup.io/fury/vsphere/vsphere-cpi-manager
