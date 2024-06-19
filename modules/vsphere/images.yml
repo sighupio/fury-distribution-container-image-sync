@@ -5,6 +5,7 @@ images:
     tag:
       - v2.9.0
       - v2.10.0
+      - v2.12.0
     destinations:
       - registry.sighup.io/fury/vsphere/livenessprobe
 
@@ -14,6 +15,7 @@ images:
     tag:
       - v6.2.1
       - v6.2.2
+      - v7.0.1
     destinations:
       - registry.sighup.io/fury/vsphere/csi-snapshotter
 
@@ -23,6 +25,7 @@ images:
     tag:
       - v1.7.0
       - v1.8.0
+      - v1.10.0
     destinations:
       - registry.sighup.io/fury/vsphere/csi-resizer
 
@@ -32,6 +35,7 @@ images:
     tag:
       - v3.4.0
       - v3.5.0
+      - v4.0.0
     destinations:
       - registry.sighup.io/fury/vsphere/csi-provisioner
 
@@ -41,6 +45,7 @@ images:
     tag:
       - v2.7.0
       - v2.8.0
+      - v2.10.0
     destinations:
       - registry.sighup.io/fury/vsphere/csi-node-driver-registrar
 
@@ -50,6 +55,7 @@ images:
     tag:
       - v4.2.0
       - v4.3.0
+      - v4.5.0
     destinations:
       - registry.sighup.io/fury/vsphere/csi-attacher
 
@@ -59,6 +65,7 @@ images:
     tag:
       - v3.0.1
       - v3.1.2
+      - v3.2.0
     destinations:
       - registry.sighup.io/fury/vsphere/vsphere-csi-driver
 
@@ -68,6 +75,7 @@ images:
     tag:
       - v3.0.1
       - v3.1.2
+      - v3.2.0
     destinations:
       - registry.sighup.io/fury/vsphere/vsphere-csi-syncer
 
@@ -77,5 +85,7 @@ images:
     tag:
       - v1.26.1
       - v1.27.0
+      - v1.28.1
+      - v1.29.0
     destinations:
       - registry.sighup.io/fury/vsphere/vsphere-cpi-manager
