@@ -85,5 +85,6 @@ images:
     tag:
       - v1.26.1
       - v1.27.0
+      - v1.28.1
     destinations:
       - registry.sighup.io/fury/vsphere/vsphere-cpi-manager
