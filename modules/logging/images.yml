@@ -11,6 +11,7 @@ images:
 
   - name: Opensearch
     source: opensearchproject/opensearch
+    cve_patch_enabled: true
     tag:
       - "1.2.4"
       - "2.0.0"

@@ -1,5 +1,6 @@
 images:
   - name: Ceph [Fury Storage Module]
+    cve_patch_enabled: true
     source: quay.io/ceph/ceph
     tag:
       - "v17.2.5"

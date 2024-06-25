@@ -78,3 +78,20 @@ Example `images.yml`:
 ## Automated execution
 
 This automation runs once a day: `"0 2 * * *"` and every time someone pushes to the `main` branch.
+
+
+## Image Hardening
+
+The [*patch*](https://github.com/sighupio/fury-distribution-container-image-sync/blob/main/.github/workflows/patch.yaml) Github action is designed to automatically fix vulnerabilities in the *OS layer* of images wherever possible.  
+Additionally, it signs the images using [Cosign](https://github.com/sigstore/cosign) with a private key owned by Sighup, generates the SBOM (Software Bill of Materials) for the images, and [attests](https://edu.chainguard.dev/open-source/sbom/sboms-and-attestations) them using the SBOM as a predicate.  
+
+In order to verify the signature on an image, use the following command:  
+```console
+export IMAGE_NAME=<IMAGE-NAME-HERE>
+cosign verify --key cosign/cosign.pub $IMAGE_NAME
+```   
+In order to verify the attestation, use the following command:  
+```console
+cosign verify-attestation --type spdx --key ./cosign/cosign.pub $IMAGE_NAME | jq -r .payload | base64 -D | jq .
+```   
+

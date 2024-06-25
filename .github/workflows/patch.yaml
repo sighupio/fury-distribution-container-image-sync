@@ -1,0 +1,142 @@
+name: Patch Images
+
+on:
+  schedule:
+    - cron: '0 6 */15 * *'  # Every 15 days at 2 a.m.
+  push:
+    branches:
+      - ci/patch-images
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    outputs:
+        mymatrix: ${{ steps.dataStep.outputs.myoutput }}
+    steps:
+      - name: Checkout Repo
+        uses: actions/checkout@v4
+
+      # Retrieve image list via python (you can choose to include the last 3 tags by passing the '--include-last-3-tags' argument to the script)
+      - name: Export Image List With Python
+        id: dataStep
+        run: |
+          cd utilities
+          TARGETS=$(python3 image_list_json.py --retrieve-last-3-tags)
+          echo $TARGETS
+          echo "myoutput=$(jq -cn --argjson environments "$TARGETS" '{target: $environments}')" >> $GITHUB_OUTPUT
+
+  patch:
+    needs: setup
+    runs-on: ubuntu-latest
+    strategy:
+        fail-fast: false
+        matrix: ${{fromJson(needs.setup.outputs.mymatrix)}}
+    steps:
+    - name: Print image name
+      run: echo ${{matrix.target}}
+
+    - name: Install Cosign
+      uses: sigstore/cosign-installer@v3.5.0
+      with:
+        cosign-release: 'v2.2.4'
+
+    - name: Log into harbor
+      id: login
+      uses: docker/login-action@343f7c4344506bcbf9b4de18042ae17996df046d
+      with:
+        registry: registry.sighup.io
+        username: ${{ secrets.SIGHUP_REGISTRY_USERNAME }}
+        password: ${{ secrets.SIGHUP_REGISTRY_PASSWORD }}
+
+    - name: Set Image Tag
+      id: set_tag
+      run: |
+        TAG=$(echo "${{ matrix.target }}" | grep -o '[^:]*$')
+        IMMUNIZED_TAG="${TAG}"
+        PATCHED_TAG_SBOM=$(echo "${{ matrix.target }}" | tr '/:' '-')
+        IMAGE_NAME=$(echo "${{ matrix.target }}" | sed -E 's|.*/([^:/]+/[^:/]+).*|\1|')
+        echo "PATCHED_TAG=${IMMUNIZED_TAG}" >> $GITHUB_ENV
+        echo "PATCHED_TAG_SBOM=${PATCHED_TAG_SBOM}" >> $GITHUB_ENV
+        echo "IMAGE_NAME=${IMAGE_NAME}" >> $GITHUB_ENV
+
+    - name: Generate Trivy Report
+      id: trivy
+      uses: aquasecurity/trivy-action@69cbbc0cbbf6a2b0bab8dcf0e9f2d7ead08e87e4
+      with:
+        scan-type: 'image'
+        format: 'json'
+        output: 'report.json'
+        ignore-unfixed: true
+        vuln-type: 'os'
+        severity: 'HIGH,CRITICAL'
+        image-ref: ${{ matrix.target }}
+
+    - name: Check Vuln Count
+      id: vuln_count
+      run: |
+        report_file="report.json"
+        vuln_count=$(jq '.Results | length' "$report_file")
+        echo "vuln_count=$vuln_count" >> $GITHUB_OUTPUT
+        echo $vuln_count
+
+
+    - name: Copa Action
+      # if: steps.vuln_count.outputs.vuln_count != '0'
+      id: copa
+      uses: project-copacetic/copa-action@v1.2.1
+      with:
+        image: ${{ matrix.target }}
+        image-report: 'report.json'
+        patched-tag: ${{ env.PATCHED_TAG }}
+
+
+    - name: Move image to secured if copa/trivy failed
+      if: failure() && steps.copa.conclusion == 'failure'
+      id: move
+      run: |
+        docker pull registry.sighup.io/fury/${{ env.IMAGE_NAME }}:${{ env.PATCHED_TAG }} 
+        docker tag registry.sighup.io/fury/${{ env.IMAGE_NAME }}:${{ env.PATCHED_TAG }} registry.sighup.io/fury/secured/${{ env.IMAGE_NAME }}:${{ env.PATCHED_TAG }} 
+        docker push registry.sighup.io/fury/secured/${{ env.IMAGE_NAME }}:${{ env.PATCHED_TAG }}
+
+    - name: Tag Image for Harbor
+      if: steps.copa.conclusion == 'success'
+      run: |
+        docker tag ${{ steps.copa.outputs.patched-image }} registry.sighup.io/fury/secured/${{ env.IMAGE_NAME }}:${{ env.PATCHED_TAG }}
+
+
+    - name: Docker Push Patched Image
+      id: push
+      if: steps.copa.conclusion == 'success'
+      run: |
+        docker push registry.sighup.io/fury/secured/${{ env.IMAGE_NAME }}:${{ env.PATCHED_TAG }}
+
+    - name: Produce Image SBOM
+      id: sbom
+      if: steps.push.conclusion == 'success' || (failure() && steps.move.conclusion == 'success')
+      uses: anchore/sbom-action@v0
+      with:
+        image: "registry.sighup.io/fury/secured/${{ env.IMAGE_NAME }}:${{ env.PATCHED_TAG }}"
+        artifact-name: ${{ env.PATCHED_TAG_SBOM }}.spdx.json
+
+    - name: Sign Image with Cosign
+      if: steps.push.conclusion == 'success' || (failure() && steps.move.conclusion == 'success')
+      run: |
+        cosign sign --yes --key env://COSIGN_PRIVATE_KEY "registry.sighup.io/fury/secured/${{ env.IMAGE_NAME }}:${{ env.PATCHED_TAG }}"
+      env:
+        COSIGN_PRIVATE_KEY: ${{ secrets.COSIGN_PRIVATE_KEY }}
+        COSIGN_PASSWORD: ${{ secrets.COSIGN_PASSWORD }}
+
+    - name: Attest the Image with SBOM
+      if: steps.sbom.conclusion == 'success' || (failure() && steps.move.conclusion == 'success')
+      run: |
+        echo "${{ env.PATCHED_TAG_SBOM }}"
+        SBOM_FILE=$(find /tmp/sbom-action-* -name "*${{ env.PATCHED_TAG_SBOM }}*.spdx.json" -type f)
+        echo "${SBOM_FILE}"
+        if [ -z "$SBOM_FILE" ]; then
+          echo "Error: .spdx file not found"
+          exit 1
+        fi
+        cosign attest --yes --key env://COSIGN_PRIVATE_KEY --type spdx --predicate "${SBOM_FILE}" "registry.sighup.io/fury/secured/${{ env.IMAGE_NAME }}:${{ env.PATCHED_TAG }}"
+      env:
+        COSIGN_PRIVATE_KEY: ${{ secrets.COSIGN_PRIVATE_KEY }}
+        COSIGN_PASSWORD: ${{ secrets.COSIGN_PASSWORD }}

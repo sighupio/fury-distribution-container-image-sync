@@ -1,1 +1,10 @@
 login
+
+# macos
+.DS_Store
+
+# cosign
+cosign.key
+
+# local test script
+test.sh
