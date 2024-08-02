@@ -15,6 +15,7 @@ images:
   - "v1.11.0"
   - "v1.12.0"
   - "v1.13.0"
+  - "v1.14.0"
   destinations:
   - registry.sighup.io/fury/velero/velero
 
@@ -31,6 +32,7 @@ images:
   - "v1.7.0"
   - "v1.8.0"
   - "v1.9.0"
+  - "v1.10.0"
   destinations:
   - registry.sighup.io/fury/velero/velero-plugin-for-aws
 
@@ -47,6 +49,7 @@ images:
   - "v1.7.0"
   - "v1.8.0"
   - "v1.9.0"
+  - "v1.10.0"
   destinations:
   - registry.sighup.io/fury/velero/velero-plugin-for-microsoft-azure
 
@@ -63,6 +66,7 @@ images:
   - "v1.7.0"
   - "v1.8.0"
   - "v1.9.0"
+  - "v1.10.0"
   destinations:
   - registry.sighup.io/fury/velero/velero-plugin-for-gcp
 
