@@ -1,6 +1,7 @@
 images:
   - name: nginx ingress controller [Fury Kubernetes Ingress]
     source: k8s.gcr.io/ingress-nginx/controller
+    multi-arch: true
     tag:
       - "v0.35.0"
       - "v0.43.0"
@@ -16,6 +17,7 @@ images:
       - "v1.9.3"
       - "v1.9.4"
       - "v1.9.6"
+      - "v1.11.2"
     destinations:
       - registry.sighup.io/fury/ingress-nginx/controller
 
