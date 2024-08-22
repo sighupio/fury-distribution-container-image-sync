@@ -76,7 +76,6 @@ images:
 
   - name: Grafana [Fury Monitoring Module]
     source: grafana
-    multi-arch: true
     build:
       context: custom/grafana
       args:
