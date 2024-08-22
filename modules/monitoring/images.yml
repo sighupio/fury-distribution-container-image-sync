@@ -9,6 +9,7 @@ images:
 
   - name: Prometheus adapter direcxman [Fury Monitoring Module]
     source: registry.k8s.io/prometheus-adapter/prometheus-adapter
+    multi-arch: true
     tag:
       - "v0.11.1"
     destinations:
@@ -23,6 +24,7 @@ images:
 
   - name: Alertmanager [Fury Monitoring Module]
     source: quay.io/prometheus/alertmanager
+    multi-arch: true
     tag:
       - "v0.16.0"
       - "v0.20.0"
@@ -38,6 +40,7 @@ images:
 
   - name: blackbox-exporter [Fury Monitoring Module]
     source: quay.io/prometheus/blackbox-exporter
+    multi-arch: true
     tag:
       - "v0.21.0"
       - "v0.23.0"
@@ -57,6 +60,7 @@ images:
       - registry.sighup.io/fury/bloomberg/goldpinger
 
   - name: Grafana side-car [Fury Monitoring Module]
+    multi-arch: true
     source: docker.io/kiwigrid/k8s-sidecar
     tag:
       - "0.1.193"
@@ -72,6 +76,7 @@ images:
 
   - name: Grafana [Fury Monitoring Module]
     source: grafana
+    multi-arch: true
     build:
       context: custom/grafana
       args:
@@ -112,6 +117,7 @@ images:
 
   - name: kube-state-metrics [Fury Monitoring Module]
     source: registry.k8s.io/kube-state-metrics/kube-state-metrics
+    multi-arch: true
     tag:
       - "v2.9.2"
     destinations:
@@ -129,6 +135,7 @@ images:
 
   - name: Prometheus [Fury Monitoring Module]
     source: quay.io/prometheus/prometheus
+    multi-arch: true
     tag:
       - "v2.16.0"
       - "v2.21.0"
@@ -154,6 +161,7 @@ images:
 
   - name: prometheus-operator [Fury Monitoring Module]
     source: quay.io/prometheus-operator/prometheus-operator
+    multi-arch: true
     tag:
       - "v0.44.1"
       - "v0.48.0"
@@ -177,6 +185,7 @@ images:
 
   - name: prometheus-operator config reloader [Fury Monitoring Module]
     source: quay.io/prometheus-operator/prometheus-config-reloader
+    multi-arch: true
     tag:
       - "v0.42.0"
       - "v0.44.1"
@@ -192,6 +201,7 @@ images:
 
   - name: openldap [Fury Monitoring Module]
     source: docker.io/osixia/openldap
+    multi-arch: true
     tag:
       - "1.3.0"
       - "1.5.0"
@@ -209,6 +219,7 @@ images:
 
   - name: thanos [Fury Monitoring Module]
     source: quay.io/thanos/thanos
+    multi-arch: true
     tag:
       - "v0.30.2"
       - "v0.31.0"
@@ -219,6 +230,7 @@ images:
 
   - name: x509 certificate exporter
     source: docker.io/enix/x509-certificate-exporter
+    multi-arch: true
     tag:
       - "2.9.1"
       - "2.9.2"
@@ -233,6 +245,7 @@ images:
 
   - name: Karma [Fury Monitoring Module]
     source: ghcr.io/prymitive/karma
+    multi-arch: true
     tag:
       - "v0.113"
     destinations:
@@ -240,6 +253,7 @@ images:
 
   - name: Mimir [Fury Monitoring Module]
     source: docker.io/grafana/mimir
+    multi-arch: true
     tag:
       - "2.10.3"
       - "2.11.0"
@@ -248,6 +262,7 @@ images:
 
   - name: Mimir Continuos Test [Fury Monitoring Module]
     source: docker.io/grafana/mimir-continuous-test
+    multi-arch: true
     tag:
       - "2.10.3"
       - "2.11.0"
