@@ -1,0 +1,66 @@
+---
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+
+# NB: This is not a kustomization file used to install components, it's used only to check for CVEs on images
+
+resources:
+  # auth
+  - ./.furyctl/sighup/vendor/modules/auth/katalog/dex
+  - ./.furyctl/sighup/vendor/modules/auth/katalog/gangplank
+  - ./.furyctl/sighup/vendor/modules/auth/katalog/pomerium
+
+  # aws
+  - ./.furyctl/sighup/vendor/modules/aws/katalog/cluster-autoscaler/v1.29.x
+  - ./.furyctl/sighup/vendor/modules/aws/katalog/load-balancer-controller
+  - ./.furyctl/sighup/vendor/modules/aws/katalog/node-termination-handler
+  - ./.furyctl/sighup/vendor/modules/aws/katalog/snapshot-controller
+
+  # dr
+  - ./.furyctl/sighup/vendor/modules/dr/katalog/velero/velero-aws
+  - ./.furyctl/sighup/vendor/modules/dr/katalog/velero/velero-node-agent
+
+  # ingress
+  - ./.furyctl/sighup/vendor/modules/ingress/katalog/cert-manager
+  - ./.furyctl/sighup/vendor/modules/ingress/katalog/dual-nginx
+  - ./.furyctl/sighup/vendor/modules/ingress/katalog/external-dns/base
+  - ./.furyctl/sighup/vendor/modules/ingress/katalog/forecastle
+
+  # logging
+  - ./.furyctl/sighup/vendor/modules/logging/katalog/logging-operated
+  - ./.furyctl/sighup/vendor/modules/logging/katalog/logging-operator
+  - ./.furyctl/sighup/vendor/modules/logging/katalog/loki-distributed
+  - ./.furyctl/sighup/vendor/modules/logging/katalog/minio-ha
+  - ./.furyctl/sighup/vendor/modules/logging/katalog/opensearch-dashboards
+  - ./.furyctl/sighup/vendor/modules/logging/katalog/opensearch-single
+
+  # monitoring
+  - ./.furyctl/sighup/vendor/modules/monitoring/katalog/alertmanager-operated
+  - ./.furyctl/sighup/vendor/modules/monitoring/katalog/blackbox-exporter
+  - ./.furyctl/sighup/vendor/modules/monitoring/katalog/grafana
+  - ./.furyctl/sighup/vendor/modules/monitoring/katalog/karma
+  - ./.furyctl/sighup/vendor/modules/monitoring/katalog/kube-proxy-metrics
+  - ./.furyctl/sighup/vendor/modules/monitoring/katalog/kube-state-metrics
+  - ./.furyctl/sighup/vendor/modules/monitoring/katalog/mimir
+  - ./.furyctl/sighup/vendor/modules/monitoring/katalog/minio-ha
+  - ./.furyctl/sighup/vendor/modules/monitoring/katalog/node-exporter
+  - ./.furyctl/sighup/vendor/modules/monitoring/katalog/prometheus-adapter
+  # - ./.furyctl/sighup/vendor/modules/monitoring/katalog/prometheus-operated already included in mimir package
+  - ./.furyctl/sighup/vendor/modules/monitoring/katalog/prometheus-operator
+  - ./.furyctl/sighup/vendor/modules/monitoring/katalog/x509-exporter
+  # - ./.furyctl/sighup/vendor/modules/monitoring/katalog/thanos # not used in the distro in any configurations
+
+  # networking
+  - ./.furyctl/sighup/vendor/modules/networking/katalog/tigera/on-prem
+  - ./.furyctl/sighup/vendor/modules/networking/katalog/cilium
+  # - ./.furyctl/sighup/vendor/modules/networking/katalog/ip-masq # not used in the distro in any configurations
+
+  # policy
+  - ./.furyctl/sighup/vendor/modules/opa/katalog/gatekeeper
+  - ./.furyctl/sighup/vendor/modules/opa/katalog/kyverno
+
+  # tracing
+  - ./.furyctl/sighup/vendor/modules/tracing/katalog/minio-ha
+  - ./.furyctl/sighup/vendor/modules/tracing/katalog/tempo-distributed
+
+
