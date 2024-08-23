@@ -3,3 +3,5 @@ login
 built.yaml
 scan.tmp
 scan_results.txt
+to_be_patched.txt
+*.json
