@@ -244,3 +244,15 @@ images:
       - "v4.0.2"
     destinations:
       - registry.sighup.io/fury/sig-storage/nfs-subdir-external-provisioner
+
+  - name: Kubectl + JQ image
+    source: kubectl-jq
+    build:
+      context: custom/kubectl-jq
+      args:
+        - name: KUBECTL
+          value: "1.29.3"
+    tag:
+      - "1.29.3"
+    destinations:
+      - registry.sighup.io/fury/kubectl-jq
