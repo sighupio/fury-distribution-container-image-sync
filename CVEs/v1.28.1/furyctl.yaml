@@ -8,7 +8,7 @@ kind: KFDDistribution
 metadata:
   name: sighup
 spec:
-  distributionVersion: v1.29.2
+  distributionVersion: v1.28.1
   distribution:
     kubeconfig: "/path/to/kubeconfig"
     common: {}
@@ -40,4 +40,3 @@ spec:
       auth:
         provider:
           type: none
-      

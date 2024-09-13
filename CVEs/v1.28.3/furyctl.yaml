@@ -1,0 +1,42 @@
+# Copyright (c) 2017-present SIGHUP s.r.l All rights reserved.
+# Use of this source code is governed by a BSD-style
+# license that can be found in the LICENSE file.
+
+---
+apiVersion: kfd.sighup.io/v1alpha2
+kind: KFDDistribution
+metadata:
+  name: sighup
+spec:
+  distributionVersion: v1.28.3
+  distribution:
+    kubeconfig: "/path/to/kubeconfig"
+    common: {}
+    modules:
+      networking: 
+        type: none
+      ingress:
+        baseDomain: example.com
+        nginx:
+          type: none
+          tls:
+            provider: certManager
+        certManager:
+          clusterIssuer:
+            name: letsencrypt-fury
+            email: sighup@example.com
+            type: http01
+      logging:
+        type: none
+      monitoring:
+        type: none
+      tracing:
+        type: none
+      policy:
+        type: none
+      dr:
+        type: none
+        velero: {}
+      auth:
+        provider:
+          type: none
