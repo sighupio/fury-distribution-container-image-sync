@@ -150,6 +150,7 @@ images:
     source: docker.io/busybox
     tag:
       - "latest"
+      - "stable"
     destinations:
       - registry.sighup.io/fury/busybox
 
