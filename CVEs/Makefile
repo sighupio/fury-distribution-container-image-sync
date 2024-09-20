@@ -1,8 +1,10 @@
-.PHONY: download-deps kustomize-build-all gen-image-list scan-vulns
+.PHONY: scan download-deps kustomize-build-all gen-image-list scan-vulns patch patch-vulns
 
 KFD_VERSIONS := $(shell find . -type d -maxdepth 1 -mindepth 1 | cut -d/ -f2)
 
-all:
+all: scan patch
+
+scan:
 	@for version in $(KFD_VERSIONS); do \
 		( \
 			$(MAKE) download-deps KFD_VERSION=$$version; \
@@ -12,6 +14,11 @@ all:
 		) & \
 	done; \
 	wait
+
+patch:
+	@for version in $(KFD_VERSIONS); do \
+  		$(MAKE) patch-vulns KFD_VERSION=$$version; \
+	done
 
 download-deps:
 	furyctl -c $(KFD_VERSION)/furyctl.yaml -o $(KFD_VERSION) download dependencies
@@ -38,5 +45,8 @@ gen-image-list: kustomize-build-all
 
 scan-vulns:
 	../scripts/scan_vuln.sh $(KFD_VERSION)
+
+patch-vulns:
+	../scripts/patch_images_with_copacetic.sh $(KFD_VERSION)
 
 
