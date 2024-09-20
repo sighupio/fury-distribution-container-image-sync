@@ -32,14 +32,18 @@ jobs:
           sudo apt-get install trivy
           trivy --version
 
+          wget https://github.com/moby/buildkit/releases/download/v0.16.0/buildkit-v0.16.0.linux-amd64.tar.gz
+          tar -xzvf buildkit-v0.16.0.linux-amd64.tar.gz -C /usr/local/bin/  --strip-components=1
+          buildctl --version
 
-          wget https://github.com/project-copacetic/copacetic/releases/download/v0.7.0/copa_0.7.0_linux_amd64.tar.gz
-          tar -xzvf copa_0.7.0_linux_amd64.tar.gz
+          wget https://github.com/project-copacetic/copacetic/releases/download/v0.8.0/copa_0.8.0_linux_amd64.tar.gz
+          tar -xzvf copa_0.8.0_linux_amd64.tar.gz
           chmod +x copa
           sudo mv copa /usr/local/bin/
           copa --version
 
       - name: Execute patch script
         run: |
-          ./patch_images_with_copacetic.sh
+          cd CVEs
+          make patch
 
