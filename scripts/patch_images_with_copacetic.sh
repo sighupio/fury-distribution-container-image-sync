@@ -37,25 +37,32 @@ function patch_image() {
   secured_image=${image//"${REGISTRY_BASE_URL}"/"${REGISTRY_SECURED_BASE_URL}"}
   image_to_patch="$secured_image"
 
-  if ! docker pull "$image_to_patch" &> /dev/null
+  DOCKER_PULL_OUTPUT_FILE=${KFD_VERSION}/${image_to_patch//[:\/]/_}-image-pull.log
+
+  if ! docker pull "$image_to_patch" > "${DOCKER_PULL_OUTPUT_FILE}" 2>&1
   then
     image_to_patch="$image"
+    if ! docker pull "$image_to_patch" >> "${DOCKER_PULL_OUTPUT_FILE}" 2>&1
+    then
+      echo ">>>>>>>>>>>>>>>>>>> Failed pull $image_to_patch <<<<<<<<<<<<<<<<<<<<<"
+      cat "${DOCKER_PULL_OUTPUT_FILE}"
+      return 1
+    fi
   fi
-  docker pull "$image" &> /dev/null
   TRIVY_SCAN_OUTPUT_FILE=$TRIVY_SCAN_OUTPUT_DIR/${image_to_patch//[:\/]/_}.json
   COPA_REPORT_OUTPUT_FILE=$COPA_PATCH_OUTPUT_DIR/${image_to_patch//[:\/]/_}.vex.json
   COPA_PATCHING_LOG_FILE=$COPA_PATCH_OUTPUT_DIR/${image_to_patch//[:\/]/_}.log
-  echo ">>>>>>>>>>>>>>>>>>> Scan $image for CVEs <<<<<<<<<<<<<<<<<<<<<"
+  echo ">>>>>>>>>>>>>>>>>>> Scan $image_to_patch for CVEs <<<<<<<<<<<<<<<<<<<<<"
   trivy image -q --vuln-type os --ignore-unfixed -f json -o "${TRIVY_SCAN_OUTPUT_FILE}" "$image_to_patch" # --platform=linux/amd64
-  echo ">>>>>>>>>>>>>>>>>>> Patching CVEs for $image <<<<<<<<<<<<<<<<<<<<<"
-  copa patch -r "${TRIVY_SCAN_OUTPUT_FILE}" -i "$image" --format="openvex" --output "$COPA_REPORT_OUTPUT_FILE" -a tcp://127.0.0.1:8888 2>&1 | tee "$COPA_PATCHING_LOG_FILE"
+  echo ">>>>>>>>>>>>>>>>>>> Patching CVEs for $image_to_patch <<<<<<<<<<<<<<<<<<<<<"
+  copa patch -r "${TRIVY_SCAN_OUTPUT_FILE}" -i "$image_to_patch" --format="openvex" --output "$COPA_REPORT_OUTPUT_FILE" -a tcp://127.0.0.1:8888 2>&1 | tee "$COPA_PATCHING_LOG_FILE"
   copa_exit_code=${PIPESTATUS[0]}
 
   if [ "$copa_exit_code" -eq 0 ]
   then
     FIXED_CVES=$(jq '.statements[] | select(.status=="fixed") | .vulnerability."@id"' -r < "$COPA_REPORT_OUTPUT_FILE" | sort -r)
     DOCKER_LABELS=
-    secured_image_hash=$(docker inspect "$image-patched" --format '{{.Id}}')
+    secured_image_hash=$(docker inspect "$image_to_patch-patched" --format '{{.Id}}')
     echo ">>>>>>>>>>>>>>>>>>> Update patching report for $image_to_patch <<<<<<<<<<<<<<<<<<<<<"
     for FIXED_CVE in ${FIXED_CVES[@]}
     do
@@ -75,18 +82,23 @@ function patch_image() {
       --label io.sighup.secured.image.created="$(date -u +"%Y-%m-%dT%H:%M:%S.%3NZ")" \
       -t "$secured_image" \
       -f - "$DOCKERFILE_OUTPUT_DIR" &> /dev/null
+    secured_labeled_image_hash=$(docker inspect "$secured_image" --format '{{.Id}}')
+    sed -i"" s#"$secured_image_hash"#"$secured_labeled_image_hash"# "$PATCH_REPORT_OUTPUT_FILE"
     echo ">>>>>>>>>>>>>>>>>>> Push secure image: $secured_image <<<<<<<<<<<<<<<<<<<<<"
     docker push "$secured_image"
   else
-    echo ">>>>>>>>>>>>>>>>>>> Tag secure image: $secured_image <<<<<<<<<<<<<<<<<<<<<"
-    docker tag "$image" "$secured_image"
-    echo ">>>>>>>>>>>>>>>>>>> Push secure image: $secured_image <<<<<<<<<<<<<<<<<<<<<"
-    docker push "$secured_image"
+    if [ "$image_to_patch" != "$secured_image" ]
+    then
+      echo ">>>>>>>>>>>>>>>>>>> Tag secure image: $secured_image <<<<<<<<<<<<<<<<<<<<<"
+      docker tag "$image" "$secured_image"
+      echo ">>>>>>>>>>>>>>>>>>> Push secure image: $secured_image <<<<<<<<<<<<<<<<<<<<<"
+      docker push "$secured_image"
+    fi
     echo "$secured_image: $(awk -F'Error:' '$0 ~ /Error:/ {print $2}' "$COPA_PATCHING_LOG_FILE")" >> "$PATCH_ERROR_OUTPUT_FILE"
   fi
 
-  echo ">>>>>>>>>>>>>>>>>>> CLEANUP $image <<<<<<<<<<<<<<<<<<<<<"
-  docker rmi -f "$image"
+  echo ">>>>>>>>>>>>>>>>>>> CLEANUP $image_to_patch <<<<<<<<<<<<<<<<<<<<<"
+  docker rmi -f "$image_to_patch"
   echo ">>>>>>>>>>>>>>>>>>> CLEANUP $secured_image <<<<<<<<<<<<<<<<<<<<<"
   docker rmi -f "$secured_image"
   echo ""
