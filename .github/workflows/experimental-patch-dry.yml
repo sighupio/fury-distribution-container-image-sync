@@ -8,7 +8,7 @@ on:
   #  - cron: "0 2 * * *"
 
 jobs:
-  sync:
+  scan-and-patching:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
@@ -42,8 +42,17 @@ jobs:
           sudo mv copa /usr/local/bin/
           copa --version
 
-      - name: Execute patch script
+      - name: Execute scan and patching
         run: |
           cd CVEs
-          make patch
+          make all KFD_VERSIONS="v1.29.3"
 
+      - name: publish patching report
+        uses: actions/upload-artifact@v4
+        with:
+          name: reports
+          path: |
+            CVEs/v*/images.txt
+            CVEs/v*/built.yaml
+            CVEs/v*/*.md
+            CVEs/v*/*.log
