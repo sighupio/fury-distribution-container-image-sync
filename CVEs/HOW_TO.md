@@ -1,8 +1,8 @@
 # How to generate CVE reports for a distro version
 
-This guide explains how to generate a new report (in MarkDown) from a distribution version.
+This guide explains how to generate a new report (in MarkDown) for a version of the distribution.
 
-## Requirements:
+## Requirements
 
 * `trivy` command line installed
 * `jq` command line installed
