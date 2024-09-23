@@ -28,9 +28,9 @@ for image in $images_with_tags; do
   then
     echo "$image | ERROR PROCESSING! " >> "${SCAN_ERROR_OUTPUT_FILE}"
   else
-    src_image_hash=$(cat $TRIVY_SCAN_OUTPUT_FILE | jq -r '.Metadata.ImageID')
+    src_image_hash=$(jq -r '.Metadata.ImageID' < "$TRIVY_SCAN_OUTPUT_FILE")
     jq -r --arg image "$image" \
-      --arg src_image_hash $src_image_hash \
+      --arg src_image_hash "$src_image_hash" \
       'try .Results[].Vulnerabilities[] | "| " + $image + " | " + $src_image_hash +" | " + .Severity + " | " + .VulnerabilityID + " | " + .Title + " | " + .PkgName + " " + .InstalledVersion + " | " + .Status + " | " + .FixedVersion + " |" ' < "$TRIVY_SCAN_OUTPUT_FILE" >> "${SCAN_RESULT_OUTPUT_FILE}"
   fi
 
