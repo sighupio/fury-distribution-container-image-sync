@@ -30,7 +30,7 @@ echo "| --- | --- | --- | --- |--- | --- | --- |"
 
 
 REGISTRY_BASE_URL='registry.sighup.io/fury'
-REGISTRY_SECURED_BASE_URL='registry.sighup.io/fury/secured'
+REGISTRY_SECURED_BASE_URL='registry.sighup.io/fury-secured'
 
 function patch_image() {
   local image="$1"
@@ -75,13 +75,13 @@ function patch_image() {
       --label io.sighup.secured.image.created="$(date -u +"%Y-%m-%dT%H:%M:%S.%3NZ")" \
       -t "$secured_image" \
       -f - "$DOCKERFILE_OUTPUT_DIR" &> /dev/null
-    echo "############## SUCCESS, we will execute: <<<<<<<<<<<<<<<<<<<<<"
-    echo "----> docker push $secured_image"
+    echo ">>>>>>>>>>>>>>>>>>> Push secure image: $secured_image <<<<<<<<<<<<<<<<<<<<<"
+    docker push "$secured_image"
   else
     echo ">>>>>>>>>>>>>>>>>>> Tag secure image: $secured_image <<<<<<<<<<<<<<<<<<<<<"
     docker tag "$image" "$secured_image"
-    echo "%%%%%%%%%%%%%% COPA FAILED, we will still execute:"
-    echo "----> docker push $secured_image"
+    echo ">>>>>>>>>>>>>>>>>>> Push secure image: $secured_image <<<<<<<<<<<<<<<<<<<<<"
+    docker push "$secured_image"
     echo "$secured_image: $(awk -F'Error:' '$0 ~ /Error:/ {print $2}' "$COPA_PATCHING_LOG_FILE")" >> "$PATCH_ERROR_OUTPUT_FILE"
   fi
 
