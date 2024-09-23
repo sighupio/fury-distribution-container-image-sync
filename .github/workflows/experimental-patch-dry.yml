@@ -31,6 +31,10 @@ jobs:
           sudo apt-get update
           sudo apt-get install trivy
           trivy --version
+          
+          wget https://github.com/sighupio/furyctl/releases/download/v0.29.7/furyctl-linux-amd64.tar.gz
+          tar -xzvf furyctl-linux-amd64.tar.gz -C /usr/local/bin/
+          furyctl --version
 
           wget https://github.com/moby/buildkit/releases/download/v0.16.0/buildkit-v0.16.0.linux-amd64.tar.gz
           tar -xzvf buildkit-v0.16.0.linux-amd64.tar.gz -C /usr/local/bin/  --strip-components=1
