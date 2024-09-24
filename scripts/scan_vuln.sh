@@ -24,7 +24,7 @@ mkdir -p "$TRIVY_SCAN_OUTPUT_DIR"
 for image in $images_with_tags; do
   TRIVY_SCAN_OUTPUT_FILE=/tmp/kfd/${KFD_VERSION}/scan-${image//[:\/]/_}.json
 
-  if ! trivy image --no-progress --output "$TRIVY_SCAN_OUTPUT_FILE" --format json --severity CRITICAL "$image"
+  if ! trivy image --skip-db-update --skip-java-db-update --no-progress --output "$TRIVY_SCAN_OUTPUT_FILE" --format json --severity CRITICAL "$image"
   then
     echo "$image | ERROR PROCESSING! " >> "${SCAN_ERROR_OUTPUT_FILE}"
   else

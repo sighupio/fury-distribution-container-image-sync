@@ -1,4 +1,4 @@
-.PHONY: scan download-deps kustomize-build-all gen-image-list scan-vulns patch patch-vulns
+.PHONY: scan download-deps kustomize-build-all gen-image-list trivy-download-db scan-vulns patch patch-vulns
 
 KFD_VERSIONS := $(shell find . -type d -maxdepth 1 -mindepth 1 | cut -d/ -f2 | sort )
 
@@ -42,6 +42,10 @@ gen-image-list:
 	awk '$$0 ~ /registry.sighup.io/ {if($$1 == "repository:"){repository=$$2;getline;tag=$$2; print repository":"tag}}' $(KFD_VERSION)/built.yaml | sort -u >> $(KFD_VERSION)/images.tmp.txt #match image.repository+image.tag
 
 	sort -u $(KFD_VERSION)/images.tmp.txt -o $(KFD_VERSION)/images.txt && rm $(KFD_VERSION)/images.tmp.txt
+
+trivy-download-db:
+	trivy image --download-db-only
+	trivy image --download-java-db-only
 
 scan-vulns:
 	../scripts/scan_vuln.sh $(KFD_VERSION)
