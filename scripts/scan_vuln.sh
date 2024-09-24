@@ -24,6 +24,7 @@ mkdir -p "$TRIVY_SCAN_OUTPUT_DIR"
 for image in $images_with_tags; do
   TRIVY_SCAN_OUTPUT_FILE=/tmp/kfd/${KFD_VERSION}/scan-${image//[:\/]/_}.json
 
+  echo ">>>>>>>>>>>>>>>>>>> Scan $image for CVEs <<<<<<<<<<<<<<<<<<<<<"
   if ! trivy image --skip-db-update --skip-java-db-update --scanners vuln --no-progress --output "$TRIVY_SCAN_OUTPUT_FILE" --format json --severity CRITICAL "$image"
   then
     echo "$image | ERROR PROCESSING! " >> "${SCAN_ERROR_OUTPUT_FILE}"
@@ -33,7 +34,7 @@ for image in $images_with_tags; do
       --arg src_image_hash "$src_image_hash" \
       'try .Results[].Vulnerabilities[] | "| " + $image + " | " + $src_image_hash +" | " + .Severity + " | " + .VulnerabilityID + " | " + .Title + " | " + .PkgName + " " + .InstalledVersion + " | " + .Status + " | " + .FixedVersion + " |" ' < "$TRIVY_SCAN_OUTPUT_FILE" >> "${SCAN_RESULT_OUTPUT_FILE}"
   fi
-
+  trivy clean --scan-cache
 done
 
 rm -rf "$TRIVY_SCAN_OUTPUT_DIR"
