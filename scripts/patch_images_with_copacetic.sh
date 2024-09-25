@@ -100,6 +100,7 @@ function patch_image() {
 
   echo ">>>>>>>>>>>>>>>>>>> CLEANUP $image_to_patch <<<<<<<<<<<<<<<<<<<<<"
   docker rmi -f "$image_to_patch"
+  buildctl --addr tcp://127.0.0.1:8888 prune
   if [ "$secured_image" != "$image_to_patch" ]
   then
     echo ">>>>>>>>>>>>>>>>>>> CLEANUP $secured_image <<<<<<<<<<<<<<<<<<<<<"

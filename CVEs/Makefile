@@ -2,7 +2,7 @@
 
 KFD_VERSIONS := $(shell find . -type d -maxdepth 1 -mindepth 1 | cut -d/ -f2 | sort )
 
-all: scan patch
+all: scan-parallel patch
 
 scan:
 	@for version in $(KFD_VERSIONS); do \
