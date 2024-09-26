@@ -19,10 +19,10 @@ jobs:
       - name: Sync Trivy DBs
         run: |
           skopeo login --username ${{ secrets.SIGHUP_REGISTRY_USERNAME }} registry.sighup.io -p ${{ secrets.SIGHUP_REGISTRY_PASSWORD }}
-          set -x
-          local sync_attempt=0
-          local trivy_db_break=0
-          local trivy_java_db_break=0
+          
+          sync_attempt=0
+          trivy_db_break=0
+          trivy_java_db_break=0
           
           while [ $((sync_attempt)) -lt 10 ]
           do
@@ -46,8 +46,8 @@ jobs:
             then
               break
             fi
-            
-            trivy_db_attempt=$((sync_attempt + 1))
+
+            sync_attempt=$((sync_attempt + 1))
             sleep 120
           done
           
