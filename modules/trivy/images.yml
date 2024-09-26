@@ -1,0 +1,15 @@
+images:
+  - name: trivy-db [Trivy DB]
+    source: ghcr.io/aquasecurity/trivy-db
+    tag:
+      - "2"
+    destinations:
+      - registry.sighup.io/fury-secured/trivy/trivy-db
+
+  - name: trivy-java-db [Trivy java DB]
+    source: ghcr.io/aquasecurity/trivy-java-db
+    tag:
+      - "1"
+    destinations:
+      - registry.sighup.io/fury-secured/trivy/trivy-java-db
+
