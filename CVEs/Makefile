@@ -59,6 +59,6 @@ scan-vulns:
 	../scripts/scan_vuln.sh $(KFD_VERSION)
 
 patch-vulns:
-	../scripts/patch_images_with_copacetic.sh $(KFD_VERSION)
+	DOCKER_CONFIG="${DOCKER_CONFIG}" ../scripts/patch_images_with_copacetic.sh $(KFD_VERSION)
 
 

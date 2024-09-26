@@ -13,7 +13,11 @@ PATCH_ERROR_OUTPUT_FILE=${KFD_VERSION}/patch-error.log
 if [ -z "$(docker ps -f name=buildkitd -q)" ]
 then
   echo ">>>>>>>>>>>>>>>>>>> Start buildkitd instance for COPA <<<<<<<<<<<<<<<<<<<<<"
-  docker run --detach --rm --privileged -p 127.0.0.1:8888:8888/tcp --name buildkitd --entrypoint buildkitd moby/buildkit:v0.11.4 --addr tcp://0.0.0.0:8888 # --platform linux/amd64
+  if [ ! -z "$DOCKER_CONFIG" ]
+  then
+    docker_config_extra_args="-v ${DOCKER_CONFIG}/config.json:/root/.docker/config.json"
+  fi
+  docker run --detach --rm --privileged $docker_config_extra_args -p 127.0.0.1:8888:8888/tcp --name buildkitd --entrypoint buildkitd moby/buildkit:v0.11.4 --addr tcp://0.0.0.0:8888 # --platform linux/amd64
 fi
 
 echo -n "" > "${PATCH_ERROR_OUTPUT_FILE}"
