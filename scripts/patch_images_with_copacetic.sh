@@ -81,6 +81,7 @@ function patch_image() {
     echo "FROM $image-patched" | DOCKER_BUILDKIT=0 docker build \
       ${DOCKER_LABELS} \
       --label io.sighup.secured.image.created="$(date -u +"%Y-%m-%dT%H:%M:%S.%3NZ")" \
+      --label io.sighup.secured.image.from.hash="$src_image_hash" \
       -t "$secured_image" \
       -f - "$DOCKERFILE_OUTPUT_DIR" &> /dev/null
     secured_labeled_image_hash=$(docker inspect "$secured_image" --format '{{.Id}}')
