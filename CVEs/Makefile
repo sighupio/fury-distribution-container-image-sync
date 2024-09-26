@@ -52,8 +52,8 @@ gen-image-list:
 	sort -u $(KFD_VERSION)/images.tmp.txt -o $(KFD_VERSION)/images.txt && rm $(KFD_VERSION)/images.tmp.txt
 
 trivy-download-db:
-	trivy image --download-db-only
-	trivy image --download-java-db-only
+	trivy image --download-db-only --db-repository registry.sighup.io/fury-secured/aquasecurity/trivy-db:2
+	trivy image --download-java-db-only --java-db-repository registry.sighup.io/fury-secured/aquasecurity/trivy-java-db:1
 
 scan-vulns:
 	../scripts/scan_vuln.sh $(KFD_VERSION)
