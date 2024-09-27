@@ -13,7 +13,7 @@ PATCH_ERROR_OUTPUT_FILE=${KFD_VERSION}/patch-error.log
 if [ -z "$(docker ps -f name=buildkitd -q)" ]
 then
   echo ">>>>>>>>>>>>>>>>>>> Start buildkitd instance for COPA <<<<<<<<<<<<<<<<<<<<<"
-  if [ ! -z "$DOCKER_CONFIG" ]
+  if [ -n "$DOCKER_CONFIG" ]
   then
     docker_config_extra_args="-v ${DOCKER_CONFIG}/config.json:/root/.docker/config.json"
   fi
@@ -53,11 +53,13 @@ function patch_image() {
       return 1
     fi
   fi
+
   TRIVY_SCAN_OUTPUT_FILE=$TRIVY_SCAN_OUTPUT_DIR/${image_to_patch//[:\/]/_}.json
   COPA_REPORT_OUTPUT_FILE=$COPA_PATCH_OUTPUT_DIR/${image_to_patch//[:\/]/_}.vex.json
   COPA_PATCHING_LOG_FILE=$COPA_PATCH_OUTPUT_DIR/${image_to_patch//[:\/]/_}.log
   echo ">>>>>>>>>>>>>>>>>>> Scan $image_to_patch for CVEs <<<<<<<<<<<<<<<<<<<<<"
   trivy image --skip-db-update --skip-java-db-update --scanners vuln -q --vuln-type os --ignore-unfixed -f json -o "${TRIVY_SCAN_OUTPUT_FILE}" "$image_to_patch" # --platform=linux/amd64
+  echo ">>>>>>>>>>>>>>>>>>> Clean trivy scan cache for $image_to_patch <<<<<<<<<<<<<<<<<<<<<"
   trivy clean --scan-cache
   echo ">>>>>>>>>>>>>>>>>>> Patching CVEs for $image_to_patch <<<<<<<<<<<<<<<<<<<<<"
   copa patch -r "${TRIVY_SCAN_OUTPUT_FILE}" -i "$image_to_patch" --format="openvex" --output "$COPA_REPORT_OUTPUT_FILE" -a tcp://127.0.0.1:8888 2>&1 | tee "$COPA_PATCHING_LOG_FILE"
@@ -66,48 +68,57 @@ function patch_image() {
   if [ "$copa_exit_code" -eq 0 ]
   then
     FIXED_CVES=$(jq '.statements[] | select(.status=="fixed") | .vulnerability."@id"' -r < "$COPA_REPORT_OUTPUT_FILE" | sort -r)
+    echo ">>>>>>>>>>>>>>>>>>> ${FIXED_CVES} patched in $image_to_patch-patched <<<<<<<<<<<<<<<<<<<<<"
     DOCKER_LABELS=
-    secured_image_hash=$(docker inspect "$image_to_patch-patched" --format '{{.Id}}')
+    image_patched_hash=$(docker inspect "$image_to_patch-patched" --format '{{.Id}}')
+    echo ">>>>>>>>>>>>>>>>>>> $image_to_patch-patched hash: ${image_patched_hash} <<<<<<<<<<<<<<<<<<<<<"
     echo ">>>>>>>>>>>>>>>>>>> Update patching report for $image_to_patch <<<<<<<<<<<<<<<<<<<<<"
     for FIXED_CVE in ${FIXED_CVES[@]}
     do
       DOCKER_LABELS="--label io.sighup.secured.${FIXED_CVE}=fixed ${DOCKER_LABELS}"
-      src_image_hash=$(jq -r '.Metadata.ImageID' < "$TRIVY_SCAN_OUTPUT_FILE")
+      image_to_patch_hash=$(jq -r '.Metadata.ImageID' < "$TRIVY_SCAN_OUTPUT_FILE")
       jq -r \
-      --arg image_to_patch "$image_to_patch" \
       --arg cve "$FIXED_CVE" \
-      --arg image_patched "$secured_image" \
-      --arg src_image_hash "$src_image_hash" \
-      --arg secured_image_hash "$secured_image_hash" \
-      '[try .Results[].Vulnerabilities[] | select(.VulnerabilityID==$cve)][0] | "|" + $image_to_patch + " | " + $src_image_hash + " | " + .VulnerabilityID + " | " +  .Severity +  " | " + .Title + " | " + $image_patched + "|" + $secured_image_hash + "|"' < "$TRIVY_SCAN_OUTPUT_FILE">> "$PATCH_REPORT_OUTPUT_FILE"
+      --arg image_to_patch "$image_to_patch" \
+      --arg image_to_patch_hash "$image_to_patch_hash" \
+      --arg image_patched "$image_to_patch-patched" \
+      --arg image_patched_hash "$image_patched_hash" \
+      '[try .Results[].Vulnerabilities[] | select(.VulnerabilityID==$cve)][0] | "|" + $image_to_patch + " | " + $image_to_patch_hash + " | " + .VulnerabilityID + " | " +  .Severity +  " | " + .Title + " | " + $image_patched + "|" + $image_patched_hash + "|"' < "$TRIVY_SCAN_OUTPUT_FILE">> "$PATCH_REPORT_OUTPUT_FILE"
     done
-    echo ">>>>>>>>>>>>>>>>>>> Tag secure image: $secured_image <<<<<<<<<<<<<<<<<<<<<"
-    echo "FROM $image-patched" | DOCKER_BUILDKIT=0 docker build \
+    echo ">>>>>>>>>>>>>>>>>>> Tag $image_to_patch-patched as secured image: $secured_image <<<<<<<<<<<<<<<<<<<<<"
+    echo "FROM $image_to_patch-patched" | DOCKER_BUILDKIT=0 docker build \
       ${DOCKER_LABELS} \
       --label io.sighup.secured.image.created="$(date -u +"%Y-%m-%dT%H:%M:%S.%3NZ")" \
-      --label io.sighup.secured.image.from.hash="$src_image_hash" \
+      --label io.sighup.secured.image.from.hash="$image_to_patch_hash" \
       -t "$secured_image" \
       -f - "$DOCKERFILE_OUTPUT_DIR" &> /dev/null
     secured_labeled_image_hash=$(docker inspect "$secured_image" --format '{{.Id}}')
-    sed -i"" s#"$secured_image_hash"#"$secured_labeled_image_hash"# "$PATCH_REPORT_OUTPUT_FILE"
+    set -x
+    sed -i"" s#"$image_patched_hash"#"$secured_labeled_image_hash"# "$PATCH_REPORT_OUTPUT_FILE"
+    set +x
     echo ">>>>>>>>>>>>>>>>>>> Push secure image: $secured_image <<<<<<<<<<<<<<<<<<<<<"
     docker push "$secured_image"
   else
     if [ "$image_to_patch" != "$secured_image" ]
     then
-      echo ">>>>>>>>>>>>>>>>>>> Tag secure image: $secured_image <<<<<<<<<<<<<<<<<<<<<"
-      docker tag "$image" "$secured_image"
-      echo ">>>>>>>>>>>>>>>>>>> Push secure image: $secured_image <<<<<<<<<<<<<<<<<<<<<"
+      echo ">>>>>>>>>>>>>>>>>>> No CVEs patched in $image_to_patch <<<<<<<<<<<<<<<<<<<<<"
+      echo ">>>>>>>>>>>>>>>>>>> Tag $image_to_patch-patched as secured image: $secured_image <<<<<<<<<<<<<<<<<<<<<"
+      docker tag "$image_to_patch" "$secured_image"
+      echo ">>>>>>>>>>>>>>>>>>> Push secured image: $secured_image <<<<<<<<<<<<<<<<<<<<<"
       docker push "$secured_image"
+      echo "$secured_image: $(awk -F'Error:' '$0 ~ /Error:/ {print $2}' "$COPA_PATCHING_LOG_FILE")" >> "$PATCH_ERROR_OUTPUT_FILE"
+    else
+      echo ">>>>>>>>>>>>>>>>>>> $image_to_patch is the same of $secured_image <<<<<<<<<<<<<<<<<<<<<"
     fi
-    echo "$secured_image: $(awk -F'Error:' '$0 ~ /Error:/ {print $2}' "$COPA_PATCHING_LOG_FILE")" >> "$PATCH_ERROR_OUTPUT_FILE"
   fi
 
   echo ">>>>>>>>>>>>>>>>>>> CLEANUP $image_to_patch <<<<<<<<<<<<<<<<<<<<<"
   docker rmi -f "$image_to_patch"
-  buildctl --addr tcp://127.0.0.1:8888 prune
   if [ "$secured_image" != "$image_to_patch" ]
   then
+    echo ">>>>>>>>>>>>>>>>>>> CLEANUP $image_to_patch-patched <<<<<<<<<<<<<<<<<<<<<"
+    buildctl --addr tcp://127.0.0.1:8888 prune
+    docker rmi -f "$image_to_patch-patched"
     echo ">>>>>>>>>>>>>>>>>>> CLEANUP $secured_image <<<<<<<<<<<<<<<<<<<<<"
     docker rmi -f "$secured_image"
   fi
