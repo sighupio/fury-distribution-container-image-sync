@@ -98,14 +98,22 @@ function patch_image() {
     set +x
     echo ">>>>>>>>>>>>>>>>>>> Push secure image: $secured_image <<<<<<<<<<<<<<<<<<<<<"
     docker push "$secured_image"
+    echo ">>>>>>>>>>>>>>>>>>> CLEANUP $image_to_patch-patched <<<<<<<<<<<<<<<<<<<<<"
+    buildctl --addr tcp://127.0.0.1:8888 prune
+    docker rmi -f "$image_to_patch-patched"
+    echo ">>>>>>>>>>>>>>>>>>> CLEANUP $secured_image <<<<<<<<<<<<<<<<<<<<<"
+    docker rmi -f "$secured_image"
   else
     if [ "$image_to_patch" != "$secured_image" ]
     then
       echo ">>>>>>>>>>>>>>>>>>> No CVEs patched in $image_to_patch <<<<<<<<<<<<<<<<<<<<<"
-      echo ">>>>>>>>>>>>>>>>>>> Tag $image_to_patch-patched as secured image: $secured_image <<<<<<<<<<<<<<<<<<<<<"
+      echo ">>>>>>>>>>>>>>>>>>> Tag $image_to_patch as secured image: $secured_image <<<<<<<<<<<<<<<<<<<<<"
       docker tag "$image_to_patch" "$secured_image"
       echo ">>>>>>>>>>>>>>>>>>> Push secured image: $secured_image <<<<<<<<<<<<<<<<<<<<<"
       docker push "$secured_image"
+      echo ">>>>>>>>>>>>>>>>>>> CLEANUP $secured_image <<<<<<<<<<<<<<<<<<<<<"
+      docker rmi -f "$secured_image"
+      echo ">>>>>>>>>>>>>>>>>>> Update patching error log <<<<<<<<<<<<<<<<<<<<<"
       echo "$secured_image: $(awk -F'Error:' '$0 ~ /Error:/ {print $2}' "$COPA_PATCHING_LOG_FILE")" >> "$PATCH_ERROR_OUTPUT_FILE"
     else
       echo ">>>>>>>>>>>>>>>>>>> $image_to_patch is the same of $secured_image <<<<<<<<<<<<<<<<<<<<<"
@@ -114,14 +122,6 @@ function patch_image() {
 
   echo ">>>>>>>>>>>>>>>>>>> CLEANUP $image_to_patch <<<<<<<<<<<<<<<<<<<<<"
   docker rmi -f "$image_to_patch"
-  if [ "$secured_image" != "$image_to_patch" ]
-  then
-    echo ">>>>>>>>>>>>>>>>>>> CLEANUP $image_to_patch-patched <<<<<<<<<<<<<<<<<<<<<"
-    buildctl --addr tcp://127.0.0.1:8888 prune
-    docker rmi -f "$image_to_patch-patched"
-    echo ">>>>>>>>>>>>>>>>>>> CLEANUP $secured_image <<<<<<<<<<<<<<<<<<<<<"
-    docker rmi -f "$secured_image"
-  fi
   echo ""
   echo "================================================================"
   echo ""
