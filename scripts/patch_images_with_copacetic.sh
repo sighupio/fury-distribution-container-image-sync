@@ -3,6 +3,8 @@
 KFD_VERSION=$1
 [[ -z $KFD_VERSION ]] && echo "Missing KFD VERSION" && exit 1
 
+DRY_RUN=0
+
 TRIVY_SCAN_OUTPUT_DIR=${KFD_VERSION}/.patching/scan
 COPA_PATCH_OUTPUT_DIR=${KFD_VERSION}/.patching/patch
 DOCKERFILE_OUTPUT_DIR=${KFD_VERSION}/.patching/dockerfile
@@ -97,7 +99,7 @@ function patch_image() {
     sed -i"" s#"$image_patched_hash"#"$secured_labeled_image_hash"# "$PATCH_REPORT_OUTPUT_FILE"
     set +x
     echo ">>>>>>>>>>>>>>>>>>> Push secure image: $secured_image <<<<<<<<<<<<<<<<<<<<<"
-    docker push "$secured_image"
+    [[ $DRY_RUN -ne 0 ]] && docker push "$secured_image"
     echo ">>>>>>>>>>>>>>>>>>> CLEANUP $image_to_patch-patched <<<<<<<<<<<<<<<<<<<<<"
     buildctl --addr tcp://127.0.0.1:8888 prune
     docker rmi -f "$image_to_patch-patched"
@@ -110,7 +112,7 @@ function patch_image() {
       echo ">>>>>>>>>>>>>>>>>>> Tag $image_to_patch as secured image: $secured_image <<<<<<<<<<<<<<<<<<<<<"
       docker tag "$image_to_patch" "$secured_image"
       echo ">>>>>>>>>>>>>>>>>>> Push secured image: $secured_image <<<<<<<<<<<<<<<<<<<<<"
-      docker push "$secured_image"
+      [[ $DRY_RUN -ne 0 ]] && docker push "$secured_image"
       echo ">>>>>>>>>>>>>>>>>>> CLEANUP $secured_image <<<<<<<<<<<<<<<<<<<<<"
       docker rmi -f "$secured_image"
       echo ">>>>>>>>>>>>>>>>>>> Update patching error log <<<<<<<<<<<<<<<<<<<<<"
