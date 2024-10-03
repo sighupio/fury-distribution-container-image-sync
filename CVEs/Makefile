@@ -1,32 +1,40 @@
-.PHONY: scan scan-parallel patch download-deps kustomize-build-all gen-image-list trivy-download-db scan-vulns patch-vulns
+.PHONY: scan-pre-patch patch scan-post-patch download-deps kustomize-build-all gen-image-list trivy-download-db scan-vulns
 
-KFD_VERSIONS := $(shell find . -type d -maxdepth 1 -mindepth 1 | cut -d/ -f2 | sort )
+KFD_VERSIONS := $(shell find . -type d -name "v*" -maxdepth 1 -mindepth 1 | cut -d/ -f2 | sort )
 
-all: scan-parallel patch
+ifndef DRY_RUN
+	DRY_RUN := 0
+endif
 
-scan:
-	@for version in $(KFD_VERSIONS); do \
-		$(MAKE) download-deps KFD_VERSION=$$version; \
-		$(MAKE) kustomize-build-all KFD_VERSION=$$version; \
-		$(MAKE) gen-image-list KFD_VERSION=$$version; \
-		$(MAKE) scan-vulns KFD_VERSION=$$version; \
-	done;
+all: trivy-download-db scan-pre-patch patch scan-post-patch
 
-scan-parallel:
+scan-pre-patch:
 	@for version in $(KFD_VERSIONS); do \
 		( \
 			$(MAKE) download-deps KFD_VERSION=$$version; \
 			$(MAKE) kustomize-build-all KFD_VERSION=$$version; \
 			$(MAKE) gen-image-list KFD_VERSION=$$version; \
-			$(MAKE) scan-vulns KFD_VERSION=$$version; \
+			$(MAKE) scan-vulns KFD_VERSION=$$version LIST_FILE=$$version/images.txt OUTPUT_FILE=$$version/FURY-CVEs.md;  \
 		) & \
 	done; \
 	wait
 
 patch:
 	@for version in $(KFD_VERSIONS); do \
-  		$(MAKE) patch-vulns KFD_VERSION=$$version; \
+      cat $$version/images.txt >> global_images.tmp.txt; \
 	done
+	cat global_images.tmp.txt | sort -u > global_images.txt
+	rm global_images.tmp.txt
+	DOCKER_CONFIG="${DOCKER_CONFIG}" DRY_RUN=$(DRY_RUN) ../scripts/patch_images_with_copacetic.sh
+
+scan-post-patch:
+	@for version in $(KFD_VERSIONS); do \
+  		( \
+			sed s#"registry.sighup.io/fury"#"registry.sighup.io/fury-secured"# $$version/images.txt > $$version/images-patched.txt; \
+			$(MAKE) scan-vulns KFD_VERSION=$$version LIST_FILE=$$version/images-patched.txt OUTPUT_FILE=$$version/FURY-SECURED-CVEs.md;  \
+		) & \
+	done; \
+	wait
 
 download-deps:
 	furyctl -c $(KFD_VERSION)/furyctl.yaml -o $(KFD_VERSION) download dependencies
@@ -56,9 +64,8 @@ trivy-download-db:
 	trivy image --download-java-db-only --java-db-repository registry.sighup.io/fury-secured/aquasecurity/trivy-java-db:1
 
 scan-vulns:
-	../scripts/scan_vuln.sh $(KFD_VERSION)
+	../scripts/scan_vuln.sh -v $(KFD_VERSION) -l $(LIST_FILE) -o $(OUTPUT_FILE);
 
-patch-vulns:
-	DOCKER_CONFIG="${DOCKER_CONFIG}" ../scripts/patch_images_with_copacetic.sh $(KFD_VERSION)
+
 
 
