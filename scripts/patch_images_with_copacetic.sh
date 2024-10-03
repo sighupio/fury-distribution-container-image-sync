@@ -1,35 +1,27 @@
 #!/bin/bash
 
-KFD_VERSION=$1
-[[ -z $KFD_VERSION ]] && echo "Missing KFD VERSION" && exit 1
-
-DRY_RUN=0
-
-TRIVY_SCAN_OUTPUT_DIR=${KFD_VERSION}/.patching/scan
-COPA_PATCH_OUTPUT_DIR=${KFD_VERSION}/.patching/patch
-DOCKERFILE_OUTPUT_DIR=${KFD_VERSION}/.patching/dockerfile
-FILE_WITH_IMAGES_LIST_TO_PATCH=${KFD_VERSION}/images.txt
-PATCH_REPORT_OUTPUT_FILE=${KFD_VERSION}/PATCHED.md
-PATCH_ERROR_OUTPUT_FILE=${KFD_VERSION}/patch-error.log
+TRIVY_SCAN_OUTPUT_DIR=.patching/scan
+COPA_PATCH_OUTPUT_DIR=.patching/patch
+DOCKERFILE_OUTPUT_DIR=.patching/dockerfile
+LOG_OUTPUT_DIR=.patching/log
+FILE_WITH_IMAGES_LIST_TO_PATCH=global_images.txt
+PATCH_REPORT_OUTPUT_FILE=PATCHED.md
+PATCH_ERROR_OUTPUT_FILE="$LOG_OUTPUT_DIR/patch-error.log"
 
 if [ -z "$(docker ps -f name=buildkitd -q)" ]
 then
   echo ">>>>>>>>>>>>>>>>>>> Start buildkitd instance for COPA <<<<<<<<<<<<<<<<<<<<<"
   if [ -n "$DOCKER_CONFIG" ]
   then
-    docker_config_extra_args="-v ${DOCKER_CONFIG}/config.json:/root/.docker/config.json"
+    docker_config_extra_args="-v ${DOCKER_CONFIG}:/root/.docker"
   fi
-  docker run --detach --rm --privileged $docker_config_extra_args -p 127.0.0.1:8888:8888/tcp --name buildkitd --entrypoint buildkitd moby/buildkit:v0.11.4 --addr tcp://0.0.0.0:8888 # --platform linux/amd64
+  docker run --detach --rm --privileged $docker_config_extra_args -p 127.0.0.1:8888:8888/tcp --name buildkitd --entrypoint buildkitd moby/buildkit:v0.16.0 --addr tcp://0.0.0.0:8888 # --platform linux/amd64
 fi
 
+mkdir -p "$TRIVY_SCAN_OUTPUT_DIR" "$COPA_PATCH_OUTPUT_DIR" "$DOCKERFILE_OUTPUT_DIR" "$LOG_OUTPUT_DIR"
 echo -n "" > "${PATCH_ERROR_OUTPUT_FILE}"
 
-mkdir -p "$TRIVY_SCAN_OUTPUT_DIR" "$COPA_PATCH_OUTPUT_DIR" "$DOCKERFILE_OUTPUT_DIR"
-
 {
-printf "# KFD %s\n\n" "${KFD_VERSION}";
-printf "Last updated %s\n\n" "$(date +'%Y-%m-%d')";
-printf "## CVEs patched\n\n" ;
 echo "| Source Image | Source Image Hash |CVE | Severity | Description | Patched Image| Patched Image Hash |"
 echo "| --- | --- | --- | --- |--- | --- | --- |"
 } > "${PATCH_REPORT_OUTPUT_FILE}"
@@ -41,19 +33,14 @@ REGISTRY_SECURED_BASE_URL='registry.sighup.io/fury-secured'
 function patch_image() {
   local image="$1"
   secured_image=${image//"${REGISTRY_BASE_URL}"/"${REGISTRY_SECURED_BASE_URL}"}
-  image_to_patch="$secured_image"
+  image_to_patch="$image"
 
-  DOCKER_PULL_OUTPUT_FILE=${KFD_VERSION}/${image_to_patch//[:\/]/_}-image-pull.log
-
-  if ! docker pull "$image_to_patch" > "${DOCKER_PULL_OUTPUT_FILE}" 2>&1
+  DOCKER_PULL_OUTPUT_FILE="$LOG_OUTPUT_DIR/${image_to_patch//[:\/]/_}-image-pull.log"
+  if ! docker pull "$image_to_patch" >> "${DOCKER_PULL_OUTPUT_FILE}" 2>&1
   then
-    image_to_patch="$image"
-    if ! docker pull "$image_to_patch" >> "${DOCKER_PULL_OUTPUT_FILE}" 2>&1
-    then
-      echo ">>>>>>>>>>>>>>>>>>> Failed pull $image_to_patch <<<<<<<<<<<<<<<<<<<<<"
-      cat "${DOCKER_PULL_OUTPUT_FILE}"
-      return 1
-    fi
+    echo ">>>>>>>>>>>>>>>>>>> Failed pull $image_to_patch <<<<<<<<<<<<<<<<<<<<<"
+    cat "${DOCKER_PULL_OUTPUT_FILE}"
+    return 1
   fi
 
   TRIVY_SCAN_OUTPUT_FILE=$TRIVY_SCAN_OUTPUT_DIR/${image_to_patch//[:\/]/_}.json
@@ -75,10 +62,10 @@ function patch_image() {
     image_patched_hash=$(docker inspect "$image_to_patch-patched" --format '{{.Id}}')
     echo ">>>>>>>>>>>>>>>>>>> $image_to_patch-patched hash: ${image_patched_hash} <<<<<<<<<<<<<<<<<<<<<"
     echo ">>>>>>>>>>>>>>>>>>> Update patching report for $image_to_patch <<<<<<<<<<<<<<<<<<<<<"
+    image_to_patch_hash=$(jq -r '.Metadata.ImageID' < "$TRIVY_SCAN_OUTPUT_FILE")
     for FIXED_CVE in ${FIXED_CVES[@]}
     do
       DOCKER_LABELS="--label io.sighup.secured.${FIXED_CVE}=fixed ${DOCKER_LABELS}"
-      image_to_patch_hash=$(jq -r '.Metadata.ImageID' < "$TRIVY_SCAN_OUTPUT_FILE")
       jq -r \
       --arg cve "$FIXED_CVE" \
       --arg image_to_patch "$image_to_patch" \
@@ -95,11 +82,10 @@ function patch_image() {
       -t "$secured_image" \
       -f - "$DOCKERFILE_OUTPUT_DIR" &> /dev/null
     secured_labeled_image_hash=$(docker inspect "$secured_image" --format '{{.Id}}')
-    set -x
-    sed -i"" s#"$image_patched_hash"#"$secured_labeled_image_hash"# "$PATCH_REPORT_OUTPUT_FILE"
-    set +x
+    sed -i'.unsecured' s#"$image_patched_hash"#"$secured_labeled_image_hash"# "$PATCH_REPORT_OUTPUT_FILE"
+    rm "$PATCH_REPORT_OUTPUT_FILE.unsecured"
     echo ">>>>>>>>>>>>>>>>>>> Push secure image: $secured_image <<<<<<<<<<<<<<<<<<<<<"
-    [[ $DRY_RUN -ne 0 ]] && docker push "$secured_image"
+    [[ $DRY_RUN -eq 0 ]] && docker push "$secured_image"
     echo ">>>>>>>>>>>>>>>>>>> CLEANUP $image_to_patch-patched <<<<<<<<<<<<<<<<<<<<<"
     buildctl --addr tcp://127.0.0.1:8888 prune
     docker rmi -f "$image_to_patch-patched"
@@ -112,7 +98,7 @@ function patch_image() {
       echo ">>>>>>>>>>>>>>>>>>> Tag $image_to_patch as secured image: $secured_image <<<<<<<<<<<<<<<<<<<<<"
       docker tag "$image_to_patch" "$secured_image"
       echo ">>>>>>>>>>>>>>>>>>> Push secured image: $secured_image <<<<<<<<<<<<<<<<<<<<<"
-      [[ $DRY_RUN -ne 0 ]] && docker push "$secured_image"
+      [[ $DRY_RUN -eq 0 ]] && docker push "$secured_image"
       echo ">>>>>>>>>>>>>>>>>>> CLEANUP $secured_image <<<<<<<<<<<<<<<<<<<<<"
       docker rmi -f "$secured_image"
       echo ">>>>>>>>>>>>>>>>>>> Update patching error log <<<<<<<<<<<<<<<<<<<<<"
@@ -132,4 +118,3 @@ function patch_image() {
 while IFS= read -r image; do
   patch_image "$image"
 done < "$FILE_WITH_IMAGES_LIST_TO_PATCH"
-
