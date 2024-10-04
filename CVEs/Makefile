@@ -32,7 +32,7 @@ concat-multiple-kfd-images-list:
 	rm $(PATCH_FILE_IMAGE_LIST_TO_PATCHING).tmp
 
 patch:
-	DOCKER_CONFIG="${DOCKER_CONFIG}" DRY_RUN=$(DRY_RUN) ../scripts/patch_images_with_copacetic.sh -i "$(IMAGE_TO_PATCH)" -l "$(PATCH_FILE_IMAGE_LIST_TO_PATCHING)" -o "$(PATCH_REPORT_OUTPUT_FILE)"
+	DOCKER_CONFIG="${DOCKER_CONFIG}" DRY_RUN=$(DRY_RUN) ./patch_images_with_copacetic.sh -i "$(IMAGE_TO_PATCH)" -l "$(PATCH_FILE_IMAGE_LIST_TO_PATCHING)" -o "$(PATCH_REPORT_OUTPUT_FILE)"
 
 scan-post-patch:
 	@for version in $(KFD_VERSIONS); do \
@@ -67,11 +67,11 @@ generate-image-list-from-manifests:
 	sort -u $(KFD_VERSION)/images.tmp.txt -o $(KFD_VERSION)/images.txt && rm $(KFD_VERSION)/images.tmp.txt
 
 trivy-download-db:
-	trivy image --download-db-only --db-repository registry.sighup.io/fury-secured/aquasecurity/trivy-db:2
-	trivy image --download-java-db-only --java-db-repository registry.sighup.io/fury-secured/aquasecurity/trivy-java-db:1
+	trivy image --download-db-only --db-repository registry.sighup.io/fury-secured/aquasecurity/trivy-db:2 --no-progress
+	trivy image --download-java-db-only --java-db-repository registry.sighup.io/fury-secured/aquasecurity/trivy-java-db:1 --no-progress
 
 scan-vulns:
-	../scripts/scan_vuln.sh -v $(KFD_VERSION) -l $(LIST_FILE) -o $(OUTPUT_FILE);
+	./scan_vuln.sh -v $(KFD_VERSION) -l $(LIST_FILE) -o $(OUTPUT_FILE);
 
 
 

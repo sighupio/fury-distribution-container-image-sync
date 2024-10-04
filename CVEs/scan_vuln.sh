@@ -27,8 +27,9 @@ while getopts ":v:l:o:" o; do
 done
 shift $((OPTIND-1))
 
+source logging.sh
 
-[[ -z $KFD_VERSION ]] && echo "ERROR: Missing KFD VERSION" && exit 1
+[[ -z $KFD_VERSION ]] && fail "Missing KFD VERSION"
 [[ -z $IMAGE_LIST_FILE ]] && IMAGE_LIST_FILE="${KFD_VERSION}/images.txt"
 [[ -z $SCAN_RESULT_OUTPUT_FILE ]] && SCAN_RESULT_OUTPUT_FILE="${KFD_VERSION}/CVEs.md"
 
@@ -53,7 +54,7 @@ mkdir -p "$TRIVY_SCAN_OUTPUT_DIR"
 for image in $IMAGE_LIST; do
   TRIVY_SCAN_OUTPUT_FILE="$TRIVY_SCAN_OUTPUT_DIR/scan-${image//[:\/]/_}.json"
 
-  echo ">>>>>>>>>>>>>>>>>>> Scan $image for CVEs <<<<<<<<<<<<<<<<<<<<<"
+  info "Scan $image for CVEs"
   if ! trivy image --skip-db-update --skip-java-db-update --scanners vuln --no-progress --output "$TRIVY_SCAN_OUTPUT_FILE" --format json --severity CRITICAL "$image"
   then
     echo "$image | ERROR PROCESSING! " >> "${SCAN_ERROR_OUTPUT_FILE}"
