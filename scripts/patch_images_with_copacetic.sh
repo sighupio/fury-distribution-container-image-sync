@@ -43,7 +43,7 @@ then
   then
     docker_config_extra_args="-v ${DOCKER_CONFIG}:/root/.docker"
   fi
-  docker run --detach --rm --privileged $docker_config_extra_args -p 127.0.0.1:8888:8888/tcp --name buildkitd --entrypoint buildkitd moby/buildkit:v0.16.0 --addr tcp://0.0.0.0:8888 # --platform linux/amd64
+  docker run --detach --rm --privileged $docker_config_extra_args -p 127.0.0.1:8888:8888/tcp --name buildkitd --entrypoint buildkitd registry.sighup.io/fury-secured/moby/buildkit:v0.16.0 --addr tcp://0.0.0.0:8888 # --platform linux/amd64
 fi
 
 mkdir -p "$TRIVY_SCAN_OUTPUT_DIR" "$COPA_PATCH_OUTPUT_DIR" "$DOCKERFILE_OUTPUT_DIR" "$LOG_OUTPUT_DIR"
