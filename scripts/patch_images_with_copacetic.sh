@@ -1,11 +1,39 @@
 #!/bin/bash
 
+IMAGE_TO_PATCH=
+FILE_WITH_IMAGES_LIST_TO_PATCH=
+PATCH_REPORT_OUTPUT_FILE=
+
+function usage() {
+    echo "Usage: $0 -i IMAGE_TO_PATCH | -l FILE_WITH_IMAGES_LIST_TO_PATCH [-o PATCH_REPORT_OUTPUT_FILE ]"
+}
+
+while getopts ":i:l:o:" o; do
+    case "${o}" in
+        i)
+            IMAGE_TO_PATCH=${OPTARG}
+            ;;
+        l)
+            FILE_WITH_IMAGES_LIST_TO_PATCH=${OPTARG}
+            ;;
+        o)
+            PATCH_REPORT_OUTPUT_FILE=${OPTARG}
+            ;;
+        *)
+            usage
+            exit 1
+            ;;
+    esac
+done
+shift $((OPTIND-1))
+
+[[ -z $FILE_WITH_IMAGES_LIST_TO_PATCH ]] && FILE_WITH_IMAGES_LIST_TO_PATCH=images.txt
+[[ -z $PATCH_REPORT_OUTPUT_FILE ]] && PATCH_REPORT_OUTPUT_FILE=PATCHED.md
+
 TRIVY_SCAN_OUTPUT_DIR=.patching/scan
 COPA_PATCH_OUTPUT_DIR=.patching/patch
 DOCKERFILE_OUTPUT_DIR=.patching/dockerfile
 LOG_OUTPUT_DIR=.patching/log
-FILE_WITH_IMAGES_LIST_TO_PATCH=global_images.txt
-PATCH_REPORT_OUTPUT_FILE=PATCHED.md
 PATCH_ERROR_OUTPUT_FILE="$LOG_OUTPUT_DIR/patch-error.log"
 
 if [ -z "$(docker ps -f name=buildkitd -q)" ]
@@ -22,6 +50,9 @@ mkdir -p "$TRIVY_SCAN_OUTPUT_DIR" "$COPA_PATCH_OUTPUT_DIR" "$DOCKERFILE_OUTPUT_D
 echo -n "" > "${PATCH_ERROR_OUTPUT_FILE}"
 
 {
+[[ -n $IMAGE_TO_PATCH ]] && printf "# %s\n\n" $IMAGE_TO_PATCH
+printf "Last updated %s\n\n" "$(date +'%Y-%m-%d')";
+printf "## CVEs patched\n\n" ;
 echo "| Source Image | Source Image Hash |CVE | Severity | Description | Patched Image| Patched Image Hash |"
 echo "| --- | --- | --- | --- |--- | --- | --- |"
 } > "${PATCH_REPORT_OUTPUT_FILE}"
@@ -82,6 +113,7 @@ function patch_image() {
       -t "$secured_image" \
       -f - "$DOCKERFILE_OUTPUT_DIR" &> /dev/null
     secured_labeled_image_hash=$(docker inspect "$secured_image" --format '{{.Id}}')
+    sed -i'.unsecured' s#"$image_to_patch-patched"#"$secured_image"# "$PATCH_REPORT_OUTPUT_FILE"
     sed -i'.unsecured' s#"$image_patched_hash"#"$secured_labeled_image_hash"# "$PATCH_REPORT_OUTPUT_FILE"
     rm "$PATCH_REPORT_OUTPUT_FILE.unsecured"
     echo ">>>>>>>>>>>>>>>>>>> Push secure image: $secured_image <<<<<<<<<<<<<<<<<<<<<"
@@ -114,6 +146,8 @@ function patch_image() {
   echo "================================================================"
   echo ""
 }
+
+[[ -n $IMAGE_TO_PATCH ]] && patch_image "$IMAGE_TO_PATCH" && exit 0
 
 while IFS= read -r image; do
   patch_image "$image"
