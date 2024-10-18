@@ -57,6 +57,7 @@ for image in $IMAGE_LIST; do
   info "Scan $image for CVEs"
   if ! trivy image --skip-db-update --skip-java-db-update --scanners vuln --no-progress --output "$TRIVY_SCAN_OUTPUT_FILE" --format json --severity CRITICAL "$image"
   then
+    error "trivy failed to scan $image"
     echo "$image | ERROR PROCESSING! " >> "${SCAN_ERROR_OUTPUT_FILE}"
   else
     src_image_hash=$(jq -r '.Metadata.ImageID' < "$TRIVY_SCAN_OUTPUT_FILE")
