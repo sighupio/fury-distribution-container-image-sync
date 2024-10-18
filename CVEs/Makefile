@@ -28,7 +28,7 @@ concat-multiple-kfd-images-list:
 	@for version in $(KFD_VERSIONS); do \
 	  cat $$version/images.txt >> $(PATCH_FILE_IMAGE_LIST_TO_PATCHING).tmp; \
 	done
-	cat "$(PATCH_FILE_IMAGE_LIST_TO_PATCHING).tmp" | sort -u > $(PATCH_FILE_IMAGE_LIST_TO_PATCHING)
+	sort --unique "$(PATCH_FILE_IMAGE_LIST_TO_PATCHING).tmp" --output $(PATCH_FILE_IMAGE_LIST_TO_PATCHING)
 	rm $(PATCH_FILE_IMAGE_LIST_TO_PATCHING).tmp
 
 patch:
@@ -59,12 +59,12 @@ kustomize-build-all:
 	done
 
 generate-image-list-from-manifests:
-	awk '$$0 ~ /registry.sighup.io/ {if($$1 == "image:"){print $$2}}' $(KFD_VERSION)/built.yaml | sort -u > $(KFD_VERSION)/images.tmp.txt  #match image:
-	awk '$$0 ~ /registry.sighup.io/ {if($$2 == "image:"){print $$3}}' $(KFD_VERSION)/built.yaml| sort -u >> $(KFD_VERSION)/images.tmp.txt  #match - image:
-	awk -F= '$$2 ~ /registry.sighup.io/ {print $$2}' $(KFD_VERSION)/built.yaml | sort -u >> $(KFD_VERSION)/images.tmp.txt 				 #match --ARG=IMAGE
-	awk '$$0 ~ /registry.sighup.io/ {if($$1 == "repository:"){repository=$$2;getline;tag=$$2; print repository":"tag}}' $(KFD_VERSION)/built.yaml | sort -u >> $(KFD_VERSION)/images.tmp.txt #match image.repository+image.tag
+	awk '$$0 ~ /registry.sighup.io/ {if($$1 == "image:"){print $$2}}' $(KFD_VERSION)/built.yaml | sort --unique > $(KFD_VERSION)/images.tmp.txt  #match image:
+	awk '$$0 ~ /registry.sighup.io/ {if($$2 == "image:"){print $$3}}' $(KFD_VERSION)/built.yaml| sort --unique >> $(KFD_VERSION)/images.tmp.txt  #match - image:
+	awk -F= '$$2 ~ /registry.sighup.io/ {print $$2}' $(KFD_VERSION)/built.yaml | sort --unique >> $(KFD_VERSION)/images.tmp.txt 				 #match --ARG=IMAGE
+	awk '$$0 ~ /registry.sighup.io/ {if($$1 == "repository:"){repository=$$2;getline;tag=$$2; print repository":"tag}}' $(KFD_VERSION)/built.yaml | sort --unique >> $(KFD_VERSION)/images.tmp.txt #match image.repository+image.tag
 
-	sort -u $(KFD_VERSION)/images.tmp.txt -o $(KFD_VERSION)/images.txt && rm $(KFD_VERSION)/images.tmp.txt
+	sort --unique $(KFD_VERSION)/images.tmp.txt --output $(KFD_VERSION)/images.txt && rm $(KFD_VERSION)/images.tmp.txt
 
 trivy-download-db:
 	trivy image --download-db-only --db-repository registry.sighup.io/fury-secured/aquasecurity/trivy-db:2 --no-progress
