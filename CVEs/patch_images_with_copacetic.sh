@@ -118,7 +118,7 @@ function patch_image() {
     sed -i'.unsecured' s#"${image_patched_hash}"#"${secured_labeled_image_hash}"# "${PATCH_REPORT_OUTPUT_FILE}"
     rm "${PATCH_REPORT_OUTPUT_FILE}.unsecured"
     info "Push secure image: ${secured_image}"
-    [[ ${DRY_RUN} -eq 0 ]] && docker push "${secured_image}"
+    [[ ${DRY_RUN:-1} -eq 0 ]] && docker push "${secured_image}"
     info "Cleanup ${image_to_patch}-patched"
     buildctl --addr tcp://127.0.0.1:8888 prune
     docker rmi -f "${image_to_patch}-patched"
@@ -131,7 +131,7 @@ function patch_image() {
       warn "No CVEs patched in ${image_to_patch}"
       warn "Tag ${image_to_patch} as secured image: ${secured_image}"
       docker tag "${image_to_patch}" "${secured_image}"
-      [[ ${DRY_RUN} -eq 0 ]] && info "Push secured image: ${secured_image}" && docker push "${secured_image}"
+      [[ ${DRY_RUN:-1} -eq 0 ]] && info "Push secured image: ${secured_image}" && docker push "${secured_image}"
       info "cleanup ${secured_image}"
       docker rmi -f "${secured_image}"
       info "Update patching error log"

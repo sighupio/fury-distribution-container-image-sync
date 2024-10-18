@@ -8,7 +8,7 @@
 	concat-multiple-kfd-images-list
 
 KFD_VERSIONS := $(shell find . -type d -name "v*" -maxdepth 1 -mindepth 1 | cut -d/ -f2 | sort )
-DRY_RUN := 0
+DRY_RUN := 1
 PATCH_FILE_IMAGE_LIST_TO_PATCHING := all_kfd_images.txt
 
 all: trivy-download-db scan-pre-patch concat-multiple-kfd-images-list patch scan-post-patch
