@@ -1,7 +1,6 @@
 login
-.furyctl
-built.yaml
-scan.tmp
-scan_results.txt
-to_be_patched.txt
-*.json
+CVEs/v*/.furyctl
+CVEs/v*/.scan
+CVEs/v*/*.log
+CVEs/v*/built.yaml
+CVEs/.patching
