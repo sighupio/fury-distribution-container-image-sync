@@ -16,12 +16,12 @@ This guide explains how to generate a new report (in MarkDown) for a version of 
 2) Execute `make download-deps KFD_VERSION=SOME_VALID_KFD_VERSION_WITH_A_FURYCTLYAML_INSIDE` 
 3) Execute `make kustomize-build-all KFD_VERSION=SOME_VALID_KFD_VERSION_WITH_A_FURYCTLYAML_INSIDE` 
 4) Execute `make trivy-download-db`
-5) Execute `make gen-image-list KFD_VERSION=SOME_VALID_KFD_VERSION_WITH_A_FURYCTLYAML_INSIDE`, this command will output an `SOME_VALID_KFD_VERSION_WITH_A_FURYCTLYAML_INSIDE/images.txt` file with all the images found in the build kustomize manifest. 
-6) Execute `make scan-vulns KFD_VERSION=SOME_VALID_KFD_VERSION_WITH_A_FURYCTLYAML_INSIDE`, this script will output a `SOME_VALID_KFD_VERSION_WITH_A_FURYCTLYAML_INSIDE/README.md` file in the current directory with a table with all the CRITICAL CVEs 
-7) Check the `SOME_VALID_KFD_VERSION_WITH_A_FURYCTLYAML_INSIDE/README.md` and commit the directory
+5) Execute `make generate-image-list-from-manifests KFD_VERSION=SOME_VALID_KFD_VERSION_WITH_A_FURYCTLYAML_INSIDE`, this command will output an `SOME_VALID_KFD_VERSION_WITH_A_FURYCTLYAML_INSIDE/images.txt` file with all the images found in the build kustomize manifest. 
+6) Execute `make scan-vulns KFD_VERSION=SOME_VALID_KFD_VERSION_WITH_A_FURYCTLYAML_INSIDE`, this script will output a `SOME_VALID_KFD_VERSION_WITH_A_FURYCTLYAML_INSIDE/CVEs.md` file in the current directory with a table with all the CRITICAL CVEs 
+7) Check the `SOME_VALID_KFD_VERSION_WITH_A_FURYCTLYAML_INSIDE/CVEs.md` and commit the directory
 
 ### Scan all KFD versions
 
 1) Execute `make trivy-download-db`
-2) Execute `make all`
-3) Check the `README.md` and `PATCHED.md` files in each version directory
+2) Execute `make scan-pre-patch`
+3) Check the `FURY-CVEs.md` file in each version directory

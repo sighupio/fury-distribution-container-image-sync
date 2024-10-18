@@ -71,7 +71,7 @@ trivy-download-db:
 	trivy image --download-java-db-only --java-db-repository registry.sighup.io/fury-secured/aquasecurity/trivy-java-db:1 --no-progress
 
 scan-vulns:
-	./scan_vuln.sh -v $(KFD_VERSION) -l $(LIST_FILE) -o $(OUTPUT_FILE);
+	./scan_vuln.sh -v "$(KFD_VERSION)" -l "$(LIST_FILE)" -o "$(OUTPUT_FILE)";
 
 
 
