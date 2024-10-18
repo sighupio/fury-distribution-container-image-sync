@@ -95,6 +95,7 @@ images:
       - "1.9.10"
       - "2.1.4"
       - "2.1.8"
+      - "3.1.8"
     destinations:
       - registry.sighup.io/fury/fluent/fluent-bit
 
@@ -145,6 +146,7 @@ images:
       - "4.3.0"
       - "4.4.1"
       - "4.5.6"
+      - "4.10.0"
     destinations:
       - registry.sighup.io/fury/banzaicloud/logging-operator
 
@@ -172,6 +174,7 @@ images:
       - "v1.14.6"
       - "v1.15-ruby3"
       - "v1.16-full"
+      - "v1.16-4.10-full"
     destinations:
       - registry.sighup.io/fury/banzaicloud/fluentd
 
@@ -210,6 +213,7 @@ images:
     tag:
       - "v0.0.4"
       - "v0.0.5"
+      - "v0.0.6"
     destinations:
       - registry.sighup.io/fury/banzaicloud/config-reloader
 
