@@ -69,3 +69,9 @@ images:
     destinations:
       - registry.sighup.io/fury/rook/ceph
 
+  - name: NFS subdir external provisioner [Fury Storage Module]
+    source: registry.k8s.io/sig-storage/nfs-subdir-external-provisioner
+    tag:
+      - "v4.0.2"
+    destinations:
+      - registry.sighup.io/fury/sig-storage/nfs-subdir-external-provisioner
