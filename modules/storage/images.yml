@@ -25,6 +25,7 @@ images:
     tag:
       - "v4.0.0"
       - "v4.1.0"
+      - "v4.6.0"
     destinations:
       - registry.sighup.io/fury/sig-storage/csi-attacher
 
@@ -33,6 +34,7 @@ images:
     tag:
       - "v2.5.1"
       - "v2.7.0"
+      - "v2.10.0"
     destinations:
       - registry.sighup.io/fury/sig-storage/csi-node-driver-registrar
 
@@ -41,6 +43,7 @@ images:
     tag:
       - "v3.3.0"
       - "v3.4.0"
+      - "v4.0.1"
     destinations:
       - registry.sighup.io/fury/sig-storage/csi-provisioner
 
@@ -49,6 +52,7 @@ images:
     tag:
       - "v1.6.0"
       - "v1.7.0"
+      - "v1.11.0"
     destinations:
       - registry.sighup.io/fury/sig-storage/csi-resizer
 
@@ -58,6 +62,7 @@ images:
       - "v3.0.3"
       - "v6.1.0"
       - "v6.2.1"
+      - "v7.0.2"
     destinations:
       - registry.sighup.io/fury/sig-storage/csi-snapshotter
 
@@ -75,3 +80,24 @@ images:
       - "v4.0.2"
     destinations:
       - registry.sighup.io/fury/sig-storage/nfs-subdir-external-provisioner
+
+  - name: Trident
+    source: docker.io/netapp/trident
+    tag:
+      - "24.06.0"
+    destinations:
+      - registry.sighup.io/fury/netapp/trident
+
+  - name: Trident Autosupport
+    source: docker.io/netapp/trident-autosupport
+    tag:
+      - "24.06"
+    destinations:
+      - registry.sighup.io/fury/netapp/trident-autosupport
+
+  - name: Trident Operator
+    source: docker.io/netapp/trident-operator
+    tag:
+      - "24.06.0"
+    destinations:
+      - registry.sighup.io/fury/netapp/trident-operator
