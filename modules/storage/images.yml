@@ -28,6 +28,7 @@ images:
       - "v4.6.0"
     destinations:
       - registry.sighup.io/fury/sig-storage/csi-attacher
+      - registry.sighup.io/fury/netapp/csi-attacher
 
   - name: CSI Node Driver Registrar [Fury Storage Module]
     source: registry.k8s.io/sig-storage/csi-node-driver-registrar
@@ -37,6 +38,7 @@ images:
       - "v2.10.0"
     destinations:
       - registry.sighup.io/fury/sig-storage/csi-node-driver-registrar
+      - registry.sighup.io/fury/netapp/csi-node-driver-registrar
 
   - name: CSI Provisioner[Fury Storage Module]
     source: registry.k8s.io/sig-storage/csi-provisioner
@@ -46,6 +48,7 @@ images:
       - "v4.0.1"
     destinations:
       - registry.sighup.io/fury/sig-storage/csi-provisioner
+      - registry.sighup.io/fury/netapp/csi-provisioner
 
   - name: CSI Resizer [Fury Storage Module]
     source: registry.k8s.io/sig-storage/csi-resizer
@@ -55,6 +58,7 @@ images:
       - "v1.11.0"
     destinations:
       - registry.sighup.io/fury/sig-storage/csi-resizer
+      - registry.sighup.io/fury/netapp/csi-resizer
 
   - name: CSI Snapshotter [Fury Storage Module]
     source: registry.k8s.io/sig-storage/csi-snapshotter
@@ -65,6 +69,7 @@ images:
       - "v7.0.2"
     destinations:
       - registry.sighup.io/fury/sig-storage/csi-snapshotter
+      - registry.sighup.io/fury/netapp/csi-snapshotter
 
   - name: Rook Ceph [Fury Storage Module]
     source: rook/ceph
