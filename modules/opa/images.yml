@@ -48,6 +48,7 @@ images:
     tag:
       - "v1.11.0"
       - "v1.11.4"
+      - "v1.12.6"
     destinations:
       - registry.sighup.io/fury/kyverno/kyverno
 
@@ -56,6 +57,7 @@ images:
     tag:
       - "v1.11.0"
       - "v1.11.4"
+      - "v1.12.6"
     destinations:
       - registry.sighup.io/fury/kyverno/kyvernopre
 
@@ -64,6 +66,7 @@ images:
     tag:
       - "v1.11.0"
       - "v1.11.4"
+      - "v1.12.6"
     destinations:
       - registry.sighup.io/fury/kyverno/background-controller
   
@@ -72,6 +75,7 @@ images:
     tag:
       - "v1.11.0"
       - "v1.11.4"
+      - "v1.12.6"
     destinations:
       - registry.sighup.io/fury/kyverno/cleanup-controller
 
@@ -80,6 +84,7 @@ images:
     tag:
       - "v1.11.0"
       - "v1.11.4"
+      - "v1.12.6"
     destinations:
       - registry.sighup.io/fury/kyverno/reports-controller
 
@@ -91,3 +96,10 @@ images:
       - "1.28.5"
     destinations:
       - registry.sighup.io/fury/bitnami/kubectl
+
+  - name: Kyverno CLI [Fury OPA Module]
+    source: ghcr.io/kyverno/kyverno-cli
+    tag:
+      - "v1.12.6"
+    destinations:
+      - registry.sighup.io/fury/kyverno/kyverno-cli
