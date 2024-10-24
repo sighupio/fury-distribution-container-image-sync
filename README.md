@@ -92,6 +92,7 @@ This automation runs once a day: `"0 2 * * *"` and every time someone pushes to 
 
 The reports of vulnerability scanning and patching are available in the dedicate [worflow run](https://github.com/sighupio/fury-distribution-container-image-sync/actions/workflows/cve-scan-and-patching.yml) page.
 
-On each `workflow run` you can find:
-- the `cve-reports-vX.Y.Z` that includes the pre patching and post patching vulnerabilities reports.
-- the `cve-patch-reports-by-image` that include the patching report by image.
+On each `workflow run`, navigate to the **Artefacts** section where you can find:
+
+- the `cve-reports-vX.Y.Z` artefact (zip file) that includes the pre patching and post patching vulnerabilities reports for KFD version `X.Y.Z`.
+- the `cve-patch-reports-by-image` artefact (zip file) that includes the patching report by image for all the images used in all the supported KFD versions.

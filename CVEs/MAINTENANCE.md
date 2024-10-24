@@ -8,30 +8,31 @@ This guide explains how to generate a new report (in MarkDown) for a version of 
 * `jq` command line installed
 * `awk` command line installed
 
-## Run using Github Actions
+## Run using GitHub Actions
 
-The [workflow](.github/workflows/cve-scan-and-patching.yml) is triggered at every change in:
+The [workflow](.github/workflows/cve-scan-and-patching.yml) is triggered at every change in the following files:
 - .github/workflows/cve-scan-and-patching.yml
 - CVEs/**
 
 ### How to add new KFD version
 
 1) Run `furyctl create config --name sighup --version v1.X.Y --kind KFDDistribution --config v1.X.Y/furyctl.yaml`
-> It create a new folder with the name of the version of KFD and create a new `furyctl.yaml` file with cluster name `sighup` and the same distribution version with kind KFDDistribution (everything can be disabled, we only need to download the dependencies):  
+
+> The command creates a new folder named with the version of KFD and a new `furyctl.yaml` file with cluster name `sighup, the same distribution version, and kind `KFDDistribution` (everything can be disabled in the furyctl.yaml file, we only need to download the dependencies).  
 2) Commit and push the new folder
 
-### What the workflow do
+### What the workflow does
 
-The workflow take in charge the tasks to: 
-- check the KFD versions defined in folders like vX.Y.Z
-- for all KFD versions defined, execute the "scan pre patch":
+The workflow performs the following tasks: 
+- check the KFD versions defined in folders following the pattern `vX.Y.Z`
+- for each KFD version found, execute the "scan pre patch" makefile target:
   - download all dependencies
   - build all dependencies manifests
   - generate the list of images present in the manifests
   - scan the images with trivy
   - create the `FURY-CVEs.md` CVEs report  
 - execute the patch of all the images used by all KFD versions
-- for all KFD versions defined, execute the "scan post patch":
+- for each KFD version found, execute the "scan post patch" makefile target:
   - scan the patched images with trivy
   - create the `FURY-SECURED-CVEs.md` CVEs report
 - publish the reports as artifact of [worflow run](https://github.com/sighupio/fury-distribution-container-image-sync/actions/workflows/cve-scan-and-patching.yml)
