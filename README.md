@@ -5,6 +5,14 @@
 </h1>
 <!-- markdownlint-enable MD033 -->
 
+# Table of contents
+- [Introduction](#introduction)
+- [How it works](#how-it-works)
+- [Automated sync execution](#automated-sync-execution)
+- [Vulnerability detection and patching](#vulns-detect-and-patch)
+
+## <a name="introduction">Introduction</a>
+
 This is a simple mechanism that pulls and pushes or builds container images based on a configuration file (`yaml`).
 
 The main goal for this repository is to have a central location used to sync on our public SIGHUP registry all the
@@ -19,8 +27,9 @@ Features:
 - Build custom images
 - Skips images if the layers between src and dest are the same using `skopeo`
 - Everything is executed with two bash scripts: `sync.sh` and `single_sync.sh`
+- Execute the vulnerability detection and patching of the synced images
 
-## How it works
+## <a name="how-it-works">How it works</a>
 
 Inside the folder `modules/` there is a subfolder for each KFD module with an `images.yml` file.
 
@@ -75,6 +84,14 @@ Example `images.yml`:
       - registry.sighup.io/fury/grafana/grafana
 ```
 
-## Automated execution
+## <a name="automated-sync-execution">Automated sync execution</a>
 
 This automation runs once a day: `"0 2 * * *"` and every time someone pushes to the `main` branch.
+
+## <a name="vulns-detect-and-patch">Vulnerability detection and patching</a>
+
+The reports of vulnerability scanning and patching are available in the dedicate [worflow run](https://github.com/sighupio/fury-distribution-container-image-sync/actions/workflows/cve-scan-and-patching.yml) page.
+
+On each `workflow run` you can find:
+- the `cve-reports-vX.Y.Z` that includes the pre patching and post patching vulnerabilities reports.
+- the `cve-patch-reports-by-image` that include the patching report by image.
