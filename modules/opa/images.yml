@@ -2,6 +2,7 @@ images:
 
   - name: Gatekeeper [Fury OPA Module]
     source: docker.io/openpolicyagent/gatekeeper
+    multiarch: true
     tag:
       - "v3.1.0-beta.9"
       - "v3.1.1"
@@ -19,11 +20,13 @@ images:
       - "v3.13.3"
       - "v3.14.0"
       - "v3.15.1"
+      - "v3.17.1"
     destinations:
       - registry.sighup.io/fury/openpolicyagent/gatekeeper
 
   - name: Gatekeeper Policy Manager [Fury OPA Module]
     source: quay.io/sighup/gatekeeper-policy-manager
+    multiarch: true
     tag:
       - "v0.4.1"
       - "v0.4.2"
