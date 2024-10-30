@@ -64,6 +64,13 @@ images:
       - "1.1.0"
     destinations:
       - registry.sighup.io/fury/justwatch/elasticsearch_exporter
+  
+  - name: Prometheus Community ElasticSearch Exporter [Fury Kubernetes Logging]
+    source: quay.io/prometheuscommunity/elasticsearch-exporter
+    tag:
+      - "1.8.0"
+    destinations:
+      - registry.sighup.io/fury/prometheuscommunity/elasticsearch-exporter
 
 #  - name: ElasticSearch [Fury Kubernetes Logging]
 #    source: docker.elastic.co/elasticsearch/elasticsearch
