@@ -6,6 +6,7 @@ images:
       - "2.7.3"
       - "2.8.0"
       - "2.9.2"
+      - "3.2.0"
     destinations:
       - registry.sighup.io/fury/grafana/loki
 
@@ -231,5 +232,20 @@ images:
     tag:
       - "1.20.2-alpine"
       - "1.25-alpine"
+      - "1.27-alpine"
     destinations:
       - registry.sighup.io/fury/nginxinc/nginx-unprivileged
+  
+  - name: Memcached [Fury Kubernetes Logging]
+    source: docker.io/memcached
+    tag:
+      - "1.6.23-alpine"
+    destinations:
+      - registry.sighup.io/fury/memcached
+
+  - name: Memcached Exporter [Fury Kubernetes Logging]
+    source: docker.io/prom/memcached-exporter
+    tag:
+      - "v0.14.2"
+    destinations:
+      - registry.sighup.io/fury/prom/memcached-exporter
