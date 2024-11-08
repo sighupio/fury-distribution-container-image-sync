@@ -1,0 +1,54 @@
+name: "Sync Trivy"
+
+on:
+  push:
+    branches:
+      - "main"
+  schedule:
+    - cron: "0 2 * * *"
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - name: Install skopeo
+        run: |
+          sudo apt-get update && sudo apt-get install -yqq skopeo
+      # As trivy-db and trivy-java-db are OCI artefacts, docker pull doesn't work
+      - name: Sync Trivy DBs
+        run: |
+          skopeo login --username ${{ secrets.SIGHUP_REGISTRY_USERNAME }} registry.sighup.io -p ${{ secrets.SIGHUP_REGISTRY_PASSWORD }}
+          
+          sync_attempt=0
+          trivy_db_break=0
+          trivy_java_db_break=0
+          
+          while [ $((sync_attempt)) -lt 10 ]
+          do
+            if [ $((trivy_db_break)) -eq 0 ]
+            then
+              if skopeo copy docker://ghcr.io/aquasecurity/trivy-db:2 docker://registry.sighup.io/fury-secured/aquasecurity/trivy-db:2
+              then
+                trivy_db_break=1
+              fi
+            fi
+          
+            if [ $((trivy_java_db_break)) -eq 0 ]
+            then
+              if skopeo copy docker://ghcr.io/aquasecurity/trivy-java-db:1 docker://registry.sighup.io/fury-secured/aquasecurity/trivy-java-db:1
+              then
+                trivy_java_db_break=1
+              fi
+            fi
+            
+            if [ $((trivy_db_break)) -eq 1 ] && [ $((trivy_java_db_break)) -eq 1 ]
+            then
+              break
+            fi
+
+            sync_attempt=$((sync_attempt + 1))
+            sleep 120
+          done
+          
+          
