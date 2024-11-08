@@ -1,5 +1,7 @@
 #!/bin/bash
 
+RC_ERROR_MISSING_DESTINATION=1
+
 # if $2 is not empty, set a variable DRY to true
 if [ $2 = true  ]; then
   DRY=true
@@ -13,7 +15,7 @@ IMAGES=$(yq e '.images | length' $1)
 for (( c=0; c<${IMAGES}; c++ ))
 do
     NAME=$(yq e '.images['"${c}"'].name' $1)
-    MULTI_ARCH=$(yq e '.images["'"${c}"'"].multi-arch' "$1")
+    MULTI_ARCH=$(yq e '.images['"${c}"'].multi-arch' $1)
     # Check if MULTI_ARCH is null or empty
     if [ "$MULTI_ARCH" == "null" ] || [ -z "$MULTI_ARCH" ]; then
       MULTI_ARCH="true"  # Default to true if null or empty
@@ -23,6 +25,13 @@ do
     echo "  - Start ${NAME}"
     DST=$(yq e '.images['"${c}"'].destinations | length' $1)
     TAG=$(yq e '.images['"${c}"'].tag | length' $1)
+
+    if [ ${#DST} -lt 1 ]
+    then
+      echo "  - ERROR: at least one destination is required"
+      exit $RC_ERROR_MISSING_DESTINATION
+    fi
+
     for (( t=0; t<${TAG}; t++ ))
     do
 
@@ -81,9 +90,8 @@ do
                 BUILD_ARGS=$BUILD_ARGS" --build-arg "$ARG_NAME"="$ARG_VALUE
             done
             if [ ${MULTI_ARCH} = true ]; then
-                #--push \
               TARGET_IMAGE=$(yq e '.images['"${c}"'].destinations[0]' $1):${LOCAL_TAG}
-              docker buildx build \
+              docker buildx build --push \
                 --platform linux/amd64,linux/arm64 \
                 $BUILD_ARGS --build-arg IMAGETAG=${LOCAL_TAG} \
                 -t ${TARGET_IMAGE} $(dirname $1)/${CONTEXT}

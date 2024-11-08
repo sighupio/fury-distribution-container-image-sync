@@ -32,7 +32,7 @@ concat-multiple-kfd-images-list:
 	rm $(PATCH_FILE_IMAGE_LIST_TO_PATCHING).tmp
 
 patch:
-	DOCKER_CONFIG="${DOCKER_CONFIG}" DRY_RUN=$(DRY_RUN) ./patch_images_with_copacetic.sh -i "$(IMAGE_TO_PATCH)" -l "$(PATCH_FILE_IMAGE_LIST_TO_PATCHING)" -o "$(PATCH_REPORT_OUTPUT_FILE)"
+	DRY_RUN=$(DRY_RUN) ./patch_images_with_copacetic.sh -i "$(IMAGE_TO_PATCH)" -l "$(PATCH_FILE_IMAGE_LIST_TO_PATCHING)" -o "$(PATCH_REPORT_OUTPUT_FILE)"
 
 scan-post-patch:
 	@for version in $(KFD_VERSIONS); do \

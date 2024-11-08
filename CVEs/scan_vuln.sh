@@ -47,30 +47,34 @@ echo "" > "${SCAN_ERROR_OUTPUT_FILE}"
   printf "## CVEs\n\n";
 } > "${SCAN_RESULT_OUTPUT_FILE}"
 
-echo "| Image | Arch | Hash | Severity | CVE | Reason | Package Affected | Status | Fixed in versions |" >> "${SCAN_RESULT_OUTPUT_FILE}"
+echo "| Image | Arch | Image ID | Severity | CVE | Reason | Package Affected | Status | Fixed in versions |" >> "${SCAN_RESULT_OUTPUT_FILE}"
 echo "| --- | --- | --- | --- | --- | --- | --- | --- | --- |" >> "${SCAN_RESULT_OUTPUT_FILE}"
 
 mkdir -p "${TRIVY_SCAN_OUTPUT_DIR}"
 
 for image in $IMAGE_LIST; do
   info "Looking for linux architectures available for ${image}"
-  ARCHITECTURES=$(podman_run podman manifest inspect ${image} | grep -v WARN | get_manifest_architectures_from_podman)
+  ARCHITECTURES=$(get_architecture_and_digest ${image} | jq -r '.[].architecture' )
   info "${image} - linux architectures found: ${ARCHITECTURES//[$'\r\n']/ } "
   for ARCHITECTURE in ${ARCHITECTURES[@]}
   do
     TRIVY_SCAN_OUTPUT_FILE="${TRIVY_SCAN_OUTPUT_DIR}/scan-${image//[:\/]/_}-${ARCHITECTURE}.json"
-
+    IMAGE_REPO=$(echo $image | cut -d: -f1)
+    IMAGE_DIGEST=$(get_architecture_and_digest ${image} | jq -r \
+      --arg arch ${ARCHITECTURE} \
+      '.[] | select(.architecture == $arch) | .digest ' \
+    )
     info "Looking for CVEs in $image for linux/${ARCHITECTURE}"
-    if ! trivy image --skip-db-update --skip-java-db-update --scanners vuln --no-progress --output "$TRIVY_SCAN_OUTPUT_FILE" --format json --severity CRITICAL "$image" --platform linux/${ARCHITECTURE}
+    if ! trivy image --skip-db-update --skip-java-db-update --scanners vuln --no-progress --output "$TRIVY_SCAN_OUTPUT_FILE" --format json --severity CRITICAL "$IMAGE_REPO@$IMAGE_DIGEST" --platform linux/${ARCHITECTURE}
     then
-      error "trivy failed to scan $image"
-      echo "$image | ERROR PROCESSING! " >> "${SCAN_ERROR_OUTPUT_FILE}"
+      error "trivy failed to scan $image for linux/${ARCHITECTURE}"
+      echo "${ARCHITECTURE} $image | ERROR PROCESSING! " >> "${SCAN_ERROR_OUTPUT_FILE}"
     else
-      src_image_hash=$(jq -r '.Metadata.ImageID' < "$TRIVY_SCAN_OUTPUT_FILE")
+      src_image_id=$(jq -r '.Metadata.ImageID' < "$TRIVY_SCAN_OUTPUT_FILE")
       jq -r --arg image "$image" \
-        --arg src_image_hash "$src_image_hash" \
+        --arg src_image_id "$src_image_id" \
         --arg src_image_arch ${ARCHITECTURE} \
-        'try .Results[].Vulnerabilities[] | "| " + $image + " | " + $src_image_arch + " | " + $src_image_hash + " | " + .Severity + " | " + .VulnerabilityID + " | " + .Title + " | " + .PkgName + " " + .InstalledVersion + " | " + .Status + " | " + .FixedVersion + " |" ' < "$TRIVY_SCAN_OUTPUT_FILE" >> "${SCAN_RESULT_OUTPUT_FILE}"
+        'try .Results[].Vulnerabilities[] | "| " + $image + " | " + $src_image_arch + " | " + $src_image_id + " | " + .Severity + " | " + .VulnerabilityID + " | " + .Title + " | " + .PkgName + " " + .InstalledVersion + " | " + .Status + " | " + .FixedVersion + " |" ' < "$TRIVY_SCAN_OUTPUT_FILE" >> "${SCAN_RESULT_OUTPUT_FILE}"
     fi
     trivy clean --scan-cache
   done
