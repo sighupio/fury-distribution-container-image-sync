@@ -8,6 +8,7 @@ images:
       - "v1.30.7"
       - "v1.32.3"
       - "v1.32.7"
+      - "v1.36.0"
     destinations:
       - registry.sighup.io/fury/tigera/operator
 
