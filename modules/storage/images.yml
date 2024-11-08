@@ -134,4 +134,4 @@ images:
       - "v3.3.0"
       - "v3.3.1"
     destinations:
-      - registry.sighup.io/fury/vsphere/csi-vsphere-driver
+      - registry.sighup.io/fury/csi-vsphere/driver
