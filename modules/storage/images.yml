@@ -125,7 +125,7 @@ images:
       - "v3.3.0"
       - "v3.3.1"
     destinations:
-      - registry.sighup.io/fury/vsphere/csi-vsphere-syncer
+      - registry.sighup.io/fury/csi-vsphere/syncer
 
   - name: CSI Driver Vsphere [Fury Vsphere Module]
     source: registry.k8s.io/csi-vsphere/driver
