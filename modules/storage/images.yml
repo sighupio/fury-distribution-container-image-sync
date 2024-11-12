@@ -25,32 +25,40 @@ images:
     tag:
       - "v4.0.0"
       - "v4.1.0"
+      - "v4.6.0"
     destinations:
       - registry.sighup.io/fury/sig-storage/csi-attacher
+      - registry.sighup.io/fury/netapp/csi-attacher
 
   - name: CSI Node Driver Registrar [Fury Storage Module]
     source: registry.k8s.io/sig-storage/csi-node-driver-registrar
     tag:
       - "v2.5.1"
       - "v2.7.0"
+      - "v2.10.0"
     destinations:
       - registry.sighup.io/fury/sig-storage/csi-node-driver-registrar
+      - registry.sighup.io/fury/netapp/csi-node-driver-registrar
 
   - name: CSI Provisioner[Fury Storage Module]
     source: registry.k8s.io/sig-storage/csi-provisioner
     tag:
       - "v3.3.0"
       - "v3.4.0"
+      - "v4.0.1"
     destinations:
       - registry.sighup.io/fury/sig-storage/csi-provisioner
+      - registry.sighup.io/fury/netapp/csi-provisioner
 
   - name: CSI Resizer [Fury Storage Module]
     source: registry.k8s.io/sig-storage/csi-resizer
     tag:
       - "v1.6.0"
       - "v1.7.0"
+      - "v1.11.0"
     destinations:
       - registry.sighup.io/fury/sig-storage/csi-resizer
+      - registry.sighup.io/fury/netapp/csi-resizer
 
   - name: CSI Snapshotter [Fury Storage Module]
     source: registry.k8s.io/sig-storage/csi-snapshotter
@@ -58,8 +66,10 @@ images:
       - "v3.0.3"
       - "v6.1.0"
       - "v6.2.1"
+      - "v7.0.2"
     destinations:
       - registry.sighup.io/fury/sig-storage/csi-snapshotter
+      - registry.sighup.io/fury/netapp/csi-snapshotter
 
   - name: Rook Ceph [Fury Storage Module]
     source: rook/ceph
@@ -69,3 +79,59 @@ images:
     destinations:
       - registry.sighup.io/fury/rook/ceph
 
+  - name: NFS subdir external provisioner [Fury Storage Module]
+    source: registry.k8s.io/sig-storage/nfs-subdir-external-provisioner
+    tag:
+      - "v4.0.2"
+    destinations:
+      - registry.sighup.io/fury/sig-storage/nfs-subdir-external-provisioner
+
+  - name: Trident
+    source: docker.io/netapp/trident
+    tag:
+      - "24.06.0"
+    destinations:
+      - registry.sighup.io/fury/netapp/trident
+
+  - name: Trident Autosupport
+    source: docker.io/netapp/trident-autosupport
+    tag:
+      - "24.06"
+    destinations:
+      - registry.sighup.io/fury/netapp/trident-autosupport
+
+  - name: Trident Operator
+    source: docker.io/netapp/trident-operator
+    tag:
+      - "24.06.0"
+    destinations:
+      - registry.sighup.io/fury/netapp/trident-operator
+
+  - name: Cloud Provider Vsphere - PV [Fury Vsphere Module]
+    source: registry.k8s.io/cloud-pv-vsphere/cloud-provider-vsphere
+    tag:
+      - "v1.29.0"
+      - "v1.30.0"
+      - "v1.30.1"
+      - "v1.31.0"
+      - "v1.31.1"
+    destinations:
+      - registry.sighup.io/fury/cloud-pv-vsphere/cloud-provider-vsphere
+
+  - name: CSI Syncer Vsphere [Fury Vsphere Module]
+    source: registry.k8s.io/csi-vsphere/syncer
+    tag:
+      - "v3.2.0"
+      - "v3.3.0"
+      - "v3.3.1"
+    destinations:
+      - registry.sighup.io/fury/csi-vsphere/syncer
+
+  - name: CSI Driver Vsphere [Fury Vsphere Module]
+    source: registry.k8s.io/csi-vsphere/driver
+    tag:
+      - "v3.2.0"
+      - "v3.3.0"
+      - "v3.3.1"
+    destinations:
+      - registry.sighup.io/fury/csi-vsphere/driver

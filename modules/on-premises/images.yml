@@ -27,6 +27,7 @@ images:
       - "v1.10.1"
       - "v1.11.0"
       - "v1.11.1"
+      - "v1.11.3"
     destinations:
       - registry.sighup.io/fury/on-premises/coredns/coredns
 
@@ -48,7 +49,10 @@ images:
       - "v1.27.6"
       - "v1.27.7"
       - "v1.28.7"
+      - "v1.28.15"
       - "v1.29.3"
+      - "v1.29.10"
+      - "v1.30.6"
     destinations:
       - registry.sighup.io/fury/on-premises/kube-apiserver
 
@@ -70,7 +74,10 @@ images:
       - "v1.27.6"
       - "v1.27.7"
       - "v1.28.7"
+      - "v1.28.15"
       - "v1.29.3"
+      - "v1.29.10"
+      - "v1.30.6"
     destinations:
       - registry.sighup.io/fury/on-premises/kube-controller-manager
 
@@ -92,7 +99,10 @@ images:
       - "v1.27.6"
       - "v1.27.7"
       - "v1.28.7"
+      - "v1.28.15"
       - "v1.29.3"
+      - "v1.29.10"
+      - "v1.30.6"
     destinations:
       - registry.sighup.io/fury/on-premises/kube-proxy
 
@@ -114,6 +124,9 @@ images:
       - "v1.27.6"
       - "v1.27.7"
       - "v1.28.7"
+      - "v1.28.15"
       - "v1.29.3"
+      - "v1.29.10"
+      - "v1.30.6"
     destinations:
       - registry.sighup.io/fury/on-premises/kube-scheduler

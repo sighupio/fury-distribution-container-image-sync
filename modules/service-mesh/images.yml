@@ -29,6 +29,8 @@ images:
       - "1.20.8"
       - "1.21.4"
       - "1.22.2"
+      - "1.23.3"
+      - "1.24.0"
     destinations:
       - registry.sighup.io/fury/istio/proxyv2
 
@@ -63,6 +65,8 @@ images:
       - "v1.63.2"
       - "v1.75.0"
       - "v1.86.0"
+      - "v1.87.0"
+      - "v2.0.0"
     destinations:
       - registry.sighup.io/fury/kiali/kiali
 
@@ -95,6 +99,8 @@ images:
       - "1.20.8"
       - "1.21.4"
       - "1.22.2"
+      - "1.23.3"
+      - "1.24.0"
     destinations:
       - registry.sighup.io/fury/istio/pilot
 
@@ -113,6 +119,8 @@ images:
       - "1.20.8"
       - "1.21.4"
       - "1.22.2"
+      - "1.23.3"
+      - "1.24.0"
     destinations:
       - registry.sighup.io/fury/istio/operator
 

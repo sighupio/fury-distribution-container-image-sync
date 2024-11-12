@@ -1,1 +1,6 @@
 login
+CVEs/v*/.furyctl
+CVEs/v*/.scan
+CVEs/v*/*.log
+CVEs/v*/built.yaml
+CVEs/.patching

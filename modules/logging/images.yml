@@ -6,6 +6,8 @@ images:
       - "2.7.3"
       - "2.8.0"
       - "2.9.2"
+      - "2.9.10"
+      - "3.2.0"
     destinations:
       - registry.sighup.io/fury/grafana/loki
 
@@ -18,6 +20,7 @@ images:
       - "2.7.0"
       - "2.11.0"
       - "2.12.0"
+      - "2.17.1"
     destinations:
       - registry.sighup.io/fury/opensearchproject/opensearch
 
@@ -30,6 +33,7 @@ images:
       - "2.7.0"
       - "2.11.0"
       - "2.12.0"
+      - "2.17.1"
     destinations:
       - registry.sighup.io/fury/opensearchproject/opensearch-dashboards
 
@@ -61,6 +65,13 @@ images:
       - "1.1.0"
     destinations:
       - registry.sighup.io/fury/justwatch/elasticsearch_exporter
+  
+  - name: Prometheus Community ElasticSearch Exporter [Fury Kubernetes Logging]
+    source: quay.io/prometheuscommunity/elasticsearch-exporter
+    tag:
+      - "1.8.0"
+    destinations:
+      - registry.sighup.io/fury/prometheuscommunity/elasticsearch-exporter
 
 #  - name: ElasticSearch [Fury Kubernetes Logging]
 #    source: docker.elastic.co/elasticsearch/elasticsearch
@@ -95,6 +106,7 @@ images:
       - "1.9.10"
       - "2.1.4"
       - "2.1.8"
+      - "3.1.8"
     destinations:
       - registry.sighup.io/fury/fluent/fluent-bit
 
@@ -145,6 +157,7 @@ images:
       - "4.3.0"
       - "4.4.1"
       - "4.5.6"
+      - "4.10.0"
     destinations:
       - registry.sighup.io/fury/banzaicloud/logging-operator
 
@@ -172,6 +185,7 @@ images:
       - "v1.14.6"
       - "v1.15-ruby3"
       - "v1.16-full"
+      - "v1.16-4.10-full"
     destinations:
       - registry.sighup.io/fury/banzaicloud/fluentd
 
@@ -210,6 +224,7 @@ images:
     tag:
       - "v0.0.4"
       - "v0.0.5"
+      - "v0.0.6"
     destinations:
       - registry.sighup.io/fury/banzaicloud/config-reloader
 
@@ -225,5 +240,20 @@ images:
     tag:
       - "1.20.2-alpine"
       - "1.25-alpine"
+      - "1.27-alpine"
     destinations:
       - registry.sighup.io/fury/nginxinc/nginx-unprivileged
+  
+  - name: Memcached [Fury Kubernetes Logging]
+    source: docker.io/memcached
+    tag:
+      - "1.6.23-alpine"
+    destinations:
+      - registry.sighup.io/fury/memcached
+
+  - name: Memcached Exporter [Fury Kubernetes Logging]
+    source: docker.io/prom/memcached-exporter
+    tag:
+      - "v0.14.2"
+    destinations:
+      - registry.sighup.io/fury/prom/memcached-exporter
