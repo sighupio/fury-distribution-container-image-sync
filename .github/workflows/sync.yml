@@ -4,7 +4,15 @@ on:
   push:
     branches:
       - "main"
-#      - "feat/product540/improve-support-for-arm64"
+    paths:
+      - '.github/workflows/dry.yml'
+      - '.github/workflows/sync.yml'
+      - 'modules/**'
+      - '!README.md'
+      - '!single_sync.sh'
+      - '!single_sync_v2.sh'
+      - 'single_sync_v3.sh'
+
   schedule:
     - cron: "0 2 * * *"
 
