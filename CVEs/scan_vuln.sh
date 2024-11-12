@@ -52,6 +52,8 @@ echo "| --- | --- | --- | --- | --- | --- | --- | --- | --- |" >> "${SCAN_RESULT
 
 mkdir -p "${TRIVY_SCAN_OUTPUT_DIR}"
 
+RETURN_ERROR=0
+
 for image in $IMAGE_LIST; do
   info "Looking for linux architectures available for ${image}"
   ARCHITECTURES=$(get_architecture_and_digest ${image} | jq -r '.[].architecture' )
@@ -68,6 +70,7 @@ for image in $IMAGE_LIST; do
     if ! trivy image --skip-db-update --skip-java-db-update --scanners vuln --no-progress --output "$TRIVY_SCAN_OUTPUT_FILE" --format json --severity CRITICAL "$IMAGE_REPO@$IMAGE_DIGEST" --platform linux/${ARCHITECTURE}
     then
       error "trivy failed to scan $image for linux/${ARCHITECTURE}"
+      RETURN_ERROR=$((RETURN_ERROR + 1))
       echo "${ARCHITECTURE} $image | ERROR PROCESSING! " >> "${SCAN_ERROR_OUTPUT_FILE}"
     else
       src_image_id=$(jq -r '.Metadata.ImageID' < "$TRIVY_SCAN_OUTPUT_FILE")
@@ -80,3 +83,5 @@ for image in $IMAGE_LIST; do
   done
 done
 rm -rf "${TRIVY_SCAN_OUTPUT_DIR}"
+
+exit $RETURN_ERROR

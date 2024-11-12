@@ -61,6 +61,7 @@ echo -n "" > "${PATCH_ERROR_OUTPUT_FILE}"
 
 REGISTRY_BASE_URL='registry.sighup.io/fury/'
 REGISTRY_SECURED_BASE_URL='registry.sighup.io/fury-secured/'
+RETURN_ERROR=0
 
 function patch_image() {
   local image="$1"
@@ -83,10 +84,11 @@ function patch_image() {
       --arg arch ${ARCHITECTURE} \
       '.[] | select(.architecture == $arch) | .digest ' \
     )"
-    if ! docker pull "${image_to_patch_with_digest}" > /dev/null 2>&1
+    if ! docker pull "${image_to_patch_with_digest}" --platform linux/${ARCHITECTURE} > /dev/null 2>&1
     then
-      error "Failed pull ${image_to_patch_with_digest}"
-      return 1
+      error "Failed pull ${image_to_patch_with_digest} for linux/${ARCHITECTURE}"
+      RETURN_ERROR=$((RETURN_ERROR + 1))
+      continue
     fi
     # Replace with skopeo/podman if exists a command that get imageId
     image_to_patch_image_id=$(docker inspect "${image_to_patch_with_digest}" --format '{{.Id}}')
@@ -165,7 +167,7 @@ function patch_image() {
     else
       if [ "${image_to_patch}" != "${secured_image}" ]
       then
-        copa_error="$(awk -F'Error:' '$0 ~ /Error:/ {print $2}' ${COPA_PATCHING_LOG_FILE})"
+        copa_error="$(awk -F'Error: ' '$0 ~ /Error:/ {print $2}' ${COPA_PATCHING_LOG_FILE})"
         echo "linux/${ARCHITECTURE} ${secured_image}: ${copa_error}" >> "${PATCH_ERROR_OUTPUT_FILE}"
         error "${copa_error} patching ${image_to_patch} for linux/${ARCHITECTURE}"
         if [ ${DRY_RUN:-1} -eq 0 ]
@@ -179,7 +181,7 @@ function patch_image() {
           success "${secured_image_with_tag_arch} pushed with image id: ${image_to_patch_image_id}"
         fi
       else
-        error "${image_to_patch} is the same of ${secured_image}"
+        warn "${image_to_patch} is the same of ${secured_image}"
       fi
     fi
   done
@@ -209,3 +211,5 @@ else
   [[ ! -f "${FILE_WITH_IMAGES_LIST_TO_PATCH}" ]] && fail "Missing image list files"
   patch_from_list < "${FILE_WITH_IMAGES_LIST_TO_PATCH}"
 fi
+
+exit $RETURN_ERROR
