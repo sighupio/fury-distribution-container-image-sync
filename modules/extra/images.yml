@@ -244,12 +244,12 @@ images:
       - "v0.3.0"
       - "v0.4.0"
       - "v0.5.0"
-      
+
     destinations:
       - registry.sighup.io/fury/jimmidyson/configmap-reload
 
   - name: Configmap reloader
-    source: docker.io/jimmidyson/configmap-reload
+    source: ghcr.io/jimmidyson/configmap-reload
     tag:
       - "v0.13.1"
 
