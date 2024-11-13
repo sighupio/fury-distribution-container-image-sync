@@ -69,7 +69,7 @@ images:
   - name: Prometheus Community ElasticSearch Exporter [Fury Kubernetes Logging]
     source: quay.io/prometheuscommunity/elasticsearch-exporter
     tag:
-      - "1.8.0"
+      - "v1.8.0"
     destinations:
       - registry.sighup.io/fury/prometheuscommunity/elasticsearch-exporter
 
