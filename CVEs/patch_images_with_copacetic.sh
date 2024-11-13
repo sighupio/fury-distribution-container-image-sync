@@ -73,7 +73,7 @@ function patch_image() {
   secured_image_repo=$(echo ${secured_image} | cut -d: -f1)
 
   ARCHITECTURES=$(get_architecture_and_digest ${image_to_patch} | jq -r '.[].architecture' )
-  [[ -z "${ARCHITECTURES}" ]] && error "no architectures found for ${image_to_patch}" && return 1
+  [[ -z "${ARCHITECTURES}" ]] && error "no architectures found for ${image_to_patch}" && RETURN_ERROR=$((RETURN_ERROR + 1 )) && return 1
 
   MULTI_ARCH_IMAGES=""
 
