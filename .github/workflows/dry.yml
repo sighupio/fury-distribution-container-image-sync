@@ -2,6 +2,14 @@ name: "Dry run"
 
 on:
   push:
+    paths:
+      - '.github/workflows/dry.yml'
+      - '.github/workflows/sync.yml'
+      - 'modules/**'
+      - '!README.md'
+      - '!single_sync.sh'
+      - '!single_sync_v2.sh'
+      - 'single_sync_v3.sh'
 
 jobs:
   fetch_modules_to_sync:
