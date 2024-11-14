@@ -67,7 +67,14 @@ for image in $IMAGE_LIST; do
       '.[] | select(.architecture == $arch) | .digest ' \
     )
     info "Looking for CVEs in $image for linux/${ARCHITECTURE}"
-    if ! trivy image --skip-db-update --skip-java-db-update --scanners vuln --no-progress --output "$TRIVY_SCAN_OUTPUT_FILE" --format json --severity CRITICAL "$IMAGE_REPO@$IMAGE_DIGEST" --platform linux/${ARCHITECTURE}
+    if ! trivy image \
+      --platform linux/${ARCHITECTURE} \
+      --cache-dir ${TRIVY_CACHE_DIR:-/tmp/.cache/trivy} \
+      --skip-db-update --skip-java-db-update \
+      --scanners vuln --no-progress \
+      --output "$TRIVY_SCAN_OUTPUT_FILE" \
+      --format json --severity CRITICAL \
+      "$IMAGE_REPO@$IMAGE_DIGEST"
     then
       error "trivy failed to scan $image for linux/${ARCHITECTURE}"
       RETURN_ERROR=$((RETURN_ERROR + 1))

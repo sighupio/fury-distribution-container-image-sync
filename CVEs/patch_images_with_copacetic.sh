@@ -103,7 +103,12 @@ function patch_image() {
     COPA_REPORT_OUTPUT_FILE=${COPA_PATCH_OUTPUT_DIR}/${image_to_patch//[:\/]/_}-${ARCHITECTURE}.vex.json
     COPA_PATCHING_LOG_FILE=${COPA_PATCH_OUTPUT_DIR}/${image_to_patch//[:\/]/_}-${ARCHITECTURE}.log
     info "Looking for CVEs in ${image_to_patch} for linux/${ARCHITECTURE}"
-    trivy image --platform=linux/${ARCHITECTURE} --skip-db-update --skip-java-db-update --scanners vuln -q --vuln-type os --ignore-unfixed -f json -o "${TRIVY_SCAN_OUTPUT_FILE}" "${image_to_patch_with_digest}"
+    trivy image --platform=linux/${ARCHITECTURE} \
+      --skip-db-update --skip-java-db-update \
+      --cache-dir ${TRIVY_CACHE_DIR:-/tmp/.cache/trivy} \
+      --scanners vuln -q --vuln-type os --ignore-unfixed \
+      -f json -o "${TRIVY_SCAN_OUTPUT_FILE}" \
+      "${image_to_patch_with_digest}"
     info "Clean trivy scan cache"
     trivy clean --scan-cache
     info "Patching CVEs in ${image_to_patch} for linux/${ARCHITECTURE}"
