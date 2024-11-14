@@ -150,6 +150,7 @@ images:
       - "v2.36.1"
       - "v2.41.0"
       - "v2.46.0"
+      - "v2.54.1"
     destinations:
       - registry.sighup.io/fury/prometheus
       - registry.sighup.io/fury/prometheus/prometheus
