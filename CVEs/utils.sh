@@ -13,7 +13,7 @@ function podman_run(){
 }
 
 function skopeo_run(){
-  docker run --rm -v ${DOCKER_CONFIG}:${DOCKER_CONFIG} -e DOCKER_CONFIG="${DOCKER_CONFIG}" --entrypoint bash quay.io/skopeo/stable:v1.13 -c "$*"
+  docker run --rm -v ${DOCKER_CONFIG}:${DOCKER_CONFIG} -v /var/run/docker.sock:/var/run/docker.sock -e DOCKER_CONFIG="${DOCKER_CONFIG}" --entrypoint bash quay.io/skopeo/stable:v1.16 -c "$*"
 }
 
 function get_architecture_and_digest(){

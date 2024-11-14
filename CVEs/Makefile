@@ -7,7 +7,7 @@
 	scan-vulns \
 	concat-multiple-kfd-images-list
 
-KFD_VERSIONS := $(shell find . -type d -name "v*" -maxdepth 1 -mindepth 1 | cut -d/ -f2 | sort )
+KFD_VERSIONS := $(shell find . -maxdepth 1 -mindepth 1 -type d -name "v*"  | cut -d/ -f2 | sort )
 DRY_RUN := 1
 PATCH_FILE_IMAGE_LIST_TO_PATCHING := all_kfd_images.txt
 

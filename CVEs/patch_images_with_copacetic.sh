@@ -53,7 +53,7 @@ then
     fail "can't start buildkit"
   fi
 else
-  info "buildkit is already running"
+  warn "buildkit is already running"
 fi
 
 mkdir -p "${TRIVY_SCAN_OUTPUT_DIR}" "${COPA_PATCH_OUTPUT_DIR}" "${DOCKERFILE_OUTPUT_DIR}" "${LOG_OUTPUT_DIR}"
@@ -62,6 +62,7 @@ echo -n "" > "${PATCH_ERROR_OUTPUT_FILE}"
 REGISTRY_BASE_URL='registry.sighup.io/fury/'
 REGISTRY_SECURED_BASE_URL='registry.sighup.io/fury-secured/'
 RETURN_ERROR=0
+PATCH_IMAGE_RETURN_ERROR=0
 
 function patch_image() {
   local image="$1"
@@ -73,7 +74,7 @@ function patch_image() {
   secured_image_repo=$(echo ${secured_image} | cut -d: -f1)
 
   ARCHITECTURES=$(get_architecture_and_digest ${image_to_patch} | jq -r '.[].architecture' )
-  [[ -z "${ARCHITECTURES}" ]] && error "no architectures found for ${image_to_patch}" && RETURN_ERROR=$((RETURN_ERROR + 1 )) && return 1
+  [[ -z "${ARCHITECTURES}" ]] && error "no architectures found for ${image_to_patch}" && PATCH_IMAGE_RETURN_ERROR=$((PATCH_IMAGE_RETURN_ERROR + 1 )) && return $PATCH_IMAGE_RETURN_ERROR
 
   MULTI_ARCH_IMAGES=""
 
@@ -87,7 +88,7 @@ function patch_image() {
     if ! docker pull "${image_to_patch_with_digest}" --platform linux/${ARCHITECTURE} > /dev/null 2>&1
     then
       error "Failed pull ${image_to_patch_with_digest} for linux/${ARCHITECTURE}"
-      RETURN_ERROR=$((RETURN_ERROR + 1))
+      PATCH_IMAGE_RETURN_ERROR=$((PATCH_IMAGE_RETURN_ERROR + 1))
       continue
     fi
     # Replace with skopeo/podman if exists a command that get imageId
@@ -103,7 +104,7 @@ function patch_image() {
     COPA_PATCHING_LOG_FILE=${COPA_PATCH_OUTPUT_DIR}/${image_to_patch//[:\/]/_}-${ARCHITECTURE}.log
     info "Looking for CVEs in ${image_to_patch} for linux/${ARCHITECTURE}"
     trivy image --platform=linux/${ARCHITECTURE} --skip-db-update --skip-java-db-update --scanners vuln -q --vuln-type os --ignore-unfixed -f json -o "${TRIVY_SCAN_OUTPUT_FILE}" "${image_to_patch_with_digest}"
-    info "Clean trivy scan cache for ${image_to_patch_with_digest}"
+    info "Clean trivy scan cache"
     trivy clean --scan-cache
     info "Patching CVEs in ${image_to_patch} for linux/${ARCHITECTURE}"
     copa patch -r "${TRIVY_SCAN_OUTPUT_FILE}" -i "${image_to_patch_with_digest}" --tag ${patched_tag} --format="openvex" --output "$COPA_REPORT_OUTPUT_FILE" -a tcp://127.0.0.1:8888 2>&1 | tee "${COPA_PATCHING_LOG_FILE}"
@@ -126,7 +127,7 @@ function patch_image() {
       info "CVEs patched in ${ARCHITECTURE} ${image_patched}: ${FIXED_CVES//[$'\r\n']/ }"
       DOCKER_LABELS=
       image_patched_image_id=$(docker inspect "${image_patched}" --format '{{.Id}}')
-      info "${ARCHITECTURE} ${image_patched} image id: ${image_patched_image_id}"
+      info "${image_patched} image id: ${image_patched_image_id}"
       info "Update patching report for ${ARCHITECTURE} ${image_to_patch}"
       for FIXED_CVE in ${FIXED_CVES[@]}
       do
@@ -151,34 +152,56 @@ function patch_image() {
       secured_image_labeled_image_id=$(docker inspect "${secured_image_with_tag_arch}" --format '{{.Id}}')
       if [ ${DRY_RUN:-1} -eq 0 ]
       then
-        info "Push secure image: ${secured_image_with_tag_arch}"
-        docker push $(docker inspect ${secured_image_with_tag_arch} --format '{{json .RepoDigests}}' | jq '.[0]' -r)
-        MULTI_ARCH_IMAGES="${secured_image_with_tag_arch} ${MULTI_ARCH_IMAGES}"
+        secured_image_labeled_digest=$(skopeo_run "skopeo inspect docker-daemon:${secured_image_with_tag_arch}" | jq -r '.Digest')
+        secured_image_with_digest=${secured_image_repo}@${secured_image_labeled_digest}
+        info "Push secure image: ${secured_image_with_digest}"
+        skopeo_run "skopeo copy \
+          --authfile=\$DOCKER_CONFIG/config.json \
+          docker-daemon:${secured_image_with_tag_arch} \
+          docker://${secured_image_with_digest}"
+        if [ $? -eq 0 ]
+        then
+          success "${secured_image_with_digest} pushed with image id: ${secured_image_labeled_image_id}"
+        else
+          PATCH_IMAGE_RETURN_ERROR=$((PATCH_IMAGE_RETURN_ERROR + 1))
+          error "failed to push ${secured_image_with_digest} with image id: ${secured_image_labeled_image_id}"
+        fi
+        MULTI_ARCH_IMAGES="${secured_image_with_digest} ${MULTI_ARCH_IMAGES}"
       fi
       sed -i'.unsecured' s#"${image_patched}"#"${secured_image}"# "${PATCH_REPORT_OUTPUT_FILE}"
-      sed -i'.unsecured' s#"${image_patched_hashimage_patched_image_id}"#"${secured_image_labeled_image_id}"# "${PATCH_REPORT_OUTPUT_FILE}"
+      sed -i'.unsecured' s#"${image_patched_image_id}"#"${secured_image_labeled_image_id}"# "${PATCH_REPORT_OUTPUT_FILE}"
       rm "${PATCH_REPORT_OUTPUT_FILE}.unsecured"
       info "Cleanup ${image_patched}"
       buildctl --addr tcp://127.0.0.1:8888 prune
       docker rmi -f "${image_patched}"
       info "cleanup ${secured_image_with_tag_arch}"
       docker rmi -f "${secured_image_with_tag_arch}"
-      success "${secured_image_with_tag_arch} pushed with image id: ${secured_image_labeled_image_id}"
     else
-      if [ "${image_to_patch}" != "${secured_image}" ]
+      if [ "${image_to_patch}" != "${secured_image}" ] # if image need to be patched
       then
         copa_error="$(awk -F'Error: ' '$0 ~ /Error:/ {print $2}' ${COPA_PATCHING_LOG_FILE})"
         echo "linux/${ARCHITECTURE} ${secured_image}: ${copa_error}" >> "${PATCH_ERROR_OUTPUT_FILE}"
-        error "${copa_error} patching ${image_to_patch} for linux/${ARCHITECTURE}"
-        if [ ${DRY_RUN:-1} -eq 0 ]
+        # Ignore accepted errors
+        if (
+           [ "${copa_error}" == "no patchable vulnerabilities found" ] ||
+           [ "${copa_error}" == "no scanning results for os-pkgs found" ]
+        )
         then
-          warn "As fallback tag ${image_to_patch_with_digest} as secured image: ${secured_image_with_tag_arch}"
-          skopeo_run "skopeo copy \
-            --authfile=\$DOCKER_CONFIG/config.json \
-            docker://${image_to_patch_with_digest} \
-            docker://${image_to_patch_with_digest//${REGISTRY_BASE_URL}/${REGISTRY_SECURED_BASE_URL}}"
-          MULTI_ARCH_IMAGES="${image_to_patch_with_digest//${REGISTRY_BASE_URL}/${REGISTRY_SECURED_BASE_URL}} ${MULTI_ARCH_IMAGES}"
-          success "${secured_image_with_tag_arch} pushed with image id: ${image_to_patch_image_id}"
+          warn "${copa_error} in ${image_to_patch} for linux/${ARCHITECTURE}"
+          if [ ${DRY_RUN:-1} -eq 0 ]
+          then
+            secured_image_with_digest=${image_to_patch_with_digest//${REGISTRY_BASE_URL}/${REGISTRY_SECURED_BASE_URL}}
+            info "copy ${image_to_patch_with_digest} to ${secured_image_with_digest}"
+            skopeo_run "skopeo copy \
+              --authfile=\$DOCKER_CONFIG/config.json \
+              docker://${image_to_patch_with_digest} \
+              docker://${secured_image_with_digest}"
+            MULTI_ARCH_IMAGES="${image_to_patch_with_digest//${REGISTRY_BASE_URL}/${REGISTRY_SECURED_BASE_URL}} ${MULTI_ARCH_IMAGES}"
+            success "pushed ${secured_image_with_digest} with image id: ${image_to_patch_image_id}"
+          fi
+        else
+          error "patching ${image_to_patch} for linux/${ARCHITECTURE}: ${copa_error}"
+          PATCH_IMAGE_RETURN_ERROR=$((PATCH_IMAGE_RETURN_ERROR + 1))
         fi
       else
         warn "${image_to_patch} is the same of ${secured_image}"
@@ -186,27 +209,35 @@ function patch_image() {
     fi
   done
 
-  if [ ${DRY_RUN:-1} -eq 0 ] && [[ -n ${MULTI_ARCH_IMAGES} ]]
+  if [ ${DRY_RUN:-1} -eq 0 ] && [[ $(echo ${MULTI_ARCH_IMAGES} | wc -w) -eq $(echo ${ARCHITECTURES} | wc -w) ]]
   then
     info "Create and push manifest ${secured_image}"
-    podman_run "podman manifest create ${secured_image} ${MULTI_ARCH_IMAGES} && podman manifest push ${secured_image}"
-    success "manifest ${secured_image} pushed"
+    if podman_run "podman manifest create ${secured_image} ${MULTI_ARCH_IMAGES} && podman manifest push ${secured_image}"
+    then
+      success "manifest ${secured_image} pushed"
+    else
+      error "failed pushing manifest ${secured_image}"
+      PATCH_IMAGE_RETURN_ERROR=$((PATCH_IMAGE_RETURN_ERROR + 1))
+    fi
   fi
 
   echo "================================================================"
   echo ""
-  return 0
+  return $PATCH_IMAGE_RETURN_ERROR
 }
 
 function patch_from_list(){
   while IFS= read -r image; do
     patch_image "${image}"
+    RETURN_ERROR=$(($RETURN_ERROR + PATCH_IMAGE_RETURN_ERROR))
+    PATCH_IMAGE_RETURN_ERROR=0
   done
 }
 
 if [ -n "${IMAGE_TO_PATCH}" ]
 then
   patch_image "${IMAGE_TO_PATCH}"
+  RETURN_ERROR=$(($RETURN_ERROR + PATCH_IMAGE_RETURN_ERROR))
 else
   [[ ! -f "${FILE_WITH_IMAGES_LIST_TO_PATCH}" ]] && fail "Missing image list files"
   patch_from_list < "${FILE_WITH_IMAGES_LIST_TO_PATCH}"

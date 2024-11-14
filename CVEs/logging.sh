@@ -10,7 +10,7 @@ YELLOW='\033[1;33m'
 WHITE='\033[1;37m'
 
 function info() {
-    echo -e ">>\t${CYAN}[INFO]${NC} $(date +"%Y-%m-%dT%H:%M:%S.%3NZ"): $*"
+    echo -e ">>\t[${CYAN}INFO${NC}] $(date +"%Y-%m-%dT%H:%M:%S.%3NZ"): $*"
 }
 
 function warn() {
@@ -22,9 +22,9 @@ function error() {
 }
 
 function success() {
-    echo -e ">>\t${GREEN}SUCCESS${NC} $(date +"%Y-%m-%dT%H:%M:%S.%3NZ"): $*"
+    echo -e ">>\t[${GREEN}SUCCESS${NC}] $(date +"%Y-%m-%dT%H:%M:%S.%3NZ"): $*"
 }
 
 function fail() {
-    echo -e ">>\t${RED}FAIL${NC} $(date +"%Y-%m-%dT%H:%M:%S.%3NZ"): $*" && exit 1
+    echo -e ">>\t[${RED}FAIL${NC}] $(date +"%Y-%m-%dT%H:%M:%S.%3NZ"): $*" && exit 1
 }
