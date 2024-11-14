@@ -120,6 +120,7 @@ images:
     multi-arch: true
     tag:
       - "v2.9.2"
+      - "v2.13.0"
     destinations:
       - registry.sighup.io/fury/kube-state-metrics/kube-state-metrics
 
