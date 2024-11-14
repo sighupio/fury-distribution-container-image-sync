@@ -46,6 +46,7 @@ images:
       - "v0.21.0"
       - "v0.23.0"
       - "v0.24.0"
+      - "v0.25.0"
     destinations:
       - registry.sighup.io/fury/prometheus/blackbox-exporter
 
@@ -280,6 +281,7 @@ images:
       - "v0.12.0"
       - "v0.14.0"
       - "v0.14.2"
+      - "v0.18.1"
     destinations:
       - registry.sighup.io/fury/brancz/kube-rbac-proxy
 

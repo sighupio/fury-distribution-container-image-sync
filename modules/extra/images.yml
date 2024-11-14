@@ -247,6 +247,14 @@ images:
     destinations:
       - registry.sighup.io/fury/jimmidyson/configmap-reload
 
+  - name: Configmap reloader
+    source: ghcr.io/jimmidyson/configmap-reload
+    tag:
+      - "v0.13.1"
+
+    destinations:
+      - registry.sighup.io/fury/jimmidyson/configmap-reload
+
   - name: Pluto api deprecation
     source: us-docker.pkg.dev/fairwinds-ops/oss/pluto
     tag:
