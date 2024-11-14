@@ -17,9 +17,9 @@ all: trivy-download-db scan-pre-patch concat-multiple-kfd-images-list patch scan
 scan-pre-patch:
 	@for version in $(KFD_VERSIONS); do \
 		( \
-			$(MAKE) download-deps KFD_VERSION=$$version; \
-			$(MAKE) kustomize-build-all KFD_VERSION=$$version; \
-			$(MAKE) generate-image-list-from-manifests KFD_VERSION=$$version; \
+			[ ! -e $$version/built.yaml ] && $(MAKE) download-deps KFD_VERSION=$$version; \
+			[ ! -e $$version/built.yaml ] && $(MAKE) kustomize-build-all KFD_VERSION=$$version; \
+			[ ! -e $$version/images.txt ] && $(MAKE) generate-image-list-from-manifests KFD_VERSION=$$version; \
 			$(MAKE) scan-vulns KFD_VERSION=$$version LIST_FILE=$$version/images.txt OUTPUT_FILE=$$version/FURY-CVEs.md;  \
 		) & \
 	done; \
