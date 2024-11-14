@@ -57,7 +57,9 @@ RETURN_ERROR=0
 for image in $IMAGE_LIST; do
   info "Looking for linux architectures available for ${image}"
   ARCHITECTURES=$(get_architecture_and_digest ${image} | jq -r '.[].architecture' )
-  info "${image} - linux architectures found: ${ARCHITECTURES//[$'\r\n']/ } "
+  ARCHITECTURES=${ARCHITECTURES//[$'\r\n']/ }
+  [ ${#ARCHITECTURES} -eq 0 ] && error "are sure that ${image} exist?" && RETURN_ERROR=$((RETURN_ERROR + 1)) && continue
+  info "${image} - linux architectures found: ${ARCHITECTURES//[$'\r\n']/ }"
   for ARCHITECTURE in ${ARCHITECTURES[@]}
   do
     TRIVY_SCAN_OUTPUT_FILE="${TRIVY_SCAN_OUTPUT_DIR}/scan-${image//[:\/]/_}-${ARCHITECTURE}.json"
@@ -86,7 +88,7 @@ for image in $IMAGE_LIST; do
         --arg src_image_arch ${ARCHITECTURE} \
         'try .Results[].Vulnerabilities[] | "| " + $image + " | " + $src_image_arch + " | " + $src_image_id + " | " + .Severity + " | " + .VulnerabilityID + " | " + .Title + " | " + .PkgName + " " + .InstalledVersion + " | " + .Status + " | " + .FixedVersion + " |" ' < "$TRIVY_SCAN_OUTPUT_FILE" >> "${SCAN_RESULT_OUTPUT_FILE}"
     fi
-    trivy clean --scan-cache
+    # trivy clean --scan-cache
   done
 done
 rm -rf "${TRIVY_SCAN_OUTPUT_DIR}"

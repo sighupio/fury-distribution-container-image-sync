@@ -109,8 +109,8 @@ function patch_image() {
       --scanners vuln -q --vuln-type os --ignore-unfixed \
       -f json -o "${TRIVY_SCAN_OUTPUT_FILE}" \
       "${image_to_patch_with_digest}"
-    info "Clean trivy scan cache"
-    trivy clean --scan-cache
+    # info "Clean trivy scan cache"
+    # trivy clean --scan-cache
     info "Patching CVEs in ${image_to_patch} for linux/${ARCHITECTURE}"
     copa patch -r "${TRIVY_SCAN_OUTPUT_FILE}" -i "${image_to_patch_with_digest}" --tag ${patched_tag} --format="openvex" --output "$COPA_REPORT_OUTPUT_FILE" -a tcp://127.0.0.1:8888 2>&1 | tee "${COPA_PATCHING_LOG_FILE}"
     copa_exit_code=${PIPESTATUS[0]}
