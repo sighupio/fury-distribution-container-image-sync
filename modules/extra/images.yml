@@ -251,7 +251,6 @@ images:
     source: ghcr.io/jimmidyson/configmap-reload
     tag:
       - "v0.13.1"
-
     destinations:
       - registry.sighup.io/fury/jimmidyson/configmap-reload
 
