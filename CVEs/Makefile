@@ -7,18 +7,19 @@
 	scan-vulns \
 	concat-multiple-kfd-images-list
 
-KFD_VERSIONS := $(shell find . -type d -name "v*" -maxdepth 1 -mindepth 1 | cut -d/ -f2 | sort )
+KFD_VERSIONS := $(shell find . -maxdepth 1 -mindepth 1 -type d -name "v*"  | cut -d/ -f2 | sort )
 DRY_RUN := 1
 PATCH_FILE_IMAGE_LIST_TO_PATCHING := all_kfd_images.txt
+TRIVY_CACHE_DIR := /tmp/.cache/trivy
 
 all: trivy-download-db scan-pre-patch concat-multiple-kfd-images-list patch scan-post-patch
 
 scan-pre-patch:
 	@for version in $(KFD_VERSIONS); do \
 		( \
-			$(MAKE) download-deps KFD_VERSION=$$version; \
-			$(MAKE) kustomize-build-all KFD_VERSION=$$version; \
-			$(MAKE) generate-image-list-from-manifests KFD_VERSION=$$version; \
+			[ ! -e $$version/built.yaml ] && $(MAKE) download-deps KFD_VERSION=$$version; \
+			[ ! -e $$version/built.yaml ] && $(MAKE) kustomize-build-all KFD_VERSION=$$version; \
+			[ ! -e $$version/images.txt ] && $(MAKE) generate-image-list-from-manifests KFD_VERSION=$$version; \
 			$(MAKE) scan-vulns KFD_VERSION=$$version LIST_FILE=$$version/images.txt OUTPUT_FILE=$$version/FURY-CVEs.md;  \
 		) & \
 	done; \
@@ -32,7 +33,7 @@ concat-multiple-kfd-images-list:
 	rm $(PATCH_FILE_IMAGE_LIST_TO_PATCHING).tmp
 
 patch:
-	DOCKER_CONFIG="${DOCKER_CONFIG}" DRY_RUN=$(DRY_RUN) ./patch_images_with_copacetic.sh -i "$(IMAGE_TO_PATCH)" -l "$(PATCH_FILE_IMAGE_LIST_TO_PATCHING)" -o "$(PATCH_REPORT_OUTPUT_FILE)"
+	DRY_RUN=$(DRY_RUN) TRIVY_CACHE_DIR=$(TRIVY_CACHE_DIR) ./patch_images_with_copacetic.sh -i "$(IMAGE_TO_PATCH)" -l "$(PATCH_FILE_IMAGE_LIST_TO_PATCHING)" -o "$(PATCH_REPORT_OUTPUT_FILE)"
 
 scan-post-patch:
 	@for version in $(KFD_VERSIONS); do \
@@ -67,11 +68,11 @@ generate-image-list-from-manifests:
 	sort --unique $(KFD_VERSION)/images.tmp.txt --output $(KFD_VERSION)/images.txt && rm $(KFD_VERSION)/images.tmp.txt
 
 trivy-download-db:
-	trivy image --download-db-only --db-repository registry.sighup.io/fury-secured/aquasecurity/trivy-db:2 --no-progress
-	trivy image --download-java-db-only --java-db-repository registry.sighup.io/fury-secured/aquasecurity/trivy-java-db:1 --no-progress
+	trivy image --download-db-only --db-repository registry.sighup.io/fury-secured/aquasecurity/trivy-db:2 --no-progress --cache-dir $(TRIVY_CACHE_DIR)
+	trivy image --download-java-db-only --java-db-repository registry.sighup.io/fury-secured/aquasecurity/trivy-java-db:1 --no-progress --cache-dir $(TRIVY_CACHE_DIR)
 
 scan-vulns:
-	./scan_vuln.sh -v "$(KFD_VERSION)" -l "$(LIST_FILE)" -o "$(OUTPUT_FILE)";
+	TRIVY_CACHE_DIR=$(TRIVY_CACHE_DIR) ./scan_vuln.sh -v "$(KFD_VERSION)" -l "$(LIST_FILE)" -o "$(OUTPUT_FILE)";
 
 
 
