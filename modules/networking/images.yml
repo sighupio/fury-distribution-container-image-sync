@@ -8,6 +8,7 @@ images:
       - "v1.30.7"
       - "v1.32.3"
       - "v1.32.7"
+      - "v1.36.0"
     destinations:
       - registry.sighup.io/fury/tigera/operator
 
@@ -30,6 +31,7 @@ images:
       - "v3.26.3"
       - "v3.27.0"
       - "v3.27.3"
+      - "v3.29.0"
     destinations:
       - registry.sighup.io/fury/calico/kube-controllers
 
@@ -53,6 +55,7 @@ images:
       - "v3.26.3"
       - "v3.27.0"
       - "v3.27.3"
+      - "v3.29.0"
     destinations:
       - registry.sighup.io/fury/calico/cni
 
@@ -76,6 +79,7 @@ images:
       - "v3.26.3"
       - "v3.27.0"
       - "v3.27.3"
+      - "v3.29.0"
     destinations:
       - registry.sighup.io/fury/calico/pod2daemon-flexvol
 
@@ -99,6 +103,7 @@ images:
       - "v3.26.3"
       - "v3.27.0"
       - "v3.27.3"
+      - "3.29.0"
     destinations:
       - registry.sighup.io/fury/calico/node
 
@@ -111,6 +116,7 @@ images:
       - "v3.26.3"
       - "v3.27.0"
       - "v3.27.3"
+      - "v3.29.0"
     destinations:
       - registry.sighup.io/fury/calico/apiserver
 
@@ -123,6 +129,7 @@ images:
       - "v3.26.3"
       - "v3.27.0"
       - "v3.27.3"
+      - "v3.29.0"
     destinations:
       - registry.sighup.io/fury/calico/typha
 
@@ -136,6 +143,7 @@ images:
       - "v3.26.3"
       - "v3.27.0"
       - "v3.27.3"
+      - "v3.29.0"
     destinations:
       - registry.sighup.io/fury/calico/csi
 
@@ -149,6 +157,7 @@ images:
       - "v3.26.3"
       - "v3.27.0"
       - "v3.27.3"
+      - "v3.29.0"
     destinations:
       - registry.sighup.io/fury/calico/node-driver-registrar
 
@@ -189,6 +198,7 @@ images:
       - "v1.14.3"
       - "v1.15.0"
       - "v1.15.2"
+      - "v1.16.3"
     destinations:
       - registry.sighup.io/fury/cilium/cilium
 
@@ -201,6 +211,7 @@ images:
       - "v1.14.3"
       - "v1.15.0"
       - "v1.15.2"
+      - "v1.16.3"
     destinations:
       - registry.sighup.io/fury/cilium/operator-generic
 
@@ -213,6 +224,7 @@ images:
       - "v1.14.3"
       - "v1.15.0"
       - "v1.15.2"
+      - "v1.16.3"
     destinations:
       - registry.sighup.io/fury/cilium/hubble-relay
 
@@ -225,6 +237,7 @@ images:
       - "v0.12.1"
       - "v0.12.3"
       - "v0.13.0"
+      - "v0.13.1"
     destinations:
       - registry.sighup.io/fury/cilium/hubble-ui
 
@@ -237,5 +250,6 @@ images:
       - "v0.12.1"
       - "v0.12.3"
       - "v0.13.0"
+      - "v0.13.1"
     destinations:
       - registry.sighup.io/fury/cilium/hubble-ui-backend
