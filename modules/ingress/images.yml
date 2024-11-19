@@ -22,12 +22,12 @@ images:
     destinations:
       - registry.sighup.io/fury/ingress-nginx/controller
 
-  - name: nginx ldap auth [Fury Kubernetes Ingress]
-    source: docker.io/tpimenta/nginx-ldap-auth
-    tag:
-      - "v1.0.6"
-    destinations:
-      - registry.sighup.io/fury/tpimenta/nginx-ldap-auth
+  #- name: nginx ldap auth [Fury Kubernetes Ingress]
+  #  source: docker.io/tpimenta/nginx-ldap-auth
+  #  tag:
+  #    - "v1.0.6"
+  #  destinations:
+  #    - registry.sighup.io/fury/tpimenta/nginx-ldap-auth
 
   - name: Forecastle [Fury Kubernetes Ingress]
     source: docker.io/stakater/forecastle
