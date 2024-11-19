@@ -103,7 +103,7 @@ images:
       - "v3.26.3"
       - "v3.27.0"
       - "v3.27.3"
-      - "3.29.0"
+      - "v3.29.0"
     destinations:
       - registry.sighup.io/fury/calico/node
 
