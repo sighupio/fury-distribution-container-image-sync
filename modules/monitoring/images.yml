@@ -128,15 +128,15 @@ images:
     destinations:
       - registry.sighup.io/fury/kube-state-metrics/kube-state-metrics
 
-  - name: Metrics Server [Fury Monitoring Module]
-    source: k8s.gcr.io/metrics-server/metrics-server
-    tag:
-      - "v0.3.7"
-      - "v0.4.1"
-      - "v0.5.0"
-      - "v0.5.2"
-    destinations:
-      - registry.sighup.io/fury/metrics-server
+  #- name: Metrics Server [Fury Monitoring Module]
+  #  source: k8s.gcr.io/metrics-server/metrics-server
+  #  tag:
+  #    - "v0.3.7"
+  #    - "v0.4.1"
+  #    - "v0.5.0"
+  #    - "v0.5.2"
+  #  destinations:
+  #    - registry.sighup.io/fury/metrics-server
 
   - name: Prometheus [Fury Monitoring Module]
     source: quay.io/prometheus/prometheus
