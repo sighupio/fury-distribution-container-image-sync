@@ -88,9 +88,9 @@ images:
         - name: GF_PLUGINS_ALLOW_LOADING_UNSIGNED_PLUGINS
           value: kumahq-kuma-datasource
     tag:
-      - "8.5.5"
-      - "9.3.2"
-      - "9.3.6"
+      #- "8.5.5"
+      #- "9.3.2"
+      #- "9.3.6"
       - "9.5.5"
       - "11.2.0"
       - "11.3.0"
