@@ -43,8 +43,8 @@ images:
     source: quay.io/prometheus/blackbox-exporter
     multi-arch: true
     tag:
-      - "v0.21.0"
-      - "v0.23.0"
+      #- "v0.21.0"
+      #- "v0.23.0"
       - "v0.24.0"
       - "v0.25.0"
     destinations:
