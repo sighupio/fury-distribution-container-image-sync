@@ -60,9 +60,14 @@ do
               LOCAL_LAYERS=$(docker run --rm "${SKOPEO_IMAGE}" inspect -n --override-os linux --override-arch amd64 docker://${SRC}:${LOCAL_TAG} 2> /dev/null | yq .Layers)
               TARGET_LAYERS=$(docker run --rm "${SKOPEO_IMAGE}" inspect -n --override-os linux --override-arch amd64 docker://$(yq e '.images['"${c}"'].destinations[0]' $1):${LOCAL_TAG} 2> /dev/null | yq .Layers)
 
-              diff <(echo ${LOCAL_LAYERS}) <(echo ${TARGET_LAYERS}) > /dev/null
-              AMD64_DIFF=$?  # Store the exit code of diff (0 if no difference)
-              echo "    - AMD64 diff exit code is: $AMD64_DIFF"
+              if [ "${TARGET_LAYERS}" != "null" ]
+              then
+                diff <(echo ${LOCAL_LAYERS}) <(echo ${TARGET_LAYERS}) > /dev/null
+                AMD64_DIFF=$?  # Store the exit code of diff (0 if no difference)
+                echo "    - AMD64 diff exit code is: $AMD64_DIFF"
+              else
+                AMD64_DIFF=1
+              fi
 
               # If multi-arch is true, also perform the diff check for ARM64
               ARM64_DIFF=$AMD64_DIFF
@@ -70,9 +75,14 @@ do
                 LOCAL_LAYERS=$(docker run --rm "${SKOPEO_IMAGE}" inspect -n --override-os linux --override-arch arm64 docker://${SRC}:${LOCAL_TAG} 2> /dev/null | yq .Layers)
                 TARGET_LAYERS=$(docker run --rm "${SKOPEO_IMAGE}" inspect -n --override-os linux --override-arch arm64 docker://$(yq e '.images['"${c}"'].destinations[0]' $1):${LOCAL_TAG} 2> /dev/null | yq .Layers)
 
-                diff <(echo ${LOCAL_LAYERS}) <(echo ${TARGET_LAYERS}) > /dev/null
-                ARM64_DIFF=$?  # Store the exit code for ARM64 diff
-                echo "    - ARM64 diff exit code is: $ARM64_DIFF"
+                if [ "${TARGET_LAYERS}" != "null" ]
+                then
+                  diff <(echo ${LOCAL_LAYERS}) <(echo ${TARGET_LAYERS}) > /dev/null
+                  ARM64_DIFF=$?  # Store the exit code for ARM64 diff
+                  echo "    - ARM64 diff exit code is: $ARM64_DIFF"
+                else
+                  ARM64_DIFF=1
+                fi
               fi
               set +x
           fi
@@ -165,7 +175,7 @@ do
           fi
         fi
         # remove error exit if some error occurs to avoid exiting during layer checks
-        set +x
+        set +e
     done
     echo "  - Finish ${NAME}"  # Notify the end of processing for this image
 done

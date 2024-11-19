@@ -61,7 +61,7 @@ jobs:
         uses: docker/setup-buildx-action@v3
         with:
           platforms: linux/amd64,linux/arm64
-      - name: Iterate
+      - name: Sync ${{ matrix.module }}
         run: |
           yq --version
           docker run --rm quay.io/skopeo/stable:v1.13 --version
