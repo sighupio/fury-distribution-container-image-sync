@@ -1,6 +1,7 @@
 #!/bin/bash
 
 RC_ERROR_MISSING_DESTINATION=1  # Define exit code for missing destination
+SKOPEO_IMAGE='quay.io/skopeo/stable:v1.16.1'
 
 # Check if second argument ($2) is set to "true", which enables dry mode
 if [ $2 = true ]; then
@@ -54,9 +55,10 @@ do
           if [ ${DRY} = true ]; then
               echo "    - DRY MODE is active, skipping layers check"  # In dry mode, skip layer diff check
           else
+              set -x
               # Perform layer diff check for AMD64
-              LOCAL_LAYERS=$(docker run --rm quay.io/skopeo/stable:v1.13 inspect -n --override-os linux --override-arch amd64 docker://${SRC}:${LOCAL_TAG} 2> /dev/null | yq .Layers)
-              TARGET_LAYERS=$(docker run --rm quay.io/skopeo/stable:v1.13 inspect -n --override-os linux --override-arch amd64 docker://$(yq e '.images['"${c}"'].destinations[0]' $1):${LOCAL_TAG} 2> /dev/null | yq .Layers)
+              LOCAL_LAYERS=$(docker run --rm "${SKOPEO_IMAGE}" inspect -n --override-os linux --override-arch amd64 docker://${SRC}:${LOCAL_TAG} 2> /dev/null | yq .Layers)
+              TARGET_LAYERS=$(docker run --rm "${SKOPEO_IMAGE}" inspect -n --override-os linux --override-arch amd64 docker://$(yq e '.images['"${c}"'].destinations[0]' $1):${LOCAL_TAG} 2> /dev/null | yq .Layers)
 
               diff <(echo ${LOCAL_LAYERS}) <(echo ${TARGET_LAYERS}) > /dev/null
               AMD64_DIFF=$?  # Store the exit code of diff (0 if no difference)
@@ -65,15 +67,19 @@ do
               # If multi-arch is true, also perform the diff check for ARM64
               ARM64_DIFF=$AMD64_DIFF
               if [ ${MULTI_ARCH} = true ]; then
-                LOCAL_LAYERS=$(docker run --rm quay.io/skopeo/stable:v1.13 inspect -n --override-os linux --override-arch arm64 docker://${SRC}:${LOCAL_TAG} 2> /dev/null | yq .Layers)
-                TARGET_LAYERS=$(docker run --rm quay.io/skopeo/stable:v1.13 inspect -n --override-os linux --override-arch arm64 docker://$(yq e '.images['"${c}"'].destinations[0]' $1):${LOCAL_TAG} 2> /dev/null | yq .Layers)
+                LOCAL_LAYERS=$(docker run --rm "${SKOPEO_IMAGE}" inspect -n --override-os linux --override-arch arm64 docker://${SRC}:${LOCAL_TAG} 2> /dev/null | yq .Layers)
+                TARGET_LAYERS=$(docker run --rm "${SKOPEO_IMAGE}" inspect -n --override-os linux --override-arch arm64 docker://$(yq e '.images['"${c}"'].destinations[0]' $1):${LOCAL_TAG} 2> /dev/null | yq .Layers)
 
                 diff <(echo ${LOCAL_LAYERS}) <(echo ${TARGET_LAYERS}) > /dev/null
                 ARM64_DIFF=$?  # Store the exit code for ARM64 diff
                 echo "    - ARM64 diff exit code is: $ARM64_DIFF"
               fi
+              set +x
           fi
         fi
+
+        # exit if some error occurs after layers checking
+        set -e
 
         # If no layer differences and dry mode is off, skip syncing
         if [ $AMD64_DIFF -eq 0 ] && [ $ARM64_DIFF -eq 0 ] && [ ${DRY} = false ] && [ ${CONTEXT} = "null" ]; then
@@ -135,7 +141,7 @@ do
                   echo "    - Syncing image from ${SRC}:${LOCAL_TAG} to ${TO}"
                   docker run -v ./login:/login \
                         --rm \
-                        quay.io/skopeo/stable:v1.13 \
+                        "${SKOPEO_IMAGE}" \
                         copy --authfile=/login/auth.json --multi-arch all \
                         docker://${SRC}:${LOCAL_TAG} docker://${TO}
                 else
@@ -158,6 +164,8 @@ do
             fi
           fi
         fi
+        # remove error exit if some error occurs to avoid exiting during layer checks
+        set +x
     done
     echo "  - Finish ${NAME}"  # Notify the end of processing for this image
 done

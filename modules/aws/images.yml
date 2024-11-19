@@ -13,13 +13,13 @@ images:
   - name: cluster-autoscaler [Kubernetes Fury AWS]
     source: registry.k8s.io/autoscaling/cluster-autoscaler
     tag:
-      - "v1.21.3"
-      - "v1.22.3"
-      - "v1.23.0"
-      - "v1.23.1"
-      - "v1.24.0"
-      - "v1.25.0"
-      - "v1.26.4"
+      #- "v1.21.3"
+      #- "v1.22.3"
+      #- "v1.23.0"
+      #- "v1.23.1"
+      #- "v1.24.0" 
+      #- "v1.25.0"
+      #- "v1.26.4"
       - "v1.27.2"
       - "v1.28.2"
       - "v1.29.0"

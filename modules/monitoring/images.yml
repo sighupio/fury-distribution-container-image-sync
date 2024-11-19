@@ -27,14 +27,14 @@ images:
     source: quay.io/prometheus/alertmanager
     multi-arch: true
     tag:
-      - "v0.16.0"
-      - "v0.20.0"
-      - "v0.21.0"
-      - "v0.22.1"
-      - "v0.22.2"
-      - "v0.23.0"
-      - "v0.24.0"
-      - "v0.25.0"
+      #- "v0.16.0"
+      #- "v0.20.0"
+      #- "v0.21.0"
+      #- "v0.22.1"
+      #- "v0.22.2"
+      #- "v0.23.0"
+      #- "v0.24.0"
+      #- "v0.25.0"
       - "v0.26.0"
     destinations:
       - registry.sighup.io/fury/prometheus/alertmanager
@@ -43,34 +43,34 @@ images:
     source: quay.io/prometheus/blackbox-exporter
     multi-arch: true
     tag:
-      - "v0.21.0"
-      - "v0.23.0"
+      #- "v0.21.0"
+      #- "v0.23.0"
       - "v0.24.0"
       - "v0.25.0"
     destinations:
       - registry.sighup.io/fury/prometheus/blackbox-exporter
 
-  - name: Goldpinger [Fury Monitoring Module]
-    source: docker.io/bloomberg/goldpinger
-    tag:
-      - "2.0.0"
-      - "v3.0.0"
-      - "v3.2.0"
-      - "v3.3.0"
-      - "v3.5.1"
-    destinations:
-      - registry.sighup.io/fury/bloomberg/goldpinger
+  #- name: Goldpinger [Fury Monitoring Module]
+  #  source: docker.io/bloomberg/goldpinger
+  #  tag:
+  #    - "2.0.0"
+  #    - "v3.0.0"
+  #    - "v3.2.0"
+  #    - "v3.3.0"
+  #    - "v3.5.1"
+  #  destinations:
+  #    - registry.sighup.io/fury/bloomberg/goldpinger
 
   - name: Grafana side-car [Fury Monitoring Module]
     multi-arch: true
     source: docker.io/kiwigrid/k8s-sidecar
     tag:
-      - "0.1.193"
-      - "1.3.0"
-      - "1.12.0"
-      - "1.12.2"
-      - "1.12.3"
-      - "1.15.0"
+      #- "0.1.193"
+      #- "1.3.0"
+      #- "1.12.0"
+      #- "1.12.2"
+      #- "1.12.3"
+      #- "1.15.0"
       - "1.19.2"
       - "1.22.2"
     destinations:
@@ -88,36 +88,36 @@ images:
         - name: GF_PLUGINS_ALLOW_LOADING_UNSIGNED_PLUGINS
           value: kumahq-kuma-datasource
     tag:
-      - "8.5.5"
-      - "9.3.2"
-      - "9.3.6"
+      #- "8.5.5"
+      #- "9.3.2"
+      #- "9.3.6"
       - "9.5.5"
       - "11.2.0"
       - "11.3.0"
     destinations:
       - registry.sighup.io/fury/grafana/grafana
 
-  - name: kube-state-metrics [Fury Monitoring Module]
-    source: quay.io/coreos/kube-state-metrics
-    tag:
-      - "v1.8.0"
-      - "v1.9.4"
-      - "v1.9.5"
-      - "v1.9.7"
-      - "v2.1.1"
-    destinations:
-      - registry.sighup.io/fury/coreos/kube-state-metrics
+  #- name: kube-state-metrics [Fury Monitoring Module]
+  #  source: quay.io/coreos/kube-state-metrics
+  #  tag:
+  #    - "v1.8.0"
+  #    - "v1.9.4"
+  #    - "v1.9.5"
+  #    - "v1.9.7"
+  #    - "v2.1.1"
+  #  destinations:
+  #    - registry.sighup.io/fury/coreos/kube-state-metrics
 
-  - name: kube-state-metrics [Fury Monitoring Module] legacy
-    source: k8s.gcr.io/kube-state-metrics/kube-state-metrics
-    tag:
-      - "v2.0.0"
-      - "v2.2.0"
-      - "v2.3.0"
-      - "v2.5.0"
-      - "v2.8.0"
-    destinations:
-      - registry.sighup.io/fury/kube-state-metrics/kube-state-metrics
+  #- name: kube-state-metrics [Fury Monitoring Module] legacy
+  #  source: k8s.gcr.io/kube-state-metrics/kube-state-metrics
+  #  tag:
+  #    - "v2.0.0"
+  #    - "v2.2.0"
+  #    - "v2.3.0"
+  #    - "v2.5.0"
+  #    - "v2.8.0"
+  #  destinations:
+  #    - registry.sighup.io/fury/kube-state-metrics/kube-state-metrics
 
   - name: kube-state-metrics [Fury Monitoring Module]
     source: registry.k8s.io/kube-state-metrics/kube-state-metrics
@@ -128,80 +128,80 @@ images:
     destinations:
       - registry.sighup.io/fury/kube-state-metrics/kube-state-metrics
 
-  - name: Metrics Server [Fury Monitoring Module]
-    source: k8s.gcr.io/metrics-server/metrics-server
-    tag:
-      - "v0.3.7"
-      - "v0.4.1"
-      - "v0.5.0"
-      - "v0.5.2"
-    destinations:
-      - registry.sighup.io/fury/metrics-server
+  #- name: Metrics Server [Fury Monitoring Module]
+  #  source: k8s.gcr.io/metrics-server/metrics-server
+  #  tag:
+  #    - "v0.3.7"
+  #    - "v0.4.1"
+  #    - "v0.5.0"
+  #    - "v0.5.2"
+  #  destinations:
+  #    - registry.sighup.io/fury/metrics-server
 
   - name: Prometheus [Fury Monitoring Module]
     source: quay.io/prometheus/prometheus
     multi-arch: true
     tag:
-      - "v2.16.0"
-      - "v2.21.0"
-      - "v2.22.2"
-      - "v2.27.1"
-      - "v2.28.1"
-      - "v2.29.1"
-      - "v2.32.1"
-      - "v2.36.1"
-      - "v2.41.0"
+      #- "v2.16.0"
+      #- "v2.21.0"
+      #- "v2.22.2"
+      #- "v2.27.1"
+      #- "v2.28.1"
+      #- "v2.29.1"
+      #- "v2.32.1"
+      #- "v2.36.1"
+      #- "v2.41.0"
       - "v2.46.0"
       - "v2.54.1"
     destinations:
       - registry.sighup.io/fury/prometheus
       - registry.sighup.io/fury/prometheus/prometheus
 
-  - name: prometheus-operator [Fury Monitoring Module]
-    source: quay.io/coreos/prometheus-operator
-    tag:
-      - "v0.30.0"
-      - "v0.37.0"
-    destinations:
-      - registry.sighup.io/fury/coreos/prometheus-operator
+  #- name: prometheus-operator [Fury Monitoring Module]
+  #  source: quay.io/coreos/prometheus-operator
+  #  tag:
+  #    - "v0.30.0"
+  #    - "v0.37.0"
+  #  destinations:
+  #    - registry.sighup.io/fury/coreos/prometheus-operator
 
   - name: prometheus-operator [Fury Monitoring Module]
     source: quay.io/prometheus-operator/prometheus-operator
     multi-arch: true
     tag:
-      - "v0.44.1"
-      - "v0.48.0"
-      - "v0.48.1"
-      - "v0.49.0"
-      - "v0.50.0"
-      - "v0.53.1"
-      - "v0.57.0"
-      - "v0.62.0"
+      #- "v0.44.1"
+      #- "v0.48.0"
+      #- "v0.48.1"
+      #- "v0.49.0"
+      #- "v0.50.0"
+      #- "v0.53.1"
+      #- "v0.57.0"
+      #- "v0.62.0"
       - "v0.67.1"
       - "v0.76.2"
     destinations:
       - registry.sighup.io/fury/prometheus-operator/prometheus-operator
 
-  - name: prometheus-operator config reloader [Fury Monitoring Module]
-    source: quay.io/coreos/prometheus-config-reloader
-    tag:
-      - "v0.30.0"
-      - "v0.37.0"
-    destinations:
-      - registry.sighup.io/fury/coreos/prometheus-config-reloader
+  #- name: prometheus-operator config reloader [Fury Monitoring Module]
+  #  source: quay.io/coreos/prometheus-config-reloader
+  #  tag:
+  #    - "v0.30.0"
+  #    - "v0.37.0"
+  #  destinations:
+  #    - registry.sighup.io/fury/coreos/prometheus-config-reloader
 
   - name: prometheus-operator config reloader [Fury Monitoring Module]
     source: quay.io/prometheus-operator/prometheus-config-reloader
     multi-arch: true
     tag:
-      - "v0.42.0"
-      - "v0.44.1"
-      - "v0.48.0"
-      - "v0.48.1"
-      - "v0.50.0"
-      - "v0.53.1"
-      - "v0.57.0"
-      - "v0.62.0"
+      #- "v0.42.0"
+      #- "v0.44.1"
+      #- "v0.48.0"
+      #- "v0.48.1"
+      #- "v0.50.0"
+      #- "v0.53.1"
+      #- "v0.57.0"
+      #- "v0.62.0"
       - "v0.67.1"
       - "v0.76.2"
     destinations:
@@ -216,37 +216,37 @@ images:
     destinations:
       - registry.sighup.io/fury/osixia/openldap
 
-  - name: thanos old release [Fury Monitoring Module]
-    source: quay.io/thanos/thanos
-    tag:
-      - "v0.20.2"
-      - "v0.22.0"
-      - "v0.24.0"
-    destinations:
-      - registry.sighup.io/fury/thanos
+  #- name: thanos old release [Fury Monitoring Module]
+  #  source: quay.io/thanos/thanos
+  #  tag:
+  #    - "v0.20.2"
+  #    - "v0.22.0"
+  #    - "v0.24.0"
+  #  destinations:
+  #    - registry.sighup.io/fury/thanos
 
-  - name: thanos [Fury Monitoring Module]
-    source: quay.io/thanos/thanos
-    multi-arch: true
-    tag:
-      - "v0.30.2"
-      - "v0.31.0"
-      - "v0.32.2"
-      - "v0.34.0"
-    destinations:
-      - registry.sighup.io/fury/thanos/thanos
+  #- name: thanos [Fury Monitoring Module]
+  #  source: quay.io/thanos/thanos
+  #  multi-arch: true
+  #  tag:
+  #    - "v0.30.2"
+  #    - "v0.31.0"
+  #    - "v0.32.2"
+  #    - "v0.34.0"
+  #  destinations:
+  #    - registry.sighup.io/fury/thanos/thanos
 
   - name: x509 certificate exporter
     source: docker.io/enix/x509-certificate-exporter
     multi-arch: true
     tag:
-      - "2.9.1"
-      - "2.9.2"
-      - "2.11.0"
-      - "2.12.1"
-      - "3.2.0"
-      - "3.4.0"
-      - "3.6.0"
+      #- "2.9.1"
+      #- "2.9.2"
+      #- "2.11.0"
+      #- "2.12.1"
+      #- "3.2.0"
+      #- "3.4.0"
+      #- "3.6.0"
       - "3.12.0"
       - "3.17.0"
     destinations:

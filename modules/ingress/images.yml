@@ -3,47 +3,47 @@ images:
     source: k8s.gcr.io/ingress-nginx/controller
     multi-arch: true
     tag:
-      - "v0.35.0"
-      - "v0.43.0"
-      - "v0.46.0"
-      - "v0.48.1"
-      - "v0.49.0"
-      - "v1.0.0"
-      - "v1.1.0"
-      - "v1.1.2"
-      - "v1.3.1"
-      - "v1.5.1"
-      - "v1.7.1"
-      - "v1.9.3"
-      - "v1.9.4"
+      #- "v0.35.0"
+      #- "v0.43.0"
+      #- "v0.46.0"
+      #- "v0.48.1"
+      #- "v0.49.0"
+      #- "v1.0.0"
+      #- "v1.1.0"
+      #- "v1.1.2"
+      #- "v1.3.1"
+      #- "v1.5.1"
+      #- "v1.7.1"
+      #- "v1.9.3"
+      #- "v1.9.4"
       - "v1.9.6"
       - "v1.11.2"
       - "v1.11.3"
     destinations:
       - registry.sighup.io/fury/ingress-nginx/controller
 
-  - name: nginx ldap auth [Fury Kubernetes Ingress]
-    source: docker.io/tpimenta/nginx-ldap-auth
-    tag:
-      - "v1.0.6"
-    destinations:
-      - registry.sighup.io/fury/tpimenta/nginx-ldap-auth
+  #- name: nginx ldap auth [Fury Kubernetes Ingress]
+  #  source: docker.io/tpimenta/nginx-ldap-auth
+  #  tag:
+  #    - "v1.0.6"
+  #  destinations:
+  #    - registry.sighup.io/fury/tpimenta/nginx-ldap-auth
 
   - name: Forecastle [Fury Kubernetes Ingress]
     source: docker.io/stakater/forecastle
     tag:
-      - "v1.0.34"
-      - "v1.0.42"
-      - "v1.0.57"
-      - "v1.0.61"
-      - "v1.0.64"
-      - "v1.0.65"
-      - "v1.0.66"
-      - "v1.0.75"
-      - "v1.0.103"
-      - "v1.0.119"
-      - "v1.0.125"
-      - "v1.0.131"
+      #- "v1.0.34"
+      #- "v1.0.42"
+      #- "v1.0.57"
+      #- "v1.0.61"
+      #- "v1.0.64"
+      #- "v1.0.65"
+      #- "v1.0.66"
+      #- "v1.0.75"
+      #- "v1.0.103"
+      #- "v1.0.119"
+      #- "v1.0.125"
+      #- "v1.0.131"
       - "v1.0.136"
       - "v1.0.145"
     destinations:
@@ -52,18 +52,18 @@ images:
   - name: CA Injector - Cert Manager [Fury Kubernetes Ingress]
     source: quay.io/jetstack/cert-manager-cainjector
     tag:
-      - "v0.14.1"
-      - "v1.0.1"
-      - "v1.1.0"
-      - "v1.3.1"
-      - "v1.4.1"
-      - "v1.5.2"
-      - "v1.5.3"
-      - "v1.6.1"
-      - "v1.10.0"
-      - "v1.11.0"
-      - "v1.11.1"
-      - "v1.13.1"
+      #- "v0.14.1"
+      #- "v1.0.1"
+      #- "v1.1.0"
+      #- "v1.3.1"
+      #- "v1.4.1"
+      #- "v1.5.2"
+      #- "v1.5.3"
+      #- "v1.6.1"
+      #- "v1.10.0"
+      #- "v1.11.0"
+      #- "v1.11.1"
+      #- "v1.13.1"
       - "v1.14.2"
       - "v1.16.1"
     destinations:
@@ -72,18 +72,18 @@ images:
   - name: Controller - Cert Manager [Fury Kubernetes Ingress]
     source: quay.io/jetstack/cert-manager-controller
     tag:
-      - "v0.14.1"
-      - "v1.0.1"
-      - "v1.1.0"
-      - "v1.3.1"
-      - "v1.4.1"
-      - "v1.5.2"
-      - "v1.5.3"
-      - "v1.6.1"
-      - "v1.10.0"
-      - "v1.11.0"
-      - "v1.11.1"
-      - "v1.13.1"
+      #- "v0.14.1"
+      #- "v1.0.1"
+      #- "v1.1.0"
+      #- "v1.3.1"
+      #- "v1.4.1"
+      #- "v1.5.2"
+      #- "v1.5.3"
+      #- "v1.6.1"
+      #- "v1.10.0"
+      #- "v1.11.0"
+      #- "v1.11.1"
+      #- "v1.13.1"
       - "v1.14.2"
       - "v1.16.1"
     destinations:
@@ -92,18 +92,18 @@ images:
   - name: Webhook - Cert Manager [Fury Kubernetes Ingress]
     source: quay.io/jetstack/cert-manager-webhook
     tag:
-      - "v0.14.1"
-      - "v1.0.1"
-      - "v1.1.0"
-      - "v1.3.1"
-      - "v1.4.1"
-      - "v1.5.2"
-      - "v1.5.3"
-      - "v1.6.1"
-      - "v1.10.0"
-      - "v1.11.0"
-      - "v1.11.1"
-      - "v1.13.1"
+      #- "v0.14.1"
+      #- "v1.0.1"
+      #- "v1.1.0"
+      #- "v1.3.1"
+      #- "v1.4.1"
+      #- "v1.5.2"
+      #- "v1.5.3"
+      #- "v1.6.1"
+      #- "v1.10.0"
+      #- "v1.11.0"
+      #- "v1.11.1"
+      #- "v1.13.1"
       - "v1.14.2"
       - "v1.16.1"
     destinations:

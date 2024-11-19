@@ -2,34 +2,34 @@ images:
   - name: pomerium [Fury Kubernetes Auth]
     source: docker.io/pomerium/pomerium
     tag:
-      - "v0.14.4"
-      - "v0.14.7"
-      - "v0.14.7"
-      - "v0.15.0"
-      - "v0.15.8"
-      - "v0.19.1"
-      - "nonroot-v0.21.0"
-      - "v0.22.2"
-      - "nonroot-v0.23.0"
+      #- "v0.14.4"
+      #- "v0.14.7"
+      #- "v0.14.7"
+      #- "v0.15.0"
+      #- "v0.15.8"
+      #- "v0.19.1"
+      #- "nonroot-v0.21.0"
+      #- "v0.22.2"
+      #- "nonroot-v0.23.0"
       - "nonroot-v0.25.0"
       - "nonroot-v0.27.1"
     destinations:
       - registry.sighup.io/fury/pomerium/pomerium
 
-  - name: Dex Identity Provider [Fury Kubernetes Auth]
-    source: quay.io/dexidp/dex
-    tag:
-      - "v2.20.0"
-      - "v2.13.0"
-    destinations:
-      - registry.sighup.io/fury/dexidp/dex
+  #- name: Dex Identity Provider [Fury Kubernetes Auth]
+  #  source: quay.io/dexidp/dex
+  #  tag:
+  #    - "v2.20.0"
+  #    - "v2.13.0"
+  #  destinations:
+  #    - registry.sighup.io/fury/dexidp/dex
 
   - name: Dex Identity Provider [Fury Kubernetes Auth]
     source: ghcr.io/dexidp/dex
     tag:
-      - "v2.35.3"
-      - "v2.36.0"
-      - "v2.37.0"
+      #- "v2.35.3"
+      #- "v2.36.0"
+      #- "v2.37.0"
       - "v2.38.0"
       - "v2.41.1"
     destinations:
