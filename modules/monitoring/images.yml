@@ -142,66 +142,66 @@ images:
     source: quay.io/prometheus/prometheus
     multi-arch: true
     tag:
-      - "v2.16.0"
-      - "v2.21.0"
-      - "v2.22.2"
-      - "v2.27.1"
-      - "v2.28.1"
-      - "v2.29.1"
-      - "v2.32.1"
-      - "v2.36.1"
-      - "v2.41.0"
+      #- "v2.16.0"
+      #- "v2.21.0"
+      #- "v2.22.2"
+      #- "v2.27.1"
+      #- "v2.28.1"
+      #- "v2.29.1"
+      #- "v2.32.1"
+      #- "v2.36.1"
+      #- "v2.41.0"
       - "v2.46.0"
       - "v2.54.1"
     destinations:
       - registry.sighup.io/fury/prometheus
       - registry.sighup.io/fury/prometheus/prometheus
 
-  - name: prometheus-operator [Fury Monitoring Module]
-    source: quay.io/coreos/prometheus-operator
-    tag:
-      - "v0.30.0"
-      - "v0.37.0"
-    destinations:
-      - registry.sighup.io/fury/coreos/prometheus-operator
+  #- name: prometheus-operator [Fury Monitoring Module]
+  #  source: quay.io/coreos/prometheus-operator
+  #  tag:
+  #    - "v0.30.0"
+  #    - "v0.37.0"
+  #  destinations:
+  #    - registry.sighup.io/fury/coreos/prometheus-operator
 
   - name: prometheus-operator [Fury Monitoring Module]
     source: quay.io/prometheus-operator/prometheus-operator
     multi-arch: true
     tag:
-      - "v0.44.1"
-      - "v0.48.0"
-      - "v0.48.1"
-      - "v0.49.0"
-      - "v0.50.0"
-      - "v0.53.1"
-      - "v0.57.0"
-      - "v0.62.0"
+      #- "v0.44.1"
+      #- "v0.48.0"
+      #- "v0.48.1"
+      #- "v0.49.0"
+      #- "v0.50.0"
+      #- "v0.53.1"
+      #- "v0.57.0"
+      #- "v0.62.0"
       - "v0.67.1"
       - "v0.76.2"
     destinations:
       - registry.sighup.io/fury/prometheus-operator/prometheus-operator
 
-  - name: prometheus-operator config reloader [Fury Monitoring Module]
-    source: quay.io/coreos/prometheus-config-reloader
-    tag:
-      - "v0.30.0"
-      - "v0.37.0"
-    destinations:
-      - registry.sighup.io/fury/coreos/prometheus-config-reloader
+  #- name: prometheus-operator config reloader [Fury Monitoring Module]
+  #  source: quay.io/coreos/prometheus-config-reloader
+  #  tag:
+  #    - "v0.30.0"
+  #    - "v0.37.0"
+  #  destinations:
+  #    - registry.sighup.io/fury/coreos/prometheus-config-reloader
 
   - name: prometheus-operator config reloader [Fury Monitoring Module]
     source: quay.io/prometheus-operator/prometheus-config-reloader
     multi-arch: true
     tag:
-      - "v0.42.0"
-      - "v0.44.1"
-      - "v0.48.0"
-      - "v0.48.1"
-      - "v0.50.0"
-      - "v0.53.1"
-      - "v0.57.0"
-      - "v0.62.0"
+      #- "v0.42.0"
+      #- "v0.44.1"
+      #- "v0.48.0"
+      #- "v0.48.1"
+      #- "v0.50.0"
+      #- "v0.53.1"
+      #- "v0.57.0"
+      #- "v0.62.0"
       - "v0.67.1"
       - "v0.76.2"
     destinations:
