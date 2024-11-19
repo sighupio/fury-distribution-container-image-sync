@@ -2,15 +2,15 @@ images:
   - name: pomerium [Fury Kubernetes Auth]
     source: docker.io/pomerium/pomerium
     tag:
-      - "v0.14.4"
-      - "v0.14.7"
-      - "v0.14.7"
-      - "v0.15.0"
-      - "v0.15.8"
-      - "v0.19.1"
-      - "nonroot-v0.21.0"
-      - "v0.22.2"
-      - "nonroot-v0.23.0"
+      #- "v0.14.4"
+      #- "v0.14.7"
+      #- "v0.14.7"
+      #- "v0.15.0"
+      #- "v0.15.8"
+      #- "v0.19.1"
+      #- "nonroot-v0.21.0"
+      #- "v0.22.2"
+      #- "nonroot-v0.23.0"
       - "nonroot-v0.25.0"
       - "nonroot-v0.27.1"
     destinations:
