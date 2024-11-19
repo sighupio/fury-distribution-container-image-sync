@@ -216,25 +216,25 @@ images:
     destinations:
       - registry.sighup.io/fury/osixia/openldap
 
-  - name: thanos old release [Fury Monitoring Module]
-    source: quay.io/thanos/thanos
-    tag:
-      - "v0.20.2"
-      - "v0.22.0"
-      - "v0.24.0"
-    destinations:
-      - registry.sighup.io/fury/thanos
+  #- name: thanos old release [Fury Monitoring Module]
+  #  source: quay.io/thanos/thanos
+  #  tag:
+  #    - "v0.20.2"
+  #    - "v0.22.0"
+  #    - "v0.24.0"
+  #  destinations:
+  #    - registry.sighup.io/fury/thanos
 
-  - name: thanos [Fury Monitoring Module]
-    source: quay.io/thanos/thanos
-    multi-arch: true
-    tag:
-      - "v0.30.2"
-      - "v0.31.0"
-      - "v0.32.2"
-      - "v0.34.0"
-    destinations:
-      - registry.sighup.io/fury/thanos/thanos
+  #- name: thanos [Fury Monitoring Module]
+  #  source: quay.io/thanos/thanos
+  #  multi-arch: true
+  #  tag:
+  #    - "v0.30.2"
+  #    - "v0.31.0"
+  #    - "v0.32.2"
+  #    - "v0.34.0"
+  #  destinations:
+  #    - registry.sighup.io/fury/thanos/thanos
 
   - name: x509 certificate exporter
     source: docker.io/enix/x509-certificate-exporter
