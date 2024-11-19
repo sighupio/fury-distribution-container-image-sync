@@ -91,20 +91,20 @@ images:
     source: docker.io/fluent/fluent-bit
     multi-arch: true
     tag:
-      - "1.4.4"
-      - "1.5.6"
-      - "1.6.1"
-      - "1.6.9"
-      - "1.7.7"
-      - "1.8.2"
-      - "1.8.9"
-      - "1.8.10"
-      - "1.8.13"
-      - "1.8.15"
-      - "1.9.3"
-      - "1.9.5"
-      - "1.9.10"
-      - "2.1.4"
+      #- "1.4.4"
+      #- "1.5.6"
+      #- "1.6.1"
+      #- "1.6.9"
+      #- "1.7.7"
+      #- "1.8.2"
+      #- "1.8.9"
+      #- "1.8.10"
+      #- "1.8.13"
+      #- "1.8.15"
+      #- "1.9.3"
+      #- "1.9.5"
+      #- "1.9.10"
+      #- "2.1.4"
       - "2.1.8"
       - "3.1.8"
     destinations:
@@ -161,14 +161,14 @@ images:
     destinations:
       - registry.sighup.io/fury/banzaicloud/logging-operator
 
-  - name: Banzai cloud Fluentd (pre kube-logging)
-    source: ghcr.io/banzaicloud/fluentd
-    tag:
-      - "v1.14.4-alpine-1"
-      - "v1.14.5-alpine-1"
-      - "v1.14.6-alpine-5"
-    destinations:
-      - registry.sighup.io/fury/banzaicloud/fluentd
+  #- name: Banzai cloud Fluentd (pre kube-logging)
+  #  source: ghcr.io/banzaicloud/fluentd
+  #  tag:
+  #    - "v1.14.4-alpine-1"
+  #    - "v1.14.5-alpine-1"
+  #    - "v1.14.6-alpine-5"
+  #  destinations:
+  #    - registry.sighup.io/fury/banzaicloud/fluentd
 
   - name: Banzai cloud Fluentd Drain Watch (pre kube-logging)
     source: ghcr.io/banzaicloud/fluentd-drain-watch
@@ -182,8 +182,8 @@ images:
   - name: Banzai cloud Fluentd
     source: ghcr.io/kube-logging/fluentd
     tag:
-      - "v1.14.6"
-      - "v1.15-ruby3"
+      #- "v1.14.6"
+      #- "v1.15-ruby3"
       - "v1.16-full"
       - "v1.16-4.10-full"
     destinations:
