@@ -50,16 +50,16 @@ images:
     destinations:
       - registry.sighup.io/fury/prometheus/blackbox-exporter
 
-  - name: Goldpinger [Fury Monitoring Module]
-    source: docker.io/bloomberg/goldpinger
-    tag:
-      - "2.0.0"
-      - "v3.0.0"
-      - "v3.2.0"
-      - "v3.3.0"
-      - "v3.5.1"
-    destinations:
-      - registry.sighup.io/fury/bloomberg/goldpinger
+  #- name: Goldpinger [Fury Monitoring Module]
+  #  source: docker.io/bloomberg/goldpinger
+  #  tag:
+  #    - "2.0.0"
+  #    - "v3.0.0"
+  #    - "v3.2.0"
+  #    - "v3.3.0"
+  #    - "v3.5.1"
+  #  destinations:
+  #    - registry.sighup.io/fury/bloomberg/goldpinger
 
   - name: Grafana side-car [Fury Monitoring Module]
     multi-arch: true
