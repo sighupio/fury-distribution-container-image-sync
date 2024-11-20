@@ -59,9 +59,9 @@ images:
     destinations:
       - registry.sighup.io/fury/vsphere/csi-attacher
 
-############################################
-######## Repo doesn't exist anymore ########
-############################################
+###########################################
+####### Repo doesn't exist anymore ########
+###########################################
 #  - name: vSphere driver [Fury Kubernetes vSphere]
 #    source: gcr.io/cloud-provider-vsphere/csi/release/driver
 #    multi-arch: false
@@ -72,23 +72,31 @@ images:
 #    destinations:
 #      - registry.sighup.io/fury/vsphere/vsphere-csi-driver
 
-  - name: vSphere syncer [Fury Kubernetes vSphere]
-    source: gcr.io/cloud-provider-vsphere/csi/release/syncer
-    multi-arch: false
-    tag:
-      - v3.0.1
-      - v3.1.2
-      - v3.2.0
-    destinations:
-      - registry.sighup.io/fury/vsphere/vsphere-csi-syncer
 
-  - name: vSphere Cloud Provider [Fury Kubernetes vSphere]
-    source: gcr.io/cloud-provider-vsphere/cpi/release/manager
-    multi-arch: false
-    tag:
-      - v1.26.1
-      - v1.27.0
-      - v1.28.1
-      - v1.29.0
-    destinations:
-      - registry.sighup.io/fury/vsphere/vsphere-cpi-manager
+###########################################
+####### Repo doesn't exist anymore ########
+###########################################
+#  - name: vSphere syncer [Fury Kubernetes vSphere]
+#    source: gcr.io/cloud-provider-vsphere/csi/release/syncer
+#    multi-arch: false
+#    tag:
+#      - v3.0.1
+#      - v3.1.2
+#      - v3.2.0
+#    destinations:
+#      - registry.sighup.io/fury/vsphere/vsphere-csi-syncer
+
+
+###########################################
+####### Repo doesn't exist anymore ########
+###########################################
+#  - name: vSphere Cloud Provider [Fury Kubernetes vSphere]
+#    source: gcr.io/cloud-provider-vsphere/cpi/release/manager
+#    multi-arch: false
+#    tag:
+#      - v1.26.1
+#      - v1.27.0
+#      - v1.28.1
+#      - v1.29.0
+#    destinations:
+#      - registry.sighup.io/fury/vsphere/vsphere-cpi-manager
