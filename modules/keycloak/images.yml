@@ -1,12 +1,15 @@
 images:
-  - name: KeyCloak [Fury KeyCloak Module]
-    source: docker.io/jboss/keycloak
-    tag:
-      - "4.8.2.Final"
-      - "7.0.1"
-      - "13.0.1"
-    destinations:
-      - registry.sighup.io/fury/jboss/keycloak
+############################################
+######## Repo doesn't exist anymore ########
+############################################
+#  - name: KeyCloak [Fury KeyCloak Module]
+#    source: docker.io/jboss/keycloak
+#    tag:
+#      - "4.8.2.Final"
+#      - "7.0.1"
+#      - "13.0.1"
+#    destinations:
+#      - registry.sighup.io/fury/jboss/keycloak
 
   - name: Keycloak - quay release [Fury Keycloak Module]
     source: quay.io/keycloak/keycloak
