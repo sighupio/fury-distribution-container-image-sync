@@ -20,9 +20,9 @@ images:
       - "v2.1.1"
       - "v2.1.3"
       - "v2.1.5"
-      - "v2.2.2"
-      - "v2.3.2"
-      - "v2.4.2"
+      #- "v2.2.2"
+      #- "v2.3.2"
+      #- "v2.4.2"
     destinations:
       - registry.sighup.io/fury/goharbor/clair-photon
 
@@ -33,9 +33,9 @@ images:
       - "v2.1.1"
       - "v2.1.3"
       - "v2.1.5"
-      - "v2.2.2"
-      - "v2.3.2"
-      - "v2.4.2"
+      #- "v2.2.2"
+      #- "v2.3.2"
+      #- "v2.4.2"
     destinations:
       - registry.sighup.io/fury/goharbor/clair-adapter-photon
 
