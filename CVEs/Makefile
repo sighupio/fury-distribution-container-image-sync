@@ -52,10 +52,11 @@ kustomize-build-all:
 	KFD_VERSION=$(KFD_VERSION)
 	echo "" > $(KFD_VERSION)/built.yaml
 	for kustomize in `find $(KFD_VERSION)/.furyctl/sighup/vendor/modules \
-		\( -name "kustomization.y*ml" \) \
-	  	-not -path "*cluster-autoscaler/*/kustomization.yaml" \
-		-and -not -path "*examples*" \
-		-or -path "*/cluster-autoscaler/$${KFD_VERSION%.*}*/kustomization.yaml"`; do \
+		-not -path "*/cluster-autoscaler/base/*" \
+		-not -path "*/tests/*" \
+		-not -path "*/examples/*" \
+		-name "kustomization.y*ml" \
+		\( -path "*/cluster-autoscaler/$$(echo $${KFD_VERSION} | cut -d'.' -f1,2)*/*" -or -not -path "*/cluster-autoscaler/*" \)`; do \
 			`find $(KFD_VERSION)/.furyctl/bin -name kustomize -type f` build `dirname $$kustomize` >> $(KFD_VERSION)/built.yaml; \
 	done
 
@@ -73,7 +74,3 @@ trivy-download-db:
 
 scan-vulns:
 	TRIVY_CACHE_DIR=$(TRIVY_CACHE_DIR) ./scan_vuln.sh -v "$(KFD_VERSION)" -l "$(LIST_FILE)" -o "$(OUTPUT_FILE)";
-
-
-
-
