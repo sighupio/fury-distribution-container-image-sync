@@ -248,6 +248,7 @@ images:
     source: docker.io/memcached
     tag:
       - "1.6.23-alpine"
+      - "1.6.31-alpine"
     destinations:
       - registry.sighup.io/fury/memcached
 
@@ -255,5 +256,6 @@ images:
     source: docker.io/prom/memcached-exporter
     tag:
       - "v0.14.2"
+      - "v0.14.4"
     destinations:
       - registry.sighup.io/fury/prom/memcached-exporter
