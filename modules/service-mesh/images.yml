@@ -54,6 +54,7 @@ images:
       - "1.43.0"
       - "1.56.0"
       - "1.61.0"
+      - "1.62.0"
     destinations:
       - registry.sighup.io/fury/jaegertracing/jaeger-operator
 
