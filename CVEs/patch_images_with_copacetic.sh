@@ -103,16 +103,26 @@ function patch_image() {
     COPA_REPORT_OUTPUT_FILE=${COPA_PATCH_OUTPUT_DIR}/${image_to_patch//[:\/]/_}-${ARCHITECTURE}.vex.json
     COPA_PATCHING_LOG_FILE=${COPA_PATCH_OUTPUT_DIR}/${image_to_patch//[:\/]/_}-${ARCHITECTURE}.log
     info "Looking for CVEs in ${image_to_patch} for linux/${ARCHITECTURE}"
-    trivy image --platform=linux/${ARCHITECTURE} \
+    if ! trivy image --platform=linux/${ARCHITECTURE} \
       --skip-db-update --skip-java-db-update \
       --cache-dir ${TRIVY_CACHE_DIR:-/tmp/.cache/trivy} \
       --scanners vuln -q --vuln-type os --ignore-unfixed \
       -f json -o "${TRIVY_SCAN_OUTPUT_FILE}" \
       "${image_to_patch_with_digest}"
+    then
+      error "trivy failed to scan $image for linux/${ARCHITECTURE}"
+      PATCH_IMAGE_RETURN_ERROR=$((PATCH_IMAGE_RETURN_ERROR + 1))
+      continue
+    fi
     # info "Clean trivy scan cache"
     # trivy clean --scan-cache
     info "Patching CVEs in ${image_to_patch} for linux/${ARCHITECTURE}"
-    copa patch -r "${TRIVY_SCAN_OUTPUT_FILE}" -i "${image_to_patch_with_digest}" --tag ${patched_tag} --format="openvex" --output "$COPA_REPORT_OUTPUT_FILE" -a tcp://127.0.0.1:8888 2>&1 | tee "${COPA_PATCHING_LOG_FILE}"
+    copa patch --timeout "15m" \
+      -i "${image_to_patch_with_digest}" \
+      -r "${TRIVY_SCAN_OUTPUT_FILE}" \
+      --tag ${patched_tag} --format="openvex" \
+      --output "$COPA_REPORT_OUTPUT_FILE" \
+      -a tcp://127.0.0.1:8888 2>&1 | tee "${COPA_PATCHING_LOG_FILE}"
     copa_exit_code=${PIPESTATUS[0]}
 
     if [ "${copa_exit_code}" -eq 0 ]
@@ -190,7 +200,8 @@ function patch_image() {
         if (
            [ "${copa_error}" == "no patchable vulnerabilities found" ] ||
            [ "${copa_error}" == "no scanning results for os-pkgs found" ] ||
-           [[ "${copa_error}" =~ "errors occurred:" ]]
+           [[ "${copa_error}" =~ "errors occurred:" ]] ||
+           [[ "${copa_error}" =~ "unsupported osType" ]]
         )
         then
           warn "${copa_error} in ${image_to_patch} for linux/${ARCHITECTURE}"
@@ -215,15 +226,20 @@ function patch_image() {
     fi
   done
 
-  if [ ${DRY_RUN:-1} -eq 0 ] && [[ $(echo ${MULTI_ARCH_IMAGES} | wc -w) -eq $(echo ${ARCHITECTURES} | wc -w) ]]
+  if [[ $(echo ${MULTI_ARCH_IMAGES} | wc -w) -lt $(echo ${ARCHITECTURES} | wc -w) ]]
   then
-    info "Create and push manifest ${secured_image}"
-    if podman_run "podman manifest create ${secured_image} ${MULTI_ARCH_IMAGES} && podman manifest push ${secured_image}"
+    error "manifest ${secured_image} will not created as it does not include all the architectures"
+  else
+    if [ ${DRY_RUN:-1} -eq 0 ]
     then
-      success "manifest ${secured_image} pushed"
-    else
-      error "failed pushing manifest ${secured_image}"
-      PATCH_IMAGE_RETURN_ERROR=$((PATCH_IMAGE_RETURN_ERROR + 1))
+      info "Create and push manifest ${secured_image}"
+      if podman_run "podman manifest create ${secured_image} ${MULTI_ARCH_IMAGES} && podman manifest push ${secured_image}"
+      then
+        success "manifest ${secured_image} pushed"
+      else
+        error "failed pushing manifest ${secured_image}"
+        PATCH_IMAGE_RETURN_ERROR=$((PATCH_IMAGE_RETURN_ERROR + 1))
+      fi
     fi
   fi
 
