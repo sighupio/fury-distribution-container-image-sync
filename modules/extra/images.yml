@@ -9,6 +9,14 @@ images:
     destinations:
       - registry.sighup.io/fury-secured/moby/buildkit
 
+  # Images used in ReeVo Environments
+  - name: bitnami openldap [reevo/auth/extras]
+    source: docker.io/bitnami/openldap
+    tag:
+      - 2.6.9
+    destinations:
+      - registry.sighup.io/fury/bitnami/openldap
+
   # Workshop images
 
 #  - name: redis latest
