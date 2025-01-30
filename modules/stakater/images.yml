@@ -1,0 +1,8 @@
+images:
+
+  - name: Stakater Reloader [Fury Kubernetes Stakater Reloader]
+    source: ghcr.io/stakater/reloader
+    tag:
+      - "v1.2.1"
+    destinations:
+      - registry.sighup.io/fury/stakater/reloader
