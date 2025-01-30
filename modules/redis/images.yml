@@ -21,6 +21,7 @@ images:
       - "alpine3.12"
       - "6.2.5-alpine3.14"
       - "7.2.3-alpine3.19"
+      - "7.4.2-alpine3.21"
     destinations:
       - registry.sighup.io/fury/redis
 
