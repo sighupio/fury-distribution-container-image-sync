@@ -27,3 +27,11 @@ images:
       - "3.2.2.1"
     destinations:
       - registry.sighup.io/fury/kong/kong-gateway
+
+  - name: Kong Deck [Fury Kong Module]
+    source: docker.io/kong/deck
+    tag:
+      - "v1.44.2"
+    destinations:
+      - registry.sighup.io/fury/kong/deck
+
