@@ -5,6 +5,7 @@ images:
       - "2.2.2"
       - "2.3.1"
       - "2.6.0"
+      - "2.7.1"
     destinations:
       - registry.sighup.io/fury/grafana/tempo
 
@@ -12,6 +13,7 @@ images:
     source: docker.io/memcached
     tag:
       - "1.5.17-alpine"
+      - "1.6.37-alpine"
     destinations:
       - registry.sighup.io/fury/memcached
 
