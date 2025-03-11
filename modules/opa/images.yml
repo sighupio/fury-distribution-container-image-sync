@@ -54,6 +54,7 @@ images:
       - "v1.11.0"
       - "v1.11.4"
       - "v1.12.6"
+      - "v1.13.4"
     destinations:
       - registry.sighup.io/fury/kyverno/kyverno
 
@@ -63,6 +64,7 @@ images:
       - "v1.11.0"
       - "v1.11.4"
       - "v1.12.6"
+      - "v1.13.4"
     destinations:
       - registry.sighup.io/fury/kyverno/kyvernopre
 
@@ -72,6 +74,7 @@ images:
       - "v1.11.0"
       - "v1.11.4"
       - "v1.12.6"
+      - "v1.13.4"
     destinations:
       - registry.sighup.io/fury/kyverno/background-controller
   
@@ -81,6 +84,7 @@ images:
       - "v1.11.0"
       - "v1.11.4"
       - "v1.12.6"
+      - "v1.13.4"
     destinations:
       - registry.sighup.io/fury/kyverno/cleanup-controller
 
@@ -90,6 +94,7 @@ images:
       - "v1.11.0"
       - "v1.11.4"
       - "v1.12.6"
+      - "v1.13.4"
     destinations:
       - registry.sighup.io/fury/kyverno/reports-controller
 
@@ -99,6 +104,7 @@ images:
       - "1.26.10"
       - "1.27.10"
       - "1.28.5"
+      - "1.30.2"
     destinations:
       - registry.sighup.io/fury/bitnami/kubectl
 
@@ -106,5 +112,6 @@ images:
     source: ghcr.io/kyverno/kyverno-cli
     tag:
       - "v1.12.6"
+      - "v1.13.4"
     destinations:
       - registry.sighup.io/fury/kyverno/kyverno-cli
