@@ -162,9 +162,6 @@ images:
         value: "3.21"
       - name: ETCD_VER
         value: "v3.5.19"
-  platforms:
-    - linux/arm64
-    - linux/amd64
   tag:
     - "alpine3.21-v3.5.19"
   destinations:
