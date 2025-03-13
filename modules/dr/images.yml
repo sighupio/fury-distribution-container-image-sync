@@ -146,16 +146,23 @@ images:
   destinations:
   - registry.sighup.io/fury/sig-storage/snapshot-controller
 
-- name: etcd [Fury Kubernetes DR]
-  source: docker.io/bitnami/etcd
-  tag:
-  - "3.5.17"
-  destinations:
-  - registry.sighup.io/fury/etcd-backup/etcd
-
 - name: rclone [Fury Kubernetes DR]
   source: docker.io/rclone/rclone
   tag:
   - "v1.69-stable"
   destinations:
-  - registry.sighup.io/fury/etcd-backup/rclone
+  - registry.sighup.io/fury/dr/etcd-backup/rclone
+
+- name: etcd-backupper [Fury Kubernetes DR]
+  source: etcd-backupper
+  build:
+    context: custom/etcd-backupper
+    args:
+      - name: ALPINE
+        value: "3.21"
+      - name: ETCD_VER
+        value: "v3.5.19"
+  tag:
+    - "alpine3.21-v3.5.19"
+  destinations:
+    - registry.sighup.io/fury/dr/etcd-backup/etcd-backupper
