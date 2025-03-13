@@ -1,10 +1,10 @@
 ARG ALPINE=3.21
-FROM --platform=$TARGETPLATFORM alpine:${ALPINE}
+FROM alpine:${ALPINE}
 
 ARG ETCD_VER=v3.5.19
 ARG TARGETARCH
 
-RUN apk add curl yq
+RUN apk add curl yq jq
 
 RUN mkdir /tmp/etcd-download-test
 
