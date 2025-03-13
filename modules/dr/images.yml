@@ -159,3 +159,20 @@ images:
   - "v1.69-stable"
   destinations:
   - registry.sighup.io/fury/etcd-backup/rclone
+
+- name: etcd-backupper [Fury Kubernetes DR]
+  source: etcd-backupper
+  build:
+    context: custom/etcd-backupper
+    args:
+      - name: ALPINE
+        value: "3.21"
+      - name: ETCD_VER
+        value: "v3.5.19"
+  platforms:
+    - linux/arm64
+    - linux/amd64
+  tag:
+    - "alpine3.21-v3.5.19"
+  destinations:
+    - registry.sighup.io/fury/dr/etcd-backupper
