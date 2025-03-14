@@ -18,7 +18,7 @@ export ETCDCTL_CERT="$ETCDCTL_CERT"
 export ETCDCTL_KEY="$ETCDCTL_KEY"
 
 # Select the first healthy endpoint
-ENDPOINT=$(etcdctl endpoint health -w json | jq '[.[] | select(.health == true)][0].endpoint' -r)
+ENDPOINT=$(etcdctl endpoint health -w json | yq '[.[] | select(.health == true)][0].endpoint' -r)
 
 # Use only the healthy endpoint for backup
 export ETCDCTL_ENDPOINTS=$ENDPOINT
