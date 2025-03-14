@@ -4,7 +4,7 @@ FROM alpine:${ALPINE}
 ARG ETCD_VER=v3.5.19
 ARG TARGETARCH
 
-RUN apk add curl yq jq
+RUN apk add curl yq
 
 RUN mkdir /tmp/etcd-download-test
 
