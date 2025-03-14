@@ -1,5 +1,8 @@
 #!/usr/bin/env sh
 
+# Exit on error
+set -e
+
 # Configuration file path
 CONFIG_FILE="/k8s/config.yaml"
 
@@ -23,5 +26,10 @@ ENDPOINT=$(etcdctl endpoint health -w json | yq '[.[] | select(.health == true)]
 # Use only the healthy endpoint for backup
 export ETCDCTL_ENDPOINTS=$ENDPOINT
 
+FILENAME="/backup/fury-etcd-snapshot-$(date +'%Y%m%d%H%M').etcdb"
+
 # Create timestamped ETCD snapshot backup
-etcdctl snapshot save /backup/fury-etcd-snapshot-$(date +'%Y%m%d%H%M').etcdb
+etcdctl snapshot save "$FILENAME"
+
+# Verify the snapshot
+etcdutl snapshot status "$FILENAME"
