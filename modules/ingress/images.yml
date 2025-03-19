@@ -134,5 +134,6 @@ images:
       - "v0.13.6"
       - "v0.14.0"
       - "v0.15.0"
+      - "v0.16.1"
     destinations:
       - registry.sighup.io/fury/external-dns/external-dns
