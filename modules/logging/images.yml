@@ -21,6 +21,7 @@ images:
       #- "2.11.0"
       - "2.12.0"
       - "2.17.1"
+      - "2.19.1"
     destinations:
       - registry.sighup.io/fury/opensearchproject/opensearch
 
@@ -34,6 +35,7 @@ images:
       #- "2.11.0"
       - "2.12.0"
       - "2.17.1"
+      - "2.19.1"
     destinations:
       - registry.sighup.io/fury/opensearchproject/opensearch-dashboards
 
