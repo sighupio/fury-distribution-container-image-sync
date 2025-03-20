@@ -35,7 +35,8 @@ images:
       #- "v0.23.0"
       #- "v0.24.0"
       #- "v0.25.0"
-      - "v0.26.0"
+      #- "v0.26.0"
+      - "v0.27.0"
     destinations:
       - registry.sighup.io/fury/prometheus/alertmanager
 
@@ -249,6 +250,7 @@ images:
       #- "3.6.0"
       - "3.12.0"
       - "3.17.0"
+      - "3.18.1"
     destinations:
       - registry.sighup.io/fury/enix/x509-certificate-exporter
 
@@ -267,6 +269,7 @@ images:
       - "2.10.3"
       - "2.11.0"
       - "2.14.0"
+      - "2.15.0"
     destinations:
       - registry.sighup.io/fury/grafana/mimir
 
