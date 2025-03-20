@@ -269,6 +269,7 @@ images:
       - "2.10.3"
       - "2.11.0"
       - "2.14.0"
+      - "2.15.0"
     destinations:
       - registry.sighup.io/fury/grafana/mimir
 
