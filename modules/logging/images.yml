@@ -110,6 +110,7 @@ images:
       #- "2.1.4"
       - "2.1.8"
       - "3.1.8"
+      - "3.2.5"
     destinations:
       - registry.sighup.io/fury/fluent/fluent-bit
 
@@ -161,6 +162,7 @@ images:
       - "4.4.1"
       - "4.5.6"
       - "4.10.0"
+      - "5.2.0"
     destinations:
       - registry.sighup.io/fury/banzaicloud/logging-operator
 
@@ -182,13 +184,20 @@ images:
     destinations:
       - registry.sighup.io/fury/banzaicloud/fluentd-drain-watch
 
-  - name: Banzai cloud Fluentd
+  - name: Banzai cloud Fluentd (pre-in-house-images)
     source: ghcr.io/kube-logging/fluentd
     tag:
       #- "v1.14.6"
       #- "v1.15-ruby3"
       - "v1.16-full"
       - "v1.16-4.10-full"
+    destinations:
+      - registry.sighup.io/fury/banzaicloud/fluentd
+
+  - name: Banzai cloud Fluentd
+    source: ghcr.io/kube-logging/logging-operator/fluentd	
+    tag:
+      - "5.2.0-full"
     destinations:
       - registry.sighup.io/fury/banzaicloud/fluentd
 
@@ -222,12 +231,19 @@ images:
     destinations:
       - registry.sighup.io/fury/banzaicloud/config-reloader
 
-  - name: Banzai configmap reloader
+  - name: Banzai configmap reloader (pre-in-house-images)
     source: ghcr.io/kube-logging/config-reloader
     tag:
       - "v0.0.4"
       - "v0.0.5"
       - "v0.0.6"
+    destinations:
+      - registry.sighup.io/fury/banzaicloud/config-reloader
+
+  - name: Banzai configmap reloader
+    source: ghcr.io/kube-logging/logging-operator/config-reloader
+    tag:
+      - "5.2.0"
     destinations:
       - registry.sighup.io/fury/banzaicloud/config-reloader
 
