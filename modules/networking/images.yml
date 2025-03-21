@@ -181,6 +181,7 @@ images:
     source: gcr.io/google_containers/echoserver
     tag:
       - "1.0"
+      - "1.10"
     destinations:
       - registry.sighup.io/fury/google_containers/echoserver
 
